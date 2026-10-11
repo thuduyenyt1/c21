@@ -1703,11 +1703,24 @@
                 } else {
                     const radios = document.querySelectorAll(`[name="q${i}"]`);
                     radios.forEach(r => { if (r.checked) userAns = r.value; });
-                    const checkboxes = document.querySelectorAll(`[name="q${i}_${i+1}"]`);
-                    if (checkboxes.length > 0) {
+                    
+                    // Xử lý tách đáp án cho nhóm câu hỏi Checkbox (VD: q11_12, q21_22...)
+                    let checkboxGroup = document.querySelectorAll(`[name="q${i}_${i+1}"]`);
+                    if (checkboxGroup.length === 0) checkboxGroup = document.querySelectorAll(`[name="q${i-1}_${i}"]`);
+                    if (checkboxGroup.length === 0) checkboxGroup = document.querySelectorAll(`[name="q${i}"]`);
+
+                    if (checkboxGroup.length > 0 && checkboxGroup[0].type === 'checkbox') {
                         let checkedVals = [];
-                        checkboxes.forEach(cb => { if (cb.checked) checkedVals.push(cb.value); });
-                        userAns = checkedVals;
+                        checkboxGroup.forEach(cb => { if (cb.checked) checkedVals.push(cb.value); });
+                        
+                        let groupName = checkboxGroup[0].name;
+                        if (groupName.includes('_')) {
+                            let parts = groupName.replace('q', '').split('_');
+                            let indexInGroup = parts.indexOf(i.toString()); 
+                            userAns = checkedVals[indexInGroup] || "";
+                        } else {
+                            userAns = checkedVals;
+                        }
                     }
                 }
 
@@ -1716,7 +1729,11 @@
 
                 if (Array.isArray(correct)) {
                     if (Array.isArray(userAns)) {
-                        isCorrect = correct.sort().join() === userAns.sort().join();
+                        // So sánh mảng cho câu hỏi nhiều lựa chọn (bảo vệ mảng gốc bằng slice)
+                        isCorrect = correct.slice().sort().join() === userAns.slice().sort().join();
+                    } else if (typeof userAns === 'string') {
+                        // Tính điểm nếu chuỗi nhập vào khớp với BẤT KỲ đáp án nào trong mảng (câu điền từ)
+                        isCorrect = correct.some(ans => ans.toString().toLowerCase() === userAns.toLowerCase());
                     }
                 } else {
                     if (typeof userAns === 'string' && typeof correct === 'string') {
