@@ -1486,7 +1486,7 @@
                 "16": "C", "17": "C", "18": "A", "19": "B", "20": "C",
                 "21": ["B", "D"], "22": ["B", "D"], "23": ["C", "E"], "24": ["C", "E"], "25": "G",
                 "26": "B", "27": "F", "28": "H", "29": "A", "30": "E",
-                "31": ["metal", "metals"], "32": "slow", "33": "demand", "34": "equator", "35": "recycle",
+                "31": "fossil", "32": "slow", "33": "demand", "34": "equator", "35": "recycle",
                 "36": "fungus", "37": "weather", "38": "strong", "39": "roots", "40": "soil"
             }
         };
@@ -1522,7 +1522,7 @@
             "28": "Transcript: '...actually I ended up with a much better understanding of the issues.' (Bấm để xem Script)",
             "29": "Transcript: 'The article on metal toxicity was way above my head...' (Bấm để xem Script)",
             "30": "Transcript: 'That podcast on floating marine cities was interesting, though it presented a rather one-sided picture...' (Bấm để xem Script)",
-            "31": "Transcript: 'One of these is metal - without that we'd have no machines and no transportation' (Bấm để xem Script)",
+            "31": "Transcript: 'One of these is metal - without that we'd have no machines and no transportation...' (Bấm để xem Script)",
             "32": "Transcript: 'It can take eight to ten years for a tree to start producing rubber, so cultivating them's a slow process.' (Bấm để xem Script)",
             "33": "Transcript: '...if they find the demand for that crop is rising or falling.' (Bấm để xem Script)",
             "34": "Transcript: '...it can't be grown in the northern or southern parts of the globe, only around the equator.' (Bấm để xem Script)",
@@ -1662,16 +1662,30 @@
             for (let i = 1; i <= 40; i++) {
                 let userAns = "";
                 const input = document.getElementById('q' + i);
-                if (input) {
+if (input) {
                     userAns = input.value.trim();
                 } else {
                     const radios = document.querySelectorAll(`[name="q${i}"]`);
                     radios.forEach(r => { if (r.checked) userAns = r.value; });
-                    const checkboxes = document.querySelectorAll(`[name="q${i}_${i+1}"]`) || document.querySelectorAll(`[name="q${i}"]`);
-                    if (checkboxes.length > 0 && checkboxes[0].type === 'checkbox') {
+                    
+                    // Tìm nhóm checkbox chứa câu hỏi hiện tại (VD: q21_22 hoặc q23_24)
+                    let checkboxGroup = document.querySelectorAll(`[name="q${i}_${i+1}"]`);
+                    if (checkboxGroup.length === 0) checkboxGroup = document.querySelectorAll(`[name="q${i-1}_${i}"]`);
+                    if (checkboxGroup.length === 0) checkboxGroup = document.querySelectorAll(`[name="q${i}"]`);
+
+                    if (checkboxGroup.length > 0 && checkboxGroup[0].type === 'checkbox') {
                         let checkedVals = [];
-                        checkboxes.forEach(cb => { if (cb.checked) checkedVals.push(cb.value); });
-                        userAns = checkedVals;
+                        checkboxGroup.forEach(cb => { if (cb.checked) checkedVals.push(cb.value); });
+                        
+                        // Tách mảng đáp án: mỗi câu trong nhóm nhận 1 lựa chọn từ người dùng
+                        let groupName = checkboxGroup[0].name;
+                        if (groupName.includes('_')) {
+                            let parts = groupName.replace('q', '').split('_');
+                            let indexInGroup = parts.indexOf(i.toString()); // 0 cho câu 21/23, 1 cho câu 22/24
+                            userAns = checkedVals[indexInGroup] || "";
+                        } else {
+                            userAns = checkedVals;
+                        }
                     }
                 }
 
@@ -1680,7 +1694,11 @@
 
                 if (Array.isArray(correct)) {
                     if (Array.isArray(userAns)) {
-                        isCorrect = correct.sort().join() === userAns.sort().join();
+                        // Xử lý câu hỏi Checkbox (chọn nhiều đáp án)
+                        isCorrect = correct.slice().sort().join() === userAns.slice().sort().join();
+                    } else if (typeof userAns === 'string') {
+                        // Xử lý câu hỏi Text Input có nhiều phương án đúng thay thế nhau (VD: "10" hoặc "ten")
+                        isCorrect = correct.some(ans => ans.toString().toLowerCase() === userAns.toLowerCase());
                     }
                 } else {
                     if (typeof userAns === 'string' && typeof correct === 'string') {
