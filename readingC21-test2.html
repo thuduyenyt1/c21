@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600&display=swap" rel="stylesheet">
-    <title>IELTS Reading - C21 Test 2</title>
+    <title>IELTS Full Reading Practice - C21 Test 2</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; background-color: #ffffff; line-height: 1.4; font-size: 16px; }
@@ -42,7 +42,7 @@
         .footer__subquestionWrapper___9GgoP { display: none; gap: 2px; margin-left: 10px; }
         .footer__questionWrapper___1tZ46.selected .footer__subquestionWrapper___9GgoP { display: flex; }
         .subQuestion { width: 32px; height: 32px; border: 1px solid #ccc; background: white; color: #333; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; border-radius: 2px; }
-        .subQuestion.answered { background-color: #e9ecef; border-color: #ddd; }
+        .subQuestion.answered { background-color: #6b7ac7; color: #ffffff; border-color: #46507a; font-weight: bold; }
         .subQuestion.correct { background-color: #28a745; color: white; border-color: #28a745; }
         .subQuestion.incorrect { background-color: #dc3545; color: white; border-color: #dc3545; }
         .subQuestion.marked { position: relative; color: #333; }
@@ -128,8 +128,11 @@
         .launch-guide { border: 1px solid #d7def5; border-radius: 12px; background: #f2f5ff; padding: 14px; display: grid; gap: 6px; }
         .launch-main { margin: 0; font-size: clamp(18px, 2.2vw, 23px); line-height: 1.32; font-weight: 700; color: #1d2a60; }
         .launch-sub { margin: 0; color: #4c598f; font-size: 14px; line-height: 1.45; }
-        .launch-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-        .launch-btn { border: 1px solid #c5d0f2; border-radius: 999px; cursor: pointer; font-size: 14px; font-weight: 700; padding: 11px 16px; color: #24336e; background: #ffffff; transition: transform 0.12s ease; box-shadow: 0 8px 20px rgba(35, 54, 110, 0.14); }
+        .student-info-form { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
+        .student-info-form input { width: 100%; padding: 12px 15px; border: 1px solid #c5d0f2; border-radius: 8px; font-size: 16px; outline: none; transition: border-color 0.2s; }
+        .student-info-form input:focus { border-color: #4a90e2; box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); }
+        .launch-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+        .launch-btn { border: 1px solid #c5d0f2; border-radius: 999px; cursor: pointer; font-size: 14px; font-weight: 700; padding: 11px 16px; color: #24336e; background: #ffffff; transition: transform 0.12s ease; box-shadow: 0 8px 20px rgba(35, 54, 110, 0.14); width: 100%; text-align: center; font-size: 16px; }
         .launch-btn:hover { transform: translateY(-1px); background: #f6f8ff; }
         .explanation-box { display: none; margin-top: 10px; margin-bottom: 15px; padding: 12px 15px; background-color: #f0f7ff; border-left: 4px solid #4a90e2; border-radius: 4px; font-size: 15px; color: #2c3e50; line-height: 1.5; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer; transition: background-color 0.2s ease; }
         .explanation-box:hover { background-color: #e2efff; }
@@ -147,12 +150,17 @@
         <div class="launch-card">
             <div>
                 <p class="launch-eyebrow">IELTS Test Launcher</p>
-                <h1 class="launch-title" id="launchTestTitle">IELTS Reading Test - Cambridge 21 Test 2</h1>
+                <h1 class="launch-title" id="launchTestTitle">C21 Test 2 - Reading</h1>
                 <p class="launch-meta">Dạng bài: Reading</p>
             </div>
             <div class="launch-guide">
                 <p class="launch-main">Nhấn F11 để bắt đầu làm bài ở chế độ toàn màn hình.</p>
                 <p class="launch-sub">Nhấn F11 lần nữa để thoát toàn màn hình nếu cần.</p>
+                <div class="student-info-form">
+                    <input type="text" id="studentName" placeholder="Nhập Họ và tên của bạn..." required>
+                    <input type="text" id="studentClass" placeholder="Nhập Lớp của bạn..." required>
+                    <p id="launchError" style="color: #dc3545; font-size: 14px; display: none; margin: 0; font-weight: 600;">⚠️ Vui lòng nhập đầy đủ Họ tên và Lớp!</p>
+                </div>
             </div>
             <div class="launch-row">
                 <button id="startNormalBtn" class="launch-btn" type="button">Bắt đầu làm bài</button>
@@ -173,7 +181,7 @@
             </div>
         </div>
         <div class="header-right">
-            <a href="https://www.facebook.com/englishresourcehub" target="_blank" rel="noopener" class="header-ad">
+            <a href="#" target="_blank" rel="noopener" class="header-ad">
                 <div class="ad-copy">
                     <p class="ad-eyebrow">Study boost</p>
                     <div class="ad-marquee">
@@ -183,7 +191,7 @@
                     </div>
                 </div>
             </a>
-            <button class="ad-close" type="button" aria-label="Close ad" title="Close" onclick="window.open('https://www.facebook.com/englishresourcehub','_blank','noopener')">×</button>
+            <button class="ad-close" type="button" aria-label="Close ad" title="Close">×</button>
         </div>
     </div>
 
@@ -191,25 +199,25 @@
             <div id="passage-header-container">
                 <div id="part-header-1" class="part-header">
                     <p><strong>Part 1</strong></p>
-                    <p>Read the text and answer questions 1-13.</p>
+                    <p>You should spend about 20 minutes on Questions 1-13, which are based on Reading Passage 1 below.</p>
                 </div>
                 <div id="part-header-2" class="part-header hidden">
                     <p><strong>Part 2</strong></p>
-                    <p>Read the text and answer questions 14-26.</p>
+                    <p>You should spend about 20 minutes on Questions 14-26, which are based on Reading Passage 2 below.</p>
                 </div>
                 <div id="part-header-3" class="part-header hidden">
                     <p><strong>Part 3</strong></p>
-                    <p>Read the text and answer questions 27-40.</p>
+                    <p>You should spend about 20 minutes on Questions 27-40, which are based on Reading Passage 3 below.</p>
                 </div>
             </div>
             <div class="panels-container">
             <div class="passage-panel" id="passage-panel">
                 <div id="passage-text-1" class="reading-passage">
                     <h4 class="text-center">Do animals dream?</h4>
-                    <p>Studies using electrodes attached to the heads of sleepers have shown that when we sleep, we do so in two ways that alternate throughout the night. The first is rapid eye movement (REM) or active sleep. During this stage our eyes move, even though our eyelids are closed. Our muscles also twitch slightly, though they are largely paralysed so we don’t hurt ourselves. In contrast, we also engage in non-REM sleep, during which we barely move at all. Most dream states, and certainly those with the most vivid dreams, happen during REM sleep.</p>
+                    <p>Studies using electrodes attached to the heads of sleepers have shown that when we sleep, we do so in two ways that alternate throughout the night. The first is rapid eye movement (REM) or active sleep. During this stage our eyes move, even though our eyelids are closed. Our muscles also twitch slightly, though they are largely paralysed so we don't hurt ourselves. In contrast, we also engage in non-REM sleep, during which we barely move at all. Most dream states, and certainly those with the most vivid dreams, happen during REM sleep.</p>
                     <p>There's some evidence that other mammals may also dream. For example, researchers compared the brain patterns of rats running through a maze when awake with their brain patterns during REM sleep. They found the patterns were very similar and concluded that the sleeping rats were dreaming about going through the maze.</p>
                     <p>But finding evidence of dreaming in non-mammals has proved more difficult. Their brains are very different from those of humans, and it can often be difficult to record their activity while they are sleeping. Recently, however, researchers succeeded in recording brain activity in sleeping pigeons. As in mammals, the recordings revealed both REM and non-REM sleep. Intriguingly, REM sleep activity was high in brain regions involved in processing visual information, especially images related to physical activities such as flying, which suggests that this may possibly be what the pigeons were dreaming about.</p>
-                    <p>That said, dreaming and REM sleep are unlikely to be universal in the animal kingdom. For example, sponges don't have brains, so they lack the machinery for dreaming. There are also some animals with unusual sleep patterns. These include whales and dolphins, which do not shut down their entire brain when they sleep, but only half of it, keeping the rest awake. They also show no sign of REM sleep, suggesting that they may only experience non-REM dreams, which are less vivid. This is surprising because we tend to think of whales and dolphins as having complex inner lives. It’s thought that they don't experience REM sleep because during REM sleep animals are more vulnerable to extremes of temperature.</p>
+                    <p>That said, dreaming and REM sleep are unlikely to be universal in the animal kingdom. For example, sponges don't have brains, so they lack the machinery for dreaming. There are also some animals with unusual sleep patterns. These include whales and dolphins, which do not shut down their entire brain when they sleep, but only half of it, keeping the rest awake. They also show no sign of REM sleep, suggesting that they may only experience non-REM dreams, which are less vivid. This is surprising because we tend to think of whales and dolphins as having complex inner lives. It's thought that they don't experience REM sleep because during REM sleep animals are more vulnerable to extremes of temperature.</p>
                     <p>Nevertheless, in many cases REM sleep does seem to have benefits. Growing evidence from birds and mammals suggests that REM sleep and dreaming are important for forming memories and learning. It is believed that when events are replayed in dreams, this helps to integrate memories into longer-term storage. As soon as animals evolved moderately complex lifestyles, they would have needed to dream in order to manage these lifestyles.</p>
                     <p>However, we still don't understand how this outward behaviour relates to internal experience. It seems impossible to know what it is like to be a rat or a pigeon, let alone imagine their dreamscapes. We are quick to interpret the twitching limbs and quiet barks of sleeping dogs, but the truth is that we don't know if there is an internal experience of chasing rabbits that comes along with that.</p>
                     <p>Another non-human dreamer offers insight here. In 2019, while making a documentary, David Scheel of Alaska Pacific University in the USA housed an octopus named Heidi in a tank in his living room. At one point, in the middle of the night, Heidi seemed to dream: her limbs and head moved, and her skin rapidly changed colour, as though she was pursuing a crab.</p>
@@ -219,30 +227,31 @@
                 </div>
                 <div id="passage-text-2" class="reading-passage hidden">
                     <h4 class="text-center">Mapungubwe</h4>
-                    <p>Located in southern Africa just below the Limpopo River, the kingdom of Mapungubwe, flourished between the 11th and 13th century CE</p>
+                    <p><em>Located in southern Africa just below the Limpopo River, the kingdom of Mapungubwe, flourished between the 11th and 13th century CE</em></p>
                     <p><strong>A</strong> Mapungubwe, which was one of the first states in southern Africa, was formed by Bantu-speaking peoples who were farmers. The area controlled by the rulers of Mapungubwe had at its heart a large sandstone plateau, which was easily defended due to its inaccessibility. As with other kingdoms in the region of southern Africa, cattle herding and other types of farming brought plenty of food and a surplus that could be traded for needed goods. Archaeology has revealed extensive layers of bones and manure, which indicate that from the 9th century CE there were large cattle herds, the traditional source of political power in southern African communities. The archaeological record for the 10th century shows a marked increase in the number of domesticated cattle in the area as well as cotton cultivation and weaving, as indicated by abundant finds of spindle whorls.</p>
-                    <p><strong>B</strong> The total population of Mapungubwe at its peak in the mid-13th century was around 5,000 people. The chief or king of Mapungubwe was likely the wealthiest individual in the society, and would have owned more cattle and precious materials than anyone else. The king and his advisers dwelt in a stone enclosure composed of stone walls and housing built on the highest level of the community's territory, a natural sandstone hill which is some 30 metres high and 100 metres in length. Occupation on the hill dates from the 11th century and the entire complex was surrounded by a wooden palisade, as indicated by postholes made in the rock. The rest of the community lived in mud and thatch housing spread out below the hill, although there is one stone structure here. This settlement, known as Babandyanalo, covers around 5 hectares (12.3 acres) and predates the hilltop structures.</p>
+                    <p><strong>B</strong> The total population of Mapungubwe at its peak in the mid-13th century was around 5,000 people. The chief or king of Mapungubwe was likely the wealthiest individual in the society, and would have owned more cattle and precious materials than anyone else. The king and his advisers dwelt in a stone enclosure composed of stone walls and housing built on the highest level of the community's territory, a natural sandstone hill which is some 30 metres high and 100 metres in length. Occupation on the hill dates from the 11th century and the entire complex was surrounded by a wooden palisade*, as indicated by postholes made in the rock. The rest of the community lived in mud and thatch housing spread out below the hill, although there is one stone structure here. This settlement, known as Babandyanalo, covers around 5 hectares (12.3 acres) and predates the hilltop structures.</p>
                     <p><strong>C</strong> The kings of Mapungubwe were buried at the top of the hill site in a demarcated area away from the dwellings, while other members of the community were buried at the surrounding valley level. A wooden staircase connected the two levels, the sockets for the steps being clearly visible in the sandstone cliff face. There were some grander residences dotted around the outskirts of Babandyanalo, and these probably belonged to male relatives of the king. There are many other smaller but still impressive sites across the Mapungubwe plateau, which are located anywhere from 15 to 100 kilometres from the major hill site. Containing stone residences and walls, they likely belonged to local chiefs who acted as servants to the king.</p>
                     <p><strong>D</strong> The Mapungubwe plateau has a very high number of carnivore animal remains and ivory splinters, suggesting that the skins of these large animals and ivory elephant tusks were accumulated, probably for trade with coastal areas reached by the Limpopo River. The presence of glass beads, almost certainly from India, indicate there was trade of some sort with other states on the coast who, in turn, traded with merchants travelling from India by sea. Mapungubwe also benefitted from locally-sourced copper and the gold trade as it passed from the kingdom of Great Zimbabwe (12-15th century), situated to the north of Mapungubwe, to the coastal city of Kosala. It is likely that trade links led to a strengthening of political authority in order to control and even monopolise these lucrative interregional connections.</p>
                     <p><strong>E</strong> Archaeological discoveries reveal that pottery was produced on a scale large enough to suggest the presence of professional potters, and is another indicator of the prosperity of Mapungubwe society. Archaeological finds include spherical vessels with short necks, beakers, and bowls, many of which have decorative stamps. There are also ceramic discs, and whistles. In addition, cattle, sheep, and goat figurines, and small figures of highly stylised humans with elongated bodies and short limbs have been found. The figures may have been used in ceremonies as offerings to ancestors, but their precise function is not known. Other discoveries include small jewellery items made from locally sourced copper.</p>
                     <p><strong>F</strong> Beautifully decorated artefacts made of gold have also been found at Mapungubwe. A type of decoration, found nowhere else except Great Zimbabwe, involved the crafting of gold into small rectangular sheets and carving geometrical patterns into it. These sheets were then used to cover wooden objects (which have not survived) using small tacks, also made of gold. One such object that has been discovered may have been a sceptre, while additional evidence of local gold-working is a rhinoceros figurine made from small hammered sheets, and thousands of small gold beads. These objects were all found at the royal burial site and date to c. 1150. They are the first known indicators that gold had an intrinsic value of its own (as opposed to that of a currency) in southern Africa.</p>
                     <p><strong>G</strong> The kingdom of Mapungubwe was already in decline by the late 13th century, probably because overpopulation placed too much stress on local resources, a situation that may have been brought to a crisis point by a series of droughts. Trade routes may also have shifted northwards. Certainly, the areas that now prospered were to the north, such as Great Zimbabwe.</p>
+                    <p><em>* palisade: typically a row of closely placed, high vertical wooden or iron posts used as a means of defence</em></p>
                 </div>
                 <div id="passage-text-3" class="reading-passage hidden">
                     <h4 class="text-center">Artificial Intelligence</h4>
                     <p>In many countries in the West, hysteria about the future of artificial intelligence (AI) is everywhere. There seems to be no shortage of sensationalist news about how AI could cure diseases, accelerate human innovation and improve human creativity. Just looking at the media headlines, you might think that we are already living in a future where AI has infiltrated every aspect of society.</p>
                     <p>While it is undeniable that AI has opened up a wealth of promising opportunities, it has also led to the emergence of a mindset that can be best described as 'AI solutionism'. This is the philosophy that, given enough data, machine learning algorithms can solve all of humanity's problems. But, in fact, instead of supporting AI progress, this mindset actually jeopardises the value of machine intelligence by disregarding important AI safety principles and setting unrealistic expectations about what AI can really do for humanity.</p>
                     <p>In only a few years, AI solutionism has made its way from the technology evangelists' mouths in Silicon Valley in California to the minds of government officials and policymakers around the world. The pendulum has swung from the dystopian notion that AI will destroy humanity to the utopian belief that our algorithmic saviour is here.</p>
-                    <p>We are now seeing governments pledge support to national AI initiatives and compete in a technological race to dominate the burgeoning machine-learning sector. While many politicians proclaim the transformative effects of the coming 'AI revolution', they fail to realise the complexity around deploying advanced machine learning systems in the real world.</p>
+                    <p>We are now seeing governments pledge support to national AI initiatives and compete in a technological race to dominate the burgeoning machine-learning sector. While many politicians proclaim the transformative effects of the coming AI revolution', they fail to realise the complexity around deploying advanced machine learning systems in the real world.</p>
                     <p>One of the most promising varieties of AI technologies are neural networks. This form of machine learning is loosely modelled on the neuronal structure of the human brain, but on a much smaller scale. But what many politicians do not understand is that simply adding a neural network to a problem will not automatically mean that you'll find a solution. Similarly, adding a neural network to a system of government does not mean it will be instantaneously more inclusive or fair.</p>
                     <p>AI systems need a lot of data to function, but the public sector typically does not have the appropriate data infrastructure to support advanced machine learning. Most of the data remains stored in offline archives. The few digitised sources of data that exist tend to be buried in bureaucracy. More often than not, data is spread across different government departments that each require special permissions to be accessed. Above all, the public sector typically lacks the human talent with the right technological capabilities to fully reap the benefits of machine intelligence.</p>
-                    <p>For these reasons, the sensationalism over AI has attracted many critics. Stuart Russell, a professor of computer science at the University of California, Berkeley, has long advocated a more sensible and realistic approach that focuses on simple everyday applications of AI instead of the hypothetical takeover by super-intelligent robots. Similarly, Rodney Brooks, professor of robotics at Massachusetts Institute of Technology, writes that 'almost all innovations in robotics and AI take far, far, longer to be really widely deployed than people in the field and outside the field imagine'.</p>
-                    <p>One of the many difficulties in deploying machine learning systems is that AI is extremely susceptible to adversarial attacks. This means that a malicious AI can target another AI to make it behave in a certain way, such as forcing it to make wrong predictions. Many researchers have warned against the rolling out of AI without appropriate security standards and defence mechanisms. Still, AI security remains an often overlooked topic when machine learning systems are installed.</p>
+                    <p>For these reasons, the sensationalism over Al has attracted many critics. Stuart Russell, a professor of computer science at the University of California, Berkeley, has long advocated a more sensible and realistic approach that focuses on simple everyday applications of AI instead of the hypothetical takeover by super-intelligent robots. Similarly, Rodney Brooks, professor of robotics at Massachusetts Institute of Technology, writes that 'almost all innovations in robotics and AI take far, far, longer to be really widely deployed than people in the field and outside the field imagine'.</p>
+                    <p>One of the many difficulties in deploying machine learning systems is that AI is extremely susceptible to adversarial attacks. This means that a malicious Al can target another AI to make it behave in a certain way, such as forcing it to make wrong predictions. Many researchers have warned against the rolling out of AI without appropriate security standards and defence mechanisms. Still, AI security remains an often overlooked topic when machine learning systems are installed.</p>
                     <p>If we are to reap the benefits and minimise the potential harms of AI, we must start thinking about how machine learning can be meaningfully applied to specific areas of government, business and society. This means we need to have a discussion about AI ethics and the distrust that many people have towards machine learning.</p>
                     <p>Most importantly, we need to be aware of the limitations of AI and where people still need to take the lead. Instead of painting an unrealistic picture of the power of AI, it is important to take a step back and separate the actual technological capabilities of AI from fantasy.</p>
                     <p>The medical profession has also recognised the drawbacks to AI. The IBM Watson for Oncology programme was a piece of AI that was meant to help doctors treat cancer. Even though it was developed to deliver the best recommendations, human experts found it hard to trust the machine. As a result, the AI programme was abandoned in most hospitals where it was trialled.</p>
                     <p>Similar difficulties arose in the legal domain when algorithms were used in courts in the US to sentence criminals. An algorithm calculated risk assessment scores and advised judges on the sentencing. The system was found to amplify structural racial discrimination and was later abandoned.</p>
-                    <p>There are some crucial lessons here for everyone aiming to boost investments in national AI programmes. These examples demonstrate that there is no AI solution for everything. Using AI simply for the sake of AI may not always be productive or useful, and not every issue is best addressed by applying machine intelligence to it. All solutions come with a cost and not everything that can be automated should be.</p>
+                    <p>There are some crucial lessons here for everyone aiming to boost investments in national Al programmes. These examples demonstrate that there is no AI solution for everything. Using AI simply for the sake of AI may not always be productive or useful, and not every issue is best addressed by applying machine intelligence to it. All solutions come with a cost and not everything that can be automated should be.</p>
                 </div>
             </div>
             <div class="resizer" id="resizer"></div>
@@ -252,105 +261,68 @@
                         <div class="question" data-q-start="1" data-q-end="5">
                             <div class="question-prompt">
                                 <p><strong>Questions 1-5</strong></p>
-                                <p>Complete the table below.</p>
-                                <p>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+                                <p>Complete the table below. Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+                                <div class="question-title">Research into sleep and dreaming</div>
                             </div>
-                            
-                            <table style="width:100%; border-collapse: collapse; margin-bottom: 20px;">
+                            <table border="1" cellpadding="5" style="border-collapse: collapse; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th style="border: 1px solid #ccc; padding: 8px; background-color: #f8f9fa;">Research into sleep and dreaming</th>
-                                        <th style="border: 1px solid #ccc; padding: 8px; background-color: #f8f9fa;">Research findings</th>
-                                        <th style="border: 1px solid #ccc; padding: 8px; background-color: #f8f9fa;">Comment</th>
+                                        <th></th>
+                                        <th>Research findings</th>
+                                        <th>Comment</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td style="border: 1px solid #ccc; padding: 8px;">Humans</td>
-                                        <td style="border: 1px solid #ccc; padding: 8px;">
-                                            <ul style="padding-left: 15px;">
-                                                <li>humans experience REM sleep and non-REM sleep</li>
-                                                <li>in REM sleep, the eyes and muscles move</li>
-                                            </ul>
-                                        </td>
-                                        <td style="border: 1px solid #ccc; padding: 8px;"></td>
+                                        <td><strong>Humans</strong></td>
+                                        <td>- humans experience REM sleep and non-REM sleep<br>- in REM sleep, the eyes and muscles move</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
-                                        <td style="border: 1px solid #ccc; padding: 8px;"><input type="text" class="answer-input" id="q1" placeholder="1"></td>
-                                        <td style="border: 1px solid #ccc; padding: 8px;">
-                                            <ul style="padding-left: 15px;">
-                                                <li>similar brain patterns were observed when active and sleeping</li>
-                                            </ul>
-                                        </td>
-                                        <td style="border: 1px solid #ccc; padding: 8px;">indicative of dreaming</td>
+                                        <td><strong>1 <input type="text" class="answer-input" id="q1" placeholder="1"></strong></td>
+                                        <td>- similar brain patterns were observed when active and sleeping</td>
+                                        <td>- indicative of dreaming</td>
                                     </tr>
                                     <tr>
-                                        <td style="border: 1px solid #ccc; padding: 8px;">Pigeons</td>
-                                        <td style="border: 1px solid #ccc; padding: 8px;">
-                                            <ul style="padding-left: 15px;">
-                                                <li>when sleeping, pigeons displayed activity in parts of the brain that deal with <input type="text" class="answer-input" id="q2" placeholder="2"> input</li>
-                                            </ul>
-                                        </td>
-                                        <td style="border: 1px solid #ccc; padding: 8px;">may have been dreaming of flying</td>
+                                        <td><strong>Pigeons</strong></td>
+                                        <td>- when sleeping, pigeons displayed activity in parts of the brain that deal with 2 <input type="text" class="answer-input" id="q2" placeholder="2"> input</td>
+                                        <td>- may have been dreaming of flying</td>
                                     </tr>
                                     <tr>
-                                        <td style="border: 1px solid #ccc; padding: 8px;">Whales and dolphins</td>
-                                        <td style="border: 1px solid #ccc; padding: 8px;">
-                                            <ul style="padding-left: 15px;">
-                                                <li>still have <input type="text" class="answer-input" id="q3" placeholder="3"> their brain awake when they sleep</li>
-                                                <li>don't experience REM sleep, as this could affect their sensitivity to <input type="text" class="answer-input" id="q4" placeholder="4"></li>
-                                            </ul>
-                                        </td>
-                                        <td style="border: 1px solid #ccc; padding: 8px;">their dreams are probably not very <input type="text" class="answer-input" id="q5" placeholder="5"></td>
+                                        <td><strong>Whales and dolphins</strong></td>
+                                        <td>- still have 3 <input type="text" class="answer-input" id="q3" placeholder="3"> their brain awake when they sleep<br>- don't experience REM sleep, as this could affect their sensitivity to 4 <input type="text" class="answer-input" id="q4" placeholder="4"></td>
+                                        <td>- their dreams are probably not very 5 <input type="text" class="answer-input" id="q5" placeholder="5"></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+                        
                         <div class="question" data-q-start="6" data-q-end="13">
-                            <div class="question-prompt"><p><strong>Questions 6-13</strong></p><p>Do the following statements agree with the information given in Reading Passage 1?</p><p>In boxes 6-13 on your answer sheet, write</p><p><strong>TRUE</strong> if the statement agrees with the information</p><p><strong>FALSE</strong> if the statement contradicts the information</p><p><strong>NOT GIVEN</strong> if there is no information on this</p></div>
-                            <div class="tf-question" data-q-start="6" data-q-end="6">
-                                <div class="tf-question-line"><span class="tf-question-number">6</span><span class="tf-question-text">Dreaming about past experiences helps us to create lasting memories of them.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q6" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q6" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q6" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            <div class="question-prompt">
+                                <p><strong>Questions 6-13</strong></p>
+                                <p>Do the following statements agree with the information given in Reading Passage 1?</p>
+                                <p>Choose <strong>TRUE</strong> if the statement agrees with the information, choose <strong>FALSE</strong> if the statement contradicts the information, or choose <strong>NOT GIVEN</strong> if there is no information on this.</p>
                             </div>
-                            <div class="tf-question" data-q-start="7" data-q-end="7">
-                                <div class="tf-question-line"><span class="tf-question-number">7</span><span class="tf-question-text">It is now possible to tell what type of dream a dog is having.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q7" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q7" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q7" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="8" data-q-end="8">
-                                <div class="tf-question-line"><span class="tf-question-number">8</span><span class="tf-question-text">David Scheel's documentary was influential on other research into the sleeping patterns of octopuses.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q8" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q8" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q8" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="9" data-q-end="9">
-                                <div class="tf-question-line"><span class="tf-question-number">9</span><span class="tf-question-text">While it was asleep, the octopus called Costello reacted as if it was hunting.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q9" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q9" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q9" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="10" data-q-end="10">
-                                <div class="tf-question-line"><span class="tf-question-number">10</span><span class="tf-question-text">Scheel believes more research into octopuses' dreams should be carried out.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q10" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q10" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q10" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="11" data-q-end="11">
-                                <div class="tf-question-line"><span class="tf-question-number">11</span><span class="tf-question-text">We may soon be able to share the dreams of other human beings.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q11" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q11" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q11" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="12" data-q-end="12">
-                                <div class="tf-question-line"><span class="tf-question-number">12</span><span class="tf-question-text">Hearing may be an important part of the dreams of some animals.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q12" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q12" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q12" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="13" data-q-end="13">
-                                <div class="tf-question-line"><span class="tf-question-number">13</span><span class="tf-question-text">Interest in the reasons why humans dream has increased greatly in recent times.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q13" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q13" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q13" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
+                            <div class="tf-question" data-q-start="6" data-q-end="6"><div class="tf-question-line"><span class="tf-question-number">6</span><span class="tf-question-text">Dreaming about past experiences helps us to create lasting memories of them.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q6" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q6" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q6" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="7" data-q-end="7"><div class="tf-question-line"><span class="tf-question-number">7</span><span class="tf-question-text">It is now possible to tell what type of dream a dog is having.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q7" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q7" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q7" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="8" data-q-end="8"><div class="tf-question-line"><span class="tf-question-number">8</span><span class="tf-question-text">David Scheel's documentary was influential on other research into the sleeping patterns of octopuses.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q8" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q8" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q8" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="9" data-q-end="9"><div class="tf-question-line"><span class="tf-question-number">9</span><span class="tf-question-text">While it was asleep, the octopus called Costello reacted as if it was hunting.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q9" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q9" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q9" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="10" data-q-end="10"><div class="tf-question-line"><span class="tf-question-number">10</span><span class="tf-question-text">Scheel believes more research into octopuses' dreams should be carried out.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q10" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q10" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q10" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="11" data-q-end="11"><div class="tf-question-line"><span class="tf-question-number">11</span><span class="tf-question-text">We may soon be able to share the dreams of other human beings.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q11" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q11" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q11" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="12" data-q-end="12"><div class="tf-question-line"><span class="tf-question-number">12</span><span class="tf-question-text">Hearing may be an important part of the dreams of some animals.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q12" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q12" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q12" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="13" data-q-end="13"><div class="tf-question-line"><span class="tf-question-number">13</span><span class="tf-question-text">Interest in the reasons why humans dream has increased greatly in recent times.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q13" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q13" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q13" value="NOT GIVEN"> NOT GIVEN</label></div></div>
                         </div>
                     </div>
                 </div>
+                
                 <div id="questions-2" class="question-set hidden">
                     <div class="questions-container">
                         <div class="question" data-q-start="14" data-q-end="19">
                             <div class="question-prompt">
                                 <p><strong>Questions 14-19</strong></p>
-                                <p>Reading Passage <strong>2</strong> has seven paragraphs, <strong>A-G</strong>.</p>
+                                <p>Reading Passage 2 has seven paragraphs, A-G.</p>
                                 <p>Which paragraph contains the following information?</p>
-                                <p>Write the correct letter, <strong>A-G</strong>, in boxes 14-19 on your answer sheet.</p>
+                                <p>Write the correct letter, <strong>A-G</strong>.</p>
                             </div>
                             <div class="matching-form-container">
                                 <div class="matching-form-row">
@@ -379,34 +351,45 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="question" data-q-start="20" data-q-end="21">
                             <div class="question-prompt">
-                                <p><strong>Questions 20 and 21</strong></p>
-                                <p>Choose <strong>TWO</strong> letters, <strong>A-E</strong>.</p>
-                                <p>The archaeological record reveals information about gold and the kingdom of Mapungubwe. Which <strong>TWO</strong> pieces of information are mentioned by the writer?</p>
+                                <p><strong>Questions 20-21</strong></p>
+                                <p>Choose <strong>TWO</strong> letters, A-E.</p>
+                                <p>The archaeological record reveals information about gold and the kingdom of Mapungubwe. Which TWO pieces of information are mentioned by the writer?</p>
                             </div>
                             <div class="matching-form-container">
                                 <div class="matching-form-row">
-                                    <label for="q20" class="matching-form-label"><strong>20</strong></label>
-                                    <select class="answer-input" id="q20"><option value=""></option><option value="A">A. Not everyone in Mapungubwe used gold as a form of payment.</option><option value="B">B. Items of gold were placed close to where Mapungubwe kings were buried.</option><option value="C">C. The most valuable item discovered in Mapungubwe was a sceptre made of gold.</option><option value="D">D. The way gold was decorated in Mapungubwe was also practised in another kingdom.</option><option value="E">E. Working with gold was a respected occupation in the Mapungubwe community.</option></select>
+                                    <label for="q20" class="matching-form-label"><strong>20</strong> Option 1</label>
+                                    <select class="answer-input" id="q20"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
                                 </div>
                                 <div class="matching-form-row">
-                                    <label for="q21" class="matching-form-label"><strong>21</strong></label>
-                                    <select class="answer-input" id="q21"><option value=""></option><option value="A">A. Not everyone in Mapungubwe used gold as a form of payment.</option><option value="B">B. Items of gold were placed close to where Mapungubwe kings were buried.</option><option value="C">C. The most valuable item discovered in Mapungubwe was a sceptre made of gold.</option><option value="D">D. The way gold was decorated in Mapungubwe was also practised in another kingdom.</option><option value="E">E. Working with gold was a respected occupation in the Mapungubwe community.</option></select>
+                                    <label for="q21" class="matching-form-label"><strong>21</strong> Option 2</label>
+                                    <select class="answer-input" id="q21"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select>
                                 </div>
                             </div>
+                            <div class="example-box" style="font-size: 15px; margin-top: 15px;">
+                                <ul class="options-list">
+                                    <li><span class="options-list-label">A</span> Not everyone in Mapungubwe used gold as a form of payment.</li>
+                                    <li><span class="options-list-label">B</span> Items of gold were placed close to where Mapungubwe kings were buried.</li>
+                                    <li><span class="options-list-label">C</span> The most valuable item discovered in Mapungubwe was a sceptre made of gold.</li>
+                                    <li><span class="options-list-label">D</span> The way gold was decorated in Mapungubwe was also practised in another kingdom.</li>
+                                    <li><span class="options-list-label">E</span> Working with gold was a respected occupation in the Mapungubwe community.</li>
+                                </ul>
+                            </div>
                         </div>
+
                         <div class="question" data-q-start="22" data-q-end="26">
                             <div class="question-prompt">
                                 <p><strong>Questions 22-26</strong></p>
-                                <p>Complete the summary below.</p>
-                                <p>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
-                                <p><strong>Archaeological discoveries</strong></p>
+                                <p>Complete the summary below. Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+                                <div class="question-title">Archaeological discoveries</div>
                             </div>
-                            <p>The Mapungubwe community's <input type="text" class="answer-input" id="q22" placeholder="22"> is indicated by the amount of professionally made pottery discovered at the site. Many of these objects, such as beakers and bowls, are highly decorated and have been marked with stamps. Other finds include round ceramic objects, <input type="text" class="answer-input" id="q23" placeholder="23"> and figures of various animals, as well as models of people with stretched <input type="text" class="answer-input" id="q24" placeholder="24">. It is possible that these had a role in ceremonies to honour <input type="text" class="answer-input" id="q25" placeholder="25">. In addition, pieces of <input type="text" class="answer-input" id="q26" placeholder="26"> made from a local metal have been found at the site.</p>
+                            <p>The Mapungubwe community's 22 <input type="text" class="answer-input" id="q22" placeholder="22"> is indicated by the amount of professionally made pottery discovered at the site. Many of these objects, such as beakers and bowls, are highly decorated and have been marked with stamps. Other finds include round ceramic objects, 23 <input type="text" class="answer-input" id="q23" placeholder="23"> and figures of various animals, as well as models of people with stretched 24 <input type="text" class="answer-input" id="q24" placeholder="24"> . It is possible that these had a role in ceremonies to honour 25 <input type="text" class="answer-input" id="q25" placeholder="25"> . In addition, pieces of 26 <input type="text" class="answer-input" id="q26" placeholder="26"> made from a local metal have been found at the site.</p>
                         </div>
                     </div>
                 </div>
+
                 <div id="questions-3" class="question-set hidden">
                     <div class="questions-container">
                         <div class="question" data-q-start="27" data-q-end="29">
@@ -442,12 +425,17 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="question" data-q-start="30" data-q-end="35">
                             <div class="question-prompt">
                                 <p><strong>Questions 30-35</strong></p>
                                 <p>Complete the summary using the list of words, <strong>A-I</strong>, below.</p>
-                                <p><strong>AI in government, medicine and the law</strong></p>
+                                <div class="question-title">AI in government, medicine and the law</div>
                             </div>
+                            <p>Neural networks are a promising area of Al technology for governments. However, many politicians overestimate their capabilities, believing that the mere addition of a neural network will produce solutions and promote 30 <select class="answer-input" id="q30"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> .</p>
+                            <p>Most public sector organisations have not set up the necessary 31 <select class="answer-input" id="q31"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> to manage the huge amount of data required to enable Al to function. Complex bureaucracy is another issue, as each person involved needs 32 <select class="answer-input" id="q32"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> to access the relevant data, which is often spread across different departments. But the main problem is that few public sector employees have the 33 <select class="answer-input" id="q33"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> to take full advantage of machine intelligence.</p>
+                            <p>The medical profession experimented with an Al programme, but their experts had little faith in its 34 <select class="answer-input" id="q34"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> and the programme was abandoned. US courts also abandoned the use of algorithms when it was found that these reflected and magnified the existing 35 <select class="answer-input" id="q35"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> within the legal profession.</p>
+                            <br>
                             <div class="example-box" style="font-size: 15px;">
                                 <ul class="options-list">
                                     <li><span class="options-list-label">A</span> reliability</li>
@@ -461,37 +449,32 @@
                                     <li><span class="options-list-label">I</span> approval</li>
                                 </ul>
                             </div>
-                            <p>Neural networks are a promising area of AI technology for governments. However, many politicians overestimate their capabilities, believing that the mere addition of a neural network will produce solutions and promote <select class="answer-input" id="q30"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select>. Most public sector organisations have not set up the necessary <select class="answer-input" id="q31"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> to manage the huge amount of data required to enable AI to function. Complex bureaucracy is another issue, as each person involved needs <select class="answer-input" id="q32"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> to access the relevant data, which is often spread across different departments. But the main problem is that few public sector employees have the <select class="answer-input" id="q33"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> to take full advantage of machine intelligence.</p>
-                            <p>The medical profession experimented with an AI programme, but their experts had little faith in its <select class="answer-input" id="q34"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> and the programme was abandoned. US courts also abandoned the use of algorithms when it was found that these reflected and magnified the existing <select class="answer-input" id="q35"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> within the legal profession.</p>
                         </div>
+
                         <div class="question" data-q-start="36" data-q-end="39">
-                            <div class="question-prompt"><p><strong>Questions 36-39</strong></p><p>Do the following statements agree with the claims of the writer in Reading Passage 3?</p><p>In boxes 36-39 on your answer sheet, write</p><p><strong>YES</strong> if the statement agrees with the claims of the writer</p><p><strong>NO</strong> if the statement contradicts the claims of the writer</p><p><strong>NOT GIVEN</strong> if it is impossible to say what the writer thinks about this</p></div>
-                            <div class="tf-question" data-q-start="36" data-q-end="36">
-                                <div class="tf-question-line"><span class="tf-question-number">36</span><span class="tf-question-text">Stuart Russell's proposals regarding the use of AI are impractical.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q36" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q36" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q36" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            <div class="question-prompt">
+                                <p><strong>Questions 36-39</strong></p>
+                                <p>Do the following statements agree with the claims of the writer in Reading Passage 3?</p>
+                                <p>Choose <strong>YES</strong> if the statement agrees with the claims of the writer, choose <strong>NO</strong> if the statement contradicts the claims of the writer, or choose <strong>NOT GIVEN</strong> if it is impossible to say what the writer thinks about this.</p>
                             </div>
-                            <div class="tf-question" data-q-start="37" data-q-end="37">
-                                <div class="tf-question-line"><span class="tf-question-number">37</span><span class="tf-question-text">Rodney Brooks' view has attracted unfair criticism from supporters of AI.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q37" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q37" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q37" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="38" data-q-end="38">
-                                <div class="tf-question-line"><span class="tf-question-number">38</span><span class="tf-question-text">Nowadays, the need to protect AI systems is always taken into account when they are set up.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q38" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q38" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q38" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="39" data-q-end="39">
-                                <div class="tf-question-line"><span class="tf-question-number">39</span><span class="tf-question-text">In order to benefit from AI and minimise the harms, we have to explore people's concerns about its use.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q39" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q39" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q39" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
+                            <div class="tf-question" data-q-start="36" data-q-end="36"><div class="tf-question-line"><span class="tf-question-number">36</span><span class="tf-question-text">Stuart Russell's proposals regarding the use of AI are impractical.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q36" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q36" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q36" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="37" data-q-end="37"><div class="tf-question-line"><span class="tf-question-number">37</span><span class="tf-question-text">Rodney Brooks' view has attracted unfair criticism from supporters of AI.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q37" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q37" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q37" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="38" data-q-end="38"><div class="tf-question-line"><span class="tf-question-number">38</span><span class="tf-question-text">Nowadays, the need to protect AI systems is always taken into account when they are set up.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q38" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q38" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q38" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="39" data-q-end="39"><div class="tf-question-line"><span class="tf-question-number">39</span><span class="tf-question-text">In order to benefit from AI and minimise the harms, we have to explore people's concerns about its use.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q39" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q39" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q39" value="NOT GIVEN"> NOT GIVEN</label></div></div>
                         </div>
+
                         <div class="question" data-q-start="40" data-q-end="40">
-                            <div class="question-prompt"><p><strong>Question 40</strong></p><p>Choose the correct letter, A, B, C or D.</p></div>
+                            <div class="question-prompt">
+                                <p><strong>Question 40</strong></p>
+                                <p>Choose the correct letter, <strong>A, B, C or D</strong>.</p>
+                            </div>
                             <div class="multi-choice-question" data-q-start="40" data-q-end="40">
                                 <div class="multi-choice-options">
                                     <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="40">40</span><span class="mcq-question-title">What would be a suitable subtitle for Reading Passage 3?</span></p>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q40" value="A"> A. How to make the most of what AI has to offer</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q40" value="B"> B. Why AI may not be the answer to our problems</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q40" value="C"> C. Why governments should not invest in AI systems</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q40" value="D"> D. How AI could improve the efficiency of the public sector</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q40" value="A"> A. How to make the most of what Al has to offer</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q40" value="B"> B. Why Al may not be the answer to our problems</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q40" value="C"> C. Why governments should not invest in Al systems</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q40" value="D"> D. How Al could improve the efficiency of the public sector</label></div>
                                 </div>
                             </div>
                         </div>
@@ -501,13 +484,11 @@
         </div>
     </div>
 
-    <!-- Navigation Arrows -->
     <div class="nav-arrows">
         <button class="nav-arrow" onclick="previousQuestion()" id="prevBtn">‹</button>
         <button class="nav-arrow" onclick="nextQuestion()" id="nextBtn">›</button>
     </div>
 
-    <!-- FOOTER_NAV_START -->
     <nav class="nav-row perScorableItem" aria-label="Questions">
         <div class="footer__questionWrapper___1tZ46 multiple selected" role="tablist">
             <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(1)">
@@ -582,90 +563,98 @@
                 <button class="subQuestion scorable-item" onclick="goToQuestion(40)"><span class="sr-only">Question 40</span><span aria-hidden="true">40</span></button>
             </div>
         </div>
-
         <button id="deliver-button" aria-label="Review your answers" class="footer__deliverButton___3FM07">
             <i class="fa fa fa-check" aria-hidden="true"></i>
             <span>Check Answers</span>
         </button>
     </nav>
-    <!-- FOOTER_NAV_END -->
 
-    <!-- Context Menu - 3 màu trực tiếp -->
     <div id="contextMenu" class="context-menu">
-        <div id="menu-note" class="context-menu-item" onclick="addNote()">
-            📝 Take note
-        </div>
+        <div id="menu-note" class="context-menu-item" onclick="addNote()">📝 Take note</div>
         <div id="menu-highlight-colors" class="context-menu-item" style="display: flex; gap: 15px; justify-content: center; padding: 12px 16px;">
             <button type="button" class="color-btn yellow" onclick="highlightText('yellow')" title="Highlight Yellow"></button>
             <button type="button" class="color-btn green" onclick="highlightText('green')" title="Highlight Green"></button>
             <button type="button" class="color-btn pink" onclick="highlightText('pink')" title="Highlight Pink"></button>
         </div>
-        <div id="menu-clear" class="context-menu-item" onclick="clearHighlight()">
-            🗑️ Delete
-        </div>
-        <div id="menu-clear-all" class="context-menu-item" onclick="clearAllHighlights()">
-            🗑️ Delete all
-        </div>
+        <div id="menu-clear" class="context-menu-item" onclick="clearHighlight()">🗑️ Delete</div>
+        <div id="menu-clear-all" class="context-menu-item" onclick="clearAllHighlights()">🗑️ Delete all</div>
     </div>
 
     <div id="results-modal" class="modal-overlay hidden">
         <div class="modal-content">
             <button class="modal-close-btn" onclick="closeResultsModal()">&times;</button>
             <h2>Results</h2>
+            <div id="submit-status" style="display: none; text-align: center; margin-bottom: 15px; padding: 10px; border-radius: 4px; font-weight: bold;"></div>
             <div class="results-summary">
                 <p>Score: <span id="results-score"></span> / 40</p>
                 <p>IELTS Band: <span id="results-band"></span></p>
             </div>
-            <div id="results-details" class="results-details-container">
-                <!-- Results for each question will be injected here -->
-            </div>
+            <div id="results-details" class="results-details-container"></div>
         </div>
     </div>
 
-    <script>window.testMeta = {"totalQuestions":40,"parts":[{"part":1,"start":1,"end":13},{"part":2,"start":14,"end":26},{"part":3,"start":27,"end":40}],"correctAnswers":{"1":"rats","2":"visual","3":"half","4":"temperature","5":"vivid","6":"TRUE","7":"FALSE","8":"NOT GIVEN","9":"FALSE","10":"TRUE","11":"FALSE","12":"NOT GIVEN","13":"NOT GIVEN","14":"E","15":"G","16":"C","17":"D","18":"B","19":"A","20":["B","D"],"21":["B","D"],"22":"prosperity","23":"whistles","24":"bodies","25":"ancestors","26":["jewellery", "jewelry"],"27":"B","28":"A","29":"C","30":"F","31":"G","32":"I","33":"C","34":"A","35":"D","36":"NO","37":"NOT GIVEN","38":"NO","39":"YES","40":"B"}};</script>
+    <script>
+    window.testMeta = {
+        "totalQuestions": 40,
+        "parts": [
+            {"part": 1, "start": 1, "end": 13},
+            {"part": 2, "start": 14, "end": 26},
+            {"part": 3, "start": 27, "end": 40}
+        ],
+        "correctAnswers": {
+            "1": ["rats", "Rats"], "2": ["visual", "Visual"], "3": ["half", "Half"], "4": ["temperature", "Temperature"], "5": ["vivid", "Vivid"], "6": "TRUE", "7": "FALSE", 
+            "8": "NOT GIVEN", "9": "FALSE", "10": "TRUE", "11": "FALSE", "12": "NOT GIVEN", "13": "NOT GIVEN", 
+            "14": "E", "15": "G", "16": "C", "17": "D", "18": "B", "19": "A", 
+            "20": ["B", "D"], "21": ["B", "D"], "22": ["prosperity", "Prosperity"], "23": ["whistles", "Whistles"], 
+            "24": ["bodies", "Bodies"], "25": ["ancestors", "Ancestors"], "26": ["jewellery", "jewelry"], 
+            "27": "B", "28": "A", "29": "C", "30": "F", "31": "G", "32": "I", "33": "C", 
+            "34": "A", "35": "D", "36": "NO", "37": "NOT GIVEN", "38": "NO", "39": "YES", "40": "B"
+        }
+    };
+    </script>
     
     <script>
     window.testExplanations = {
-        "1": 'Trích dẫn: "They found the patterns were very similar and concluded that the sleeping rats were dreaming about going through the maze."',
-        "2": 'Trích dẫn: "REM sleep activity was high in brain regions involved in processing visual information"',
-        "3": 'Trích dẫn: "but only half of it, keeping the rest awake."',
-        "4": 'Trích dẫn: "during REM sleep animals are more vulnerable to extremes of temperature."',
-        "5": 'Trích dẫn: "they may only experience non-REM dreams, which are less vivid."',
-        "6": 'Trích dẫn: "when events are replayed in dreams, this helps to integrate memories into longer-term storage."',
-        "7": 'Trích dẫn: "we don\'t know if there is an internal experience of chasing rabbits that comes along with that."',
-        "8": 'Bài không đề cập việc bộ phim tài liệu có ảnh hưởng (influential) đến các nghiên cứu khác hay không.',
-        "9": 'Trích dẫn: "squirted ink as though he were being attacked by a predator." (Bị tấn công, không phải đang đi săn).',
-        "10": 'Trích dẫn: "He argues that as well as outward behaviour, brain imaging is needed to show that the octopuses are replaying sequences"',
-        "11": 'Trích dẫn: "we will never be able to experience any animal\'s dreams. That goes for other humans\' dreams too."',
-        "12": 'Bài đọc không nhắc đến việc "thính giác" (hearing) là một phần quan trọng trong giấc mơ của loài vật nào đó (chỉ nhắc vision, smell, vibrations).',
-        "13": 'Bài đọc không đưa ra nhận định về sự gia tăng mối quan tâm đến lý do con người mơ trong thời gian gần đây.',
-        "14": 'Trích dẫn: "The figures may have been used in ceremonies as offerings to ancestors, but their precise function is not known." (Đoạn E)',
-        "15": 'Trích dẫn: "a situation that may have been brought to a crisis point by a series of droughts." (Đoạn G)',
-        "16": 'Trích dẫn: "these probably belonged to male relatives of the king." (Đoạn C)',
-        "17": 'Trích dẫn: "traded with merchants travelling from India by sea." (Đoạn D)',
-        "18": 'Trích dẫn: "The total population of Mapungubwe at its peak in the mid-13th century was around 5,000 people." (Đoạn B)',
-        "19": 'Trích dẫn: "cattle herding and other types of farming brought plenty of food and a surplus that could be traded for needed goods." (Đoạn A)',
-        "20": 'Trích dẫn: "These objects were all found at the royal burial site" (Tương ứng với B) hoặc "A type of decoration, found nowhere else except Great Zimbabwe" (Tương ứng với D).',
-        "21": 'Trích dẫn: "These objects were all found at the royal burial site" (Tương ứng với B) hoặc "A type of decoration, found nowhere else except Great Zimbabwe" (Tương ứng với D).',
-        "22": 'Trích dẫn: "is another indicator of the prosperity of Mapungubwe society."',
-        "23": 'Trích dẫn: "There are also ceramic discs, and whistles."',
-        "24": 'Trích dẫn: "small figures of highly stylised humans with elongated bodies"',
-        "25": 'Trích dẫn: "The figures may have been used in ceremonies as offerings to ancestors"',
-        "26": 'Trích dẫn: "Other discoveries include small jewellery items made from locally sourced copper."',
-        "27": 'Trích dẫn: "Just looking at the media headlines, you might think that we are already living in a future where AI has infiltrated every aspect of society." -> Miêu tả nhận thức của công chúng về AI.',
-        "28": 'Trích dẫn: "this mindset actually jeopardises the value of machine intelligence by disregarding important AI safety principles" -> Chỉ ra một rủi ro (risk involved).',
-        "29": 'Trích dẫn: "they fail to realise the complexity around deploying advanced machine learning systems in the real world." -> Không nhận thức được những thách thức khi áp dụng.',
-        "30": 'Trích dẫn: "adding a neural network to a system of government does not mean it will be instantaneously more inclusive or fair." -> inclusive/fair = equality (F).',
-        "31": 'Trích dẫn: "the public sector typically does not have the appropriate data infrastructure" -> infrastructure = framework (G).',
-        "32": 'Trích dẫn: "require special permissions to be accessed." -> permissions = approval (I).',
-        "33": 'Trích dẫn: "typically lacks the human talent with the right technological capabilities" -> capabilities = skills (C).',
-        "34": 'Trích dẫn: "human experts found it hard to trust the machine." -> trust = reliability (A).',
-        "35": 'Trích dẫn: "amplify structural racial discrimination" -> discrimination = prejudices (D).',
-        "36": 'Trích dẫn: "has long advocated a more sensible and realistic approach" -> Stuart Russell đưa ra hướng tiếp cận thực tế (realistic), trái ngược với impractical.',
-        "37": 'Bài đọc không hề nhắc đến việc Rodney Brooks bị những người ủng hộ AI chỉ trích một cách bất công (unfair criticism).',
-        "38": 'Trích dẫn: "Still, AI security remains an often overlooked topic when machine learning systems are installed." -> overlooked (thường bị bỏ qua), trái ngược với always taken into account.',
-        "39": 'Trích dẫn: "This means we need to have a discussion about AI ethics and the distrust that many people have towards machine learning." -> Khám phá mối lo ngại (distrust/concerns).',
-        "40": 'Đoạn cuối nhấn mạnh: "There is no AI solution for everything." (Tại sao AI có thể không phải là câu trả lời cho các vấn đề của chúng ta).'
+        "1": 'Trích dẫn: "They found the patterns were very similar and concluded that the sleeping rats were dreaming about going through the maze." (Chuột cũng có giấc mơ giống như hoạt động thật).',
+        "2": 'Trích dẫn: "Intriguingly, REM sleep activity was high in brain regions involved in processing visual information..." (Thông tin thị giác).',
+        "3": 'Trích dẫn: "These include whales and dolphins, which do not shut down their entire brain when they sleep, but only half of it, keeping the rest awake." (Nửa não thức khi ngủ).',
+        "4": 'Trích dẫn: "It\'s thought that they don\'t experience REM sleep because during REM sleep animals are more vulnerable to extremes of temperature." (Sự nhạy cảm về nhiệt độ).',
+        "5": 'Trích dẫn: "They also show no sign of REM sleep, suggesting that they may only experience non-REM dreams, which are less vivid." (Những giấc mơ ít sống động).',
+        "6": 'Trích dẫn: "It is believed that when events are replayed in dreams, this helps to integrate memories into longer-term storage." (Giấc mơ giúp hình thành kí ức dài hạn).',
+        "7": 'Trích dẫn: "We are quick to interpret the twitching limbs and quiet barks of sleeping dogs, but the truth is that we don\'t know if there is an internal experience of chasing rabbits that comes along with that." (Thực tế là chúng ta không thể biết được chó đang mơ gì, câu hỏi nói "now possible" là sai).',
+        "8": 'Trích dẫn: "In 2019, while making a documentary, David Scheel of Alaska Pacific University in the USA housed an octopus named Heidi in a tank in his living room." (Không có thông tin về việc phim tài liệu này có ảnh hưởng đến các nghiên cứu khác hay không).',
+        "9": 'Trích dẫn: "Costello, as the octopus was called, thrashed around, extended his mantle as if trying to make himself look bigger, and squirted ink as though he were being attacked by a predator." (Bạch tuộc phản ứng như bị tấn công, không phải là đang đi săn).',
+        "10": 'Trích dẫn: "He argues that as well as outward behaviour, brain imaging is needed to show that the octopuses are replaying sequences of activities from their waking lives in dreams." (Scheel tin rằng cần nhiều nghiên cứu / hình ảnh não hơn).',
+        "11": 'Trích dẫn: "The trouble is that we will never be able to experience any animal\'s dreams. That goes for other humans\' dreams too." (Không thể trải nghiệm được, câu hỏi nói "may soon be able to share" là sai).',
+        "12": 'Trích dẫn: "Dogs primarily navigate the world using smell while spiders rely much more on vibrations." (Bài đọc không đề cập đến thính giác - hearing).',
+        "13": 'Trích dẫn: "And if this is the case, it is possible that better understanding of these purposes might shed light on the true purpose of our own dreams." (Không đề cập đến việc sự quan tâm đã tăng lên rất nhiều trong thời gian gần đây).',
+        "14": 'Trích dẫn: "The figures may have been used in ceremonies as offerings to ancestors, but their precise function is not known." (Khớp mục E - Sự không chắc chắn về mục đích của một số vật thể).',
+        "15": 'Trích dẫn: "...a situation that may have been brought to a crisis point by a series of droughts." (Khớp mục G - Yếu tố khí hậu làm gia tăng vấn đề).',
+        "16": 'Trích dẫn: "There were some grander residences dotted around the outskirts of Babandyanalo, and these probably belonged to male relatives of the king." (Khớp mục C - Nơi những người thân của vua từng sống).',
+        "17": 'Trích dẫn: "...indicate there was trade of some sort with other states on the coast who, in turn, traded with merchants travelling from India by sea." (Khớp mục D - Những người giao thương đường biển).',
+        "18": 'Trích dẫn: "The total population of Mapungubwe at its peak in the mid-13th century was around 5,000 people." (Khớp mục B - Ước tính quy mô dân số).',
+        "19": 'Trích dẫn: "As with other kingdoms in the region of southern Africa, cattle herding and other types of farming brought plenty of food and a surplus that could be traded for needed goods." (Khớp mục A - Việc trao đổi nông sản lấy vật phẩm khác).',
+        "20": 'Trích dẫn: "These objects were all found at the royal burial site and date to c. 1150." (Đồ vàng được đặt gần nơi chôn cất của vua - Khớp B).',
+        "21": 'Trích dẫn: "A type of decoration, found nowhere else except Great Zimbabwe, involved the crafting of gold into small rectangular sheets and carving geometrical patterns into it." (Cách trang trí vàng cũng được thực hành ở vương quốc khác - Khớp D).',
+        "22": 'Trích dẫn: "Archaeological discoveries reveal that pottery was produced on a scale large enough to suggest the presence of professional potters, and is another indicator of the prosperity of Mapungubwe society." (Từ điền: prosperity).',
+        "23": 'Trích dẫn: "There are also ceramic discs, and whistles." (Từ điền: whistles).',
+        "24": 'Trích dẫn: "In addition, cattle, sheep, and goat figurines, and small figures of highly stylised humans with elongated bodies and short limbs have been found." (Từ điền: bodies).',
+        "25": 'Trích dẫn: "The figures may have been used in ceremonies as offerings to ancestors" (Từ điền: ancestors).',
+        "26": 'Trích dẫn: "Other discoveries include small jewellery items made from locally sourced copper." (Từ điền: jewellery / jewelry).',
+        "27": 'Trích dẫn: "Just looking at the media headlines, you might think that we are already living in a future where AI has infiltrated every aspect of society." (Mục đích đoạn 1 là mô tả nhận thức hiện tại của công chúng về AI - Khớp B).',
+        "28": 'Trích dẫn: "But, in fact, instead of supporting AI progress, this mindset actually jeopardises the value of machine intelligence by disregarding important AI safety principles and setting unrealistic expectations" (Nhấn mạnh về những rủi ro liên quan đến AI solutionism - Khớp A).',
+        "29": 'Trích dẫn: "While many politicians proclaim the transformative effects of the coming AI revolution\', they fail to realise the complexity around deploying advanced machine learning systems in the real world." (Chính trị gia không nhận ra sự phức tạp khi triển khai - Khớp C).',
+        "30": 'Trích dẫn: "Similarly, adding a neural network to a system of government does not mean it will be instantaneously more inclusive or fair." (inclusive or fair tương đương với equality - Khớp F).',
+        "31": 'Trích dẫn: "AI systems need a lot of data to function, but the public sector typically does not have the appropriate data infrastructure to support advanced machine learning." (data infrastructure tương đương với framework - Khớp G).',
+        "32": 'Trích dẫn: "More often than not, data is spread across different government departments that each require special permissions to be accessed." (special permissions tương đương với approval - Khớp I).',
+        "33": 'Trích dẫn: "Above all, the public sector typically lacks the human talent with the right technological capabilities to fully reap the benefits of machine intelligence." (technological capabilities tương đương với skills - Khớp C).',
+        "34": 'Trích dẫn: "Even though it was developed to deliver the best recommendations, human experts found it hard to trust the machine." (trust tương đương với reliability - Khớp A).',
+        "35": 'Trích dẫn: "The system was found to amplify structural racial discrimination and was later abandoned." (discrimination tương đương với prejudices - Khớp D).',
+        "36": 'Trích dẫn: "Stuart Russell, a professor of computer science at the University of California, Berkeley, has long advocated a more sensible and realistic approach that focuses on simple everyday applications of AI" (Trái với "impractical" / phi thực tế - NO).',
+        "37": 'Đoạn 7 có trích dẫn quan điểm của Rodney Brooks, nhưng không hề nhắc đến việc ông bị chỉ trích một cách bất công (unfair criticism) từ những người ủng hộ AI. (NOT GIVEN).',
+        "38": 'Trích dẫn: "Many researchers have warned against the rolling out of AI without appropriate security standards and defence mechanisms. Still, AI security remains an often overlooked topic when machine learning systems are installed." (Bảo mật AI thường bị bỏ qua, trái với "always taken into account" - NO).',
+        "39": 'Trích dẫn: "If we are to reap the benefits and minimise the potential harms of AI... This means we need to have a discussion about AI ethics and the distrust that many people have towards machine learning." (Để tận dụng lợi ích và giảm rủi ro, cần thảo luận về sự không tin tưởng của mọi người - YES).',
+        "40": 'Trích dẫn: "These examples demonstrate that there is no AI solution for everything. Using AI simply for the sake of AI may not always be productive or useful, and not every issue is best addressed by applying machine intelligence to it." (Tác giả cho thấy AI không phải là giải pháp cho mọi vấn đề - Khớp B).'
     };
     </script>
 
@@ -675,22 +664,30 @@
         const app = document.getElementById('app');
         const startNormalBtn = document.getElementById('startNormalBtn');
         const launchTitle = document.getElementById('launchTestTitle');
-        if (launchTitle && document.title) {
-            launchTitle.textContent = document.title;
-        }
+        if (launchTitle && document.title) { launchTitle.textContent = document.title; }
         let examStarted = false;
+        let currentStudentName = "";
+        let currentStudentClass = "";
 
         const beginExam = () => {
             if (examStarted) return;
+            const nameInput = document.getElementById('studentName');
+            const classInput = document.getElementById('studentClass');
+            const errorMsg = document.getElementById('launchError');
+            if (!nameInput.value.trim() || !classInput.value.trim()) {
+                errorMsg.style.display = 'block';
+                return;
+            }
+            errorMsg.style.display = 'none';
+            currentStudentName = nameInput.value.trim();
+            currentStudentClass = classInput.value.trim();
             examStarted = true;
             if (launchScreen) launchScreen.style.display = 'none';
             if (app) app.style.display = 'block';
             initialize();
         };
 
-        if (startNormalBtn) {
-            startNormalBtn.addEventListener('click', beginExam);
-        }
+        if (startNormalBtn) { startNormalBtn.addEventListener('click', beginExam); }
         
         const testMeta = window.testMeta || { totalQuestions: 40, parts: [], correctAnswers: {} };
         const partRanges = testMeta.parts || [];
@@ -730,51 +727,36 @@
             startTimer();
             const firstPart = partRanges[0]?.part || 1;
             switchToPart(firstPart);
-            
             document.body.addEventListener('input', updateAllIndicators);
             document.body.addEventListener('change', updateAllIndicators);
             deliverButton.addEventListener('click', checkAnswers);
             timerToggleButton.addEventListener('click', toggleTimer);
             timerResetButton.addEventListener('click', resetTimer);
-
             document.querySelectorAll('[data-q-start]').forEach(el => {
                 el.addEventListener('click', (ev) => {
-                    if (ev.target.closest('input, select, label, .tf-options, .multi-choice-option, .matching-form-row')) {
-                        return;
-                    }
+                    if (ev.target.closest('input, select, label, .tf-options, .multi-choice-option, .matching-form-row')) { return; }
                     const qNum = parseInt(el.dataset.qStart, 10);
-                    if (currentQuestion !== qNum) {
-                        goToQuestion(qNum);
-                    }
+                    if (currentQuestion !== qNum) { goToQuestion(qNum); }
                 });
             });
-
             resizer.addEventListener('mousedown', initResize, false);
             initializeContextMenu();
             initializeQuestionMarkers();
         }
 
-        // Tự động highlight đoạn văn chứa evidence khi bấm vào khung giải thích
         function highlightEvidenceInPassage(explanationText) {
             let targetPhrase = "";
             const match = explanationText.match(/"([^"]+)"/);
-            if (match) {
-                targetPhrase = match[1].trim();
-            } else {
-                targetPhrase = explanationText.replace(/^.*?Trích dẫn:\s*/i, "").trim();
-            }
+            if (match) { targetPhrase = match[1].trim(); } 
+            else { targetPhrase = explanationText.replace(/^.*?Trích dẫn:\s*/i, "").trim(); }
             if (!targetPhrase) return;
-
             let cleanQuery = targetPhrase.replace(/^\.\.\./, "").replace(/\.\.\.$/, "").trim();
             if (!cleanQuery) return;
-
             const currentPassageEl = passagePanel.querySelector('.reading-passage:not(.hidden)');
             if (!currentPassageEl) return;
-
             const walker = document.createTreeWalker(currentPassageEl, NodeFilter.SHOW_TEXT, null, false);
             let node;
             let found = false;
-
             while (node = walker.nextNode()) {
                 const text = node.nodeValue;
                 const index = text.indexOf(cleanQuery);
@@ -782,12 +764,10 @@
                     const range = document.createRange();
                     range.setStart(node, index);
                     range.setEnd(node, index + cleanQuery.length);
-                    
                     const span = document.createElement('span');
                     span.className = 'annotation annotation-highlight highlight-blue';
                     span.dataset.type = 'highlight';
                     span.dataset.color = 'blue';
-                    
                     try {
                         range.surroundContents(span);
                         span.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -796,7 +776,6 @@
                     break;
                 }
             }
-
             if (!found) {
                 const words = cleanQuery.split(/\s+/).filter(w => w.length > 4);
                 if (words.length > 0) {
@@ -809,14 +788,11 @@
                             const range = document.createRange();
                             range.setStart(node, index);
                             range.setEnd(node, Math.min(index + cleanQuery.length, text.length));
-                            
                             const span = document.createElement('span');
                             span.className = 'annotation annotation-highlight highlight-blue';
                             span.dataset.type = 'highlight';
                             span.dataset.color = 'blue';
-                            
                             try {
-                                range.surroundContents(span);
                                 span.scrollIntoView({ behavior: 'smooth', block: 'center' });
                             } catch (e) {}
                             break;
@@ -831,20 +807,16 @@
             hasSubmitted = true;
             const allInputs = document.querySelectorAll('input, select, textarea');
             allInputs.forEach(input => { input.disabled = true; });
-
             deliverButton.disabled = true;
             deliverButton.style.cursor = 'not-allowed';
-            
+            const timeTakenSecs = 3600 - timeInSeconds;
             clearInterval(timerInterval);
             timerInterval = null;
             timerToggleButton.innerHTML = playIcon;
             let score = 0;
             const resultsDetailsContainer = document.getElementById('results-details');
             resultsDetailsContainer.innerHTML = '';
-
-            document.querySelectorAll('.correct, .incorrect, .correct-answer-highlight').forEach(el => {
-                el.classList.remove('correct', 'incorrect', 'correct-answer-highlight');
-            });
+            document.querySelectorAll('.correct, .incorrect, .correct-answer-highlight').forEach(el => { el.classList.remove('correct', 'incorrect', 'correct-answer-highlight'); });
             document.querySelectorAll('.correct-answer-display').forEach(el => el.remove());
 
             for (let i = 1; i <= totalQuestions; i++) {
@@ -863,15 +835,9 @@
                     const element = textInput.closest('.matching-form-row') || textInput;
                     userAnswer = textInput.value.trim();
                     userAnswerDisplay = userAnswer || 'Not Answered';
-
-                    isCorrect = Array.isArray(correctAnswer) ?
-                        correctAnswer.some(ans => userAnswer.toLowerCase() === ans.toLowerCase()) :
-                        userAnswer.toLowerCase() === correctAnswer.toLowerCase();
-                    
-                    if (isCorrect) {
-                        score++;
-                        element.classList.add('correct');
-                    } else {
+                    isCorrect = Array.isArray(correctAnswer) ? correctAnswer.some(ans => userAnswer.toLowerCase() === ans.toLowerCase()) : userAnswer.toLowerCase() === correctAnswer.toLowerCase();
+                    if (isCorrect) { score++; element.classList.add('correct'); }
+                    else {
                         element.classList.add('incorrect');
                         const correctAnswerSpan = document.createElement('span');
                         correctAnswerSpan.className = 'correct-answer-display';
@@ -883,15 +849,9 @@
                     const element = selectInput.closest('.matching-form-row') || selectInput;
                     userAnswer = selectInput.value;
                     userAnswerDisplay = userAnswer || 'Not Answered';
-
-                    isCorrect = Array.isArray(correctAnswer) ?
-                        correctAnswer.some(ans => userAnswer === ans) :
-                        userAnswer === correctAnswer;
-                    
-                    if (isCorrect) {
-                        score++;
-                        element.classList.add('correct');
-                    } else {
+                    isCorrect = Array.isArray(correctAnswer) ? correctAnswer.some(ans => userAnswer.toLowerCase() === ans.toLowerCase()) : userAnswer.toLowerCase() === correctAnswer.toLowerCase();
+                    if (isCorrect) { score++; element.classList.add('correct'); }
+                    else {
                         element.classList.add('incorrect');
                         const correctAnswerSpan = document.createElement('span');
                         correctAnswerSpan.className = 'correct-answer-display';
@@ -902,30 +862,21 @@
                 else if (radioGroup.length > 0) {
                     const questionContainer = radioGroup[0].closest('.tf-question') || radioGroup[0].closest('.multi-choice-question');
                     const checkedRadio = document.querySelector(`input[name="q${i}"]:checked`);
-
                     if (checkedRadio) {
                         userAnswer = checkedRadio.value;
                         userAnswerDisplay = userAnswer;
-                        isCorrect = Array.isArray(correctAnswer) ?
-                        correctAnswer.some(ans => userAnswer === ans) :
-                        userAnswer === correctAnswer;
-
+                        isCorrect = Array.isArray(correctAnswer) ? correctAnswer.some(ans => userAnswer.toLowerCase() === ans.toLowerCase()) : userAnswer.toLowerCase() === correctAnswer.toLowerCase();
                         const userLabel = checkedRadio.closest('.tf-option, .multi-choice-option');
-                        if (userLabel) {
-                            userLabel.classList.add(isCorrect ? 'correct' : 'incorrect');
-                        }
+                        if (userLabel) { userLabel.classList.add(isCorrect ? 'correct' : 'incorrect'); }
                     }
-
-                    if (isCorrect) {
-                        score++;
-                    } else {
+                    if (isCorrect) { score++; }
+                    else {
                         if (questionContainer){
-                            const correctOptionEl = questionContainer.querySelector(`input[value="${Array.isArray(correctAnswer)? correctAnswer[0] : correctAnswer}"]`);
+                            const firstCorrect = Array.isArray(correctAnswer) ? correctAnswer[0] : correctAnswerText;
+                            const correctOptionEl = questionContainer.querySelector(`input[value="${firstCorrect}"]`);
                             if (correctOptionEl) {
                                 const correctLabel = correctOptionEl.closest('.tf-option, .multi-choice-option');
-                                if (correctLabel) {
-                                    correctLabel.classList.add('correct-answer-highlight');
-                                }
+                                if (correctLabel) { correctLabel.classList.add('correct-answer-highlight'); }
                             }
                         }
                     }
@@ -948,113 +899,114 @@
                 if (window.testExplanations && window.testExplanations[i]) {
                     let container = null;
                     if (textInput && textInput.tagName === 'INPUT' && textInput.type === 'text') {
-                        container = textInput.closest('li') || textInput.closest('p') || textInput.closest('td');
+                        container = textInput.closest('li') || textInput.closest('p');
                     } else if (selectInput && selectInput.tagName === 'SELECT') {
                         container = selectInput.closest('.matching-form-row');
                     } else if (radioGroup.length > 0) {
                         container = radioGroup[0].closest('.tf-question') || radioGroup[0].closest('.multi-choice-question');
                     }
-                    
                     if (container) {
                         let expElement = document.createElement('div');
                         expElement.className = 'explanation-box show';
                         expElement.dataset.forQ = i;
                         expElement.innerHTML = `<div class="explanation-title">💡 Giải thích câu ${i} (Bấm vào đây để xem evidence):</div><div>${window.testExplanations[i]}</div>`;
-                        
-                        expElement.addEventListener('click', () => {
-                            highlightEvidenceInPassage(window.testExplanations[i]);
-                        });
-
-                        const checkContainer = container.classList.contains('matching-form-row') || container.tagName === 'P' || container.tagName === 'TD' ? container.parentNode : container;
-                        if (!checkContainer.querySelector(`.explanation-box[data-for-q="${i}"]`)) {
-                            checkContainer.appendChild(expElement);
-                        }
+                        expElement.addEventListener('click', () => { highlightEvidenceInPassage(window.testExplanations[i]); });
+                        const checkContainer = container.classList.contains('matching-form-row') || container.tagName === 'P' ? container.parentNode : container;
+                        if (!checkContainer.querySelector(`.explanation-box[data-for-q="${i}"]`)) { checkContainer.appendChild(expElement); }
                     }
                 }
             }
-
+            
+            const bandScore = calculateBandScore(score);
+            
             document.getElementById('results-score').textContent = score;
-            document.getElementById('results-band').textContent = calculateBandScore(score);
+            document.getElementById('results-band').textContent = bandScore;
             document.getElementById('results-modal').classList.remove('hidden');
+            
+            sendResultsToGoogle(score, bandScore, timeTakenSecs);
+        }
+        
+        function sendResultsToGoogle(score, bandScore, timeTakenSecs) {
+            const statusDiv = document.getElementById('submit-status');
+            statusDiv.style.display = 'block';
+            statusDiv.style.backgroundColor = '#fff3cd';
+            statusDiv.style.color = '#856404';
+            statusDiv.textContent = '⏳ Đang gửi kết quả về hệ thống...';
+
+            const minutes = Math.floor(timeTakenSecs / 60);
+            const seconds = timeTakenSecs % 60;
+            const timeStr = `${minutes} phút ${seconds} giây`;
+            const dateStr = new Date().toLocaleString('vi-VN');
+            const examTitle = document.getElementById('launchTestTitle').textContent || document.title;
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycby7tYg_WIbxhkhK8NpoHs7s5GW3svAD56ZswWfimJgR-NMnzbbmTCBXwchyqhCI69pa/exec';
+            
+            const params = new URLSearchParams();
+            params.append('studentName', currentStudentName);
+            params.append('studentClass', currentStudentClass);
+            params.append('score', `${score}/${totalQuestions}`);
+            params.append('bandScore', bandScore); 
+            params.append('timeTaken', timeStr);
+            params.append('submitDate', dateStr);
+            params.append('examTitle', examTitle);
+
+            fetch(scriptURL, { 
+                method: 'POST', 
+                mode: 'no-cors', 
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: params.toString() 
+            })
+            .then(() => {
+                statusDiv.style.backgroundColor = '#d4edda';
+                statusDiv.style.color = '#155724';
+                statusDiv.textContent = '✅ Kết quả đã được ghi nhận và gửi thành công!';
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                statusDiv.style.backgroundColor = '#f8d7da';
+                statusDiv.style.color = '#721c24';
+                statusDiv.textContent = '⚠️ Có lỗi xảy ra khi gửi. Vui lòng chụp màn hình gửi giáo viên.';
+            });
         }
 
         function calculateBandScore(score) {
             if (score >= 39) return '9.0';
-            const mapping = {
-                40: 9.0, 39: 9.0, 38: 8.5, 37: 8.5, 36: 8.0, 35: 8.0, 34: 7.5,
-                33: 7.5, 32: 7.0, 31: 7.0, 30: 7.0, 29: 6.5, 28: 6.5, 27: 6.5,
-                26: 6.0, 25: 6.0, 24: 6.0, 23: 5.5, 22: 5.5, 21: 5.5, 20: 5.5,
-                19: 5.0, 18: 5.0, 17: 5.0, 16: 5.0, 15: 5.0, 14: 4.5, 13: 4.5,
-                12: 4.0, 11: 4.0, 10: 4.0, 9: 3.5, 8: 3.5, 7: 3.0, 6: 3.0,
-                5: 2.5, 4: 2.5
-            };
-            if (score <= 0) return 0.0;
-            if (score === 1) return 1.0;
-            if (score <= 3) return 2.0;
-            if (score <= 5) return 2.5;
-            return mapping[score] || 0.0;
+            const mapping = { 40: 9.0, 39: 9.0, 38: 8.5, 37: 8.5, 36: 8.0, 35: 8.0, 34: 7.5, 33: 7.5, 32: 7.0, 31: 7.0, 30: 7.0, 29: 6.5, 28: 6.5, 27: 6.5, 26: 6.0, 25: 6.0, 24: 6.0, 23: 5.5, 22: 5.5, 21: 5.5, 20: 5.5, 19: 5.0, 18: 5.0, 17: 5.0, 16: 5.0, 15: 5.0, 14: 4.5, 13: 4.5, 12: 4.0, 11: 4.0, 10: 4.0, 9: 3.5, 8: 3.5, 7: 3.0, 6: 3.0, 5: 2.5, 4: 2.5 };
+            if (score <= 0) return 0.0; if (score === 1) return 1.0; if (score <= 3) return 2.0; if (score <= 5) return 2.5; return mapping[score] || 0.0;
         }
 
-        window.closeResultsModal = function() {
-            document.getElementById('results-modal').classList.add('hidden');
-        }
+        window.closeResultsModal = function() { document.getElementById('results-modal').classList.add('hidden'); }
 
-        const getFirstQuestionOfPart = (partNumber) => {
-            const match = partRanges.find(p => p.part === partNumber);
-            return match ? match.start : 1;
-        };
-
-        const getPartForQuestion = (questionNumber) => {
-            const match = partRanges.find(p => questionNumber >= p.start && questionNumber <= p.end);
-            return match ? match.part : partRanges[0]?.part || 1;
-        };
+        const getFirstQuestionOfPart = (partNumber) => { const match = partRanges.find(p => p.part === partNumber); return match ? match.start : 1; };
+        const getPartForQuestion = (questionNumber) => { const match = partRanges.find(p => questionNumber >= p.start && questionNumber <= p.end); return match ? match.part : partRanges[0]?.part || 1; };
 
         function switchToPart(partNumber) {
             currentPassage = partNumber;
-            document.querySelectorAll('.reading-passage, .question-set, .part-header').forEach(el => {
-                el.classList.add('hidden');
-            });
+            document.querySelectorAll('.reading-passage, .question-set, .part-header').forEach(el => { el.classList.add('hidden'); });
             document.getElementById(`passage-text-${partNumber}`).classList.remove('hidden');
             document.getElementById(`questions-${partNumber}`).classList.remove('hidden');
             document.getElementById(`part-header-${partNumber}`).classList.remove('hidden');
-
-            document.querySelectorAll('.footer__questionWrapper___1tZ46').forEach((wrapper, index) => {
-                wrapper.classList.toggle('selected', (index + 1) === partNumber);
-            });
+            document.querySelectorAll('.footer__questionWrapper___1tZ46').forEach((wrapper, index) => { wrapper.classList.toggle('selected', (index + 1) === partNumber); });
             goToQuestion(getFirstQuestionOfPart(partNumber));
         }
         
         function goToQuestion(questionNumber) {
             currentQuestion = questionNumber;
             const passageNumber = getPartForQuestion(questionNumber);
-            if (currentPassage !== passageNumber) {
-                switchToPart(passageNumber);
-                return; 
-            }
-            if (activeQuestionElement) {
-                activeQuestionElement.classList.remove('active-question', 'active-input');
-            }
+            if (currentPassage !== passageNumber) { switchToPart(passageNumber); return; }
+            if (activeQuestionElement) { activeQuestionElement.classList.remove('active-question', 'active-input'); }
             let targetEl = document.querySelector(`[data-q-start="${questionNumber}"]`);
             if (targetEl) {
                 activeQuestionElement = targetEl;
-                 if (targetEl.matches('input[type="text"]') || targetEl.matches('select')) {
-                     targetEl.classList.add('active-input');
-                 } else {
-                     targetEl.classList.add('active-question');
-                 }
-                 scrollIntoViewIfNeeded(targetEl);
+                if (targetEl.matches('input[type="text"]') || targetEl.matches('select')) { targetEl.classList.add('active-input'); } 
+                else { targetEl.classList.add('active-question'); }
+                scrollIntoViewIfNeeded(targetEl);
             } else {
                  const pMatch = document.querySelector(`.matching-form-row select[id="q${questionNumber}"]`);
                  if(pMatch) {
-                    activeQuestionElement = pMatch;
-                    pMatch.classList.add('active-input');
-                    scrollIntoViewIfNeeded(pMatch);
-                 }
-                 const tdMatch = document.querySelector(`td input[id="q${questionNumber}"]`);
-                 if (tdMatch) {
-                    activeQuestionElement = tdMatch;
-                    tdMatch.classList.add('active-input');
-                    scrollIntoViewIfNeeded(tdMatch);
+                    activeQuestionElement = pMatch; pMatch.classList.add('active-input'); scrollIntoViewIfNeeded(pMatch);
                  }
             }
             updateNavigation();
@@ -1063,46 +1015,30 @@
         function updateNavigation() {
             const navButtons = document.querySelectorAll('.subQuestion');
             navButtons.forEach(btn => btn.classList.remove('active'));
-            
             const activeNav = Array.from(navButtons).find(btn => {
                 const hiddenSpan = btn.querySelector('[aria-hidden="true"]');
                 const qNum = parseInt(hiddenSpan ? hiddenSpan.textContent : btn.textContent.replace(/\D/g, ''), 10);
                 return qNum === currentQuestion;
             });
-            if (activeNav) {
-                activeNav.classList.add('active');
-            }
-
+            if (activeNav) { activeNav.classList.add('active'); }
             const inputs = document.querySelectorAll('.answer-input');
             inputs.forEach(input => input.classList.remove('active-input'));
-            
             const activeInput = document.getElementById(`q${currentQuestion}`);
-            if (activeInput) {
-                activeInput.classList.add('active-input');
-                if (typeof activeInput.focus === 'function') {
-                    activeInput.focus();
-                }
-            }
+            if (activeInput) { activeInput.classList.add('active-input'); if (typeof activeInput.focus === 'function') { activeInput.focus(); } }
         }
         
         window.nextQuestion = () => currentQuestion < totalQuestions && goToQuestion(currentQuestion + 1);
         window.previousQuestion = () => currentQuestion > 1 && goToQuestion(currentQuestion - 1);
 
-        function updateAllIndicators() {
-            partRanges.forEach(range => updateAttemptedCount(range.part, range.start, range.end));
-            updateAnsweredNav();
-        }
+        function updateAllIndicators() { partRanges.forEach(range => updateAttemptedCount(range.part, range.start, range.end)); updateAnsweredNav(); }
         
         function updateAnsweredNav() {
             const navButtons = document.querySelectorAll('.subQuestion');
             navButtons.forEach(btn => {
                 const hiddenSpan = btn.querySelector('[aria-hidden="true"]');
                 const qNum = parseInt(hiddenSpan ? hiddenSpan.textContent : btn.textContent.replace(/\D/g, ''), 10);
-                if (!isNaN(qNum) && isQuestionAnswered(qNum)) {
-                    btn.classList.add('answered');
-                } else {
-                    btn.classList.remove('answered');
-                }
+                if (!isNaN(qNum) && isQuestionAnswered(qNum)) { btn.classList.add('answered'); } 
+                else { btn.classList.remove('answered'); }
             });
         }
         
@@ -1120,9 +1056,7 @@
             const panel = element.closest('.questions-panel, .passage-panel');
             const panelRect = panel.getBoundingClientRect();
             const elementRect = element.getBoundingClientRect();
-            if (elementRect.top < panelRect.top || elementRect.bottom > panelRect.bottom) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+            if (elementRect.top < panelRect.top || elementRect.bottom > panelRect.bottom) { element.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
         }
         
         function updateTimerDisplay() {
@@ -1138,85 +1072,38 @@
         }
 
         function handleTimeExpired() {
-            timeInSeconds = 0;
-            updateTimerDisplay();
-            clearInterval(timerInterval);
-            timerInterval = null;
-            timerToggleButton.innerHTML = playIcon;
-            checkAnswers();
+            timeInSeconds = 0; updateTimerDisplay(); clearInterval(timerInterval); timerInterval = null; timerToggleButton.innerHTML = playIcon; checkAnswers();
         }
 
         function startTimer() {
             if (hasSubmitted) return;
             if (timerInterval) clearInterval(timerInterval);
             updateTimerDisplay();
-            timerInterval = setInterval(() => {
-                timeInSeconds = Math.max(timeInSeconds - 1, 0);
-                updateTimerDisplay();
-                if (timeInSeconds <= 0) {
-                    handleTimeExpired();
-                }
-            }, 1000);
+            timerInterval = setInterval(() => { timeInSeconds = Math.max(timeInSeconds - 1, 0); updateTimerDisplay(); if (timeInSeconds <= 0) { handleTimeExpired(); } }, 1000);
             timerToggleButton.innerHTML = pauseIcon;
         }
 
-        function pauseTimer() {
-            clearInterval(timerInterval);
-            timerInterval = null;
-            timerToggleButton.innerHTML = playIcon;
-        }
-
-        function toggleTimer() {
-            if (timerInterval) {
-                pauseTimer();
-            } else {
-                startTimer();
-            }
-        }
-
-        function resetTimer() {
-            timeInSeconds = 3600;
-            updateTimerDisplay();
-            startTimer();
-        }
+        function pauseTimer() { clearInterval(timerInterval); timerInterval = null; timerToggleButton.innerHTML = playIcon; }
+        function toggleTimer() { if (timerInterval) { pauseTimer(); } else { startTimer(); } }
+        function resetTimer() { timeInSeconds = 3600; updateTimerDisplay(); startTimer(); }
         
         function initResize(e) {
-            e.preventDefault();
-            const startX = e.clientX;
-            const startWidth = passagePanel.offsetWidth;
-            
-            const doDrag = (e) => {
-                const newWidth = startWidth + e.clientX - startX;
-                if (newWidth > 200 && (document.body.clientWidth - newWidth - resizer.offsetWidth) > 200) {
-                    passagePanel.style.flex = `0 0 ${newWidth}px`;
-                }
-            };
-            const stopDrag = () => {
-                window.removeEventListener('mousemove', doDrag, false);
-                window.removeEventListener('mouseup', stopDrag, false);
-            };
-            
-            window.addEventListener('mousemove', doDrag, false);
-            window.addEventListener('mouseup', stopDrag, false);
+            e.preventDefault(); const startX = e.clientX; const startWidth = passagePanel.offsetWidth;
+            const doDrag = (e) => { const newWidth = startWidth + e.clientX - startX; if (newWidth > 200 && (document.body.clientWidth - newWidth - resizer.offsetWidth) > 200) { passagePanel.style.flex = `0 0 ${newWidth}px`; } };
+            const stopDrag = () => { window.removeEventListener('mousemove', doDrag, false); window.removeEventListener('mouseup', stopDrag, false); };
+            window.addEventListener('mousemove', doDrag, false); window.addEventListener('mouseup', stopDrag, false);
         }
         
-        const ANNOTATION_CLASSES = {
-            highlight: 'annotation-highlight',
-            note: 'annotation-note'
-        };
+        const ANNOTATION_CLASSES = { highlight: 'annotation-highlight', note: 'annotation-note' };
 
         function unwrapElement(element) {
-            const parent = element?.parentNode;
-            if (!parent) return;
-            while (element.firstChild) {
-                parent.insertBefore(element.firstChild, element);
-            }
+            const parent = element?.parentNode; if (!parent) return;
+            while (element.firstChild) { parent.insertBefore(element.firstChild, element); }
             parent.removeChild(element);
         }
 
         function selectionWithinPanels(selection) {
-            const anchor = selection.anchorNode;
-            const focus = selection.focusNode;
+            const anchor = selection.anchorNode; const focus = selection.focusNode;
             const inPanels = node => node && (passagePanel.contains(node) || questionsPanel.contains(node));
             return inPanels(anchor) && inPanels(focus);
         }
@@ -1233,50 +1120,29 @@
         }
 
         function positionContextMenu(x, y) {
-            contextMenu.style.display = 'block';
-            const menuHeight = contextMenu.offsetHeight;
-            const menuWidth = contextMenu.offsetWidth;
-            let left = x;
-            let top = y - menuHeight - 8;
+            contextMenu.style.display = 'block'; const menuHeight = contextMenu.offsetHeight; const menuWidth = contextMenu.offsetWidth;
+            let left = x; let top = y - menuHeight - 8;
             if (left + menuWidth > window.innerWidth) left = window.innerWidth - menuWidth - 8;
-            if (left < 8) left = 8;
-            if (top < 8) top = y + 8;
-            contextMenu.style.left = `${left}px`;
-            contextMenu.style.top = `${top}px`;
+            if (left < 8) left = 8; if (top < 8) top = y + 8;
+            contextMenu.style.left = `${left}px`; contextMenu.style.top = `${top}px`;
         }
 
-        function resetSelectionState() {
-            pendingSelectionRange = null;
-            activeAnnotationTarget = null;
-        }
+        function resetSelectionState() { pendingSelectionRange = null; activeAnnotationTarget = null; }
 
         function showMenuForSelection(event) {
-            menuHighlightColors.style.display = 'flex';
-            menuNote.style.display = 'flex';
-            menuClear.style.display = 'none';
-            menuClearAll.style.display = 'none';
-            contextMenu.dataset.mode = 'create';
-            positionContextMenu(event.pageX, event.pageY);
+            menuHighlightColors.style.display = 'flex'; menuNote.style.display = 'flex'; menuClear.style.display = 'none'; menuClearAll.style.display = 'none';
+            contextMenu.dataset.mode = 'create'; positionContextMenu(event.pageX, event.pageY);
         }
 
         function showMenuForAnnotation(event, target) {
-            activeAnnotationTarget = target;
-            pendingSelectionRange = null;
-            window.getSelection().removeAllRanges();
-            menuHighlightColors.style.display = 'none';
-            menuNote.style.display = 'none';
-            menuClear.style.display = 'flex';
-            menuClearAll.style.display = 'flex';
-            contextMenu.dataset.mode = 'manage';
-            positionContextMenu(event.pageX, event.pageY);
+            activeAnnotationTarget = target; pendingSelectionRange = null; window.getSelection().removeAllRanges();
+            menuHighlightColors.style.display = 'none'; menuNote.style.display = 'none'; menuClear.style.display = 'flex'; menuClearAll.style.display = 'flex';
+            contextMenu.dataset.mode = 'manage'; positionContextMenu(event.pageX, event.pageY);
         }
 
         function closeContextMenu(resetSelection = false) {
-            contextMenu.style.display = 'none';
-            contextMenu.dataset.mode = '';
-            if (resetSelection) {
-                window.getSelection().removeAllRanges();
-            }
+            contextMenu.style.display = 'none'; contextMenu.dataset.mode = '';
+            if (resetSelection) { window.getSelection().removeAllRanges(); }
             resetSelectionState();
         }
 
@@ -1284,26 +1150,15 @@
             const spans = Array.from(document.querySelectorAll(selector));
             spans.forEach(span => {
                 if (!range.intersectsNode(span)) return;
-                const spanRange = document.createRange();
-                spanRange.selectNode(span);
-                if (range.compareBoundaryPoints(Range.START_TO_START, spanRange) > 0) {
-                    range.setStartBefore(span);
-                }
-                if (range.compareBoundaryPoints(Range.END_TO_END, spanRange) < 0) {
-                    range.setEndAfter(span);
-                }
+                const spanRange = document.createRange(); spanRange.selectNode(span);
+                if (range.compareBoundaryPoints(Range.START_TO_START, spanRange) > 0) { range.setStartBefore(span); }
+                if (range.compareBoundaryPoints(Range.END_TO_END, spanRange) < 0) { range.setEndAfter(span); }
             });
         }
 
         function unwrapAnnotationsInRange(range, type) {
-            const selector = type === 'highlight'
-                ? `.${ANNOTATION_CLASSES.highlight}`
-                : `.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`;
-            document.querySelectorAll(selector).forEach(span => {
-                if (range.intersectsNode(span)) {
-                    unwrapElement(span);
-                }
-            });
+            const selector = type === 'highlight' ? `.${ANNOTATION_CLASSES.highlight}` : `.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`;
+            document.querySelectorAll(selector).forEach(span => { if (range.intersectsNode(span)) { unwrapElement(span); } });
         }
 
         function getTextNodesInRange(range, type) {
@@ -1311,68 +1166,34 @@
             const shouldInclude = (node) => {
                 if (!node || !node.nodeValue || !node.nodeValue.trim()) return false;
                 if (!range.intersectsNode(node)) return false;
-                if (type === 'highlight' && node.parentElement?.closest(`.${ANNOTATION_CLASSES.note}`)) {
-                    return false;
-                }
+                if (type === 'highlight' && node.parentElement?.closest(`.${ANNOTATION_CLASSES.note}`)) { return false; }
                 return true;
             };
-
             if (range.commonAncestorContainer.nodeType === Node.TEXT_NODE) {
-                if (shouldInclude(range.commonAncestorContainer)) {
-                    nodes.push(range.commonAncestorContainer);
-                }
-                return nodes;
+                if (shouldInclude(range.commonAncestorContainer)) { nodes.push(range.commonAncestorContainer); } return nodes;
             }
-
-            const walker = document.createTreeWalker(
-                range.commonAncestorContainer,
-                NodeFilter.SHOW_TEXT,
-                {
-                    acceptNode: (node) => shouldInclude(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
-                }
-            );
-
-            while (walker.nextNode()) {
-                nodes.push(walker.currentNode);
-            }
+            const walker = document.createTreeWalker(range.commonAncestorContainer, NodeFilter.SHOW_TEXT, { acceptNode: (node) => shouldInclude(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT });
+            while (walker.nextNode()) { nodes.push(walker.currentNode); }
             return nodes;
         }
 
         function wrapTextPortion(node, range, type, noteText = '', highlightColor = 'yellow') {
-            let startOffset = 0;
-            let endOffset = node.nodeValue.length;
-
-            if (node === range.startContainer && range.startOffset > startOffset) {
-                startOffset = range.startOffset;
-            }
-            if (node === range.endContainer && range.endOffset < endOffset) {
-                endOffset = range.endOffset;
-            }
-
+            let startOffset = 0; let endOffset = node.nodeValue.length;
+            if (node === range.startContainer && range.startOffset > startOffset) { startOffset = range.startOffset; }
+            if (node === range.endContainer && range.endOffset < endOffset) { endOffset = range.endOffset; }
             if (startOffset >= endOffset) return;
-
-            const selectedText = node.splitText(startOffset);
-            selectedText.splitText(endOffset - startOffset);
-
+            const selectedText = node.splitText(startOffset); selectedText.splitText(endOffset - startOffset);
             const span = document.createElement('span');
             span.classList.add('annotation', type === 'highlight' ? ANNOTATION_CLASSES.highlight : ANNOTATION_CLASSES.note);
             span.dataset.type = type;
             if (type === 'highlight') {
-                const allowedColors = ['yellow', 'green', 'pink'];
-                const safeColor = allowedColors.includes(highlightColor) ? highlightColor : 'yellow';
-                span.dataset.color = safeColor;
-                span.classList.add(`highlight-${safeColor}`);
+                const allowedColors = ['yellow', 'green', 'pink']; const safeColor = allowedColors.includes(highlightColor) ? highlightColor : 'yellow';
+                span.dataset.color = safeColor; span.classList.add(`highlight-${safeColor}`);
             }
             if (type === 'note') {
-                const content = noteText || '';
-                span.dataset.note = content;
-                if (content) {
-                    span.setAttribute('data-note', content);
-                    span.title = content;
-                } else {
-                    span.removeAttribute('data-note');
-                    span.title = 'Note';
-                }
+                const content = noteText || ''; span.dataset.note = content;
+                if (content) { span.setAttribute('data-note', content); span.title = content; } 
+                else { span.removeAttribute('data-note'); span.title = 'Note'; }
             }
             selectedText.parentNode.insertBefore(span, selectedText);
             span.appendChild(selectedText);
@@ -1385,233 +1206,106 @@
                 let cursor = span.nextSibling;
                 while (true) {
                     const whitespaceBetween = [];
-                    while (cursor && cursor.nodeType === Node.TEXT_NODE && !cursor.textContent.trim()) {
-                        whitespaceBetween.push(cursor);
-                        cursor = cursor.nextSibling;
-                    }
-                    if (
-                        cursor &&
-                        cursor.nodeType === Node.ELEMENT_NODE &&
-                        cursor.classList.contains('annotation') &&
-                        cursor.dataset.type === span.dataset.type &&
-                        (span.dataset.type !== 'note' || (span.dataset.note || '') === (cursor.dataset.note || ''))
-                    ) {
+                    while (cursor && cursor.nodeType === Node.TEXT_NODE && !cursor.textContent.trim()) { whitespaceBetween.push(cursor); cursor = cursor.nextSibling; }
+                    if (cursor && cursor.nodeType === Node.ELEMENT_NODE && cursor.classList.contains('annotation') && cursor.dataset.type === span.dataset.type && (span.dataset.type !== 'note' || (span.dataset.note || '') === (cursor.dataset.note || ''))) {
                         whitespaceBetween.forEach(node => span.appendChild(node));
-                        while (cursor.firstChild) {
-                            span.appendChild(cursor.firstChild);
-                        }
-                        const after = cursor.nextSibling;
-                        cursor.remove();
-                        cursor = after;
-                    } else {
-                        break;
-                    }
+                        while (cursor.firstChild) { span.appendChild(cursor.firstChild); }
+                        const after = cursor.nextSibling; cursor.remove(); cursor = after;
+                    } else { break; }
                 }
-                if (!span.textContent.trim()) {
-                    unwrapElement(span);
-                }
+                if (!span.textContent.trim()) { unwrapElement(span); }
             });
         }
 
         function handleTextSelection(event) {
             const selection = window.getSelection();
-            if (!selection || selection.rangeCount === 0 || selection.isCollapsed || !selection.toString().trim()) {
-                return;
-            }
-            if (!selectionWithinPanels(selection)) {
-                return;
-            }
+            if (!selection || selection.rangeCount === 0 || selection.isCollapsed || !selection.toString().trim()) { return; }
+            if (!selectionWithinPanels(selection)) { return; }
             const range = selection.getRangeAt(0).cloneRange();
-            pendingSelectionRange = range;
-            activeAnnotationTarget = null;
+            pendingSelectionRange = range; activeAnnotationTarget = null;
             showMenuForSelection(event);
         }
 
         function initializeContextMenu() {
             const panels = [passagePanel, questionsPanel];
-            panels.forEach(panel => {
-                panel.addEventListener('mouseup', (e) => {
-                    setTimeout(() => handleTextSelection(e), 0);
-                });
-            });
-
+            panels.forEach(panel => { panel.addEventListener('mouseup', (e) => { setTimeout(() => handleTextSelection(e), 0); }); });
             document.addEventListener('click', (e) => {
                 if (contextMenu.contains(e.target)) return;
                 const annotation = e.target.closest(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`);
-                if (annotation) {
-                    showMenuForAnnotation(e, annotation);
-                    return;
-                }
+                if (annotation) { showMenuForAnnotation(e, annotation); return; }
                 closeContextMenu();
             });
         }
 
         function applyAnnotation(type, noteText = '', highlightColor = 'yellow') {
             const baseRange = pendingSelectionRange ? pendingSelectionRange.cloneRange() : getCurrentSelectionRange();
-            if (!baseRange || baseRange.collapsed || !isRangeInsidePanels(baseRange)) {
-                closeContextMenu(true);
-                return;
-            }
-
-            if (type === 'highlight') {
-                expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.highlight}`);
-            } else {
-                expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.note}`);
-            }
-
+            if (!baseRange || baseRange.collapsed || !isRangeInsidePanels(baseRange)) { closeContextMenu(true); return; }
+            if (type === 'highlight') { expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.highlight}`); } 
+            else { expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.note}`); }
             unwrapAnnotationsInRange(baseRange, type);
             const targets = getTextNodesInRange(baseRange, type);
             targets.forEach(node => wrapTextPortion(node, baseRange, type, noteText, highlightColor));
-            mergeAdjacentAnnotations();
-            closeContextMenu(true);
+            mergeAdjacentAnnotations(); closeContextMenu(true);
         }
 
-        function highlightText(color = 'yellow') {
-            applyAnnotation('highlight', '', color);
-        }
-
-        function addNote() {
-            const note = prompt('Nhập nội dung ghi chú (Take note):');
-            if (note === null) {
-                closeContextMenu();
-                return;
-            }
-            applyAnnotation('note', note.trim());
-        }
-
-        function clearHighlight() {
-            if (activeAnnotationTarget) {
-                unwrapElement(activeAnnotationTarget);
-                mergeAdjacentAnnotations();
-            }
-            closeContextMenu(true);
-        }
-        
-        function clearAllHighlights() {
-            document.querySelectorAll(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`)
-                .forEach(unwrapElement);
-            mergeAdjacentAnnotations();
-            closeContextMenu(true);
-        }
+        function highlightText(color = 'yellow') { applyAnnotation('highlight', '', color); }
+        function addNote() { const note = prompt('Nhập nội dung ghi chú (Take note):'); if (note === null) { closeContextMenu(); return; } applyAnnotation('note', note.trim()); }
+        function clearHighlight() { if (activeAnnotationTarget) { unwrapElement(activeAnnotationTarget); mergeAdjacentAnnotations(); } closeContextMenu(true); }
+        function clearAllHighlights() { document.querySelectorAll(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`).forEach(unwrapElement); mergeAdjacentAnnotations(); closeContextMenu(true); }
 
         function findQuestionAnchor(qNum) {
-            const mcqNumber = document.querySelector(`.mcq-question-number[data-q-number="${qNum}"]`);
-            if (mcqNumber) return mcqNumber;
-            const tfNumber = Array.from(document.querySelectorAll('.tf-question-number')).find(el => parseInt(el.textContent, 10) === qNum);
-            if (tfNumber) return tfNumber;
-            const strongLabel = Array.from(document.querySelectorAll(`label[for="q${qNum}"] strong`)).find(el => /^\d+$/.test(el.textContent.trim()));
-            if (strongLabel) return strongLabel;
-            const genericLabel = document.querySelector(`label[for="q${qNum}"]`);
-            if (genericLabel) return genericLabel;
-            const textInput = document.getElementById(`q${qNum}`);
-            if (textInput) return textInput;
-            return null;
+            const mcqNumber = document.querySelector(`.mcq-question-number[data-q-number="${qNum}"]`); if (mcqNumber) return mcqNumber;
+            const tfNumber = Array.from(document.querySelectorAll('.tf-question-number')).find(el => parseInt(el.textContent, 10) === qNum); if (tfNumber) return tfNumber;
+            const strongLabel = Array.from(document.querySelectorAll(`label[for="q${qNum}"] strong`)).find(el => /^\d+$/.test(el.textContent.trim())); if (strongLabel) return strongLabel;
+            const genericLabel = document.querySelector(`label[for="q${qNum}"]`); if (genericLabel) return genericLabel;
+            const textInput = document.getElementById(`q${qNum}`); if (textInput) return textInput; return null;
         }
 
         function createMarkerButton(anchor, qNum) {
             if (!anchor || anchor.closest('.question-number-with-mark') || anchor.closest('.markable-blank-wrapper')) return null;
             const isInput = anchor.tagName === 'INPUT' || anchor.tagName === 'SELECT';
             const isInlineBlank = isInput;
-
-            const wrapper = document.createElement('span');
-            wrapper.dataset.questionNumber = qNum;
-            const parent = anchor.parentNode;
-            if (!parent) return null;
-
-            if (isInlineBlank) {
-                wrapper.className = 'markable-blank-wrapper';
-                parent.insertBefore(wrapper, anchor);
-                wrapper.appendChild(anchor);
-            } else {
+            const wrapper = document.createElement('span'); wrapper.dataset.questionNumber = qNum;
+            const parent = anchor.parentNode; if (!parent) return null;
+            if (isInlineBlank) { wrapper.className = 'markable-blank-wrapper'; parent.insertBefore(wrapper, anchor); wrapper.appendChild(anchor); } 
+            else {
                 wrapper.className = 'question-number-with-mark';
                 const displayMode = window.getComputedStyle(anchor).display;
-                if (displayMode === 'block' || displayMode === 'flex') {
-                    wrapper.style.display = 'flex';
-                    wrapper.style.alignItems = 'center';
-                }
-                parent.insertBefore(wrapper, anchor);
-                wrapper.appendChild(anchor);
+                if (displayMode === 'block' || displayMode === 'flex') { wrapper.style.display = 'flex'; wrapper.style.alignItems = 'center'; }
+                parent.insertBefore(wrapper, anchor); wrapper.appendChild(anchor);
             }
-
-            const button = document.createElement('button');
-            button.type = 'button';
+            const button = document.createElement('button'); button.type = 'button';
             button.className = isInlineBlank ? 'mark-toggle-btn inside-blank' : 'mark-toggle-btn';
-            button.dataset.questionNumber = qNum;
-            button.setAttribute('aria-label', `Đánh dấu câu ${qNum}`);
-            button.innerHTML = bookmarkIcon;
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleMark(qNum);
-            });
+            button.dataset.questionNumber = qNum; button.setAttribute('aria-label', `Đánh dấu câu ${qNum}`); button.innerHTML = bookmarkIcon;
+            button.addEventListener('click', (e) => { e.stopPropagation(); toggleMark(qNum); });
             wrapper.appendChild(button);
-
             const markHost = wrapper.closest('.tf-question, .matching-form-row, .matching-question-item, .question, .drag-drop-question, .summary-question, .paragraph-matching-question') || wrapper;
             if(markHost) markHost.classList.add('markable-question');
-
-            markButtons.set(qNum, button);
-            return button;
+            markButtons.set(qNum, button); return button;
         }
 
-        function initializeQuestionMarkers() {
-            for (let i = 1; i <= totalQuestions; i++) {
-                const anchor = findQuestionAnchor(i);
-                createMarkerButton(anchor, i);
-            }
-        }
+        function initializeQuestionMarkers() { for (let i = 1; i <= totalQuestions; i++) { const anchor = findQuestionAnchor(i); createMarkerButton(anchor, i); } }
 
         function toggleMark(qNum) {
             const isMarked = markedQuestions.has(qNum);
-            if (isMarked) {
-                markedQuestions.delete(qNum);
-            } else {
-                markedQuestions.add(qNum);
-            }
+            if (isMarked) { markedQuestions.delete(qNum); } else { markedQuestions.add(qNum); }
             updateMarkState(qNum, !isMarked);
         }
 
         function updateMarkState(qNum, marked) {
-            const btn = markButtons.get(qNum);
-            if (btn) {
-                btn.classList.toggle('marked', marked);
-                btn.setAttribute('aria-pressed', marked ? 'true' : 'false');
-            }
-            const navButton = Array.from(document.querySelectorAll('.subQuestion')).find(b => {
-                const hiddenSpan = b.querySelector('[aria-hidden="true"]');
-                const num = parseInt(hiddenSpan ? hiddenSpan.textContent : b.textContent.replace(/\D/g, ''), 10);
-                return num === qNum;
-            });
-            if (navButton) {
-                navButton.classList.toggle('marked', marked);
-            }
+            const btn = markButtons.get(qNum); if (btn) { btn.classList.toggle('marked', marked); btn.setAttribute('aria-pressed', marked ? 'true' : 'false'); }
+            const navButton = Array.from(document.querySelectorAll('.subQuestion')).find(b => { const hiddenSpan = b.querySelector('[aria-hidden="true"]'); const num = parseInt(hiddenSpan ? hiddenSpan.textContent : b.textContent.replace(/\D/g, ''), 10); return num === qNum; });
+            if (navButton) { navButton.classList.toggle('marked', marked); }
         }
 
         function updateAttemptedCount(part, startQ, endQ) {
-            let answeredCount = 0;
-            for (let i = startQ; i <= endQ; i++) {
-                if (isQuestionAnswered(i)) {
-                    answeredCount++;
-                }
-            }
+            let answeredCount = 0; for (let i = startQ; i <= endQ; i++) { if (isQuestionAnswered(i)) { answeredCount++; } }
             const partHeader = document.querySelector(`.footer__questionNo___3WNct[onclick="switchToPart(${part})"]`);
-            if (partHeader) {
-                const countSpan = partHeader.querySelector('.attemptedCount');
-                if (countSpan) {
-                     countSpan.textContent = `${answeredCount} of ${endQ - startQ + 1}`;
-                }
-            }
+            if (partHeader) { const countSpan = partHeader.querySelector('.attemptedCount'); if (countSpan) { countSpan.textContent = `${answeredCount} of ${endQ - startQ + 1}`; } }
         }
 
-        window.nextQuestion = nextQuestion;
-        window.previousQuestion = previousQuestion;
-        window.goToQuestion = goToQuestion;
-        window.switchToPart = switchToPart;
-        window.closeResultsModal = closeResultsModal;
-        window.highlightText = highlightText;
-        window.addNote = addNote;
-        window.clearHighlight = clearHighlight;
-        window.clearAllHighlights = clearAllHighlights;
+        window.nextQuestion = nextQuestion; window.previousQuestion = previousQuestion; window.goToQuestion = goToQuestion; window.switchToPart = switchToPart; window.closeResultsModal = closeResultsModal; window.highlightText = highlightText; window.addNote = addNote; window.clearHighlight = clearHighlight; window.clearAllHighlights = clearAllHighlights;
     });
     </script>
-</div>
 </body>
 </html>

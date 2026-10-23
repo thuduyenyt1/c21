@@ -6,918 +6,143 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600&display=swap" rel="stylesheet">
     <title>IELTS Full Reading Practice - C21 Test 1</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-            background-color: #ffffff;
-            line-height: 1.4;
-            font-size: 16px;
-        }
-
-        .header {
-            background: linear-gradient(120deg, #e9eefb, #dfe7ff, #e9eefb);
-            background-size: 200% 200%;
-            animation: bannerFlow 8s ease-in-out infinite;
-            padding: 10px 20px;
-            border-bottom: 1px solid #d7def5;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: nowrap;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            height: 60px;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            min-width: 0;
-            flex: 1 1 auto;
-            justify-content: flex-start;
-        }
-        .header-ad {
-            display: inline-flex;
-            align-items: center;
-            gap: 0;
-            padding: 4px 10px;
-            border-radius: 14px;
-            border: 1px solid rgba(215, 222, 245, 0.9);
-            background: rgba(255, 255, 255, 0.24);
-            backdrop-filter: blur(4px);
-            text-decoration: none;
-            color: inherit;
-            box-shadow: 0 10px 24px rgba(33, 58, 128, 0.12);
-            min-width: 180px;
-            max-width: calc(100% - 70px);
-            width: auto;
-            flex: 1 1 auto;
-            height: 48px;
-            overflow: hidden;
-        }
-        .ad-copy {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-        .ad-eyebrow {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: #6b7ac7;
-            margin: 0;
-            font-weight: 700;
-        }
-        .ad-marquee {
-            display: flex;
-            gap: 24px;
-            width: 100%;
-            align-items: center;
-            padding-left: 4px;
-        }
-        .ad-headline {
-            margin: 0;
-            font-size: 16px;
-            font-weight: 800;
-            color: #1c2566;
-            white-space: nowrap;
-        }
-        .ad-loop {
-            display: flex;
-            gap: 40px;
-        }
-        .ad-close {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 1px solid #cdd6f5;
-            background: rgba(255, 255, 255, 0.7);
-            color: #46507a;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-            text-decoration: none;
-            font-weight: 800;
-            flex: 0 0 auto;
-            margin-left: 6px;
-            font-size: 16px;
-        }
-        .ad-close:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 18px rgba(70, 80, 122, 0.25);
-            background: #f6f8ff;
-        }
-        @keyframes bannerFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .main-container {
-            margin-top: 90px;
-            display: flex;
-            flex-direction: column;
-            background: #ffffff;
-            height: calc(100vh - 90px);
-        }
-
-        .panels-container {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .passage-panel {
-            flex: 1;
-            padding: 20px 20px 100px;
-            overflow-y: auto;
-            min-width: 200px;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-        .reading-passage h4 {
-            font-family: 'Merriweather', 'Times New Roman', serif;
-            font-size: 22px;
-            font-weight: 600;
-            color: #2c3e50;
-            line-height: 1.4;
-            margin-bottom: 20px;
-            text-align: center;
-            border-bottom: 2px solid #4a90e2;
-            padding-bottom: 5px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        }
-       
-        .reading-passage p {
-            margin-bottom: 1.2em;
-        }
-
-        .questions-panel {
-            flex: 1;
-            padding: 20px 20px 100px;
-            overflow-y: auto;
-            min-width: 200px;
-            border-left: 1px solid #e0e0e0;
-        }
-
-        .resizer {
-            width: 10px;
-            cursor: col-resize;
-            background-color: #f0f0f0;
-            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="30" viewBox="0 0 10 30"><path d="M4 11h2v2H4zM4 15h2v2H4zM4 19h2v2H4z" fill="%23888"/></svg>');
-            background-repeat: no-repeat;
-            background-position: center;
-            flex-shrink: 0;
-            flex-grow: 0;
-        }
-
-        .nav-arrows {
-            position: fixed;
-            bottom: 100px;
-            right: 20px;
-            display: flex;
-            gap: 5px;
-            z-index: 101;
-        }
-
-        .nav-arrow {
-            width: 50px;
-            height: 50px;
-            background: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .nav-arrow:hover {
-            background: #555;
-        }
-
-        .nav-row {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #ffffff;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            height: 80px;
-            z-index: 100;
-        }
-
-        .footer__questionWrapper___1tZ46 {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-        }
-
-        .footer__questionNo___3WNct {
-            background: none;
-            border: none;
-            padding: 10px 15px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: background-color 0.2s;
-        }
-
-        .footer__questionNo___3WNct:hover {
-            background-color: #f8f9fa;
-        }
-
-        .section-prefix {
-            font-size: 16px;
-        }
-
-        .sectionNr {
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .attemptedCount {
-            font-size: 14px;
-            color: #666;
-            margin-left: 5px;
-            font-weight: 400;
-        }
-
-        @media (max-width: 768px) {
-            .attemptedCount {
-                display: none;
-            }
-        }
-
-        .footer__questionWrapper___1tZ46.selected .attemptedCount {
-            display: none;
-        }
-
-        .footer__subquestionWrapper___9GgoP {
-            display: none;
-            gap: 2px;
-            margin-left: 10px;
-        }
-
-        .footer__questionWrapper___1tZ46.selected .footer__subquestionWrapper___9GgoP {
-            display: flex;
-        }
-
-        .subQuestion {
-            width: 32px;
-            height: 32px;
-            border: 1px solid #ccc;
-            background: white;
-            color: #333;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-            border-radius: 2px;
-        }
-
-        .subQuestion.answered {
-            background-color: #e9ecef;
-            border-color: #ddd;
-        }
-        .subQuestion.correct {
-            background-color: #28a745;
-            color: white;
-            border-color: #28a745;
-        }
-        .subQuestion.incorrect {
-            background-color: #dc3545;
-            color: white;
-            border-color: #dc3545;
-        }
-
-        .subQuestion.marked {
-            position: relative;
-            color: #333;
-        }
-
-        .subQuestion:hover {
-            background-color: #f0f0f0;
-            border-color: #999;
-        }
-
-        .subQuestion.active {
-            background-color: #4a90e2;
-            color: white;
-            border-color: #4a90e2;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        .footer__deliverButton___3FM07 {
-            margin-left: auto;
-            margin-right: 20px;
-            background-color: #f0f0f0;
-            color: #333;
-            border: 1px solid #ccc;
-            padding: 12px 20px;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background-color 0.2s, border-color 0.2s;
-            min-width: 170px;
-            justify-content: center;
-        }
-
-        .footer__deliverButton___3FM07:hover {
-            background-color: #e0e0e0;
-            border-color: #bbb;
-        }
-
-        .footer__deliverButton___3FM07:disabled {
-            background: #e9ecef;
-            color: #6c757d;
-            cursor: not-allowed;
-            border-color: #ddd;
-        }
-
-        .fa-check::before {
-            content: "✓";
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .context-menu {
-            position: absolute;
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            display: none;
-            min-width: 140px;
-            overflow: hidden;
-        }
-
-        .context-menu-item {
-            padding: 12px 16px;
-            cursor: pointer;
-            font-size: 16px;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background-color 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .context-menu-item:hover {
-            background-color: #f8f9fa;
-        }
-
-        .context-menu-item:last-child {
-            border-bottom: none;
-        }
-
-        .color-btn {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            border: 1px solid rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-            padding: 0;
-            background-color: transparent;
-        }
-        
-        .color-btn:hover {
-            transform: scale(1.15);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; background-color: #ffffff; line-height: 1.4; font-size: 16px; }
+        .header { background: linear-gradient(120deg, #e9eefb, #dfe7ff, #e9eefb); background-size: 200% 200%; animation: bannerFlow 8s ease-in-out infinite; padding: 10px 20px; border-bottom: 1px solid #d7def5; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: nowrap; position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 60px; }
+        .header-right { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1 1 auto; justify-content: flex-start; }
+        .header-ad { display: inline-flex; align-items: center; gap: 0; padding: 4px 10px; border-radius: 14px; border: 1px solid rgba(215, 222, 245, 0.9); background: rgba(255, 255, 255, 0.24); backdrop-filter: blur(4px); text-decoration: none; color: inherit; box-shadow: 0 10px 24px rgba(33, 58, 128, 0.12); min-width: 180px; max-width: calc(100% - 70px); width: auto; flex: 1 1 auto; height: 48px; overflow: hidden; }
+        .ad-copy { display: flex; flex-direction: column; gap: 0; width: 100%; overflow: hidden; position: relative; }
+        .ad-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: #6b7ac7; margin: 0; font-weight: 700; }
+        .ad-marquee { display: flex; gap: 24px; width: 100%; align-items: center; padding-left: 4px; }
+        .ad-headline { margin: 0; font-size: 16px; font-weight: 800; color: #1c2566; white-space: nowrap; }
+        .ad-loop { display: flex; gap: 40px; }
+        .ad-close { width: 32px; height: 32px; border-radius: 50%; border: 1px solid #cdd6f5; background: rgba(255, 255, 255, 0.7); color: #46507a; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease; text-decoration: none; font-weight: 800; flex: 0 0 auto; margin-left: 6px; font-size: 16px; }
+        .ad-close:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(70, 80, 122, 0.25); background: #f6f8ff; }
+        @keyframes bannerFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .main-container { margin-top: 90px; display: flex; flex-direction: column; background: #ffffff; height: calc(100vh - 90px); }
+        .panels-container { display: flex; flex: 1; overflow: hidden; }
+        .passage-panel { flex: 1; padding: 20px 20px 100px; overflow-y: auto; min-width: 200px; }
+        .text-center { text-align: center; }
+        .reading-passage h4 { font-family: 'Merriweather', 'Times New Roman', serif; font-size: 22px; font-weight: 600; color: #2c3e50; line-height: 1.4; margin-bottom: 20px; text-align: center; border-bottom: 2px solid #4a90e2; padding-bottom: 5px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); }
+        .reading-passage p { margin-bottom: 1.2em; }
+        .questions-panel { flex: 1; padding: 20px 20px 100px; overflow-y: auto; min-width: 200px; border-left: 1px solid #e0e0e0; }
+        .resizer { width: 10px; cursor: col-resize; background-color: #f0f0f0; background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="30" viewBox="0 0 10 30"><path d="M4 11h2v2H4zM4 15h2v2H4zM4 19h2v2H4z" fill="%23888"/></svg>'); background-repeat: no-repeat; background-position: center; flex-shrink: 0; flex-grow: 0; }
+        .nav-arrows { position: fixed; bottom: 100px; right: 20px; display: flex; gap: 5px; z-index: 101; }
+        .nav-arrow { width: 50px; height: 50px; background: #333; color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: bold; }
+        .nav-arrow:hover { background: #555; }
+        .nav-row { position: fixed; bottom: 0; left: 0; right: 0; background: #ffffff; padding: 0; display: flex; align-items: center; height: 80px; z-index: 100; }
+        .footer__questionWrapper___1tZ46 { display: flex; align-items: center; margin-right: 20px; }
+        .footer__questionNo___3WNct { background: none; border: none; padding: 10px 15px; font-size: 16px; font-weight: 600; color: #333; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: background-color 0.2s; }
+        .footer__questionNo___3WNct:hover { background-color: #f8f9fa; }
+        .section-prefix { font-size: 16px; }
+        .sectionNr { font-size: 16px; font-weight: bold; }
+        .attemptedCount { font-size: 14px; color: #666; margin-left: 5px; font-weight: 400; }
+        @media (max-width: 768px) { .attemptedCount { display: none; } }
+        .footer__questionWrapper___1tZ46.selected .attemptedCount { display: none; }
+        .footer__subquestionWrapper___9GgoP { display: none; gap: 2px; margin-left: 10px; }
+        .footer__questionWrapper___1tZ46.selected .footer__subquestionWrapper___9GgoP { display: flex; }
+        .subQuestion { width: 32px; height: 32px; border: 1px solid #ccc; background: white; color: #333; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; border-radius: 2px; }
+        .subQuestion.answered { background-color: #6b7ac7; color: #ffffff; border-color: #46507a; font-weight: bold; }
+        .subQuestion.correct { background-color: #28a745; color: white; border-color: #28a745; }
+        .subQuestion.incorrect { background-color: #dc3545; color: white; border-color: #dc3545; }
+        .subQuestion.marked { position: relative; color: #333; }
+        .subQuestion:hover { background-color: #f0f0f0; border-color: #999; }
+        .subQuestion.active { background-color: #4a90e2; color: white; border-color: #4a90e2; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+        .footer__deliverButton___3FM07 { margin-left: auto; margin-right: 20px; background-color: #f0f0f0; color: #333; border: 1px solid #ccc; padding: 12px 20px; border-radius: 4px; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background-color 0.2s, border-color 0.2s; min-width: 170px; justify-content: center; }
+        .footer__deliverButton___3FM07:hover { background-color: #e0e0e0; border-color: #bbb; }
+        .footer__deliverButton___3FM07:disabled { background: #e9ecef; color: #6c757d; cursor: not-allowed; border-color: #ddd; }
+        .fa-check::before { content: "✓"; }
+        .hidden { display: none !important; }
+        .context-menu { position: absolute; background: white; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; display: none; min-width: 140px; overflow: hidden; }
+        .context-menu-item { padding: 12px 16px; cursor: pointer; font-size: 16px; border-bottom: 1px solid #f0f0f0; transition: background-color 0.2s; display: flex; align-items: center; gap: 8px; }
+        .context-menu-item:hover { background-color: #f8f9fa; }
+        .context-menu-item:last-child { border-bottom: none; }
+        .color-btn { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; padding: 0; background-color: transparent; }
+        .color-btn:hover { transform: scale(1.15); box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
         .color-btn.yellow { background-color: #fff3a3; }
         .color-btn.green { background-color: #b4f0c1; }
         .color-btn.pink { background-color: #ffc7df; }
-
-        .annotation-highlight {
-            background-color: var(--highlight-color, #fff3a3);
-            border-radius: 4px;
-            padding: 0 2px;
-            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
-            cursor: pointer;
-        }
-
+        .annotation-highlight { background-color: var(--highlight-color, #fff3a3); border-radius: 4px; padding: 0 2px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05); cursor: pointer; }
         .annotation-highlight.highlight-yellow { --highlight-color: #fff3a3; }
         .annotation-highlight.highlight-green { --highlight-color: #b4f0c1; }
         .annotation-highlight.highlight-pink { --highlight-color: #ffc7df; }
         .annotation-highlight.highlight-blue { --highlight-color: #d0ebff; border: 1px dashed #339af0; }
-
-        .annotation-note {
-            background-color: #b4f0c1;
-            border-radius: 4px;
-            padding: 0 2px;
-            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
-            position: relative;
-            cursor: pointer;
-        }
-
-        .annotation-note[data-note]:hover::after {
-            content: attr(data-note);
-            position: absolute;
-            left: 50%;
-            bottom: 100%;
-            transform: translate(-50%, -6px);
-            background: #1f2937;
-            color: #fff;
-            padding: 6px 10px;
-            border-radius: 4px;
-            white-space: nowrap;
-            font-size: 13px;
-            z-index: 2000;
-        }
-
-        .question {
-            margin-bottom: 40px;
-        }
-        .question p {
-            margin-bottom: 10px;
-        }
-        .question-prompt {
-            margin-bottom: 20px;
-        }
-        .question-title {
-            font-size: 18px;
-            font-weight: 700;
-            text-align: center;
-            margin: 6px 0 10px;
-            color: #000;
-        }
-        .answer-input {
-            border: 1px solid #888;
-            border-radius: 4px;
-            background-color: #fff;
-            padding: 2px 5px;
-            font-size: 16px;
-            text-align: center;
-            margin-right: 4px;
-            margin-left: 4px;
-            transition: border-color 0.3s, box-shadow 0.3s;
-            height: 28px;
-            width: 150px;
-            z-index: 10;
-            position: relative;
-            pointer-events: auto;
-        }
-        .answer-input.active-input {
-            border-color: #4a90e2;
-            box-shadow: 0 0 3px 1px rgba(74, 144, 226, 0.5);
-        }
-        .answer-input::placeholder {
-            color: #999;
-            font-weight: bold;
-            text-align: center;
-        }
-        .answer-input.correct {
-            border-color: #28a745;
-            background-color: #e9f7ef;
-        }
-        .answer-input.incorrect {
-            border-color: #dc3545;
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-        
-        .part-header {
-            background-color: #f1f2ec;
-            padding: 10px 16px;
-            border: 1px solid #e0e0e0;
-            text-align: left;
-            margin: 8px 20px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .timer-container {
-            display: flex;
-            position: relative;
-            cursor: default;
-            color: #333;
-            font-size: 16px;
-            font-weight: 500;
-            align-items: center;
-            gap: 12px;
-            flex: 0 0 auto;
-            min-width: 220px;
-            padding: 4px 10px;
-            border-radius: 14px;
-            border: 1px solid #d7def5;
-            background: rgba(255, 255, 255, 0.24);
-            box-shadow: 0 8px 18px rgba(33, 58, 128, 0.08);
-        }
-
-        .timer-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: 15px;
-        }
-
-        .timer-controls button {
-            background: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 50%;
-            padding: 0;
-            cursor: pointer;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.2s;
-        }
-        .timer-controls button:hover {
-            background: #e0e0e0;
-        }
-
-        .tf-question {
-            margin-bottom: 25px;
-            padding: 10px 0px;
-            border-radius: 4px;
-            transition: border-color 0.3s, background-color 0.3s;
-        }
-        .tf-question-line {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            padding: 5px 0px;
-            border-radius: 4px;
-        }
-        .tf-question-number, .question-number-box {
-            border: 2px solid #ccc;
-            padding: 2px 8px;
-            margin-right: 10px;
-            border-radius: 3px;
-            font-weight: bold;
-            transition: border-color 0.3s;
-            display: inline-block;
-        }
-        .tf-question-text {
-            padding-top: 3px;
-        }
-        .tf-options {
-            padding-left: 5px;
-        }
-        .tf-option {
-            display: block;
-            margin-bottom: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-        .tf-option input[type="radio"] {
-            margin-right: 10px;
-            transform: scale(1.2);
-        }
-        .tf-question.correct .tf-question-line {
-            background-color: #e9f7ef;
-        }
-        .tf-question.incorrect .tf-question-line {
-            background-color: #f8d7da;
-        }
-        .multi-choice-question {
-            margin-bottom: 20px;
-            padding: 10px;
-            border-radius: 4px;
-            border: 3px solid transparent;
-            transition: border-color 0.3s, background-color 0.3s;
-        }
-        .multi-choice-option {
-            margin-bottom: 10px;
-            padding: 8px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .multi-choice-option label {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .multi-choice-option input[type="checkbox"],
-        .multi-choice-option input[type="radio"] {
-            margin-right: 12px;
-            transform: scale(1.3);
-            accent-color: #4a90e2;
-        }
-        .multi-choice-option.correct {
-            background-color: #e9f7ef;
-        }
-        .multi-choice-option.incorrect {
-            background-color: #f8d7da;
-        }
-        .matching-form-container {
-            margin-top: 20px;
-        }
-        .matching-form-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .matching-form-label {
-            width: auto;
-            flex: 1 1 320px;
-            margin-right: 8px;
-        }
-        .matching-form-row select.answer-input {
-            width: 220px;
-            flex-shrink: 0;
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-overlay.hidden {
-            display: none;
-        }
-        .modal-content {
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        .modal-close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 28px;
-            cursor: pointer;
-            color: #888;
-        }
-        .modal-content h2 {
-            text-align: center;
-            margin-bottom: 15px;
-            color: #333;
-        }
-        .results-summary {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
-        }
-        .results-details-container {
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-        .result-row {
-            display: grid;
-            grid-template-columns: 40px 1fr 1fr;
-            gap: 15px;
-            padding: 8px 5px;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 15px;
-        }
-        .result-row.incorrect {
-            background-color: #f8d7da;
-        }
-        .result-row .q-num {
-            font-weight: bold;
-        }
-        .result-row .user-ans {
-            color: #555;
-        }
-        .result-row .correct-ans {
-            color: #155724;
-            font-weight: 500;
-        }
-        .correct-answer-display {
-            font-weight: bold;
-            color: #28a745;
-            margin-left: 10px;
-            font-size: 14px;
-        }
-        .correct-answer-highlight {
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            border-radius: 4px;
-            padding: 4px;
-        }
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        #launchScreen, #app {
-            width: 100vw;
-            height: 100vh;
-        }
-        #app {
-            display: none;
-        }
-        #launchScreen {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            background:
-                radial-gradient(circle at 0% 0%, rgba(206, 219, 255, 0.48), transparent 34%),
-                radial-gradient(circle at 100% 100%, rgba(221, 229, 255, 0.44), transparent 38%),
-                #f4f6fc;
-            color: #1f2b59;
-        }
-        .launch-card {
-            width: min(980px, 100%);
-            border: 1px solid #d7def5;
-            border-radius: 18px;
-            background: linear-gradient(180deg, #ffffff, #f7f9ff);
-            box-shadow: 0 16px 38px rgba(33, 58, 128, 0.14);
-            padding: 28px 30px 22px;
-            display: grid;
-            gap: 12px;
-        }
-        .launch-eyebrow {
-            margin: 0;
-            font-size: 11px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #6f7cb2;
-            font-weight: 700;
-        }
-        .launch-title {
-            margin: 4px 0 0;
-            font-size: clamp(26px, 3.5vw, 40px);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            color: #1c2566;
-        }
-        .launch-meta {
-            margin: 8px 0 0;
-            color: #3c4a81;
-            font-size: 15px;
-            font-weight: 600;
-        }
-        .launch-guide {
-            border: 1px solid #d7def5;
-            border-radius: 12px;
-            background: #f2f5ff;
-            padding: 14px;
-            display: grid;
-            gap: 6px;
-        }
-        .launch-main {
-            margin: 0;
-            font-size: clamp(18px, 2.2vw, 23px);
-            line-height: 1.32;
-            font-weight: 700;
-            color: #1d2a60;
-        }
-        .launch-sub {
-            margin: 0;
-            color: #4c598f;
-            font-size: 14px;
-            line-height: 1.45;
-        }
-        .launch-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        .launch-btn {
-            border: 1px solid #c5d0f2;
-            border-radius: 999px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 700;
-            padding: 11px 16px;
-            color: #24336e;
-            background: #ffffff;
-            transition: transform 0.12s ease;
-            box-shadow: 0 8px 20px rgba(35, 54, 110, 0.14);
-        }
-        .launch-btn:hover {
-            transform: translateY(-1px);
-            background: #f6f8ff;
-        }
-
-        .explanation-box {
-            display: none;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            padding: 12px 15px;
-            background-color: #f0f7ff;
-            border-left: 4px solid #4a90e2;
-            border-radius: 4px;
-            font-size: 15px;
-            color: #2c3e50;
-            line-height: 1.5;
-            width: 100%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-        .explanation-box:hover {
-            background-color: #e2efff;
-        }
-        .explanation-box.show {
-            display: block;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-        .explanation-title {
-            font-weight: 700;
-            margin-bottom: 6px;
-            color: #1c2566;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .options-list {
-            list-style-type: none;
-            padding-left: 0;
-            margin-bottom: 15px;
-        }
-        .options-list li {
-            margin-bottom: 5px;
-        }
-        .options-list-label {
-            font-weight: bold;
-            margin-right: 8px;
-        }
-        .example-box {
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            padding: 10px 15px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-        }
+        .annotation-note { background-color: #b4f0c1; border-radius: 4px; padding: 0 2px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08); position: relative; cursor: pointer; }
+        .annotation-note[data-note]:hover::after { content: attr(data-note); position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, -6px); background: #1f2937; color: #fff; padding: 6px 10px; border-radius: 4px; white-space: nowrap; font-size: 13px; z-index: 2000; }
+        .question { margin-bottom: 40px; }
+        .question p { margin-bottom: 10px; }
+        .question-prompt { margin-bottom: 20px; }
+        .question-title { font-size: 18px; font-weight: 700; text-align: center; margin: 6px 0 10px; color: #000; }
+        .answer-input { border: 1px solid #888; border-radius: 4px; background-color: #fff; padding: 2px 5px; font-size: 16px; text-align: center; margin-right: 4px; margin-left: 4px; transition: border-color 0.3s, box-shadow 0.3s; height: 28px; width: 150px; z-index: 10; position: relative; pointer-events: auto; }
+        .answer-input.active-input { border-color: #4a90e2; box-shadow: 0 0 3px 1px rgba(74, 144, 226, 0.5); }
+        .answer-input::placeholder { color: #999; font-weight: bold; text-align: center; }
+        .answer-input.correct { border-color: #28a745; background-color: #e9f7ef; }
+        .answer-input.incorrect { border-color: #dc3545; background-color: #f8d7da; color: #721c24; }
+        .part-header { background-color: #f1f2ec; padding: 10px 16px; border: 1px solid #e0e0e0; text-align: left; margin: 8px 20px; border-radius: 5px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .timer-container { display: flex; position: relative; cursor: default; color: #333; font-size: 16px; font-weight: 500; align-items: center; gap: 12px; flex: 0 0 auto; min-width: 220px; padding: 4px 10px; border-radius: 14px; border: 1px solid #d7def5; background: rgba(255, 255, 255, 0.24); box-shadow: 0 8px 18px rgba(33, 58, 128, 0.08); }
+        .timer-controls { display: flex; align-items: center; gap: 8px; margin-left: 15px; }
+        .timer-controls button { background: #f0f0f0; border: 1px solid #ccc; border-radius: 50%; padding: 0; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: background-color 0.2s; }
+        .timer-controls button:hover { background: #e0e0e0; }
+        .tf-question { margin-bottom: 25px; padding: 10px 0px; border-radius: 4px; transition: border-color 0.3s, background-color 0.3s; }
+        .tf-question-line { display: flex; align-items: flex-start; margin-bottom: 15px; padding: 5px 0px; border-radius: 4px; }
+        .tf-question-number, .question-number-box { border: 2px solid #ccc; padding: 2px 8px; margin-right: 10px; border-radius: 3px; font-weight: bold; transition: border-color 0.3s; display: inline-block; }
+        .tf-question-text { padding-top: 3px; }
+        .tf-options { padding-left: 5px; }
+        .tf-option { display: block; margin-bottom: 12px; cursor: pointer; display: flex; align-items: center; }
+        .tf-option input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
+        .tf-question.correct .tf-question-line { background-color: #e9f7ef; }
+        .tf-question.incorrect .tf-question-line { background-color: #f8d7da; }
+        .multi-choice-question { margin-bottom: 20px; padding: 10px; border-radius: 4px; border: 3px solid transparent; transition: border-color 0.3s, background-color 0.3s; }
+        .multi-choice-option { margin-bottom: 10px; padding: 8px; border-radius: 4px; transition: background-color 0.3s; }
+        .multi-choice-option label { display: flex; align-items: center; cursor: pointer; font-size: 16px; }
+        .multi-choice-option input[type="checkbox"], .multi-choice-option input[type="radio"] { margin-right: 12px; transform: scale(1.3); accent-color: #4a90e2; }
+        .multi-choice-option.correct { background-color: #e9f7ef; }
+        .multi-choice-option.incorrect { background-color: #f8d7da; }
+        .matching-form-container { margin-top: 20px; }
+        .matching-form-row { display: flex; align-items: center; margin-bottom: 12px; gap: 12px; flex-wrap: wrap; }
+        .matching-form-label { width: auto; flex: 1 1 320px; margin-right: 8px; }
+        .matching-form-row select.answer-input { width: 220px; flex-shrink: 0; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 2000; display: flex; justify-content: center; align-items: center; }
+        .modal-overlay.hidden { display: none; }
+        .modal-content { background: white; padding: 25px; border-radius: 8px; width: 90%; max-width: 600px; max-height: 80vh; display: flex; flex-direction: column; position: relative; }
+        .modal-close-btn { position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 28px; cursor: pointer; color: #888; }
+        .modal-content h2 { text-align: center; margin-bottom: 15px; color: #333; }
+        .results-summary { display: flex; justify-content: space-around; margin-bottom: 20px; font-size: 18px; font-weight: bold; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .results-details-container { overflow-y: auto; padding-right: 10px; }
+        .result-row { display: grid; grid-template-columns: 40px 1fr 1fr; gap: 15px; padding: 8px 5px; border-bottom: 1px solid #f0f0f0; font-size: 15px; }
+        .result-row.incorrect { background-color: #f8d7da; }
+        .result-row .q-num { font-weight: bold; }
+        .result-row .user-ans { color: #555; }
+        .result-row .correct-ans { color: #155724; font-weight: 500; }
+        .correct-answer-display { font-weight: bold; color: #28a745; margin-left: 10px; font-size: 14px; }
+        .correct-answer-highlight { background-color: #d4edda; border: 1px solid #c3e6cb; border-radius: 4px; padding: 4px; }
+        html, body { width: 100%; height: 100%; overflow: hidden; }
+        #launchScreen, #app { width: 100vw; height: 100vh; }
+        #app { display: none; }
+        #launchScreen { display: flex; align-items: center; justify-content: center; padding: 24px; background: radial-gradient(circle at 0% 0%, rgba(206, 219, 255, 0.48), transparent 34%), radial-gradient(circle at 100% 100%, rgba(221, 229, 255, 0.44), transparent 38%), #f4f6fc; color: #1f2b59; }
+        .launch-card { width: min(980px, 100%); border: 1px solid #d7def5; border-radius: 18px; background: linear-gradient(180deg, #ffffff, #f7f9ff); box-shadow: 0 16px 38px rgba(33, 58, 128, 0.14); padding: 28px 30px 22px; display: grid; gap: 12px; }
+        .launch-eyebrow { margin: 0; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #6f7cb2; font-weight: 700; }
+        .launch-title { margin: 4px 0 0; font-size: clamp(26px, 3.5vw, 40px); line-height: 1.1; letter-spacing: -0.02em; color: #1c2566; }
+        .launch-meta { margin: 8px 0 0; color: #3c4a81; font-size: 15px; font-weight: 600; }
+        .launch-guide { border: 1px solid #d7def5; border-radius: 12px; background: #f2f5ff; padding: 14px; display: grid; gap: 6px; }
+        .launch-main { margin: 0; font-size: clamp(18px, 2.2vw, 23px); line-height: 1.32; font-weight: 700; color: #1d2a60; }
+        .launch-sub { margin: 0; color: #4c598f; font-size: 14px; line-height: 1.45; }
+        .student-info-form { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
+        .student-info-form input { width: 100%; padding: 12px 15px; border: 1px solid #c5d0f2; border-radius: 8px; font-size: 16px; outline: none; transition: border-color 0.2s; }
+        .student-info-form input:focus { border-color: #4a90e2; box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2); }
+        .launch-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+        .launch-btn { border: 1px solid #c5d0f2; border-radius: 999px; cursor: pointer; font-size: 14px; font-weight: 700; padding: 11px 16px; color: #24336e; background: #ffffff; transition: transform 0.12s ease; box-shadow: 0 8px 20px rgba(35, 54, 110, 0.14); width: 100%; text-align: center; font-size: 16px; }
+        .launch-btn:hover { transform: translateY(-1px); background: #f6f8ff; }
+        .explanation-box { display: none; margin-top: 10px; margin-bottom: 15px; padding: 12px 15px; background-color: #f0f7ff; border-left: 4px solid #4a90e2; border-radius: 4px; font-size: 15px; color: #2c3e50; line-height: 1.5; width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer; transition: background-color 0.2s ease; }
+        .explanation-box:hover { background-color: #e2efff; }
+        .explanation-box.show { display: block; animation: fadeIn 0.4s ease-in-out; }
+        .explanation-title { font-weight: 700; margin-bottom: 6px; color: #1c2566; display: flex; align-items: center; gap: 6px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        .options-list { list-style-type: none; padding-left: 0; margin-bottom: 15px; }
+        .options-list li { margin-bottom: 5px; }
+        .options-list-label { font-weight: bold; margin-right: 8px; }
+        .example-box { background-color: #f8f9fa; border: 1px solid #e9ecef; padding: 10px 15px; border-radius: 4px; margin-bottom: 15px; }
     </style>
 </head>
 <body>
@@ -925,12 +150,17 @@
         <div class="launch-card">
             <div>
                 <p class="launch-eyebrow">IELTS Test Launcher</p>
-                <h1 class="launch-title" id="launchTestTitle">Cambridge IELTS 21 - TEST 1 Reading</h1>
+                <h1 class="launch-title" id="launchTestTitle">C21 Test 1 - Reading</h1>
                 <p class="launch-meta">Dạng bài: Reading</p>
             </div>
             <div class="launch-guide">
                 <p class="launch-main">Nhấn F11 để bắt đầu làm bài ở chế độ toàn màn hình.</p>
                 <p class="launch-sub">Nhấn F11 lần nữa để thoát toàn màn hình nếu cần.</p>
+                <div class="student-info-form">
+                    <input type="text" id="studentName" placeholder="Nhập Họ và tên của bạn..." required>
+                    <input type="text" id="studentClass" placeholder="Nhập Lớp của bạn..." required>
+                    <p id="launchError" style="color: #dc3545; font-size: 14px; display: none; margin: 0; font-weight: 600;">⚠️ Vui lòng nhập đầy đủ Họ tên và Lớp!</p>
+                </div>
             </div>
             <div class="launch-row">
                 <button id="startNormalBtn" class="launch-btn" type="button">Bắt đầu làm bài</button>
@@ -951,7 +181,7 @@
             </div>
         </div>
         <div class="header-right">
-            <a href="https://www.facebook.com/englishresourcehub" target="_blank" rel="noopener" class="header-ad">
+            <a href="#" target="_blank" rel="noopener" class="header-ad">
                 <div class="ad-copy">
                     <p class="ad-eyebrow">Study boost</p>
                     <div class="ad-marquee">
@@ -961,7 +191,7 @@
                     </div>
                 </div>
             </a>
-            <button class="ad-close" type="button" aria-label="Close ad" title="Close" onclick="window.open('https://www.facebook.com/englishresourcehub','_blank','noopener')">×</button>
+            <button class="ad-close" type="button" aria-label="Close ad" title="Close">×</button>
         </div>
     </div>
 
@@ -984,7 +214,7 @@
             <div class="passage-panel" id="passage-panel">
                 <div id="passage-text-1" class="reading-passage">
                     <h4 class="text-center">The Davies Sisters</h4>
-                    <p>Between 1908 and 1924, Gwendoline and Margaret Davies amassed one of the largest collections of late-nineteenth and early-twentieth-century French paintings in Britain.</p>
+                    <p><em>Between 1908 and 1924, Gwendoline and Margaret Davies amassed one of the largest collections of late-nineteenth and early-twentieth-century French paintings in Britain</em></p>
                     <p>Gwendoline (1882-1951) and Margaret (1884-1963) Davies were the granddaughters of David Davies, a Welshman who amassed a fortune in the shipping and mining industries. In 1907, when Gwendoline came into her inheritance (Margaret would follow in 1909), the sisters were said to be the wealthiest unmarried women in Britain. Their religious upbringing in rural Wales gave them a deep sense of social responsibility and they chose to use their inheritance for cultural and philanthropic* purposes.</p>
                     <p>While there was no real family history of art collecting, the sisters' education was rigorously geared toward such pursuits. Their London school focused on cultural rather than academic study, and they travelled extensively with their governess, Jane Blaker, visiting art galleries and making extensive notes on the collections there.</p>
                     <p>The sisters began to make regular art purchases from 1908, which roughly coincided with the dates of their inheritance. They took advice from various people, including the art dealer Hugh Blaker (the brother of Jane Blaker) and David Croal Thompson, who was also an art dealer. While it was long assumed that these men were largely responsible for the nature of the sisters' collection, it has recently been accepted that Gwendoline and Margaret retained a far more active role in the process.</p>
@@ -995,7 +225,6 @@
                     <p>Commentators have often described the sisters as unlikely pioneer collectors. Much is made of their isolation in rural Wales and the fact that they didn't make friends with artists or gallery owners. Yet they didn't feel obliged to follow fashionable tastes and were free to pursue their own preferences. Although they relied on a trusted circle of advisers, they made frequent trips to London and Paris, and also regularly had paintings sent to their home for consideration.</p>
                     <p>By the early 1920s, Gwendoline felt increasingly uncomfortable buying art works when faced with the poverty and social upheaval created by the First World War. Her philanthropic pursuits then became focused almost exclusively on social causes and the development of the sisters' home at Gregynog Hall into a conference center and venue for the Gregynog Festival of Music and Poetry. Gwendoline made her final art purchase in March 1926. Margaret also stopped collecting around this time, but started again in the 1930s acquiring, on a relatively small scale, work by contemporary British artists.</p>
                     <p>The sisters collected French Impressionist paintings at a time when such art was routinely ignored by individuals and institutions alike. The Gwendoline and Margaret Davies collection, donated in 1951 and 1963 respectively to the National Museum Wales, contains major examples of work by leading French Impressionists. In collecting paintings that they loved, the sisters created a lasting and meaningful cultural legacy for the people of Wales and beyond.</p>
-                    <br>
                     <p><em>*philanthropic: seeking to promote the welfare of others, often by charitable funding</em><br>
                     <em>** Old Master: a highly respected artist of great skill who worked in Europe before about 1800</em><br>
                     <em>*** Impressionist: an artist with a style of painting that developed in France in the late 1800s</em></p>
@@ -1003,11 +232,11 @@
                 <div id="passage-text-2" class="reading-passage hidden">
                     <h4 class="text-center">Why we need silence</h4>
                     <p><strong>A</strong> Humans are finely attuned to noise, and for good reason. From an evolutionary perspective, sounds give us vital information, helping us navigate the world and avoid danger. To help ensure loud or unexpected noises get the attention they deserve, our internal chemistry alters in response to them. Our blood pressure goes up, muscles tense and glands release hormones that prepare us for fight or flight. In the short term, this is a good thing. When we are exposed to too much noise over the long term, however, those responses can lead to a multitude of health issues, from sleep disturbance to even cardiovascular disease.</p>
-                    <p><strong>B</strong> The World Health Organization has recently designated excessive noise as an 'underestimated threat' to public health, and has said that people living in cities such as Mumbai, Tokyo and Buenos Aires are being exposed to far more than the recommended 40 decibels of noise at night. A report from the European Environment Agency concluded that noise was an ongoing and widespread issue in Europe, with at least 1 in 5 people consistently exposed to levels considered harmful to health. 'There are no "earlids" that can protect your brain from noise,' says Nick Antonio, an acoustic consultant who has contributed to the British and international standards for noise.</p>
+                    <p><strong>B</strong> The World Health Organization has recently designated excessive noise as an 'underestimated threat' to public health, and has said that people living in cities such as Mumbai, Tokyo and Buenos Aires are being exposed to far more than the recommended 40 decibels of noise at night. A report from the European Environment Agency concluded that noise was an ongoing and widespread issue in Europe, with at least 1 in 5 people consistently exposed to levels considered harmful to health. "There are no "earlids" that can protect your brain from noise,' says Nick Antonio, an acoustic consultant who has contributed to the British and international standards for noise.</p>
                     <p><strong>C</strong> The good news is that several cities have been working to turn the volume down. One of the first to do so was London. 'By providing recommendations for quieter buses, reducing noise from roads and also controlling noise from aircraft, they were able to make the city quieter,' says Antonio. Other cities have introduced noise-reducing road coatings, for instance, alongside greenery that muffles sound. Some solutions are more specific: Washington DC's ban on petrol-powered leaf blowers came into effect recently, while in New York City, legislation has been approved to fine people who modify their vehicles to make them noisier. 'People are seeing the benefits of these more quiet environments in their cities,' Antonio says. 'I expect we will see much more of this in the future.'</p>
                     <p><strong>D</strong> Researchers are also seeking to understand what aspects of silent experiences are most beneficial to our health. One of the best-researched is the flotation tank: a lightproof, soundproof tank of salt water in which a person floats as a form of deep relaxation. While some people experience altered perception in the tanks, involving subtle humming sounds and visual effects, these effects are benign and do not detract from the benefits of the experience, says Justin Feinstein, a clinical neuropsychologist. 'When you don't have external sensory stimuli coming in, the brain tries to fill the void to make sense of this dark and silent world,' he explains. 'In these tanks, some people can even hear the sound of their eyes blinking,' says Feinstein. 'But it is the ability to focus on the breath that helps people reach a relaxed or meditative state.'</p>
                     <p><strong>E</strong> To further explore flotation tanks as a therapeutic tool, Feinstein and his colleagues recruited 50 people with a variety of conditions related to stress and had them answer a questionnaire prior to and following a flotation session. Participants reported decreases in muscle tension, pain and symptoms of their conditions after a single, 1-hour float, alongside an increase in feelings of relaxation and overall wellbeing.</p>
-                    <p><strong>F</strong> Less is known about what effects sensory deprivation can have on the brain. To investigate, Feinstein's team had 48 people participate in either three 90-minute float sessions or three 90-minute periods of relaxing on a chair which reclined. Participants had their brains scanned using functional magnetic resonance imaging at the beginning and end of the trial. Float sessions uniquely decreased activity in the default mode network (DMN), a collection of brain regions commonly linked with depression. Feinstein says it is an exciting finding, because flotation tanks seem to offer a way of 'resetting' our nervous system to prevent it from getting out of balance. Neurobiologist Tal Dotan Ben-Soussan is also an advocate of silence as a therapy. 'When we find ways to be quiet, we are not only quiet in our environment, but quiet in our inner selves,' she explains. 'This allows us to be more aware of what is happening around us and what the situation may require from us so we can provide [a more] adequate response.' Not everyone will benefit from silence to the same extent, but Ben-Soussan says one characteristic is key: the person must need to want to engage in the experience. 'We see from animal models and human studies that volition and intentionality is important,' she says. 'When people do not want silence, it can be very distressing.'</p>
+                    <p><strong>F</strong> Less is known about what effects sensory deprivation can have on the brain. To investigate, Feinstein's team had 48 people participate in either three 90-minute float sessions or three 90-minute periods of relaxing on a chair which reclined. Participants had their brains scanned using functional magnetic resonance imaging at the beginning and end of the trial. Float sessions uniquely decreased activity in the default mode network (DMN), a collection of brain regions commonly linked with depression. Feinstein says it is an exciting finding, because flotation tanks seem to offer a way of 'resetting' our nervous system to prevent it from getting out of balance. Neurobiologist Tal Dotan Ben-Soussan is also an advocate of silence as a therapy. 'When we find ways to be quiet, we are not only quiet in our environment, but quiet in our inner selves,' she explains. "This allows us to be more aware of what is happening around us and what the situation may require from us so we can provide [a more] adequate response.' Not everyone will benefit from silence to the same extent, but Ben-Soussan says one characteristic is key: the person must need to want to engage in the experience. 'We see from animal models and human studies that volition and intentionality is important,' she says. 'When people do not want silence, it can be very distressing.'</p>
                     <p><strong>G</strong> Eric Pfeifer, a psychotherapy researcher, also concedes that some people may not benefit from silence, particularly those who are in a heightened state of stress. 'People in these states may not be able to relax or calm down in a silent condition,' he says. Professional guidance can be useful, he adds, allowing people to approach silence slowly so that they can gradually enjoy the benefits. And Pfeifer is convinced that silence is more attainable in everyday life than people think. First, complete silence isn't necessary. In a recent study, he found that participants reported more relaxation and less boredom when they sat quietly in an outdoor garden compared with a completely silent room. Second, Pfeifer believes we don't need a lot of silence to gain benefits. 'You don't need to spend hours in silence,' he says. 'It is likely better to have more frequency of silence for a few minutes at a time than a longer period of silence only once a week. Just finding those places in your daily life where you can find some silence can make a big difference.'</p>
                 </div>
                 <div id="passage-text-3" class="reading-passage hidden">
@@ -1016,7 +245,7 @@
                     <p>Bosma's discussion of the sugar market in Britain gives a sense of the book's range. The sweet-toothed British first bought cane sugar from their own slavery-dependent colonial plantations. Following the abolition of slavery in the British Empire, cane sugar was imported to Britain from places which retained the practice, such as Cuba and Brazil. Towards the end of the 19th century, the British started to import beet sugar from continental Europe. Only in the 20th century was there a move to develop a national beet sugar industry.</p>
                     <p>The book provides a global labour history, investigating the wide range of labour regimes associated with growing sugar. Contrary to popular belief, cane sugar production was never just restricted to large, dedicated plantations owned by rich men. For example, in Java, a huge exporter of sugar in the early 20th century, sugar cane was grown together with rice in an extraordinarily labour-intensive way by small farmers.</p>
                     <p>The World of Sugar is also a story of similarity and continuity in sugar cultivation. For example, imported labour has been used for much large-scale production. German beet fields employed Polish workers; Mexicans and many others, including Sicilians, were vital to US sugar production. Cane cutting, Bosma shows, remains a poorly paid and brutal business to this day in many places in the world. But as well as this, the book is about the continuity of the use of traditional methods on small farms. In the mid 20th-century, this type of sugar production dominated in South Asia and Latin America.</p>
-                    <p>This is also a history of capitalists and sugar dynasties, as well as corporations that in some cases have remained influential over very long periods. Great firms and great interests have had profound influence on the policies of states. In many places - not just the British Caribbean but Cuba and the Philippines too - a powerful sugar bourgeoisie played a major role in politics and their interests were consequently protected by trade barriers and subsidies. In the battle for control of the industry, it was inevitably the poor countries which came off worse. All this is explored by Bosma with wonderful subtlety and control.</p>
+                    <p>This is also a history of capitalists and sugar dynasties, as well as corporations that in some cases have remained influential over very long periods. Great firms and great interests have had profound influence on the policies of states. In many places - not just the British Caribbean but Cuba and the Philippines too a powerful sugar bourgeoisie played a major role in politics and their interests were consequently protected by trade barriers and subsidies. In the battle for control of the industry, it was inevitably the poor countries which came off worse. All this is explored by Bosma with wonderful subtlety and control.</p>
                     <p>But sugar production was never just a matter of agriculture. It also involved the extraction, close to the place of harvest, of sucrose from the sugar plant, a process which required machinery powered by humans, animals, wind or steam. Further processes involved boiling (from the 19th century, this often involved vacuum systems) and the separation of sugar from other materials in a process known as refinement. From very early on, sugar production was an energy-intensive industrial process, mostly taking place in the countryside and in refineries in centres of consumption, both small and large. The growth of the industry entailed a very rapid diffusion of ideas and techniques from one country to another. Cuba, for example, developed an extraordinarily dense system of railways to transport workers and cane, as well as steam-powered sugar factories. Particular varieties of cane sugar and beet sugar spread very rapidly across the world, in accordance with local needs and demands.</p>
                     <p>Where once only tiny quantities of sugar could be produced, now new techniques, varieties, fertilisers, irrigation systems and much more have turned gleaming white sugar into a ubiquitous chemical. Over the same time, there has been a massive increase in consumption. Once regarded as a luxury, sugar came to be promoted as a valuable source of energy. But as the consumption of sugar has increased, so has the harm it does, whether to people's teeth or weight. In the face of appalling obstruction from the sugar industry to attempts to reduce consumption, some countries have been forced to tax sugar in order to bring that about. The sugar industry has a history of attacking its critics and, when it comes to obesity, of trying to blame fats, and lack of exercise and self-control. And the recent past has seen worrying new developments in mass sweetening. High-fructose corn syrup made from maize using an enzymatic process invented in Japan in the 1960s has a similar number of calories to table sugar but is far cheaper to produce. It is now widely consumed, having been adopted in the making of soft drinks and a large number of processed foods, and is regarded as a leading cause of obesity.</p>
                     <p>This is a wonderfully rich book, a model of global history, the history of production and the history of capitalism. Bosma avoids outbursts of emotion, celebratory or critical, even if they might have made his analysis of the multiple tragedies involving sugar all the more powerful. He shows that we could always have done without sugar and that today we have many alternative sources of sweetness. Yet many of the poorest people in the world still depend on it to make a living.</p>
@@ -1029,11 +258,9 @@
                         <div class="question" data-q-start="1" data-q-end="7">
                             <div class="question-prompt">
                                 <p><strong>Questions 1-7</strong></p>
-                                <p>Complete the notes below.</p>
-                                <p>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+                                <p>Complete the notes below. Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
                                 <div class="question-title">Gwendoline and Margaret Davies</div>
                             </div>
-                            
                             <p><strong>Family and early life</strong></p>
                             <ul>
                                 <li>their grandfather's wealth came from 1 <input type="text" class="answer-input" id="q1" placeholder="1"> and transportation businesses</li>
@@ -1042,62 +269,47 @@
                                 <li>their governess took them on trips to art galleries</li>
                                 <li>they took lengthy 3 <input type="text" class="answer-input" id="q3" placeholder="3"> about the things they saw in art galleries</li>
                             </ul>
-                            
                             <p><strong>The sisters as art collectors</strong></p>
                             <ul>
                                 <li>their 4 <input type="text" class="answer-input" id="q4" placeholder="4"> showed they liked Old Master paintings, but they were expensive to buy</li>
                                 <li>their early purchases were safe, popular paintings</li>
                                 <li>the first Impressionist paintings they bought showed places in 5 <input type="text" class="answer-input" id="q5" placeholder="5"></li>
                             </ul>
-                            
                             <p><strong>Impact of First World War</strong></p>
                             <ul>
                                 <li>they helped bring artists from Belgium to Wales</li>
                                 <li>they worked in a 6 <input type="text" class="answer-input" id="q6" placeholder="6"> for soldiers in France</li>
                             </ul>
-                            
                             <p><strong>Opinions about the sisters as art collectors</strong></p>
                             <ul>
                                 <li>were not considered typical collectors - they lived in isolation in the countryside and did not have any 7 <input type="text" class="answer-input" id="q7" placeholder="7"> who were artists</li>
                             </ul>
                         </div>
+                        
                         <div class="question" data-q-start="8" data-q-end="13">
-                            <div class="question-prompt"><p><strong>Questions 8-13</strong></p><p>Do the following statements agree with the information given in Reading Passage 1?</p><p>In boxes 8-13 on your answer sheet, write</p><p><strong>TRUE</strong> if the statement agrees with the information</p><p><strong>FALSE</strong> if the statement contradicts the information</p><p><strong>NOT GIVEN</strong> if there is no information on this</p></div>
-                            <div class="tf-question" data-q-start="8" data-q-end="8">
-                                <div class="tf-question-line"><span class="tf-question-number">8</span><span class="tf-question-text">The Davies sisters' childhood influenced the way they decided to use their wealth.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q8" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q8" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q8" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            <div class="question-prompt">
+                                <p><strong>Questions 8-13</strong></p>
+                                <p>Do the following statements agree with the information given in Reading Passage 1?</p>
+                                <p>Choose <strong>TRUE</strong> if the statement agrees with the information, choose <strong>FALSE</strong> if the statement contradicts the information, or choose <strong>NOT GIVEN</strong> if there is no information on this.</p>
                             </div>
-                            <div class="tf-question" data-q-start="9" data-q-end="9">
-                                <div class="tf-question-line"><span class="tf-question-number">9</span><span class="tf-question-text">The Jean-Baptiste-Camille Corot paintings in the Davies sisters' collection were purchased from a gallery in France.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q9" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q9" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q9" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="10" data-q-end="10">
-                                <div class="tf-question-line"><span class="tf-question-number">10</span><span class="tf-question-text">Hugh Blaker opposed the Davies sisters' decision to buy art by French Impressionists.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q10" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q10" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q10" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="11" data-q-end="11">
-                                <div class="tf-question-line"><span class="tf-question-number">11</span><span class="tf-question-text">The exhibition of Cézanne paintings at the Bath gallery was very popular with the public.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q11" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q11" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q11" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="12" data-q-end="12">
-                                <div class="tf-question-line"><span class="tf-question-number">12</span><span class="tf-question-text">The impact of the First World War encouraged Gwendoline to reconsider her interest in collecting art.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q12" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q12" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q12" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="13" data-q-end="13">
-                                <div class="tf-question-line"><span class="tf-question-number">13</span><span class="tf-question-text">The Davies sisters bought French Impressionist art during a period when very few people were doing so.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q13" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q13" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q13" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
+                            <div class="tf-question" data-q-start="8" data-q-end="8"><div class="tf-question-line"><span class="tf-question-number">8</span><span class="tf-question-text">The Davies sisters' childhood influenced the way they decided to use their wealth.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q8" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q8" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q8" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="9" data-q-end="9"><div class="tf-question-line"><span class="tf-question-number">9</span><span class="tf-question-text">The Jean-Baptiste-Camille Corot paintings in the Davies sisters' collection were purchased from a gallery in France.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q9" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q9" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q9" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="10" data-q-end="10"><div class="tf-question-line"><span class="tf-question-number">10</span><span class="tf-question-text">Hugh Blaker opposed the Davies sisters' decision to buy art by French Impressionists.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q10" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q10" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q10" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="11" data-q-end="11"><div class="tf-question-line"><span class="tf-question-number">11</span><span class="tf-question-text">The exhibition of Cézanne paintings at the Bath gallery was very popular with the public.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q11" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q11" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q11" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="12" data-q-end="12"><div class="tf-question-line"><span class="tf-question-number">12</span><span class="tf-question-text">The impact of the First World War encouraged Gwendoline to reconsider her interest in collecting art.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q12" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q12" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q12" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="13" data-q-end="13"><div class="tf-question-line"><span class="tf-question-number">13</span><span class="tf-question-text">The Davies sisters bought French Impressionist art during a period when very few people were doing so.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q13" value="TRUE"> TRUE</label><label class="tf-option"><input type="radio" name="q13" value="FALSE"> FALSE</label><label class="tf-option"><input type="radio" name="q13" value="NOT GIVEN"> NOT GIVEN</label></div></div>
                         </div>
                     </div>
                 </div>
+                
                 <div id="questions-2" class="question-set hidden">
                     <div class="questions-container">
                         <div class="question" data-q-start="14" data-q-end="17">
                             <div class="question-prompt">
                                 <p><strong>Questions 14-17</strong></p>
-                                <p>Reading Passage <strong>2</strong> has seven sections, <strong>A-G</strong>.</p>
+                                <p>Reading Passage 2 has seven sections, A-G.</p>
                                 <p>Which section contains the following information?</p>
-                                <p>Write the correct letter, <strong>A-G</strong>, in boxes 14-17.</p>
+                                <p>Write the correct letter, <strong>A-G</strong>.</p>
                             </div>
                             <div class="matching-form-container">
                                 <div class="matching-form-row">
@@ -1118,25 +330,26 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="question" data-q-start="18" data-q-end="21">
                             <div class="question-prompt">
                                 <p><strong>Questions 18-21</strong></p>
-                                <p>Complete the summary below.</p>
-                                <p>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+                                <p>Complete the summary below. Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
                                 <div class="question-title">Flotation Tanks</div>
                             </div>
                             <p>According to Justin Feinstein, flotation tanks allow people to concentrate on their own 18 <input type="text" class="answer-input" id="q18" placeholder="18"> which helps them relax and enables them to meditate.</p>
                             <p>Feinstein and his colleagues conducted an experiment in which 50 people, who were all suffering from stress and related issues, were given a 19 <input type="text" class="answer-input" id="q19" placeholder="19"> to complete before and after using a flotation tank. Participants reported a reduction in their symptoms after an hour in the tank, together with signs of relaxation and improved general 20 <input type="text" class="answer-input" id="q20" placeholder="20">.</p>
                             <p>In another experiment, the researchers had 48 people spend periods of 90 minutes either lying back in a chair or floating in a tank. Brain scans then revealed that those people who had been in a tank had decreased activity in parts of the brain associated with 21 <input type="text" class="answer-input" id="q21" placeholder="21">.</p>
                         </div>
+
                         <div class="question" data-q-start="22" data-q-end="26">
                             <div class="question-prompt">
                                 <p><strong>Questions 22-26</strong></p>
-                                <p>Look at the following statements (Questions 22-26) and the list of people below.</p>
+                                <p>Look at the following statements and the list of people below.</p>
                                 <p>Match each statement with the correct person, <strong>A, B, C or D</strong>.</p>
                                 <p><em>NB You may use any letter more than once.</em></p>
                             </div>
-                            <div class="example-box" style="font-size: 15px;">
+                            <div class="example-box" style="font-size: 15px; margin-bottom: 15px;">
                                 <p><strong>List of People</strong></p>
                                 <ul class="options-list">
                                     <li><span class="options-list-label">A</span> Nick Antonio</li>
@@ -1170,6 +383,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div id="questions-3" class="question-set hidden">
                     <div class="questions-container">
                         <div class="question" data-q-start="27" data-q-end="30">
@@ -1214,14 +428,15 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="question" data-q-start="31" data-q-end="36">
                             <div class="question-prompt">
                                 <p><strong>Questions 31-36</strong></p>
                                 <p>Complete the summary using the list of words, <strong>A-I</strong>, below.</p>
                                 <div class="question-title">Sugar cultivation and production</div>
                             </div>
-                            <p>The book The World of Sugar points out the similarities in the way that sugar was cultivated around the world. In the big industries in both Germany and the US, sugar farming depended on 31 <select class="answer-input" id="q31"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select>. However, in other parts of the world such as South Asia and Latin America, 32 <select class="answer-input" id="q32"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> continued. </p>
-                            <p>Sugar production has also involved 33 <select class="answer-input" id="q33"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> who were eager to protect their markets. In countries such as Cuba the sugar industry therefore had a major influence on 34 <select class="answer-input" id="q34"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select>. To support the interests of sugar producers, 35 <select class="answer-input" id="q35"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> were established. As a result of this, 36 <select class="answer-input" id="q36"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> were penalised.</p>
+                            <p>The book The World of Sugar points out the similarities in the way that sugar was cultivated around the world. In the big industries in both Germany and the US, sugar farming depended on 31 <select class="answer-input" id="q31"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> . However, in other parts of the world such as South Asia and Latin America, 32 <select class="answer-input" id="q32"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> continued.</p>
+                            <p>Sugar production has also involved 33 <select class="answer-input" id="q33"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> who were eager to protect their markets. In countries such as Cuba the sugar industry therefore had a major influence on 34 <select class="answer-input" id="q34"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> . To support the interests of sugar producers, 35 <select class="answer-input" id="q35"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> were established. As a result of this, 36 <select class="answer-input" id="q36"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select> were penalised.</p>
                             <br>
                             <div class="example-box" style="font-size: 15px;">
                                 <ul class="options-list">
@@ -1237,24 +452,17 @@
                                 </ul>
                             </div>
                         </div>
+
                         <div class="question" data-q-start="37" data-q-end="40">
-                            <div class="question-prompt"><p><strong>Questions 37-40</strong></p><p>Do the following statements agree with the views of the writer in Reading Passage 3?</p><p>In boxes 37-40 on your answer sheet, write</p><p><strong>YES</strong> if the statement agrees with the views of the writer</p><p><strong>NO</strong> if the statement contradicts the views of the writer</p><p><strong>NOT GIVEN</strong> if it is impossible to say what the writer thinks about this</p></div>
-                            <div class="tf-question" data-q-start="37" data-q-end="37">
-                                <div class="tf-question-line"><span class="tf-question-number">37</span><span class="tf-question-text">Sugar has now become available in large quantities due to a range of agricultural developments.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q37" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q37" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q37" value="NOT GIVEN"> NOT GIVEN</label></div>
+                            <div class="question-prompt">
+                                <p><strong>Questions 37-40</strong></p>
+                                <p>Do the following statements agree with the views of the writer in Reading Passage 3?</p>
+                                <p>Choose <strong>YES</strong> if the statement agrees with the views of the writer, choose <strong>NO</strong> if the statement contradicts the views of the writer, or choose <strong>NOT GIVEN</strong> if it is impossible to say what the writer thinks about this.</p>
                             </div>
-                            <div class="tf-question" data-q-start="38" data-q-end="38">
-                                <div class="tf-question-line"><span class="tf-question-number">38</span><span class="tf-question-text">Advertisers initially marketed sugar as a luxury product.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q38" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q38" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q38" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="39" data-q-end="39">
-                                <div class="tf-question-line"><span class="tf-question-number">39</span><span class="tf-question-text">The invention of high-fructose corn syrup was a positive development.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q39" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q39" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q39" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
-                            <div class="tf-question" data-q-start="40" data-q-end="40">
-                                <div class="tf-question-line"><span class="tf-question-number">40</span><span class="tf-question-text">High-fructose corn syrup is an ingredient in many processed foods.</span></div>
-                                <div class="tf-options"><label class="tf-option"><input type="radio" name="q40" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q40" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q40" value="NOT GIVEN"> NOT GIVEN</label></div>
-                            </div>
+                            <div class="tf-question" data-q-start="37" data-q-end="37"><div class="tf-question-line"><span class="tf-question-number">37</span><span class="tf-question-text">Sugar has now become available in large quantities due to a range of agricultural developments.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q37" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q37" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q37" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="38" data-q-end="38"><div class="tf-question-line"><span class="tf-question-number">38</span><span class="tf-question-text">Advertisers initially marketed sugar as a luxury product.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q38" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q38" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q38" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="39" data-q-end="39"><div class="tf-question-line"><span class="tf-question-number">39</span><span class="tf-question-text">The invention of high-fructose corn syrup was a positive development.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q39" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q39" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q39" value="NOT GIVEN"> NOT GIVEN</label></div></div>
+                            <div class="tf-question" data-q-start="40" data-q-end="40"><div class="tf-question-line"><span class="tf-question-number">40</span><span class="tf-question-text">High-fructose corn syrup is an ingredient in many processed foods.</span></div><div class="tf-options"><label class="tf-option"><input type="radio" name="q40" value="YES"> YES</label><label class="tf-option"><input type="radio" name="q40" value="NO"> NO</label><label class="tf-option"><input type="radio" name="q40" value="NOT GIVEN"> NOT GIVEN</label></div></div>
                         </div>
                     </div>
                 </div>
@@ -1262,13 +470,11 @@
         </div>
     </div>
 
-    <!-- Navigation Arrows -->
     <div class="nav-arrows">
         <button class="nav-arrow" onclick="previousQuestion()" id="prevBtn">‹</button>
         <button class="nav-arrow" onclick="nextQuestion()" id="nextBtn">›</button>
     </div>
 
-    <!-- FOOTER_NAV_START -->
     <nav class="nav-row perScorableItem" aria-label="Questions">
         <div class="footer__questionWrapper___1tZ46 multiple selected" role="tablist">
             <button role="tab" class="footer__questionNo___3WNct" onclick="switchToPart(1)">
@@ -1343,90 +549,99 @@
                 <button class="subQuestion scorable-item" onclick="goToQuestion(40)"><span class="sr-only">Question 40</span><span aria-hidden="true">40</span></button>
             </div>
         </div>
-
         <button id="deliver-button" aria-label="Review your answers" class="footer__deliverButton___3FM07">
             <i class="fa fa fa-check" aria-hidden="true"></i>
             <span>Check Answers</span>
         </button>
     </nav>
-    <!-- FOOTER_NAV_END -->
 
-    <!-- Context Menu - 3 màu trực tiếp -->
     <div id="contextMenu" class="context-menu">
-        <div id="menu-note" class="context-menu-item" onclick="addNote()">
-            📝 Take note
-        </div>
+        <div id="menu-note" class="context-menu-item" onclick="addNote()">📝 Take note</div>
         <div id="menu-highlight-colors" class="context-menu-item" style="display: flex; gap: 15px; justify-content: center; padding: 12px 16px;">
             <button type="button" class="color-btn yellow" onclick="highlightText('yellow')" title="Highlight Yellow"></button>
             <button type="button" class="color-btn green" onclick="highlightText('green')" title="Highlight Green"></button>
             <button type="button" class="color-btn pink" onclick="highlightText('pink')" title="Highlight Pink"></button>
         </div>
-        <div id="menu-clear" class="context-menu-item" onclick="clearHighlight()">
-            🗑️ Delete
-        </div>
-        <div id="menu-clear-all" class="context-menu-item" onclick="clearAllHighlights()">
-            🗑️ Delete all
-        </div>
+        <div id="menu-clear" class="context-menu-item" onclick="clearHighlight()">🗑️ Delete</div>
+        <div id="menu-clear-all" class="context-menu-item" onclick="clearAllHighlights()">🗑️ Delete all</div>
     </div>
 
     <div id="results-modal" class="modal-overlay hidden">
         <div class="modal-content">
             <button class="modal-close-btn" onclick="closeResultsModal()">&times;</button>
             <h2>Results</h2>
+            <div id="submit-status" style="display: none; text-align: center; margin-bottom: 15px; padding: 10px; border-radius: 4px; font-weight: bold;"></div>
             <div class="results-summary">
                 <p>Score: <span id="results-score"></span> / 40</p>
                 <p>IELTS Band: <span id="results-band"></span></p>
             </div>
-            <div id="results-details" class="results-details-container">
-                <!-- Results for each question will be injected here -->
-            </div>
+            <div id="results-details" class="results-details-container"></div>
         </div>
     </div>
 
-    <script>window.testMeta = {"totalQuestions":40,"parts":[{"part":1,"start":1,"end":13},{"part":2,"start":14,"end":26},{"part":3,"start":27,"end":40}],"correctAnswers":{"1":"mining","2":"education","3":"notes","4":"journals","5":"Venice","6":"canteen","7":"friends","8":"TRUE","9":"NOT GIVEN","10":"FALSE","11":"NOT GIVEN","12":"TRUE","13":"TRUE","14":"C","15":"B","16":"A","17":"G","18":"breath","19":"questionnaire","20":"wellbeing","21":"depression","22":"C","23":"A","24":"B","25":"D","26":"C","27":"B","28":"A","29":"C","30":"A","31":"H","32":"E","33":"I","34":"A","35":"G","36":"C","37":"YES","38":"NOT GIVEN","39":"NO","40":"YES"}};</script>
+    <script>
+    window.testMeta = {
+        "totalQuestions": 40,
+        "parts": [
+            {"part": 1, "start": 1, "end": 13},
+            {"part": 2, "start": 14, "end": 26},
+            {"part": 3, "start": 27, "end": 40}
+        ],
+        "correctAnswers": {
+            "1": ["mining", "Mining"], "2": ["education", "Education"], "3": ["notes", "Notes"], "4": ["journals", "Journals"], "5": ["Venice", "venice"], "6": ["canteen", "Canteen"], "7": ["friends", "Friends"], 
+            "8": "TRUE", "9": "NOT GIVEN", "10": "FALSE", "11": "NOT GIVEN", "12": "TRUE", "13": "TRUE", 
+            "14": "C", "15": "B", "16": "A", "17": "G", 
+            "18": ["breath", "Breath"], "19": ["questionnaire", "Questionnaire"], "20": ["wellbeing", "Wellbeing", "well-being"], "21": ["depression", "Depression"], 
+            "22": "C", "23": "A", "24": "B", "25": "D", "26": "C", 
+            "27": "B", "28": "A", "29": "C", "30": "A", 
+            "31": "H", "32": "E", "33": "I", "34": "A", "35": "G", "36": "C", 
+            "37": "YES", "38": "NOT GIVEN", "39": "NO", "40": "YES"
+        }
+    };
+    </script>
     
     <script>
     window.testExplanations = {
-        "1": 'Trích dẫn: "David Davies, a Welshman who amassed a fortune in the shipping and mining industries."',
-        "2": 'Trích dẫn: "the sisters\' education was rigorously geared toward such pursuits."',
-        "3": 'Trích dẫn: "visiting art galleries and making extensive notes on the collections there."',
-        "4": 'Trích dẫn: "The sisters\' journals reveal their preference for Old Master paintings."',
-        "5": 'Trích dẫn: "their first purchases of Impressionist art, made in October 1912, were scenes of Venice"',
-        "6": 'Trích dẫn: "both sisters decided to volunteer at a canteen for troops at Troyes, in northern France"',
-        "7": 'Trích dẫn: "their isolation in rural Wales and the fact that they didn\'t make friends with artists or gallery owners."',
-        "8": 'Trích dẫn: "Their religious upbringing in rural Wales gave them a deep sense of social responsibility and they chose to use their inheritance for cultural and philanthropic purposes."',
-        "9": 'Bài đọc chỉ nhắc đến việc họ mua tranh của Jean-Baptiste-Camille Corot, không đề cập đến việc mua từ một "gallery in France". Đáp án là NOT GIVEN.',
-        "10": 'Trích dẫn: "We know that Hugh Blaker, as a champion of contemporary French art had a hand in the decision..." (Hugh Blaker ủng hộ quyết định này, không phản đối). Đáp án là FALSE.',
-        "11": 'Bài đọc chỉ nhắc đến việc "they became the first works by Cézanne to go on display in a public gallery in Britain" mà không đề cập đến việc triển lãm có nổi tiếng hay không. Đáp án là NOT GIVEN.',
-        "12": 'Trích dẫn: "By the early 1920s, Gwendoline felt increasingly uncomfortable buying art works when faced with the poverty and social upheaval created by the First World War. Her philanthropic pursuits then became focused almost exclusively on social causes..."',
-        "13": 'Trích dẫn: "The sisters collected French Impressionist paintings at a time when such art was routinely ignored by individuals and institutions alike."',
-        "14": 'Trích dẫn: "Other cities have introduced noise-reducing road coatings... Washington DC\'s ban on petrol-powered leaf blowers..."',
-        "15": 'Trích dẫn: "at least 1 in 5 people consistently exposed to levels considered harmful to health."',
-        "16": 'Trích dẫn: "Our blood pressure goes up, muscles tense and glands release hormones that prepare us for fight or flight."',
-        "17": 'Trích dẫn: "he found that participants reported more relaxation and less boredom when they sat quietly in an outdoor garden compared with a completely silent room."',
-        "18": 'Trích dẫn: "But it is the ability to focus on the breath that helps people reach a relaxed or meditative state."',
-        "19": 'Trích dẫn: "had them answer a questionnaire prior to and following a flotation session."',
-        "20": 'Trích dẫn: "alongside an increase in feelings of relaxation and overall wellbeing."',
-        "21": 'Trích dẫn: "decreased activity in the default mode network (DMN), a collection of brain regions commonly linked with depression."',
-        "22": 'Trích dẫn: "When people do not want silence, it can be very distressing." (Tal Dotan Ben-Soussan)',
-        "23": 'Trích dẫn: "I expect we will see much more of this in the future." (Nick Antonio)',
-        "24": 'Trích dẫn: "When you don\'t have external sensory stimuli coming in, the brain tries to fill the void to make sense of this dark and silent world" (Justin Feinstein)',
-        "25": 'Trích dẫn: "You don\'t need to spend hours in silence... It is likely better to have more frequency of silence for a few minutes at a time" (Eric Pfeifer)',
-        "26": 'Trích dẫn: "This allows us to be more aware of what is happening around us and what the situation may require from us so we can provide [a more] adequate response." (Tal Dotan Ben-Soussan)',
-        "27": 'Trích dẫn: "Beet sugar is grown mainly in Europe and the United States. It has also been massively subsidised and sold at artificially low prices on world markets, threatening the livelihood of producers of cane sugar."',
-        "28": 'Trích dẫn: "The sweet-toothed British first bought cane sugar from their own slavery-dependent colonial plantations... Towards the end of the 19th century, the British started to import beet sugar... Only in the 20th century was there a move to develop a national beet sugar industry." (Sự thay đổi nguồn cung cấp qua thời gian).',
-        "29": 'Trích dẫn: "Contrary to popular belief, cane sugar production was never just restricted to large, dedicated plantations owned by rich men." (Giải đáp nhầm tưởng phổ biến).',
-        "30": 'Trích dẫn: "He shows that we could always have done without sugar and that today we have many alternative sources of sweetness." (Sugar là không cần thiết, và cũng đã nhắc đến tác hại trước đó).',
-        "31": 'Trích dẫn: "German beet fields employed Polish workers; Mexicans and many others, including Sicilians, were vital to US sugar production." (Sự phụ thuộc vào lao động nhập cư / migrant workers).',
-        "32": 'Trích dẫn: "But as well as this, the book is about the continuity of the use of traditional methods on small farms. In the mid 20th-century, this type of sugar production dominated in South Asia and Latin America." (small-scale cultivation).',
-        "33": 'Trích dẫn: "This is also a history of capitalists and sugar dynasties, as well as corporations that in some cases have remained influential over very long periods." (powerful individuals and businesses).',
-        "34": 'Trích dẫn: "In many places - not just the British Caribbean but Cuba and the Philippines too - a powerful sugar bourgeoisie played a major role in politics..." (ảnh hưởng chính phủ quốc gia / national governments).',
-        "35": 'Trích dẫn: "...their interests were consequently protected by trade barriers and subsidies." (financial controls).',
-        "36": 'Trích dẫn: "In the battle for control of the industry, it was inevitably the poor countries which came off worse." (less wealthy nations bị thiệt).',
-        "37": 'Trích dẫn: "Where once only tiny quantities of sugar could be produced, now new techniques, varieties, fertilisers, irrigation systems and much more have turned gleaming white sugar into a ubiquitous chemical."',
-        "38": 'Bài đọc không nói rõ quảng cáo lúc đầu quảng bá đường là một sản phẩm xa xỉ. Chỉ có nhắc "Once regarded as a luxury, sugar came to be promoted as a valuable source of energy." Đáp án là NOT GIVEN.',
-        "39": 'Trích dẫn: "High-fructose corn syrup... is regarded as a leading cause of obesity." Đây là hậu quả tiêu cực, không phải là "positive development". Đáp án là NO.',
-        "40": 'Trích dẫn: "It is now widely consumed, having been adopted in the making of soft drinks and a large number of processed foods"'
+        "1": 'Trích dẫn: "David Davies, a Welshman who amassed a fortune in the shipping and mining industries." (Do câu hỏi gộp transportation = shipping, nên từ cần điền là mining).',
+        "2": 'Trích dẫn: "Their London school focused on cultural rather than academic study..." (Ám chỉ Education - giáo dục của họ được định hướng vào văn hóa thay vì học thuật).',
+        "3": 'Trích dẫn: "...visiting art galleries and making extensive notes on the collections there." (Họ ghi chép rất dài - lengthy notes).',
+        "4": 'Trích dẫn: "The sisters\' journals reveal their preference for Old Master paintings." (Tài liệu/nhật ký của họ tiết lộ điều này).',
+        "5": 'Trích dẫn: "...their first purchases of Impressionist art, made in October 1912, were scenes of Venice by the French artist Claude Monet." (Venice).',
+        "6": 'Trích dẫn: "...both sisters decided to volunteer at a canteen for troops at Troyes, in northern France..." (Canteen).',
+        "7": 'Trích dẫn: "Much is made of their isolation in rural Wales and the fact that they didn\'t make friends with artists or gallery owners." (Họ không có bạn bè là họa sĩ - friends).',
+        "8": 'Trích dẫn: "Their religious upbringing in rural Wales gave them a deep sense of social responsibility and they chose to use their inheritance for cultural and philanthropic purposes." (Đồng ý với thông tin).',
+        "9": 'Bài đọc nhắc đến việc họ mua tác phẩm của Corot, nhưng không hề đề cập nó được mua từ "một phòng tranh ở Pháp" (a gallery in France). (NOT GIVEN).',
+        "10": 'Trích dẫn: "We know that Hugh Blaker, as a champion of contemporary French art had a hand in the decision..." (Hugh Blaker ủng hộ và góp phần vào quyết định đó, trái với việc "opposed" / phản đối). (FALSE).',
+        "11": 'Bài đọc xác nhận các bức tranh "became the first works by Cézanne to go on display in a public gallery in Britain" nhưng không có thông tin xác nhận nó có "very popular with the public" hay không. (NOT GIVEN).',
+        "12": 'Trích dẫn: "By the early 1920s, Gwendoline felt increasingly uncomfortable buying art works when faced with the poverty and social upheaval created by the First World War... Gwendoline made her final art purchase in March 1926." (Đồng ý với thông tin).',
+        "13": 'Trích dẫn: "The sisters collected French Impressionist paintings at a time when such art was routinely ignored by individuals and institutions alike." (Đồng ý với thông tin).',
+        "14": 'Trích dẫn: Đoạn C: "...reducing noise from roads and also controlling noise from aircraft... introduced noise-reducing road coatings... ban on petrol-powered leaf blowers..."',
+        "15": 'Trích dẫn: Đoạn B: "The World Health Organization has recently designated excessive noise as an \'underestimated threat\'... at least 1 in 5 people consistently exposed to levels considered harmful to health."',
+        "16": 'Trích dẫn: Đoạn A: "Our blood pressure goes up, muscles tense and glands release hormones that prepare us for fight or flight."',
+        "17": 'Trích dẫn: Đoạn G: "In a recent study, he found that participants reported more relaxation and less boredom when they sat quietly in an outdoor garden compared with a completely silent room."',
+        "18": 'Trích dẫn: Đoạn D: "...it is the ability to focus on the breath that helps people reach a relaxed or meditative state." (Từ điền: breath).',
+        "19": 'Trích dẫn: Đoạn E: "...had them answer a questionnaire prior to and following a flotation session." (Từ điền: questionnaire).',
+        "20": 'Trích dẫn: Đoạn E: "...alongside an increase in feelings of relaxation and overall wellbeing." (Từ điền: wellbeing).',
+        "21": 'Trích dẫn: Đoạn F: "...decreased activity in the default mode network (DMN), a collection of brain regions commonly linked with depression." (Từ điền: depression).',
+        "22": 'Trích dẫn: Đoạn F (Tal Dotan Ben-Soussan): "When people do not want silence, it can be very distressing." (Khớp người C).',
+        "23": 'Trích dẫn: Đoạn C (Nick Antonio): "I expect we will see much more of this in the future." (Khớp người A).',
+        "24": 'Trích dẫn: Đoạn D (Justin Feinstein): "When you don\'t have external sensory stimuli coming in, the brain tries to fill the void to make sense of this dark and silent world..." (Khớp người B).',
+        "25": 'Trích dẫn: Đoạn G (Eric Pfeifer): "You don\'t need to spend hours in silence... It is likely better to have more frequency of silence for a few minutes at a time..." (Khớp người D).',
+        "26": 'Trích dẫn: Đoạn F (Tal Dotan Ben-Soussan): "This allows us to be more aware of what is happening around us and what the situation may require from us so we can provide [a more] adequate response." (Khớp người C).',
+        "27": 'Trích dẫn: Đoạn 1: "Beet sugar is grown mainly in Europe and the United States. It has also been massively subsidised and sold at artificially low prices on world markets..." (Khớp B).',
+        "28": 'Trích dẫn: Đoạn 2: "The sweet-toothed British first bought cane sugar from... colonial plantations. Following the abolition of slavery... was imported... from places which retained the practice... Towards the end of the 19th century... import beet sugar... Only in the 20th century was there a move to develop a national beet sugar industry." (Khớp A - Các nguồn thay đổi theo thời gian).',
+        "29": 'Trích dẫn: Đoạn 3: "Contrary to popular belief, cane sugar production was never just restricted to large, dedicated plantations owned by rich men." (Khớp C - Làm rõ quan niệm sai lầm).',
+        "30": 'Trích dẫn: Đoạn cuối: "He shows that we could always have done without sugar and that today we have many alternative sources of sweetness." (Khớp A - Đường không phải sản phẩm bắt buộc).',
+        "31": 'Trích dẫn: Đoạn 4: "German beet fields employed Polish workers; Mexicans and many others, including Sicilians, were vital to US sugar production." (Migrant workers -> H).',
+        "32": 'Trích dẫn: Đoạn 4: "...the continuity of the use of traditional methods on small farms. In the mid 20th-century, this type of sugar production dominated in South Asia and Latin America." (small-scale cultivation -> E).',
+        "33": 'Trích dẫn: Đoạn 5: "This is also a history of capitalists and sugar dynasties, as well as corporations that in some cases have remained influential over very long periods." (powerful individuals and businesses -> I).',
+        "34": 'Trích dẫn: Đoạn 5: "In many places - not just the British Caribbean but Cuba and the Philippines too a powerful sugar bourgeoisie played a major role in politics..." (national governments -> A).',
+        "35": 'Trích dẫn: Đoạn 5: "...and their interests were consequently protected by trade barriers and subsidies." (financial controls -> G).',
+        "36": 'Trích dẫn: Đoạn 5: "In the battle for control of the industry, it was inevitably the poor countries which came off worse." (less wealthy nations -> C).',
+        "37": 'Trích dẫn: Đoạn 7: "Where once only tiny quantities of sugar could be produced, now new techniques, varieties, fertilisers, irrigation systems and much more have turned gleaming white sugar into a ubiquitous chemical." (YES).',
+        "38": 'Trích dẫn: "Once regarded as a luxury, sugar came to be promoted as a valuable source of energy." (Bài không đề cập việc "nhà quảng cáo" (advertisers) ban đầu tiếp thị nó như một sản phẩm xa xỉ, mà chỉ nói "từng được coi là xa xỉ". NOT GIVEN).',
+        "39": 'Trích dẫn: Đoạn 7: "High-fructose corn syrup... is regarded as a leading cause of obesity." (NO - nó gây hại, không tích cực).',
+        "40": 'Trích dẫn: Đoạn 7: "It is now widely consumed, having been adopted in the making of soft drinks and a large number of processed foods..." (YES).'
     };
     </script>
 
@@ -1436,22 +651,30 @@
         const app = document.getElementById('app');
         const startNormalBtn = document.getElementById('startNormalBtn');
         const launchTitle = document.getElementById('launchTestTitle');
-        if (launchTitle && document.title) {
-            launchTitle.textContent = document.title;
-        }
+        if (launchTitle && document.title) { launchTitle.textContent = document.title; }
         let examStarted = false;
+        let currentStudentName = "";
+        let currentStudentClass = "";
 
         const beginExam = () => {
             if (examStarted) return;
+            const nameInput = document.getElementById('studentName');
+            const classInput = document.getElementById('studentClass');
+            const errorMsg = document.getElementById('launchError');
+            if (!nameInput.value.trim() || !classInput.value.trim()) {
+                errorMsg.style.display = 'block';
+                return;
+            }
+            errorMsg.style.display = 'none';
+            currentStudentName = nameInput.value.trim();
+            currentStudentClass = classInput.value.trim();
             examStarted = true;
             if (launchScreen) launchScreen.style.display = 'none';
             if (app) app.style.display = 'block';
             initialize();
         };
 
-        if (startNormalBtn) {
-            startNormalBtn.addEventListener('click', beginExam);
-        }
+        if (startNormalBtn) { startNormalBtn.addEventListener('click', beginExam); }
         
         const testMeta = window.testMeta || { totalQuestions: 40, parts: [], correctAnswers: {} };
         const partRanges = testMeta.parts || [];
@@ -1491,51 +714,36 @@
             startTimer();
             const firstPart = partRanges[0]?.part || 1;
             switchToPart(firstPart);
-            
             document.body.addEventListener('input', updateAllIndicators);
             document.body.addEventListener('change', updateAllIndicators);
             deliverButton.addEventListener('click', checkAnswers);
             timerToggleButton.addEventListener('click', toggleTimer);
             timerResetButton.addEventListener('click', resetTimer);
-
             document.querySelectorAll('[data-q-start]').forEach(el => {
                 el.addEventListener('click', (ev) => {
-                    if (ev.target.closest('input, select, label, .tf-options, .multi-choice-option, .matching-form-row')) {
-                        return;
-                    }
+                    if (ev.target.closest('input, select, label, .tf-options, .multi-choice-option, .matching-form-row')) { return; }
                     const qNum = parseInt(el.dataset.qStart, 10);
-                    if (currentQuestion !== qNum) {
-                        goToQuestion(qNum);
-                    }
+                    if (currentQuestion !== qNum) { goToQuestion(qNum); }
                 });
             });
-
             resizer.addEventListener('mousedown', initResize, false);
             initializeContextMenu();
             initializeQuestionMarkers();
         }
 
-        // Tự động highlight đoạn văn chứa evidence khi bấm vào khung giải thích
         function highlightEvidenceInPassage(explanationText) {
             let targetPhrase = "";
             const match = explanationText.match(/"([^"]+)"/);
-            if (match) {
-                targetPhrase = match[1].trim();
-            } else {
-                targetPhrase = explanationText.replace(/^.*?Trích dẫn:\s*/i, "").trim();
-            }
+            if (match) { targetPhrase = match[1].trim(); } 
+            else { targetPhrase = explanationText.replace(/^.*?Trích dẫn:\s*/i, "").trim(); }
             if (!targetPhrase) return;
-
             let cleanQuery = targetPhrase.replace(/^\.\.\./, "").replace(/\.\.\.$/, "").trim();
             if (!cleanQuery) return;
-
             const currentPassageEl = passagePanel.querySelector('.reading-passage:not(.hidden)');
             if (!currentPassageEl) return;
-
             const walker = document.createTreeWalker(currentPassageEl, NodeFilter.SHOW_TEXT, null, false);
             let node;
             let found = false;
-
             while (node = walker.nextNode()) {
                 const text = node.nodeValue;
                 const index = text.indexOf(cleanQuery);
@@ -1543,12 +751,10 @@
                     const range = document.createRange();
                     range.setStart(node, index);
                     range.setEnd(node, index + cleanQuery.length);
-                    
                     const span = document.createElement('span');
                     span.className = 'annotation annotation-highlight highlight-blue';
                     span.dataset.type = 'highlight';
                     span.dataset.color = 'blue';
-                    
                     try {
                         range.surroundContents(span);
                         span.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1557,7 +763,6 @@
                     break;
                 }
             }
-
             if (!found) {
                 const words = cleanQuery.split(/\s+/).filter(w => w.length > 4);
                 if (words.length > 0) {
@@ -1570,14 +775,11 @@
                             const range = document.createRange();
                             range.setStart(node, index);
                             range.setEnd(node, Math.min(index + cleanQuery.length, text.length));
-                            
                             const span = document.createElement('span');
                             span.className = 'annotation annotation-highlight highlight-blue';
                             span.dataset.type = 'highlight';
                             span.dataset.color = 'blue';
-                            
                             try {
-                                range.surroundContents(span);
                                 span.scrollIntoView({ behavior: 'smooth', block: 'center' });
                             } catch (e) {}
                             break;
@@ -1592,20 +794,16 @@
             hasSubmitted = true;
             const allInputs = document.querySelectorAll('input, select, textarea');
             allInputs.forEach(input => { input.disabled = true; });
-
             deliverButton.disabled = true;
             deliverButton.style.cursor = 'not-allowed';
-            
+            const timeTakenSecs = 3600 - timeInSeconds;
             clearInterval(timerInterval);
             timerInterval = null;
             timerToggleButton.innerHTML = playIcon;
             let score = 0;
             const resultsDetailsContainer = document.getElementById('results-details');
             resultsDetailsContainer.innerHTML = '';
-
-            document.querySelectorAll('.correct, .incorrect, .correct-answer-highlight').forEach(el => {
-                el.classList.remove('correct', 'incorrect', 'correct-answer-highlight');
-            });
+            document.querySelectorAll('.correct, .incorrect, .correct-answer-highlight').forEach(el => { el.classList.remove('correct', 'incorrect', 'correct-answer-highlight'); });
             document.querySelectorAll('.correct-answer-display').forEach(el => el.remove());
 
             for (let i = 1; i <= totalQuestions; i++) {
@@ -1624,15 +822,9 @@
                     const element = textInput.closest('.matching-form-row') || textInput;
                     userAnswer = textInput.value.trim();
                     userAnswerDisplay = userAnswer || 'Not Answered';
-
-                    isCorrect = Array.isArray(correctAnswer) ?
-                        correctAnswer.some(ans => userAnswer.toLowerCase() === ans.toLowerCase()) :
-                        userAnswer.toLowerCase() === correctAnswer.toLowerCase();
-                    
-                    if (isCorrect) {
-                        score++;
-                        element.classList.add('correct');
-                    } else {
+                    isCorrect = Array.isArray(correctAnswer) ? correctAnswer.some(ans => userAnswer.toLowerCase() === ans.toLowerCase()) : userAnswer.toLowerCase() === correctAnswer.toLowerCase();
+                    if (isCorrect) { score++; element.classList.add('correct'); }
+                    else {
                         element.classList.add('incorrect');
                         const correctAnswerSpan = document.createElement('span');
                         correctAnswerSpan.className = 'correct-answer-display';
@@ -1644,13 +836,9 @@
                     const element = selectInput.closest('.matching-form-row') || selectInput;
                     userAnswer = selectInput.value;
                     userAnswerDisplay = userAnswer || 'Not Answered';
-
-                    isCorrect = userAnswer === correctAnswer;
-                    
-                    if (isCorrect) {
-                        score++;
-                        element.classList.add('correct');
-                    } else {
+                    isCorrect = Array.isArray(correctAnswer) ? correctAnswer.some(ans => userAnswer.toLowerCase() === ans.toLowerCase()) : userAnswer.toLowerCase() === correctAnswer.toLowerCase();
+                    if (isCorrect) { score++; element.classList.add('correct'); }
+                    else {
                         element.classList.add('incorrect');
                         const correctAnswerSpan = document.createElement('span');
                         correctAnswerSpan.className = 'correct-answer-display';
@@ -1661,28 +849,21 @@
                 else if (radioGroup.length > 0) {
                     const questionContainer = radioGroup[0].closest('.tf-question') || radioGroup[0].closest('.multi-choice-question');
                     const checkedRadio = document.querySelector(`input[name="q${i}"]:checked`);
-
                     if (checkedRadio) {
                         userAnswer = checkedRadio.value;
                         userAnswerDisplay = userAnswer;
-                        isCorrect = userAnswer === correctAnswer;
-
+                        isCorrect = Array.isArray(correctAnswer) ? correctAnswer.some(ans => userAnswer.toLowerCase() === ans.toLowerCase()) : userAnswer.toLowerCase() === correctAnswer.toLowerCase();
                         const userLabel = checkedRadio.closest('.tf-option, .multi-choice-option');
-                        if (userLabel) {
-                            userLabel.classList.add(isCorrect ? 'correct' : 'incorrect');
-                        }
+                        if (userLabel) { userLabel.classList.add(isCorrect ? 'correct' : 'incorrect'); }
                     }
-
-                    if (isCorrect) {
-                        score++;
-                    } else {
+                    if (isCorrect) { score++; }
+                    else {
                         if (questionContainer){
-                            const correctOptionEl = questionContainer.querySelector(`input[value="${correctAnswerText}"]`);
+                            const firstCorrect = Array.isArray(correctAnswer) ? correctAnswer[0] : correctAnswerText;
+                            const correctOptionEl = questionContainer.querySelector(`input[value="${firstCorrect}"]`);
                             if (correctOptionEl) {
                                 const correctLabel = correctOptionEl.closest('.tf-option, .multi-choice-option');
-                                if (correctLabel) {
-                                    correctLabel.classList.add('correct-answer-highlight');
-                                }
+                                if (correctLabel) { correctLabel.classList.add('correct-answer-highlight'); }
                             }
                         }
                     }
@@ -1711,101 +892,108 @@
                     } else if (radioGroup.length > 0) {
                         container = radioGroup[0].closest('.tf-question') || radioGroup[0].closest('.multi-choice-question');
                     }
-                    
                     if (container) {
                         let expElement = document.createElement('div');
                         expElement.className = 'explanation-box show';
                         expElement.dataset.forQ = i;
                         expElement.innerHTML = `<div class="explanation-title">💡 Giải thích câu ${i} (Bấm vào đây để xem evidence):</div><div>${window.testExplanations[i]}</div>`;
-                        
-                        expElement.addEventListener('click', () => {
-                            highlightEvidenceInPassage(window.testExplanations[i]);
-                        });
-
+                        expElement.addEventListener('click', () => { highlightEvidenceInPassage(window.testExplanations[i]); });
                         const checkContainer = container.classList.contains('matching-form-row') || container.tagName === 'P' ? container.parentNode : container;
-                        if (!checkContainer.querySelector(`.explanation-box[data-for-q="${i}"]`)) {
-                            checkContainer.appendChild(expElement);
-                        }
+                        if (!checkContainer.querySelector(`.explanation-box[data-for-q="${i}"]`)) { checkContainer.appendChild(expElement); }
                     }
                 }
             }
-
+            
+            const bandScore = calculateBandScore(score);
+            
             document.getElementById('results-score').textContent = score;
-            document.getElementById('results-band').textContent = calculateBandScore(score);
+            document.getElementById('results-band').textContent = bandScore;
             document.getElementById('results-modal').classList.remove('hidden');
+            
+            sendResultsToGoogle(score, bandScore, timeTakenSecs);
+        }
+        
+        function sendResultsToGoogle(score, bandScore, timeTakenSecs) {
+            const statusDiv = document.getElementById('submit-status');
+            statusDiv.style.display = 'block';
+            statusDiv.style.backgroundColor = '#fff3cd';
+            statusDiv.style.color = '#856404';
+            statusDiv.textContent = '⏳ Đang gửi kết quả về hệ thống...';
+
+            const minutes = Math.floor(timeTakenSecs / 60);
+            const seconds = timeTakenSecs % 60;
+            const timeStr = `${minutes} phút ${seconds} giây`;
+            const dateStr = new Date().toLocaleString('vi-VN');
+            const examTitle = document.getElementById('launchTestTitle').textContent || document.title;
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycby7tYg_WIbxhkhK8NpoHs7s5GW3svAD56ZswWfimJgR-NMnzbbmTCBXwchyqhCI69pa/exec';
+            
+            const params = new URLSearchParams();
+            params.append('studentName', currentStudentName);
+            params.append('studentClass', currentStudentClass);
+            params.append('score', `${score}/${totalQuestions}`);
+            params.append('bandScore', bandScore); 
+            params.append('timeTaken', timeStr);
+            params.append('submitDate', dateStr);
+            params.append('examTitle', examTitle);
+
+            fetch(scriptURL, { 
+                method: 'POST', 
+                mode: 'no-cors', 
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: params.toString() 
+            })
+            .then(() => {
+                statusDiv.style.backgroundColor = '#d4edda';
+                statusDiv.style.color = '#155724';
+                statusDiv.textContent = '✅ Kết quả đã được ghi nhận và gửi thành công!';
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                statusDiv.style.backgroundColor = '#f8d7da';
+                statusDiv.style.color = '#721c24';
+                statusDiv.textContent = '⚠️ Có lỗi xảy ra khi gửi. Vui lòng chụp màn hình gửi giáo viên.';
+            });
         }
 
         function calculateBandScore(score) {
             if (score >= 39) return '9.0';
-            const mapping = {
-                40: 9.0, 39: 9.0, 38: 8.5, 37: 8.5, 36: 8.0, 35: 8.0, 34: 7.5,
-                33: 7.5, 32: 7.0, 31: 7.0, 30: 7.0, 29: 6.5, 28: 6.5, 27: 6.5,
-                26: 6.0, 25: 6.0, 24: 6.0, 23: 5.5, 22: 5.5, 21: 5.5, 20: 5.5,
-                19: 5.0, 18: 5.0, 17: 5.0, 16: 5.0, 15: 5.0, 14: 4.5, 13: 4.5,
-                12: 4.0, 11: 4.0, 10: 4.0, 9: 3.5, 8: 3.5, 7: 3.0, 6: 3.0,
-                5: 2.5, 4: 2.5
-            };
-            if (score <= 0) return 0.0;
-            if (score === 1) return 1.0;
-            if (score <= 3) return 2.0;
-            if (score <= 5) return 2.5;
-            return mapping[score] || 0.0;
+            const mapping = { 40: 9.0, 39: 9.0, 38: 8.5, 37: 8.5, 36: 8.0, 35: 8.0, 34: 7.5, 33: 7.5, 32: 7.0, 31: 7.0, 30: 7.0, 29: 6.5, 28: 6.5, 27: 6.5, 26: 6.0, 25: 6.0, 24: 6.0, 23: 5.5, 22: 5.5, 21: 5.5, 20: 5.5, 19: 5.0, 18: 5.0, 17: 5.0, 16: 5.0, 15: 5.0, 14: 4.5, 13: 4.5, 12: 4.0, 11: 4.0, 10: 4.0, 9: 3.5, 8: 3.5, 7: 3.0, 6: 3.0, 5: 2.5, 4: 2.5 };
+            if (score <= 0) return 0.0; if (score === 1) return 1.0; if (score <= 3) return 2.0; if (score <= 5) return 2.5; return mapping[score] || 0.0;
         }
 
-        window.closeResultsModal = function() {
-            document.getElementById('results-modal').classList.add('hidden');
-        }
+        window.closeResultsModal = function() { document.getElementById('results-modal').classList.add('hidden'); }
 
-        const getFirstQuestionOfPart = (partNumber) => {
-            const match = partRanges.find(p => p.part === partNumber);
-            return match ? match.start : 1;
-        };
-
-        const getPartForQuestion = (questionNumber) => {
-            const match = partRanges.find(p => questionNumber >= p.start && questionNumber <= p.end);
-            return match ? match.part : partRanges[0]?.part || 1;
-        };
+        const getFirstQuestionOfPart = (partNumber) => { const match = partRanges.find(p => p.part === partNumber); return match ? match.start : 1; };
+        const getPartForQuestion = (questionNumber) => { const match = partRanges.find(p => questionNumber >= p.start && questionNumber <= p.end); return match ? match.part : partRanges[0]?.part || 1; };
 
         function switchToPart(partNumber) {
             currentPassage = partNumber;
-            document.querySelectorAll('.reading-passage, .question-set, .part-header').forEach(el => {
-                el.classList.add('hidden');
-            });
+            document.querySelectorAll('.reading-passage, .question-set, .part-header').forEach(el => { el.classList.add('hidden'); });
             document.getElementById(`passage-text-${partNumber}`).classList.remove('hidden');
             document.getElementById(`questions-${partNumber}`).classList.remove('hidden');
             document.getElementById(`part-header-${partNumber}`).classList.remove('hidden');
-
-            document.querySelectorAll('.footer__questionWrapper___1tZ46').forEach((wrapper, index) => {
-                wrapper.classList.toggle('selected', (index + 1) === partNumber);
-            });
+            document.querySelectorAll('.footer__questionWrapper___1tZ46').forEach((wrapper, index) => { wrapper.classList.toggle('selected', (index + 1) === partNumber); });
             goToQuestion(getFirstQuestionOfPart(partNumber));
         }
         
         function goToQuestion(questionNumber) {
             currentQuestion = questionNumber;
             const passageNumber = getPartForQuestion(questionNumber);
-            if (currentPassage !== passageNumber) {
-                switchToPart(passageNumber);
-                return; 
-            }
-            if (activeQuestionElement) {
-                activeQuestionElement.classList.remove('active-question', 'active-input');
-            }
+            if (currentPassage !== passageNumber) { switchToPart(passageNumber); return; }
+            if (activeQuestionElement) { activeQuestionElement.classList.remove('active-question', 'active-input'); }
             let targetEl = document.querySelector(`[data-q-start="${questionNumber}"]`);
             if (targetEl) {
                 activeQuestionElement = targetEl;
-                 if (targetEl.matches('input[type="text"]') || targetEl.matches('select')) {
-                     targetEl.classList.add('active-input');
-                 } else {
-                     targetEl.classList.add('active-question');
-                 }
-                 scrollIntoViewIfNeeded(targetEl);
+                if (targetEl.matches('input[type="text"]') || targetEl.matches('select')) { targetEl.classList.add('active-input'); } 
+                else { targetEl.classList.add('active-question'); }
+                scrollIntoViewIfNeeded(targetEl);
             } else {
                  const pMatch = document.querySelector(`.matching-form-row select[id="q${questionNumber}"]`);
                  if(pMatch) {
-                    activeQuestionElement = pMatch;
-                    pMatch.classList.add('active-input');
-                    scrollIntoViewIfNeeded(pMatch);
+                    activeQuestionElement = pMatch; pMatch.classList.add('active-input'); scrollIntoViewIfNeeded(pMatch);
                  }
             }
             updateNavigation();
@@ -1814,46 +1002,30 @@
         function updateNavigation() {
             const navButtons = document.querySelectorAll('.subQuestion');
             navButtons.forEach(btn => btn.classList.remove('active'));
-            
             const activeNav = Array.from(navButtons).find(btn => {
                 const hiddenSpan = btn.querySelector('[aria-hidden="true"]');
                 const qNum = parseInt(hiddenSpan ? hiddenSpan.textContent : btn.textContent.replace(/\D/g, ''), 10);
                 return qNum === currentQuestion;
             });
-            if (activeNav) {
-                activeNav.classList.add('active');
-            }
-
+            if (activeNav) { activeNav.classList.add('active'); }
             const inputs = document.querySelectorAll('.answer-input');
             inputs.forEach(input => input.classList.remove('active-input'));
-            
             const activeInput = document.getElementById(`q${currentQuestion}`);
-            if (activeInput) {
-                activeInput.classList.add('active-input');
-                if (typeof activeInput.focus === 'function') {
-                    activeInput.focus();
-                }
-            }
+            if (activeInput) { activeInput.classList.add('active-input'); if (typeof activeInput.focus === 'function') { activeInput.focus(); } }
         }
         
         window.nextQuestion = () => currentQuestion < totalQuestions && goToQuestion(currentQuestion + 1);
         window.previousQuestion = () => currentQuestion > 1 && goToQuestion(currentQuestion - 1);
 
-        function updateAllIndicators() {
-            partRanges.forEach(range => updateAttemptedCount(range.part, range.start, range.end));
-            updateAnsweredNav();
-        }
+        function updateAllIndicators() { partRanges.forEach(range => updateAttemptedCount(range.part, range.start, range.end)); updateAnsweredNav(); }
         
         function updateAnsweredNav() {
             const navButtons = document.querySelectorAll('.subQuestion');
             navButtons.forEach(btn => {
                 const hiddenSpan = btn.querySelector('[aria-hidden="true"]');
                 const qNum = parseInt(hiddenSpan ? hiddenSpan.textContent : btn.textContent.replace(/\D/g, ''), 10);
-                if (!isNaN(qNum) && isQuestionAnswered(qNum)) {
-                    btn.classList.add('answered');
-                } else {
-                    btn.classList.remove('answered');
-                }
+                if (!isNaN(qNum) && isQuestionAnswered(qNum)) { btn.classList.add('answered'); } 
+                else { btn.classList.remove('answered'); }
             });
         }
         
@@ -1871,9 +1043,7 @@
             const panel = element.closest('.questions-panel, .passage-panel');
             const panelRect = panel.getBoundingClientRect();
             const elementRect = element.getBoundingClientRect();
-            if (elementRect.top < panelRect.top || elementRect.bottom > panelRect.bottom) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+            if (elementRect.top < panelRect.top || elementRect.bottom > panelRect.bottom) { element.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
         }
         
         function updateTimerDisplay() {
@@ -1889,85 +1059,38 @@
         }
 
         function handleTimeExpired() {
-            timeInSeconds = 0;
-            updateTimerDisplay();
-            clearInterval(timerInterval);
-            timerInterval = null;
-            timerToggleButton.innerHTML = playIcon;
-            checkAnswers();
+            timeInSeconds = 0; updateTimerDisplay(); clearInterval(timerInterval); timerInterval = null; timerToggleButton.innerHTML = playIcon; checkAnswers();
         }
 
         function startTimer() {
             if (hasSubmitted) return;
             if (timerInterval) clearInterval(timerInterval);
             updateTimerDisplay();
-            timerInterval = setInterval(() => {
-                timeInSeconds = Math.max(timeInSeconds - 1, 0);
-                updateTimerDisplay();
-                if (timeInSeconds <= 0) {
-                    handleTimeExpired();
-                }
-            }, 1000);
+            timerInterval = setInterval(() => { timeInSeconds = Math.max(timeInSeconds - 1, 0); updateTimerDisplay(); if (timeInSeconds <= 0) { handleTimeExpired(); } }, 1000);
             timerToggleButton.innerHTML = pauseIcon;
         }
 
-        function pauseTimer() {
-            clearInterval(timerInterval);
-            timerInterval = null;
-            timerToggleButton.innerHTML = playIcon;
-        }
-
-        function toggleTimer() {
-            if (timerInterval) {
-                pauseTimer();
-            } else {
-                startTimer();
-            }
-        }
-
-        function resetTimer() {
-            timeInSeconds = 3600;
-            updateTimerDisplay();
-            startTimer();
-        }
+        function pauseTimer() { clearInterval(timerInterval); timerInterval = null; timerToggleButton.innerHTML = playIcon; }
+        function toggleTimer() { if (timerInterval) { pauseTimer(); } else { startTimer(); } }
+        function resetTimer() { timeInSeconds = 3600; updateTimerDisplay(); startTimer(); }
         
         function initResize(e) {
-            e.preventDefault();
-            const startX = e.clientX;
-            const startWidth = passagePanel.offsetWidth;
-            
-            const doDrag = (e) => {
-                const newWidth = startWidth + e.clientX - startX;
-                if (newWidth > 200 && (document.body.clientWidth - newWidth - resizer.offsetWidth) > 200) {
-                    passagePanel.style.flex = `0 0 ${newWidth}px`;
-                }
-            };
-            const stopDrag = () => {
-                window.removeEventListener('mousemove', doDrag, false);
-                window.removeEventListener('mouseup', stopDrag, false);
-            };
-            
-            window.addEventListener('mousemove', doDrag, false);
-            window.addEventListener('mouseup', stopDrag, false);
+            e.preventDefault(); const startX = e.clientX; const startWidth = passagePanel.offsetWidth;
+            const doDrag = (e) => { const newWidth = startWidth + e.clientX - startX; if (newWidth > 200 && (document.body.clientWidth - newWidth - resizer.offsetWidth) > 200) { passagePanel.style.flex = `0 0 ${newWidth}px`; } };
+            const stopDrag = () => { window.removeEventListener('mousemove', doDrag, false); window.removeEventListener('mouseup', stopDrag, false); };
+            window.addEventListener('mousemove', doDrag, false); window.addEventListener('mouseup', stopDrag, false);
         }
         
-        const ANNOTATION_CLASSES = {
-            highlight: 'annotation-highlight',
-            note: 'annotation-note'
-        };
+        const ANNOTATION_CLASSES = { highlight: 'annotation-highlight', note: 'annotation-note' };
 
         function unwrapElement(element) {
-            const parent = element?.parentNode;
-            if (!parent) return;
-            while (element.firstChild) {
-                parent.insertBefore(element.firstChild, element);
-            }
+            const parent = element?.parentNode; if (!parent) return;
+            while (element.firstChild) { parent.insertBefore(element.firstChild, element); }
             parent.removeChild(element);
         }
 
         function selectionWithinPanels(selection) {
-            const anchor = selection.anchorNode;
-            const focus = selection.focusNode;
+            const anchor = selection.anchorNode; const focus = selection.focusNode;
             const inPanels = node => node && (passagePanel.contains(node) || questionsPanel.contains(node));
             return inPanels(anchor) && inPanels(focus);
         }
@@ -1984,50 +1107,29 @@
         }
 
         function positionContextMenu(x, y) {
-            contextMenu.style.display = 'block';
-            const menuHeight = contextMenu.offsetHeight;
-            const menuWidth = contextMenu.offsetWidth;
-            let left = x;
-            let top = y - menuHeight - 8;
+            contextMenu.style.display = 'block'; const menuHeight = contextMenu.offsetHeight; const menuWidth = contextMenu.offsetWidth;
+            let left = x; let top = y - menuHeight - 8;
             if (left + menuWidth > window.innerWidth) left = window.innerWidth - menuWidth - 8;
-            if (left < 8) left = 8;
-            if (top < 8) top = y + 8;
-            contextMenu.style.left = `${left}px`;
-            contextMenu.style.top = `${top}px`;
+            if (left < 8) left = 8; if (top < 8) top = y + 8;
+            contextMenu.style.left = `${left}px`; contextMenu.style.top = `${top}px`;
         }
 
-        function resetSelectionState() {
-            pendingSelectionRange = null;
-            activeAnnotationTarget = null;
-        }
+        function resetSelectionState() { pendingSelectionRange = null; activeAnnotationTarget = null; }
 
         function showMenuForSelection(event) {
-            menuHighlightColors.style.display = 'flex';
-            menuNote.style.display = 'flex';
-            menuClear.style.display = 'none';
-            menuClearAll.style.display = 'none';
-            contextMenu.dataset.mode = 'create';
-            positionContextMenu(event.pageX, event.pageY);
+            menuHighlightColors.style.display = 'flex'; menuNote.style.display = 'flex'; menuClear.style.display = 'none'; menuClearAll.style.display = 'none';
+            contextMenu.dataset.mode = 'create'; positionContextMenu(event.pageX, event.pageY);
         }
 
         function showMenuForAnnotation(event, target) {
-            activeAnnotationTarget = target;
-            pendingSelectionRange = null;
-            window.getSelection().removeAllRanges();
-            menuHighlightColors.style.display = 'none';
-            menuNote.style.display = 'none';
-            menuClear.style.display = 'flex';
-            menuClearAll.style.display = 'flex';
-            contextMenu.dataset.mode = 'manage';
-            positionContextMenu(event.pageX, event.pageY);
+            activeAnnotationTarget = target; pendingSelectionRange = null; window.getSelection().removeAllRanges();
+            menuHighlightColors.style.display = 'none'; menuNote.style.display = 'none'; menuClear.style.display = 'flex'; menuClearAll.style.display = 'flex';
+            contextMenu.dataset.mode = 'manage'; positionContextMenu(event.pageX, event.pageY);
         }
 
         function closeContextMenu(resetSelection = false) {
-            contextMenu.style.display = 'none';
-            contextMenu.dataset.mode = '';
-            if (resetSelection) {
-                window.getSelection().removeAllRanges();
-            }
+            contextMenu.style.display = 'none'; contextMenu.dataset.mode = '';
+            if (resetSelection) { window.getSelection().removeAllRanges(); }
             resetSelectionState();
         }
 
@@ -2035,26 +1137,15 @@
             const spans = Array.from(document.querySelectorAll(selector));
             spans.forEach(span => {
                 if (!range.intersectsNode(span)) return;
-                const spanRange = document.createRange();
-                spanRange.selectNode(span);
-                if (range.compareBoundaryPoints(Range.START_TO_START, spanRange) > 0) {
-                    range.setStartBefore(span);
-                }
-                if (range.compareBoundaryPoints(Range.END_TO_END, spanRange) < 0) {
-                    range.setEndAfter(span);
-                }
+                const spanRange = document.createRange(); spanRange.selectNode(span);
+                if (range.compareBoundaryPoints(Range.START_TO_START, spanRange) > 0) { range.setStartBefore(span); }
+                if (range.compareBoundaryPoints(Range.END_TO_END, spanRange) < 0) { range.setEndAfter(span); }
             });
         }
 
         function unwrapAnnotationsInRange(range, type) {
-            const selector = type === 'highlight'
-                ? `.${ANNOTATION_CLASSES.highlight}`
-                : `.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`;
-            document.querySelectorAll(selector).forEach(span => {
-                if (range.intersectsNode(span)) {
-                    unwrapElement(span);
-                }
-            });
+            const selector = type === 'highlight' ? `.${ANNOTATION_CLASSES.highlight}` : `.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`;
+            document.querySelectorAll(selector).forEach(span => { if (range.intersectsNode(span)) { unwrapElement(span); } });
         }
 
         function getTextNodesInRange(range, type) {
@@ -2062,68 +1153,34 @@
             const shouldInclude = (node) => {
                 if (!node || !node.nodeValue || !node.nodeValue.trim()) return false;
                 if (!range.intersectsNode(node)) return false;
-                if (type === 'highlight' && node.parentElement?.closest(`.${ANNOTATION_CLASSES.note}`)) {
-                    return false;
-                }
+                if (type === 'highlight' && node.parentElement?.closest(`.${ANNOTATION_CLASSES.note}`)) { return false; }
                 return true;
             };
-
             if (range.commonAncestorContainer.nodeType === Node.TEXT_NODE) {
-                if (shouldInclude(range.commonAncestorContainer)) {
-                    nodes.push(range.commonAncestorContainer);
-                }
-                return nodes;
+                if (shouldInclude(range.commonAncestorContainer)) { nodes.push(range.commonAncestorContainer); } return nodes;
             }
-
-            const walker = document.createTreeWalker(
-                range.commonAncestorContainer,
-                NodeFilter.SHOW_TEXT,
-                {
-                    acceptNode: (node) => shouldInclude(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
-                }
-            );
-
-            while (walker.nextNode()) {
-                nodes.push(walker.currentNode);
-            }
+            const walker = document.createTreeWalker(range.commonAncestorContainer, NodeFilter.SHOW_TEXT, { acceptNode: (node) => shouldInclude(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT });
+            while (walker.nextNode()) { nodes.push(walker.currentNode); }
             return nodes;
         }
 
         function wrapTextPortion(node, range, type, noteText = '', highlightColor = 'yellow') {
-            let startOffset = 0;
-            let endOffset = node.nodeValue.length;
-
-            if (node === range.startContainer && range.startOffset > startOffset) {
-                startOffset = range.startOffset;
-            }
-            if (node === range.endContainer && range.endOffset < endOffset) {
-                endOffset = range.endOffset;
-            }
-
+            let startOffset = 0; let endOffset = node.nodeValue.length;
+            if (node === range.startContainer && range.startOffset > startOffset) { startOffset = range.startOffset; }
+            if (node === range.endContainer && range.endOffset < endOffset) { endOffset = range.endOffset; }
             if (startOffset >= endOffset) return;
-
-            const selectedText = node.splitText(startOffset);
-            selectedText.splitText(endOffset - startOffset);
-
+            const selectedText = node.splitText(startOffset); selectedText.splitText(endOffset - startOffset);
             const span = document.createElement('span');
             span.classList.add('annotation', type === 'highlight' ? ANNOTATION_CLASSES.highlight : ANNOTATION_CLASSES.note);
             span.dataset.type = type;
             if (type === 'highlight') {
-                const allowedColors = ['yellow', 'green', 'pink'];
-                const safeColor = allowedColors.includes(highlightColor) ? highlightColor : 'yellow';
-                span.dataset.color = safeColor;
-                span.classList.add(`highlight-${safeColor}`);
+                const allowedColors = ['yellow', 'green', 'pink']; const safeColor = allowedColors.includes(highlightColor) ? highlightColor : 'yellow';
+                span.dataset.color = safeColor; span.classList.add(`highlight-${safeColor}`);
             }
             if (type === 'note') {
-                const content = noteText || '';
-                span.dataset.note = content;
-                if (content) {
-                    span.setAttribute('data-note', content);
-                    span.title = content;
-                } else {
-                    span.removeAttribute('data-note');
-                    span.title = 'Note';
-                }
+                const content = noteText || ''; span.dataset.note = content;
+                if (content) { span.setAttribute('data-note', content); span.title = content; } 
+                else { span.removeAttribute('data-note'); span.title = 'Note'; }
             }
             selectedText.parentNode.insertBefore(span, selectedText);
             span.appendChild(selectedText);
@@ -2136,233 +1193,106 @@
                 let cursor = span.nextSibling;
                 while (true) {
                     const whitespaceBetween = [];
-                    while (cursor && cursor.nodeType === Node.TEXT_NODE && !cursor.textContent.trim()) {
-                        whitespaceBetween.push(cursor);
-                        cursor = cursor.nextSibling;
-                    }
-                    if (
-                        cursor &&
-                        cursor.nodeType === Node.ELEMENT_NODE &&
-                        cursor.classList.contains('annotation') &&
-                        cursor.dataset.type === span.dataset.type &&
-                        (span.dataset.type !== 'note' || (span.dataset.note || '') === (cursor.dataset.note || ''))
-                    ) {
+                    while (cursor && cursor.nodeType === Node.TEXT_NODE && !cursor.textContent.trim()) { whitespaceBetween.push(cursor); cursor = cursor.nextSibling; }
+                    if (cursor && cursor.nodeType === Node.ELEMENT_NODE && cursor.classList.contains('annotation') && cursor.dataset.type === span.dataset.type && (span.dataset.type !== 'note' || (span.dataset.note || '') === (cursor.dataset.note || ''))) {
                         whitespaceBetween.forEach(node => span.appendChild(node));
-                        while (cursor.firstChild) {
-                            span.appendChild(cursor.firstChild);
-                        }
-                        const after = cursor.nextSibling;
-                        cursor.remove();
-                        cursor = after;
-                    } else {
-                        break;
-                    }
+                        while (cursor.firstChild) { span.appendChild(cursor.firstChild); }
+                        const after = cursor.nextSibling; cursor.remove(); cursor = after;
+                    } else { break; }
                 }
-                if (!span.textContent.trim()) {
-                    unwrapElement(span);
-                }
+                if (!span.textContent.trim()) { unwrapElement(span); }
             });
         }
 
         function handleTextSelection(event) {
             const selection = window.getSelection();
-            if (!selection || selection.rangeCount === 0 || selection.isCollapsed || !selection.toString().trim()) {
-                return;
-            }
-            if (!selectionWithinPanels(selection)) {
-                return;
-            }
+            if (!selection || selection.rangeCount === 0 || selection.isCollapsed || !selection.toString().trim()) { return; }
+            if (!selectionWithinPanels(selection)) { return; }
             const range = selection.getRangeAt(0).cloneRange();
-            pendingSelectionRange = range;
-            activeAnnotationTarget = null;
+            pendingSelectionRange = range; activeAnnotationTarget = null;
             showMenuForSelection(event);
         }
 
         function initializeContextMenu() {
             const panels = [passagePanel, questionsPanel];
-            panels.forEach(panel => {
-                panel.addEventListener('mouseup', (e) => {
-                    setTimeout(() => handleTextSelection(e), 0);
-                });
-            });
-
+            panels.forEach(panel => { panel.addEventListener('mouseup', (e) => { setTimeout(() => handleTextSelection(e), 0); }); });
             document.addEventListener('click', (e) => {
                 if (contextMenu.contains(e.target)) return;
                 const annotation = e.target.closest(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`);
-                if (annotation) {
-                    showMenuForAnnotation(e, annotation);
-                    return;
-                }
+                if (annotation) { showMenuForAnnotation(e, annotation); return; }
                 closeContextMenu();
             });
         }
 
         function applyAnnotation(type, noteText = '', highlightColor = 'yellow') {
             const baseRange = pendingSelectionRange ? pendingSelectionRange.cloneRange() : getCurrentSelectionRange();
-            if (!baseRange || baseRange.collapsed || !isRangeInsidePanels(baseRange)) {
-                closeContextMenu(true);
-                return;
-            }
-
-            if (type === 'highlight') {
-                expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.highlight}`);
-            } else {
-                expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.note}`);
-            }
-
+            if (!baseRange || baseRange.collapsed || !isRangeInsidePanels(baseRange)) { closeContextMenu(true); return; }
+            if (type === 'highlight') { expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.highlight}`); } 
+            else { expandRangeToAnnotations(baseRange, `.${ANNOTATION_CLASSES.note}`); }
             unwrapAnnotationsInRange(baseRange, type);
             const targets = getTextNodesInRange(baseRange, type);
             targets.forEach(node => wrapTextPortion(node, baseRange, type, noteText, highlightColor));
-            mergeAdjacentAnnotations();
-            closeContextMenu(true);
+            mergeAdjacentAnnotations(); closeContextMenu(true);
         }
 
-        function highlightText(color = 'yellow') {
-            applyAnnotation('highlight', '', color);
-        }
-
-        function addNote() {
-            const note = prompt('Nhập nội dung ghi chú (Take note):');
-            if (note === null) {
-                closeContextMenu();
-                return;
-            }
-            applyAnnotation('note', note.trim());
-        }
-
-        function clearHighlight() {
-            if (activeAnnotationTarget) {
-                unwrapElement(activeAnnotationTarget);
-                mergeAdjacentAnnotations();
-            }
-            closeContextMenu(true);
-        }
-        
-        function clearAllHighlights() {
-            document.querySelectorAll(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`)
-                .forEach(unwrapElement);
-            mergeAdjacentAnnotations();
-            closeContextMenu(true);
-        }
+        function highlightText(color = 'yellow') { applyAnnotation('highlight', '', color); }
+        function addNote() { const note = prompt('Nhập nội dung ghi chú (Take note):'); if (note === null) { closeContextMenu(); return; } applyAnnotation('note', note.trim()); }
+        function clearHighlight() { if (activeAnnotationTarget) { unwrapElement(activeAnnotationTarget); mergeAdjacentAnnotations(); } closeContextMenu(true); }
+        function clearAllHighlights() { document.querySelectorAll(`.${ANNOTATION_CLASSES.highlight}, .${ANNOTATION_CLASSES.note}`).forEach(unwrapElement); mergeAdjacentAnnotations(); closeContextMenu(true); }
 
         function findQuestionAnchor(qNum) {
-            const mcqNumber = document.querySelector(`.mcq-question-number[data-q-number="${qNum}"]`);
-            if (mcqNumber) return mcqNumber;
-            const tfNumber = Array.from(document.querySelectorAll('.tf-question-number')).find(el => parseInt(el.textContent, 10) === qNum);
-            if (tfNumber) return tfNumber;
-            const strongLabel = Array.from(document.querySelectorAll(`label[for="q${qNum}"] strong`)).find(el => /^\d+$/.test(el.textContent.trim()));
-            if (strongLabel) return strongLabel;
-            const genericLabel = document.querySelector(`label[for="q${qNum}"]`);
-            if (genericLabel) return genericLabel;
-            const textInput = document.getElementById(`q${qNum}`);
-            if (textInput) return textInput;
-            return null;
+            const mcqNumber = document.querySelector(`.mcq-question-number[data-q-number="${qNum}"]`); if (mcqNumber) return mcqNumber;
+            const tfNumber = Array.from(document.querySelectorAll('.tf-question-number')).find(el => parseInt(el.textContent, 10) === qNum); if (tfNumber) return tfNumber;
+            const strongLabel = Array.from(document.querySelectorAll(`label[for="q${qNum}"] strong`)).find(el => /^\d+$/.test(el.textContent.trim())); if (strongLabel) return strongLabel;
+            const genericLabel = document.querySelector(`label[for="q${qNum}"]`); if (genericLabel) return genericLabel;
+            const textInput = document.getElementById(`q${qNum}`); if (textInput) return textInput; return null;
         }
 
         function createMarkerButton(anchor, qNum) {
             if (!anchor || anchor.closest('.question-number-with-mark') || anchor.closest('.markable-blank-wrapper')) return null;
             const isInput = anchor.tagName === 'INPUT' || anchor.tagName === 'SELECT';
             const isInlineBlank = isInput;
-
-            const wrapper = document.createElement('span');
-            wrapper.dataset.questionNumber = qNum;
-            const parent = anchor.parentNode;
-            if (!parent) return null;
-
-            if (isInlineBlank) {
-                wrapper.className = 'markable-blank-wrapper';
-                parent.insertBefore(wrapper, anchor);
-                wrapper.appendChild(anchor);
-            } else {
+            const wrapper = document.createElement('span'); wrapper.dataset.questionNumber = qNum;
+            const parent = anchor.parentNode; if (!parent) return null;
+            if (isInlineBlank) { wrapper.className = 'markable-blank-wrapper'; parent.insertBefore(wrapper, anchor); wrapper.appendChild(anchor); } 
+            else {
                 wrapper.className = 'question-number-with-mark';
                 const displayMode = window.getComputedStyle(anchor).display;
-                if (displayMode === 'block' || displayMode === 'flex') {
-                    wrapper.style.display = 'flex';
-                    wrapper.style.alignItems = 'center';
-                }
-                parent.insertBefore(wrapper, anchor);
-                wrapper.appendChild(anchor);
+                if (displayMode === 'block' || displayMode === 'flex') { wrapper.style.display = 'flex'; wrapper.style.alignItems = 'center'; }
+                parent.insertBefore(wrapper, anchor); wrapper.appendChild(anchor);
             }
-
-            const button = document.createElement('button');
-            button.type = 'button';
+            const button = document.createElement('button'); button.type = 'button';
             button.className = isInlineBlank ? 'mark-toggle-btn inside-blank' : 'mark-toggle-btn';
-            button.dataset.questionNumber = qNum;
-            button.setAttribute('aria-label', `Đánh dấu câu ${qNum}`);
-            button.innerHTML = bookmarkIcon;
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleMark(qNum);
-            });
+            button.dataset.questionNumber = qNum; button.setAttribute('aria-label', `Đánh dấu câu ${qNum}`); button.innerHTML = bookmarkIcon;
+            button.addEventListener('click', (e) => { e.stopPropagation(); toggleMark(qNum); });
             wrapper.appendChild(button);
-
             const markHost = wrapper.closest('.tf-question, .matching-form-row, .matching-question-item, .question, .drag-drop-question, .summary-question, .paragraph-matching-question') || wrapper;
             if(markHost) markHost.classList.add('markable-question');
-
-            markButtons.set(qNum, button);
-            return button;
+            markButtons.set(qNum, button); return button;
         }
 
-        function initializeQuestionMarkers() {
-            for (let i = 1; i <= totalQuestions; i++) {
-                const anchor = findQuestionAnchor(i);
-                createMarkerButton(anchor, i);
-            }
-        }
+        function initializeQuestionMarkers() { for (let i = 1; i <= totalQuestions; i++) { const anchor = findQuestionAnchor(i); createMarkerButton(anchor, i); } }
 
         function toggleMark(qNum) {
             const isMarked = markedQuestions.has(qNum);
-            if (isMarked) {
-                markedQuestions.delete(qNum);
-            } else {
-                markedQuestions.add(qNum);
-            }
+            if (isMarked) { markedQuestions.delete(qNum); } else { markedQuestions.add(qNum); }
             updateMarkState(qNum, !isMarked);
         }
 
         function updateMarkState(qNum, marked) {
-            const btn = markButtons.get(qNum);
-            if (btn) {
-                btn.classList.toggle('marked', marked);
-                btn.setAttribute('aria-pressed', marked ? 'true' : 'false');
-            }
-            const navButton = Array.from(document.querySelectorAll('.subQuestion')).find(b => {
-                const hiddenSpan = b.querySelector('[aria-hidden="true"]');
-                const num = parseInt(hiddenSpan ? hiddenSpan.textContent : b.textContent.replace(/\D/g, ''), 10);
-                return num === qNum;
-            });
-            if (navButton) {
-                navButton.classList.toggle('marked', marked);
-            }
+            const btn = markButtons.get(qNum); if (btn) { btn.classList.toggle('marked', marked); btn.setAttribute('aria-pressed', marked ? 'true' : 'false'); }
+            const navButton = Array.from(document.querySelectorAll('.subQuestion')).find(b => { const hiddenSpan = b.querySelector('[aria-hidden="true"]'); const num = parseInt(hiddenSpan ? hiddenSpan.textContent : b.textContent.replace(/\D/g, ''), 10); return num === qNum; });
+            if (navButton) { navButton.classList.toggle('marked', marked); }
         }
 
         function updateAttemptedCount(part, startQ, endQ) {
-            let answeredCount = 0;
-            for (let i = startQ; i <= endQ; i++) {
-                if (isQuestionAnswered(i)) {
-                    answeredCount++;
-                }
-            }
+            let answeredCount = 0; for (let i = startQ; i <= endQ; i++) { if (isQuestionAnswered(i)) { answeredCount++; } }
             const partHeader = document.querySelector(`.footer__questionNo___3WNct[onclick="switchToPart(${part})"]`);
-            if (partHeader) {
-                const countSpan = partHeader.querySelector('.attemptedCount');
-                if (countSpan) {
-                     countSpan.textContent = `${answeredCount} of ${endQ - startQ + 1}`;
-                }
-            }
+            if (partHeader) { const countSpan = partHeader.querySelector('.attemptedCount'); if (countSpan) { countSpan.textContent = `${answeredCount} of ${endQ - startQ + 1}`; } }
         }
 
-        window.nextQuestion = nextQuestion;
-        window.previousQuestion = previousQuestion;
-        window.goToQuestion = goToQuestion;
-        window.switchToPart = switchToPart;
-        window.closeResultsModal = closeResultsModal;
-        window.highlightText = highlightText;
-        window.addNote = addNote;
-        window.clearHighlight = clearHighlight;
-        window.clearAllHighlights = clearAllHighlights;
+        window.nextQuestion = nextQuestion; window.previousQuestion = previousQuestion; window.goToQuestion = goToQuestion; window.switchToPart = switchToPart; window.closeResultsModal = closeResultsModal; window.highlightText = highlightText; window.addNote = addNote; window.clearHighlight = clearHighlight; window.clearAllHighlights = clearAllHighlights;
     });
     </script>
-</div>
 </body>
 </html>
