@@ -226,6 +226,36 @@
             padding-bottom: 80px;
         }
 
+        .student-form-container {
+            background-color: #f7f9fc;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e0e7ff;
+            margin: 0 20px 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .student-form-container h3 {
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #1f2b59;
+        }
+        
+        .student-inputs {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .student-input-field {
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+            flex: 1;
+            min-width: 200px;
+        }
+
         .panels-container {
             display: flex;
             flex: 1;
@@ -234,7 +264,7 @@
         }
 
         .questions-panel {
-            padding: 20px 20px 40px;
+            padding: 10px 20px 40px;
             overflow-y: auto;
             flex: 1;
             max-width: 100%;
@@ -855,7 +885,7 @@
         <div class="launch-card">
             <div>
                 <p class="launch-eyebrow">IELTS Test Launcher</p>
-                <h1 class="launch-title" id="launchTestTitle">C21 - TEST 1 - IELTS Listening Test</h1>
+                <h1 class="launch-title" id="launchTestTitle">C21 - TEST 1 - IELTS Listening Practice</h1>
                 <p class="launch-meta">Dạng bài: Listening</p>
             </div>
             <div class="launch-guide">
@@ -911,7 +941,6 @@
             <span class="audio-time"><span id="audio-current">0:00</span> / <span id="audio-duration">0:00</span></span>
         </div>
         <div class="audio-meta">
-            <!-- Nút mở Audio Script: ban đầu ẩn, chỉ xuất hiện sau khi bấm Check Answers -->
             <button class="script-toggle-btn hidden" id="scriptToggleBtn" type="button" onclick="toggleScriptPanel()">Audio Script</button>
             <div class="audio-speed">
                 <button id="audio-speed-btn" type="button" aria-haspopup="true" aria-expanded="false">1.0x</button>
@@ -923,11 +952,18 @@
                 </div>
             </div>
         </div>
-        <!-- File audio c21-test1 đặt cùng thư mục -->
-        <audio id="audio-player" src="c21-test1.mp3" preload="metadata"></audio>
+        <audio id="audio-player" src="C21-Test1.mp3" preload="metadata"></audio>
     </div>
 
         <div class="main-container" id="main-container">
+            <div class="student-form-container">
+                <h3>Thông tin học sinh (Bắt buộc khi nộp bài)</h3>
+                <div class="student-inputs">
+                    <input type="text" id="studentName" class="student-input-field" placeholder="Họ và tên học sinh" required>
+                    <input type="text" id="studentClass" class="student-input-field" placeholder="Lớp" required>
+                </div>
+            </div>
+
             <div id="passage-header-container" style="width:100%;">
                 <div id="part-header-1" class="part-header">
                     <p><strong>Part 1</strong></p>
@@ -953,41 +989,74 @@
                     <!-- SECTION 1 -->
                     <div id="questions-1" class="question-set">
                         <div class="questions-container">
-                            <div class="question" data-q-start="1" data-q-end="10">
+                            <div class="question" data-q-start="1" data-q-end="6">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 1–10</strong></p>
+                                    <p><strong>Questions 1-6</strong></p>
                                     <p>Complete the table below.</p>
-                                    <p>Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
+                                    <p>Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer</p>
                                     <div class="question-title">Oyster Bay Sailing Club Courses</div>
                                 </div>
-                                <p><strong>1. Taster day:</strong> small groups (max <input type="text" class="answer-input" id="q1" placeholder="1" oninput="trackAnswer(1)"> people) <span id="ans-tag-1"></span></p>
-                                <div class="explanation-inline" id="exp-1" onclick="highlightEvidence('eight people')"></div>
-
-                                <p><strong>2. Level 1 course:</strong> basic theory e.g. understanding the <input type="text" class="answer-input" id="q2" placeholder="2" oninput="trackAnswer(2)"> and tides <span id="ans-tag-2"></span></p>
-                                <div class="explanation-inline" id="exp-2" onclick="highlightEvidence('weather')"></div>
-
-                                <p><strong>3. Level 1 course:</strong> basic sailing skills including <input type="text" class="answer-input" id="q3" placeholder="3" oninput="trackAnswer(3)"> information <span id="ans-tag-3"></span></p>
+                                
+                                <table style="width:100%; border-collapse: collapse; margin-bottom: 20px;">
+                                    <thead>
+                                        <tr>
+                                            <th style="border: 1px solid #ccc; padding: 10px; background-color: #f1f2ec; text-align: left;">Name of course</th>
+                                            <th style="border: 1px solid #ccc; padding: 10px; background-color: #f1f2ec; text-align: left;">What you learn</th>
+                                            <th style="border: 1px solid #ccc; padding: 10px; background-color: #f1f2ec; text-align: left;">Cost</th>
+                                            <th style="border: 1px solid #ccc; padding: 10px; background-color: #f1f2ec; text-align: left;">Other information</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold; width: 20%;">Taster day</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px; width: 30%;">introduction to sailing</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px; width: 25%;">£120 if booking one place</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px; width: 25%;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold;">Level 1</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">
+                                                basic theory e.g. understanding the 1 <input type="text" class="answer-input" id="q1" placeholder="1" oninput="trackAnswer(1)" style="width: 100px;"><span id="ans-tag-1"></span> and tides<br><br>
+                                                basic sailing skills including 3 <input type="text" class="answer-input" id="q3" placeholder="3" oninput="trackAnswer(3)" style="width: 100px;"><span id="ans-tag-3"></span> information
+                                            </td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">
+                                                £200<br><br>
+                                                4 <input type="text" class="answer-input" id="q4" placeholder="4" oninput="trackAnswer(4)" style="width: 100px;"><span id="ans-tag-4"></span> available for club members
+                                            </td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">
+                                                small groups (max 2 <input type="text" class="answer-input" id="q2" placeholder="2" oninput="trackAnswer(2)" style="width: 80px;"><span id="ans-tag-2"></span> people)<br><br>
+                                                all inclusive (plus a useful 5 <input type="text" class="answer-input" id="q5" placeholder="5" oninput="trackAnswer(5)" style="width: 100px;"><span id="ans-tag-5"></span>)<br><br>
+                                                a 6 <input type="text" class="answer-input" id="q6" placeholder="6" oninput="trackAnswer(6)" style="width: 100px;"><span id="ans-tag-6"></span> at the end of the course for all participants
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="explanation-inline" id="exp-1" onclick="highlightEvidence('weather')"></div>
                                 <div class="explanation-inline" id="exp-3" onclick="highlightEvidence('safety')"></div>
-
-                                <p><strong>4. Cost:</strong> £200. £ <input type="text" class="answer-input" id="q4" placeholder="4" oninput="trackAnswer(4)"> available for club members <span id="ans-tag-4"></span></p>
                                 <div class="explanation-inline" id="exp-4" onclick="highlightEvidence('discount')"></div>
-
-                                <p><strong>5. Inclusions:</strong> all inclusive (plus a useful <input type="text" class="answer-input" id="q5" placeholder="5" oninput="trackAnswer(5)">) <span id="ans-tag-5"></span></p>
+                                <div class="explanation-inline" id="exp-2" onclick="highlightEvidence('ten')"></div>
                                 <div class="explanation-inline" id="exp-5" onclick="highlightEvidence('dictionary')"></div>
-
-                                <p><strong>6. Completion:</strong> a <input type="text" class="answer-input" id="q6" placeholder="6" oninput="trackAnswer(6)"> at the end of the course for all participants <span id="ans-tag-6"></span></p>
                                 <div class="explanation-inline" id="exp-6" onclick="highlightEvidence('certificate')"></div>
-
-                                <p><strong>7. General info:</strong> Bring suitable clothing, a <input type="text" class="answer-input" id="q7" placeholder="7" oninput="trackAnswer(7)"> and toiletries (e.g. shampoo) <span id="ans-tag-7"></span></p>
+                            </div>
+                            
+                            <div class="question" data-q-start="7" data-q-end="10">
+                                <div class="question-prompt">
+                                    <p><strong>Questions 7-10</strong></p>
+                                    <p>Complete the notes below.</p>
+                                    <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
+                                    <div class="question-title">General information</div>
+                                </div>
+                                <p>• Participants must be able to swim.</p>
+                                <p>• Bring suitable clothing, a 7 <input type="text" class="answer-input" id="q7" placeholder="7" oninput="trackAnswer(7)"><span id="ans-tag-7"></span> and toiletries (e.g. shampoo).</p>
                                 <div class="explanation-inline" id="exp-7" onclick="highlightEvidence('towel')"></div>
-
-                                <p><strong>8. Food:</strong> There is a <input type="text" class="answer-input" id="q8" placeholder="8" oninput="trackAnswer(8)"> at the club <span id="ans-tag-8"></span></p>
+                                
+                                <p>• There is a 8 <input type="text" class="answer-input" id="q8" placeholder="8" oninput="trackAnswer(8)"><span id="ans-tag-8"></span> at the club.</p>
                                 <div class="explanation-inline" id="exp-8" onclick="highlightEvidence('café')"></div>
 
-                                <p><strong>9. Preparation:</strong> Online training <input type="text" class="answer-input" id="q9" placeholder="9" oninput="trackAnswer(9)"> are recommended <span id="ans-tag-9"></span></p>
+                                <p>• Online training 9 <input type="text" class="answer-input" id="q9" placeholder="9" oninput="trackAnswer(9)"><span id="ans-tag-9"></span> are recommended.</p>
                                 <div class="explanation-inline" id="exp-9" onclick="highlightEvidence('videos')"></div>
-
-                                <p><strong>10. Facilities:</strong> <input type="text" class="answer-input" id="q10" placeholder="10" oninput="trackAnswer(10)"> are available for course participants <span id="ans-tag-10"></span></p>
+                                
+                                <p>• 10 <input type="text" class="answer-input" id="q10" placeholder="10" oninput="trackAnswer(10)"><span id="ans-tag-10"></span> are available for course participants.</p>
                                 <div class="explanation-inline" id="exp-10" onclick="highlightEvidence('Lockers')"></div>
                             </div>
                         </div>
@@ -998,83 +1067,84 @@
                         <div class="questions-container">
                             <div class="question" data-q-start="11" data-q-end="16">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 11–16</strong></p>
+                                    <p><strong>Questions 11-16</strong></p>
                                     <p>Choose the correct letter, <strong>A, B or C</strong>.</p>
                                     <div class="question-title">Working as a makeup trainee</div>
                                 </div>
-
+                                
                                 <div class="multi-choice-question" data-q-start="11" data-q-end="11" id="q11-container">
                                     <div class="multi-choice-options">
                                         <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="11">11</span><span class="mcq-question-title">What should trainees always expect to get when working on low budget short films?</span><span id="ans-tag-11"></span></p>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q11" value="A" onchange="trackAnswer(11)"> A travel expenses</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q11" value="B" onchange="trackAnswer(11)"> B a minimum wage</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q11" value="C" onchange="trackAnswer(11)"> C meals</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q11" value="A" onchange="trackAnswer(11)"> A. travel expenses</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q11" value="B" onchange="trackAnswer(11)"> B. a minimum wage</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q11" value="C" onchange="trackAnswer(11)"> C. meals</label></div>
                                     </div>
-                                    <div class="explanation-inline" id="exp-11" onclick="highlightEvidence('travel costs are covered')"></div>
+                                    <div class="explanation-inline" id="exp-11" onclick="highlightEvidence('Make sure your transport costs are covered')"></div>
                                 </div>
 
                                 <div class="multi-choice-question" data-q-start="12" data-q-end="12" id="q12-container">
                                     <div class="multi-choice-options">
                                         <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="12">12</span><span class="mcq-question-title">According to the speaker, on big budget films trainees may get experience of</span><span id="ans-tag-12"></span></p>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q12" value="A" onchange="trackAnswer(12)"> A makeup for special effects.</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q12" value="B" onchange="trackAnswer(12)"> B working with different ethnicities.</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q12" value="C" onchange="trackAnswer(12)"> C creating a variety of hair styles.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q12" value="A" onchange="trackAnswer(12)"> A. makeup for special effects.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q12" value="B" onchange="trackAnswer(12)"> B. working with different ethnicities.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q12" value="C" onchange="trackAnswer(12)"> C. creating a variety of hair styles.</label></div>
                                     </div>
-                                    <div class="explanation-inline" id="exp-12" onclick="highlightEvidence('different ethnicities')"></div>
+                                    <div class="explanation-inline" id="exp-12" onclick="highlightEvidence('you're likely to get the opportunity to work with a range of age groups, as well as different ethnicities.')"></div>
                                 </div>
-
+                                
                                 <div class="multi-choice-question" data-q-start="13" data-q-end="13" id="q13-container">
                                     <div class="multi-choice-options">
                                         <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="13">13</span><span class="mcq-question-title">The speaker says a problem for makeup artists is</span><span id="ans-tag-13"></span></p>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q13" value="A" onchange="trackAnswer(13)"> A dealing with difficult directors.</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q13" value="B" onchange="trackAnswer(13)"> B being shouted at by their supervisor.</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q13" value="C" onchange="trackAnswer(13)"> C waiting around for hours doing nothing.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q13" value="A" onchange="trackAnswer(13)"> A. dealing with difficult directors.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q13" value="B" onchange="trackAnswer(13)"> B. being shouted at by their supervisor.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q13" value="C" onchange="trackAnswer(13)"> C. waiting around for hours doing nothing.</label></div>
                                     </div>
-                                    <div class="explanation-inline" id="exp-13" onclick="highlightEvidence('directors who are impatient')"></div>
+                                    <div class="explanation-inline" id="exp-13" onclick="highlightEvidence('having to work with directors who are impatient, or unhappy with the makeup artist's work')"></div>
                                 </div>
-
+                                
                                 <div class="multi-choice-question" data-q-start="14" data-q-end="14" id="q14-container">
                                     <div class="multi-choice-options">
                                         <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="14">14</span><span class="mcq-question-title">How did the speaker feel when she met famous actors for the first time?</span><span id="ans-tag-14"></span></p>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q14" value="A" onchange="trackAnswer(14)"> A very shy</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q14" value="B" onchange="trackAnswer(14)"> B very proud</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q14" value="C" onchange="trackAnswer(14)"> C very disappointed</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q14" value="A" onchange="trackAnswer(14)"> A. very shy</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q14" value="B" onchange="trackAnswer(14)"> B. very proud</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q14" value="C" onchange="trackAnswer(14)"> C. very disappointed</label></div>
                                     </div>
-                                    <div class="explanation-inline" id="exp-14" onclick="highlightEvidence('overwhelming and could hardly speak')"></div>
+                                    <div class="explanation-inline" id="exp-14" onclick="highlightEvidence('I found it overwhelming and could hardly speak, I was so in awe.')"></div>
                                 </div>
 
                                 <div class="multi-choice-question" data-q-start="15" data-q-end="15" id="q15-container">
                                     <div class="multi-choice-options">
                                         <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="15">15</span><span class="mcq-question-title">What advice does the speaker give about makeup kits?</span><span id="ans-tag-15"></span></p>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q15" value="A" onchange="trackAnswer(15)"> A Always carry a basic kit with you.</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q15" value="B" onchange="trackAnswer(15)"> B Only buy the best products for a makeup kit.</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q15" value="C" onchange="trackAnswer(15)"> C Ask other makeup artists to check your kit.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q15" value="A" onchange="trackAnswer(15)"> A. Always carry a basic kit with you.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q15" value="B" onchange="trackAnswer(15)"> B. Only buy the best products for a makeup kit.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q15" value="C" onchange="trackAnswer(15)"> C. Ask other makeup artists to check your kit.</label></div>
                                     </div>
-                                    <div class="explanation-inline" id="exp-15" onclick="highlightEvidence('Just the essentials will do')"></div>
+                                    <div class="explanation-inline" id="exp-15" onclick="highlightEvidence('Every makeup trainee will need a makeup kit, which they'll be expected to have with them at all times. Just the essentials will do')"></div>
                                 </div>
 
                                 <div class="multi-choice-question" data-q-start="16" data-q-end="16" id="q16-container">
                                     <div class="multi-choice-options">
                                         <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="16">16</span><span class="mcq-question-title">What advice does the speaker give about creating a portfolio?</span><span id="ans-tag-16"></span></p>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q16" value="A" onchange="trackAnswer(16)"> A Keep print and digital photos.</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q16" value="B" onchange="trackAnswer(16)"> B Only include a small selection of photos.</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q16" value="C" onchange="trackAnswer(16)"> C Get permission to use photos.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q16" value="A" onchange="trackAnswer(16)"> A. Keep print and digital photos.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q16" value="B" onchange="trackAnswer(16)"> B. Only include a small selection of photos.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q16" value="C" onchange="trackAnswer(16)"> C. Get permission to use photos.</label></div>
                                     </div>
-                                    <div class="explanation-inline" id="exp-16" onclick="highlightEvidence('approval from the makeup designer')"></div>
+                                    <div class="explanation-inline" id="exp-16" onclick="highlightEvidence('you'll need to get approval from the makeup designer in charge of the department')"></div>
                                 </div>
                             </div>
-
-                            <div class="question" data-q-start="17" data-q-end="20">
+                            
+                            <div class="question" data-q-start="17" data-q-end="20" id="q17_20-container">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 17–20</strong></p>
+                                    <p><strong>Questions 17-20</strong></p>
                                     <p>What ability is required for each of the following duties?</p>
-                                    <p>Choose <strong>THREE</strong> correct answers, <strong>A-C</strong>, next to questions 17–20.</p>
+                                    <p>Write the correct letter, <strong>A, B, or C</strong>, next to Questions 17-20.</p>
                                 </div>
-                                <div class="example-box" style="font-size: 15px;">
-                                    <ul class="options-list">
-                                        <li><span class="options-list-label">A</span> being well-organised</li>
-                                        <li><span class="options-list-label">B</span> being flexible</li>
-                                        <li><span class="options-list-label">C</span> working quickly</li>
+                                <div class="example-box" style="font-size: 15px; margin-bottom: 20px;">
+                                    <p><strong>Duties</strong></p>
+                                    <ul class="options-list" style="list-style-type: none; display: grid; gap: 8px;">
+                                        <li><strong>A</strong> being well-organised</li>
+                                        <li><strong>B</strong> being flexible</li>
+                                        <li><strong>C</strong> working quickly</li>
                                     </ul>
                                 </div>
                                 <div class="matching-form-container">
@@ -1088,19 +1158,19 @@
                                         <label for="q18" class="matching-form-label"><strong>18. Continuity</strong></label>
                                         <select class="answer-input" id="q18" onchange="trackAnswer(18)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select><span id="ans-tag-18"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-18" onclick="highlightEvidence('good order')"></div>
+                                    <div class="explanation-inline" id="exp-18" onclick="highlightEvidence('needs to be kept in good order')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q19" class="matching-form-label"><strong>19. General</strong></label>
                                         <select class="answer-input" id="q19" onchange="trackAnswer(19)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select><span id="ans-tag-19"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-19" onclick="highlightEvidence('positive attitude')"></div>
-
+                                    <div class="explanation-inline" id="exp-19" onclick="highlightEvidence('positive attitude and being willing to do whatever is asked')"></div>
+                                    
                                     <div class="matching-form-row">
                                         <label for="q20" class="matching-form-label"><strong>20. Applying makeup</strong></label>
                                         <select class="answer-input" id="q20" onchange="trackAnswer(20)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option></select><span id="ans-tag-20"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-20" onclick="highlightEvidence('swift pace')"></div>
+                                    <div class="explanation-inline" id="exp-20" onclick="highlightEvidence('keep up a swift pace')"></div>
                                 </div>
                             </div>
                         </div>
@@ -1109,46 +1179,48 @@
                     <!-- SECTION 3 -->
                     <div id="questions-3" class="question-set hidden">
                         <div class="questions-container">
+                            
                             <div class="question" data-q-start="21" data-q-end="22" id="q21_22-container">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 21–22</strong></p>
-                                    <p>Choose <strong>TWO</strong> correct answers, <strong>A-E</strong>.</p>
+                                    <p><strong>Questions 21 and 22</strong></p>
+                                    <p>Choose <strong>TWO</strong> letters, A-E.</p>
                                     <p>Which <strong>TWO</strong> features of the lecture on ocean biodiversity had the greatest impact on the students? <span id="ans-tag-21"></span></p>
                                 </div>
                                 <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="A" onchange="trackCheckbox(21)"> A the references to local problems</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="B" onchange="trackCheckbox(21)"> B the broad focus of the examples</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="C" onchange="trackCheckbox(21)"> C the practical suggestions for solutions</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="D" onchange="trackCheckbox(21)"> D the type of issues discussed</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="E" onchange="trackCheckbox(21)"> E the implications for government policy</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="A" onchange="trackCheckbox(21)"> A. the references to local problems</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="B" onchange="trackCheckbox(21)"> B. the broad focus of the examples</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="C" onchange="trackCheckbox(21)"> C. the practical suggestions for solutions</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="D" onchange="trackCheckbox(21)"> D. the type of issues discussed</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="E" onchange="trackCheckbox(21)"> E. the implications for government policy</label></div>
                                 </div>
-                                <div class="explanation-inline" id="exp-21" onclick="highlightEvidence('long-term issues')"></div>
+                                <div class="explanation-inline" id="exp-21" onclick="highlightEvidence('focused on more long-term issues... The examples she gave were at a more global level')"></div>
                             </div>
 
                             <div class="question" data-q-start="23" data-q-end="24" id="q23_24-container">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 23–24</strong></p>
-                                    <p>Choose <strong>TWO</strong> correct answers, <strong>A-E</strong>.</p>
+                                    <p><strong>Questions 23 and 24</strong></p>
+                                    <p>Choose <strong>TWO</strong> letters, A-E.</p>
                                     <p>Which <strong>TWO</strong> details about the research project particularly impressed the students? <span id="ans-tag-23"></span></p>
                                 </div>
                                 <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="A" onchange="trackCheckbox(23)"> A the team's previous successes</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="B" onchange="trackCheckbox(23)"> B its wide geographical scale</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="C" onchange="trackCheckbox(23)"> C the use of new technology</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="D" onchange="trackCheckbox(23)"> D the extensive statistical evidence</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="E" onchange="trackCheckbox(23)"> E the large range of specialists involved</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="A" onchange="trackCheckbox(23)"> A. the team's previous successes</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="B" onchange="trackCheckbox(23)"> B. its wide geographical scale</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="C" onchange="trackCheckbox(23)"> C. the use of new technology</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="D" onchange="trackCheckbox(23)"> D. the extensive statistical evidence</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="E" onchange="trackCheckbox(23)"> E. the large range of specialists involved</label></div>
                                 </div>
-                                <div class="explanation-inline" id="exp-23" onclick="highlightEvidence('different backgrounds')"></div>
+                                <div class="explanation-inline" id="exp-23" onclick="highlightEvidence('so many experts working together... from such different backgrounds. VÀ description of improvements in systems used for tracking marine animals and things like robots')"></div>
                             </div>
-
-                            <div class="question" data-q-start="25" data-q-end="30">
+                            
+                            <div class="question" data-q-start="25" data-q-end="30" id="q25_30-container">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 25–30</strong></p>
+                                    <p><strong>Questions 25-30</strong></p>
                                     <p>What is the students' opinion of each of the following resources related to ocean biodiversity?</p>
-                                    <p>Choose <strong>SIX</strong> answers from the box and write the correct letter, <strong>A-H</strong>, next to Questions 25–30.</p>
+                                    <p>Choose <strong>SIX</strong> answers from the box and write the correct letter, <strong>A-H</strong>, next to Questions 25-30.</p>
                                 </div>
                                 <div class="example-box" style="font-size: 15px; margin-bottom: 20px;">
-                                    <ul class="options-list" style="list-style-type: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                    <p><strong>Opinions</strong></p>
+                                    <ul class="options-list" style="list-style-type: none; display: grid; grid-template-columns: 1fr; gap: 8px;">
                                         <li><strong>A</strong> This is aimed at a very specialist audience.</li>
                                         <li><strong>B</strong> This is now rather outdated.</li>
                                         <li><strong>C</strong> This was an effective description of a new danger.</li>
@@ -1164,37 +1236,37 @@
                                         <label for="q25" class="matching-form-label"><strong>25. Article on invasive lionfish</strong></label>
                                         <select class="answer-input" id="q25" onchange="trackAnswer(25)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select><span id="ans-tag-25"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-25" onclick="highlightEvidence('didn\'t really provide much information')"></div>
+                                    <div class="explanation-inline" id="exp-25" onclick="highlightEvidence('he didn't really provide much information to explain why.')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q26" class="matching-form-label"><strong>26. Documentary on microplastics</strong></label>
                                         <select class="answer-input" id="q26" onchange="trackAnswer(26)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select><span id="ans-tag-26"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-26" onclick="highlightEvidence('made ten years ago')"></div>
+                                    <div class="explanation-inline" id="exp-26" onclick="highlightEvidence('it was showing its age, made ten years ago')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q27" class="matching-form-label"><strong>27. Podcast on ocean pollution</strong></label>
                                         <select class="answer-input" id="q27" onchange="trackAnswer(27)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select><span id="ans-tag-27"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-27" onclick="highlightEvidence('stating the obvious')"></div>
+                                    <div class="explanation-inline" id="exp-27" onclick="highlightEvidence('Most of it was stating the obvious... everybody knows that anyway.')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q28" class="matching-form-label"><strong>28. Book on coastal ecosystems</strong></label>
                                         <select class="answer-input" id="q28" onchange="trackAnswer(28)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select><span id="ans-tag-28"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-28" onclick="highlightEvidence('better understanding of the issues')"></div>
+                                    <div class="explanation-inline" id="exp-28" onclick="highlightEvidence('ended up with a much better understanding of the issues... a well-written summary of those')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q29" class="matching-form-label"><strong>29. Article on metal toxicity</strong></label>
                                         <select class="answer-input" id="q29" onchange="trackAnswer(29)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select><span id="ans-tag-29"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-29" onclick="highlightEvidence('above my head')"></div>
-
+                                    <div class="explanation-inline" id="exp-29" onclick="highlightEvidence('was way above my head... I just couldn't follow it.')"></div>
+                                    
                                     <div class="matching-form-row">
                                         <label for="q30" class="matching-form-label"><strong>30. Podcast on floating marine cities</strong></label>
                                         <select class="answer-input" id="q30" onchange="trackAnswer(30)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select><span id="ans-tag-30"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-30" onclick="highlightEvidence('one-sided picture')"></div>
+                                    <div class="explanation-inline" id="exp-30" onclick="highlightEvidence('it presented a rather one-sided picture')"></div>
                                 </div>
                             </div>
                         </div>
@@ -1205,60 +1277,64 @@
                         <div class="questions-container">
                             <div class="question" data-q-start="31" data-q-end="40">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 31–40</strong></p>
+                                    <p><strong>Questions 31-40</strong></p>
                                     <p>Complete the notes below.</p>
                                     <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
                                     <div class="question-title">Sources of rubber</div>
                                 </div>
-                                <p>Three resources which are essential for industrial civilisation:</p>
-                                <p>• metal</p>
-                                <p>• <input type="text" class="answer-input" id="q31" placeholder="31" oninput="trackAnswer(31)"> fuels<span id="ans-tag-31"></span></p>
-                                <div class="explanation-inline" id="exp-31" onclick="highlightEvidence('fossil fuels')"></div>
-
+                                
+                                <p><strong>Three resources which are essential for industrial civilisation</strong></p>
+                                <p>• 31 <input type="text" class="answer-input" id="q31" placeholder="31" oninput="trackAnswer(31)"><span id="ans-tag-31"></span></p>
+                                <div class="explanation-inline" id="exp-31" onclick="highlightEvidence('metal')"></div>
+                                <p>• fossil fuels</p>
                                 <p>• rubber</p>
+                                <br>
                                 <p><strong>Natural rubber</strong></p>
                                 <p>This mainly comes from the Pará rubber tree, now cultivated in South-East Asia.</p>
-                                <p>The supply is limited because:</p>
-                                <p>• the growth of the tree is <input type="text" class="answer-input" id="q32" placeholder="32" oninput="trackAnswer(32)"><span id="ans-tag-32"></span></p>
-                                <div class="explanation-inline" id="exp-32" onclick="highlightEvidence('slow process')"></div>
+                                <p>The supply is limited because</p>
+                                <p>• the growth of the tree is 32 <input type="text" class="answer-input" id="q32" placeholder="32" oninput="trackAnswer(32)"><span id="ans-tag-32"></span></p>
+                                <div class="explanation-inline" id="exp-32" onclick="highlightEvidence('slow')"></div>
 
-                                <p>• production cannot easily be adjusted because of increasing or decreasing <input type="text" class="answer-input" id="q33" placeholder="33" oninput="trackAnswer(33)"><span id="ans-tag-33"></span></p>
+                                <p>• production cannot easily be adjusted because of increasing or decreasing 33 <input type="text" class="answer-input" id="q33" placeholder="33" oninput="trackAnswer(33)"><span id="ans-tag-33"></span></p>
                                 <div class="explanation-inline" id="exp-33" onclick="highlightEvidence('demand')"></div>
-
-                                <p>• the tree only grows near the <input type="text" class="answer-input" id="q34" placeholder="34" oninput="trackAnswer(34)"><span id="ans-tag-34"></span></p>
+                                
+                                <p>• the tree only grows near the 34 <input type="text" class="answer-input" id="q34" placeholder="34" oninput="trackAnswer(34)"><span id="ans-tag-34"></span></p>
                                 <div class="explanation-inline" id="exp-34" onclick="highlightEvidence('equator')"></div>
 
                                 <p>• extracting the latex (rubber) is labour-intensive</p>
-                                <p>• it is very difficult to <input type="text" class="answer-input" id="q35" placeholder="35" oninput="trackAnswer(35)"> rubber after production.<span id="ans-tag-35"></span></p>
+                                <p>• it is very difficult to 35 <input type="text" class="answer-input" id="q35" placeholder="35" oninput="trackAnswer(35)"><span id="ans-tag-35"></span> rubber after production.</p>
                                 <div class="explanation-inline" id="exp-35" onclick="highlightEvidence('recycle')"></div>
-
-                                <p>New threats include:</p>
-                                <p>• lack of genetic diversity, leading to danger of disease caused by a <input type="text" class="answer-input" id="q36" placeholder="36" oninput="trackAnswer(36)"><span id="ans-tag-36"></span></p>
+                                
+                                <p>New threats include</p>
+                                <p>• lack of genetic diversity, leading to danger of disease caused by a 36 <input type="text" class="answer-input" id="q36" placeholder="36" oninput="trackAnswer(36)"><span id="ans-tag-36"></span></p>
                                 <div class="explanation-inline" id="exp-36" onclick="highlightEvidence('fungus')"></div>
-
+                                
                                 <p>• a shift to the cultivation of palm oil</p>
-                                <p>• extreme <input type="text" class="answer-input" id="q37" placeholder="37" oninput="trackAnswer(37)"> events.<span id="ans-tag-37"></span></p>
+                                <p>• extreme 37 <input type="text" class="answer-input" id="q37" placeholder="37" oninput="trackAnswer(37)"><span id="ans-tag-37"></span> events.</p>
                                 <div class="explanation-inline" id="exp-37" onclick="highlightEvidence('weather')"></div>
 
+                                <br>
                                 <p><strong>Synthetic rubber</strong></p>
                                 <p>• may be used for engine parts and cooking utensils</p>
-                                <p>• is less <input type="text" class="answer-input" id="q38" placeholder="38" oninput="trackAnswer(38)"> than natural rubber<span id="ans-tag-38"></span></p>
+                                <p>• is less 38 <input type="text" class="answer-input" id="q38" placeholder="38" oninput="trackAnswer(38)"><span id="ans-tag-38"></span> than natural rubber</p>
                                 <div class="explanation-inline" id="exp-38" onclick="highlightEvidence('strong')"></div>
-
+                                
                                 <p>• is unsuitable for many purposes e.g. the tyres of aircraft.</p>
+                                <br>
                                 <p><strong>An alternative source of natural rubber</strong></p>
-                                <p>• A wild flower (a type of dandelion) has rubber in its <input type="text" class="answer-input" id="q39" placeholder="39" oninput="trackAnswer(39)"><span id="ans-tag-39"></span></p>
+                                <p>• A wild flower (a type of dandelion) has rubber in its 39 <input type="text" class="answer-input" id="q39" placeholder="39" oninput="trackAnswer(39)"><span id="ans-tag-39"></span></p>
                                 <div class="explanation-inline" id="exp-39" onclick="highlightEvidence('roots')"></div>
-
-                                <p>• It can be grown in many locations and does not require good <input type="text" class="answer-input" id="q40" placeholder="40" oninput="trackAnswer(40)"><span id="ans-tag-40"></span></p>
+                                
+                                <p>• It can be grown in many locations and does not require good 40 <input type="text" class="answer-input" id="q40" placeholder="40" oninput="trackAnswer(40)"><span id="ans-tag-40"></span></p>
                                 <div class="explanation-inline" id="exp-40" onclick="highlightEvidence('soil')"></div>
+
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- AUDIO SCRIPT PANEL (Mặc định ẩn, chỉ bật khi ấn Check Answers) -->
+                <!-- AUDIO SCRIPT PANEL -->
                 <div class="script-panel" id="scriptPanel">
                     <div class="script-header">
                         <h3>Audio Script & Evidence</h3>
@@ -1266,87 +1342,89 @@
                     </div>
                     <div class="script-content" id="scriptContentContainer">
                         <div id="script-1">
-                            <p><strong>Section 1:</strong>[cite: 2, 52]</p>
-                            <p>WOMAN: Hello, Oyster Bay Sailing Club. How can I help you?[cite: 2, 52]<br>
-                            MAN: Oh hi. I'd like to find out about sailing courses for beginners.[cite: 2, 52]<br>
-                            WOMAN: No problem. Is it for yourself?[cite: 2, 52]<br>
-                            MAN: Yes. I had a look online but I'm not sure which course would be best.[cite: 2, 52]<br>
-                            WOMAN: OK. Well you might be interested in our Taster Days?[cite: 2, 52]<br>
-                            MAN: Possibly.[cite: 2, 52]<br>
-                            WOMAN: So these are for people who've never sailed before - it's basically an introduction to sailing to find out whether you enjoy it and want to carry on with it.[cite: 2, 52]<br>
-                            MAN: And how much is that?[cite: 2, 52]<br>
-                            WOMAN: It's £120 for the day - but it's reduced to £110 each if there are two of you.[cite: 2, 52]<br>
-                            MAN: No, it would just be me.[cite: 2, 52]<br>
-                            WOMAN: Oh that's fine. You'd be in a small group, usually about <span id="ev-eight people">eight people</span> but no more than ten and everyone's always very friendly.[cite: 2, 52]<br>
-                            MAN: Uh huh. And are there any other suitable courses?[cite: 2, 52]<br>
-                            WOMAN: The other option is the Level 1 course. These are two-day weekend courses and we run those all year round.[cite: 2, 52]<br>
-                            MAN: OK. And what do you learn on that course?[cite: 2, 52]<br>
-                            WOMAN: This is a mix of theory and practical skills. So you learn about things like the <span id="ev-weather">weather</span>, which is obviously really important and also the tides, as well as learning basic sailing skills. You go out into the harbour in special training dinghies for beginners, two people in each dinghy and an instructor. He or she will make sure you understand everything you need to know about <span id="ev-safety">safety</span>.[cite: 2, 52]<br>
-                            MAN: It sounds like hard work![cite: 2, 52]<br>
-                            WOMAN: Yes, but you'll have a lot of fun too.[cite: 2, 52]<br>
-                            MAN: And the cost of that one is... ?[cite: 2, 52]<br>
-                            WOMAN: £200. But it's a bit cheaper if you decide to join the club. There's a <span id="ev-discount">discount</span> for members.[cite: 2, 52]<br>
-                            MAN: Well, I'm not sure about that yet.[cite: 2, 52]<br>
-                            WOMAN: You've got plenty of time to decide.[cite: 2, 52]<br>
-                            MAN: And does the cost include everything?[cite: 2, 52]<br>
-                            WOMAN: Yes, everything's included and you also get a really good <span id="ev-dictionary">dictionary</span> explaining all the sailing terminology. A lot of people struggle with this at first. It's got lots of pictures, so I'm sure you'd find it really helpful. And on completion of the course you get a <span id="ev-certificate">certificate</span>. Then you're ready to move on to the Level 2 course.[cite: 2, 52]<br>
-                            MAN: Sounds good.[cite: 2, 52]<br>
-                            WOMAN: I think that's all the info you need for now. Just a couple of general things. For example, it's really important that you know how to swim.[cite: 2, 3, 52]<br>
-                            MAN: Yes, I'm pretty confident in the water.[cite: 2, 3, 52]<br>
-                            WOMAN: Great. The other thing I should tell you is that we provide wetsuits and life jackets but you need to bring swimming trunks and some old trainers.[cite: 3, 52]<br>
-                            MAN: And a <span id="ev-towel">towel</span>?[cite: 3, 52]<br>
-                            WOMAN: Yes definitely. And you might want to bring your own toiletries, things like shampoo.[cite: 3, 52]<br>
-                            MAN: OK. What about food and drink? Do I need to bring that or is there a <span id="ev-café">café</span> at the club?[cite: 3, 52]<br>
-                            WOMAN: Yes, you can get sandwiches, cakes and snacks there. The food's pretty reasonable.[cite: 3, 52]<br>
-                            MAN: OK good. Well I think I'm interested in the Level 1 course. But I know absolutely nothing about sailing so is there anything I can do to prepare myself a bit?[cite: 3, 52]<br>
-                            WOMAN: I recommend you watch some <span id="ev-videos">videos</span> we use for training. They're available online. I can send you the link. They'll give you an idea of what to expect.[cite: 3, 52]<br>
-                            MAN: Perfect, thanks. That would be very helpful. Oh and just one other thing - I'll be cycling to the club and will need somewhere to put valuables. I'm just wondering if there are <span id="ev-Lockers">Lockers</span> for people to use?[cite: 3, 52]<br>
-                            WOMAN: Yes, there are plenty in the changing rooms.</p>[cite: 3, 52]
+                            <p><strong>Section 1:</strong></p>
+                            <p>WOMAN: This is a mix of theory and practical skills. So you learn about things like the <span id="ev-weather">weather</span>, which is obviously really important and also the tides, as well as learning basic sailing skills. You go out into the harbour in special training dinghies for beginners, two people in each dinghy and an instructor. He or she will make sure you understand everything you need to know about <span id="ev-safety">safety</span>.<br>
+                            MAN: It sounds like hard work!<br>
+                            WOMAN: Yes, but you'll have a lot of fun too.<br>
+                            MAN: And the cost of that one is... ?<br>
+                            WOMAN: £200. But it's a bit cheaper if you decide to join the club. There's a <span id="ev-discount">discount</span> for members.<br>
+                            MAN: Well, I'm not sure about that yet.<br>
+                            WOMAN: You've got plenty of time to decide.<br>
+                            MAN: And does the cost include everything?<br>
+                            WOMAN: Yes, everything's included and you also get a really good <span id="ev-dictionary">dictionary</span> explaining all the sailing terminology. A lot of people struggle with this at first. It's got lots of pictures, so I'm sure you'd find it really helpful. And on completion of the course you get a <span id="ev-certificate">certificate</span>. Then you're ready to move on to the Level 2 course.<br>
+                            MAN: Sounds good.<br>
+                            WOMAN: I think that's all the info you need for now. Just a couple of general things. For example, it's really important that you know how to swim.<br>
+                            MAN: Yes, I'm pretty confident in the water.<br>
+                            WOMAN: Great. The other thing I should tell you is that we provide wetsuits and life jackets but you need to bring swimming trunks and some old trainers.<br>
+                            MAN: And a <span id="ev-towel">towel</span>?<br>
+                            WOMAN: Yes definitely. And you might want to bring your own toiletries, things like shampoo.<br>
+                            MAN: OK. What about food and drink? Do I need to bring that or is there a <span id="ev-café">café</span> at the club?<br>
+                            WOMAN: Yes, you can get sandwiches, cakes and snacks there. The food's pretty reasonable.<br>
+                            MAN: OK good. Well I think I'm interested in the Level 1 course. But I know absolutely nothing about sailing so is there anything I can do to prepare myself a bit?<br>
+                            WOMAN: I recommend you watch some <span id="ev-videos">videos</span> we use for training. They're available online. I can send you the link. They'll give you an idea of what to expect.<br>
+                            MAN: Perfect, thanks. That would be very helpful. Oh and just one other thing - I'll be cycling to the club and will need somewhere to put valuables. I'm just wondering if there are <span id="ev-Lockers">lockers</span> for people to use?<br>
+                            WOMAN: Yes, there are plenty in the changing rooms.<br>
+                            MAN: Great. OK well could you book me onto... </p>
                         </div>
                         <div id="script-2" style="margin-top:20px;">
-                            <p><strong>Section 2:</strong>[cite: 3, 4]</p>
-                            <p>MAN: Hello and welcome to the film making podcast...[cite: 3, 4]<br>
-                            WOMAN: ...Before you can become a makeup artist on films you have to spend about 2 years working as a makeup trainee. A good place to get your first job would be on a low budget short film. Of course, this means that you'll be working for free. But it's often worth it for the experience. Make sure your <span id="ev-travel costs are covered">travel costs are covered</span> - and remember, there's very unlikely to be any catering provided, so bring plenty of food.[cite: 3, 4]<br>
-                            If you're lucky, you might start out on a big budget film where you'll get the most useful experience... But you're likely to get the opportunity to work with a range of age groups, as well as <span id="ev-different ethnicities">different ethnicities</span>.[cite: 3, 4]<br>
-                            One problem with working in the makeup department is that it's a high-pressure environment... even when they're having to work with <span id="ev-directors who are impatient">directors who are impatient</span>, or unhappy with the makeup artist's work.[cite: 3, 4]<br>
-                            I've worked with many very famous actors over the years. At first, I found it <span id="ev-overwhelming and could hardly speak">overwhelming and could hardly speak</span>, I was so in awe.[cite: 3, 4]<br>
-                            Every makeup trainee will need a makeup kit... <span id="ev-Just the essentials will do">Just the essentials will do</span> for the kinds of tasks you'll be given.[cite: 3, 4]<br>
-                            It's very important to build your portfolio... But remember you'll need to get <span id="ev-approval from the makeup designer">approval from the makeup designer</span> in charge of the department.[cite: 3, 4]<br>
-                            You may be asked to help prep an actor ready for makeup... Sometimes you'll need to step in and get this done <span id="ev-without wasting any time">without wasting any time</span>, otherwise the makeup artist will get behind schedule.[cite: 4]<br>
-                            Trainees play a useful role in continuity... This information needs to be kept in <span id="ev-good order">good order</span> as a reshoot can mean replicating makeup months later.[cite: 4]<br>
-                            General duties mean doing anything from getting the teas and coffees to putting on a wash. Having a <span id="ev-positive attitude">positive attitude</span> and being willing to do whatever is asked of you will help you get your next film job.[cite: 4]<br>
-                            If there are dozens of extras involved you'll need to keep up a <span id="ev-swift pace">swift pace</span> and not spend too long on each person.</p>[cite: 4]
+                            <p><strong>Section 2:</strong></p>
+                            <p>WOMAN: Thanks Ian. Well, before you can become a makeup artist on films you have to spend about 2 years working as a makeup trainee.<br>
+                            A good place to get your first job would be on a low budget short film. Of course, this means that you'll be working for free. But it's often worth it for the experience. <span id="ev-Make sure your transport costs are covered">Make sure your transport costs are covered</span> - and remember, there's very unlikely to be any catering provided, so bring plenty of food.<br>
+                            If you're lucky, you might start out on a big budget film where you'll get the most useful experience. On productions like this, makeup and hair styling are separate departments - so you won't need to bring your curling tongs! But <span id="ev-you're likely to get the opportunity to work with a range of age groups, as well as different ethnicities.">you're likely to get the opportunity to work with a range of age groups, as well as different ethnicities.</span> Doing makeup for special effects is highly specialised, so don't expect to be offered any practical experience in that.<br>
+                            One problem with working in the makeup department is that it's a high-pressure environment. There are very few times when you'll be bored or have nothing to do. It can be stressful but you'll see that the top makeup artists are very professional - even when they're <span id="ev-having to work with directors who are impatient, or unhappy with the makeup artist's work">having to work with directors who are impatient, or unhappy with the makeup artist's work</span>. Follow your supervisor's lead and try to remain calm at all times.<br>
+                            I've worked with many very famous actors over the years. At first, <span id="ev-I found it overwhelming and could hardly speak, I was so in awe.">I found it overwhelming and could hardly speak, I was so in awe.</span> That's preferable, by the way, to becoming too excited and asking for selfies. Now meeting the talent is just a normal part of the job and to be honest most actors don't look that special without all the makeup!<br>
+                            <span id="ev-Every makeup trainee will need a makeup kit, which they'll be expected to have with them at all times. Just the essentials will do">Every makeup trainee will need a makeup kit, which they'll be expected to have with them at all times. Just the essentials will do</span> for the kinds of tasks you'll be given - it won't be anything complicated. It's worth looking at what the other makeup artists have in their kits - but whatever you do, don't borrow anything without asking first.<br>
+                            It's very important to build your portfolio. You should take photos of all the work you do and ideally show the different stages of makeup application if you can. But remember <span id="ev-you'll need to get approval from the makeup designer in charge of the department">you'll need to get approval from the makeup designer in charge of the department</span>. As you'll be sending your portfolio digitally, you won't need to get photos printed.<br>
+                            So what does a makeup trainee actually do? You need to think about whether you're the right kind of person to do the job and whether you'd enjoy it. So, to give you some idea, here are some of the things you might be required to do.<br>
+                            You may be asked to help prep an actor ready for makeup. Some actors will arrive having already cleansed and moisturized their skin. But sometimes you'll need to step in and get this done <span id="ev-without wasting any time">without wasting any time</span>, otherwise the makeup artist will get behind schedule.<br>
+                            Trainees play a useful role in continuity. It will be your responsibility to take photos, log them digitally and print out a hard copy to put in each actor's file. This information <span id="ev-needs to be kept in good order">needs to be kept in good order</span> as a reshoot can mean replicating makeup months later.<br>
+                            General duties mean doing anything from getting the teas and coffees to putting on a wash. Having a <span id="ev-positive attitude and being willing to do whatever is asked">positive attitude and being willing to do whatever is asked</span> of you will help you get your next film job.<br>
+                            You won't be asked to apply makeup to any of the principal cast, only the extras. If there are dozens of extras involved you'll need to <span id="ev-keep up a swift pace">keep up a swift pace</span> and not spend too long on each person. It takes quite a lot of confidence to be able to do this well.</p>
                         </div>
                         <div id="script-3" style="margin-top:20px;">
-                            <p><strong>Section 3:</strong>[cite: 4, 5]</p>
-                            <p>PHIL: That lecture from the visiting speaker yesterday was good, wasn't it?[cite: 4, 5]<br>
-                            LUCY: Yeah... I especially liked the way her lecture focused on more <span id="ev-long-term issues">long-term issues</span>.[cite: 4, 5]<br>
-                            PHIL: Yes, things that aren't currently receiving widespread attention but are likely to be important in the future... The examples she gave were at a more global level, and they really made it clear to me just how wide-ranging the threats to ocean biodiversity are.[cite: 4, 5]<br>
-                            PHIL: The research project she described was impressive, wasn't it? I'd have thought it was quite unusual to have so many experts working together.[cite: 4, 5]<br>
-                            LUCY: Yeah, and from such <span id="ev-different backgrounds">different backgrounds</span>.[cite: 4, 5]<br>
-                            PHIL: ...What did you think of that article on invasive lionfish?...[cite: 5]<br>
-                            PHIL: Well, the writer went on about how dangerous they were in environmental terms, which is probably true, but <span id="ev-didn't really provide much information">he didn't really provide much information</span> to explain why.[cite: 5]<br>
-                            LUCY: I watched the documentary on microplastics... but then I found it was <span id="ev-made ten years ago">made ten years ago</span> so I gave up.[cite: 5]<br>
-                            LUCY: Did you listen to the podcast on ocean pollution?[cite: 5]<br>
-                            PHIL: Mm. I didn't get anything out of it though. Most of it was <span id="ev-stating the obvious">stating the obvious</span>.[cite: 5]<br>
-                            LUCY: ...Yes, I found it hard going at first... but actually I ended up with a <span id="ev-better understanding of the issues">better understanding of the issues</span>.[cite: 5]<br>
-                            LUCY: The article on metal toxicity was way <span id="ev-above my head">above my head</span>...[cite: 5]<br>
-                            LUCY: That podcast on floating marine cities was interesting, though it presented a rather <span id="ev-one-sided picture">one-sided picture</span>, I thought.</p>[cite: 5]
+                            <p><strong>Section 3:</strong></p>
+                            <p>LUCY: I learned a lot from her about ocean biodiversity. I've already done some reading on it, and I did an assignment on some of the problems associated with it last year, but I especially liked the way her lecture <span id="ev-focused on more long-term issues... The examples she gave were at a more global level">focused on more long-term issues</span>.<br>
+                            PHIL: Yes, things that aren't currently receiving widespread attention but are likely to be important in the future. That impressed me too. It wasn't exactly a feel-good conclusion because it's hard to see any real solution for a lot of the problems.<br>
+                            LUCY: No, though she did point to where policy changes could be made to protect our marine and coastal environments.<br>
+                            PHIL: Mm. But that's just at a national level. <span id="ev-focused on more long-term issues... The examples she gave were at a more global level">The examples she gave were at a more global level</span>, and they really made it clear to me just how wide-ranging the threats to ocean biodiversity are.<br>
+                            LUCY: Yes, me too.<br>
+                            PHIL: The research project she described was impressive, wasn't it? I'd have thought it was quite unusual to have <span id="ev-so many experts working together... from such different backgrounds. VÀ description of improvements in systems used for tracking marine animals and things like robots">so many experts working together</span>.<br>
+                            LUCY: Yeah, and <span id="ev-so many experts working together... from such different backgrounds. VÀ description of improvements in systems used for tracking marine animals and things like robots">from such different backgrounds</span>. Must have been a really exciting team to work with. I'd heard of a couple of them before they were involved in research way back in 2009 warning about the dangers of ocean pollution.<br>
+                            PHIL: But now people are much more aware of that, aren't they?<br>
+                            LUCY: I suppose so.<br>
+                            PHIL: Another thing about the research is that the team members came from all round the world. Though I suppose that's not unusual nowadays, now everyone can work remotely.<br>
+                            LUCY: Right. I liked the way she didn't bombard us with figures - I mean, they were available, but she focused more on the general points they indicated.<br>
+                            PHIL: Mm. And the <span id="ev-so many experts working together... from such different backgrounds. VÀ description of improvements in systems used for tracking marine animals and things like robots">description of improvements in systems used for tracking marine animals and things like robots</span> were really interesting.<br>
+                            LUCY: Yes, and her description of how robotics can be used to investigate threats to biodiversity.<br>
+                            PHIL: Absolutely.<br>
+                            PHIL: While you're here, can we talk about the list of resources we have to evaluate for the seminar tomorrow. I've had a look at them all, but it's been a bit of a rush.<br>
+                            LUCY: Yeah. What did you think of that article on invasive lionfish? The one claiming they were expanding their habitat throughout the Mediterranean Sea.<br>
+                            PHIL: Well, the writer went on about how dangerous they were in environmental terms, which is probably true, but <span id="ev-he didn't really provide much information to explain why.">he didn't really provide much information to explain why.</span><br>
+                            LUCY: I know what you mean.<br>
+                            PHIL: I watched the documentary on microplastics, at least I started to, but then I found <span id="ev-it was showing its age, made ten years ago">it was made ten years ago</span> so I gave up.<br>
+                            LUCY: I watched to the end but you're right, <span id="ev-it was showing its age, made ten years ago">it was showing its age</span>. People had hardly heard of microplastics then, whereas now everyone knows about them and how dangerous they are.<br>
+                            PHIL: Yeah. Did you listen to the podcast on ocean pollution?<br>
+                            LUCY: Mm. I didn't get anything out of it though. <span id="ev-Most of it was stating the obvious... everybody knows that anyway.">Most of it was stating the obvious.</span><br>
+                            PHIL: Yes, it mentioned pesticides and plastic and things, and it clearly made the point that they were a bad thing, but <span id="ev-Most of it was stating the obvious... everybody knows that anyway.">everybody knows that anyway.</span> Did you read that book on coastal ecosystems?<br>
+                            LUCY: The one by John Harper? Yes, I found it hard going at first, it went into a lot of detail about things like the effects of offshore windfarms and fish farms, but actually I <span id="ev-ended up with a much better understanding of the issues... a well-written summary of those">ended up with a much better understanding of the issues</span>.<br>
+                            PHIL: Yes, I agree and I thought it was <span id="ev-ended up with a much better understanding of the issues... a well-written summary of those">a well-written summary of those</span>. And the diagrams helped a lot too.<br>
+                            LUCY: The article on metal toxicity <span id="ev-was way above my head... I just couldn't follow it.">was way above my head</span>, I didn't know anything about how metals from industrial emissions react in the ocean... and I still don't understand it.<br>
+                            PHIL: I gave up reading after the first chapter - <span id="ev-was way above my head... I just couldn't follow it.">I just couldn't follow it.</span><br>
+                            LUCY: That podcast on floating marine cities was interesting, though <span id="ev-it presented a rather one-sided picture">it presented a rather one-sided picture</span>, I thought.<br>
+                            PHIL: Yes, it focused on how this would benefit people and ignored the effects on the environment.</p>
                         </div>
                         <div id="script-4" style="margin-top:20px;">
-                            <p><strong>Section 4:</strong>[cite: 6, 7]</p>
-                            <p>MAN: Much of the world now lives in an industrial civilisation... There are three types of natural resource without which industry could not exist. One of these is metal... Another is <span id="ev-fossil fuels">fossil fuels</span>... But there's a third resource... and that is rubber.[cite: 6, 7]<br>
-                            At present, we have two types of rubber in common use. One is natural rubber, which nearly all comes from the Pará rubber tree...[cite: 6, 7]<br>
-                            So what exactly is limiting the supply of natural rubber?[cite: 6, 7]<br>
-                            Well, for one thing, rubber trees don't just spring up overnight. It can take eight to ten years for a tree to start producing rubber, so cultivating them's a <span id="ev-slow process">slow process</span>.[cite: 6, 7]<br>
-                            And this leads to another problem... if they find the <span id="ev-demand">demand</span> for that crop is rising or falling...[cite: 6, 7]<br>
-                            ...It needs the right temperature, the right amount of rainfall, and the right altitude... only around the <span id="ev-equator">equator</span>.[cite: 6, 7]<br>
-                            ...it's very difficult to <span id="ev-recycle">recycle</span> them, so that also reduces the amount we have available.[cite: 6, 7]<br>
-                            The most dangerous threat is a <span id="ev-fungus">fungus</span>, which destroyed large numbers of rubber trees in Brazil...[cite: 6, 7]<br>
-                            ...South-East Asia, like other parts of the world, has been repeatedly hit by extreme types of <span id="ev-weather">weather</span>...[cite: 6, 7]<br>
-                            ...compared with natural rubber, it's not anything like as <span id="ev-strong">strong</span>...[cite: 6, 7]<br>
-                            ...It's a wild plant with yellow flowers that we normally regard as a weed... When it's pulled up and its <span id="ev-roots">roots</span> cut open, they're found to contain rubber.[cite: 6, 7]<br>
-                            ...they don't require good <span id="ev-soil">soil</span>.</p>[cite: 7]
+                            <p><strong>Section 4:</strong></p>
+                            <p>There are three types of natural resource without which industry could not exist. One of these is <span id="ev-metal">metal</span> - without that we'd have no machines and no transportation. Another is fossil fuels, which we need to power those machines. But there's a third resource that's essential... and that is rubber.<br>
+                            At present, we have two types of rubber in common use. One is natural rubber, which nearly all comes from the Pará rubber tree...<br>
+                            Well, for one thing, rubber trees don't just spring up overnight. It can take eight to ten years for a tree to start producing rubber, so cultivating them's a <span id="ev-slow">slow</span> process. And this leads to another problem. With most crops, farmers don't have to think very far ahead, so they can easily change what crop they produce... if they find the <span id="ev-demand">demand</span> for that crop is rising or falling.<br>
+                            The result is that it can't be grown in the northern or southern parts of the globe, only around the <span id="ev-equator">equator</span>. Another problem is that the rubber is basically extracted in the same way as it's been done for hundreds of years... extracting the latex, as the rubber is called. It's very labour-intensive.<br>
+                            With other resources such as water and glass, when we've finished using them we can recycle them, but although this is also possible with rubber, it's very difficult, so that also reduces the amount we have available. it is very difficult to <span id="ev-recycle">recycle</span> rubber after production.<br>
+                            This means that there's very little genetic diversity among the trees, which in turn makes them very vulnerable to disease. The most dangerous threat is a <span id="ev-fungus">fungus</span>...<br>
+                            And finally, in recent years South-East Asia, like other parts of the world, has been repeatedly hit by extreme types of <span id="ev-weather">weather</span>, and this looks likely to continue in the future.<br>
+                            However, as well as using natural rubber, it's also possible to make rubber synthetically. This works very well for some purposes, for example, making engine parts... But compared with natural rubber, it's not anything like as <span id="ev-strong">strong</span>, and this means it can't replace natural rubber in other products.<br>
+                            It's a wild plant with yellow flowers that we normally regard as a weed when we see it in our gardens. But when it's pulled up and its <span id="ev-roots">roots</span> cut open, they're found to contain rubber.<br>
+                            Now, compared to the rubber tree, dandelions produce relatively small amounts of rubber, but unlike rubber trees, they're very adaptable. They'll grow in all sorts of places, and they don't need rich <span id="ev-soil">soil</span>.</p>
                         </div>
                     </div>
                 </div>
@@ -1447,7 +1525,7 @@
             </div>
         </div>
         <button id="deliver-button" aria-label="Review your answers" class="footer__deliverButton___3FM07">
-            <i class="fa fa fa-check" aria-hidden="true"></i>
+            <i class="fa fa-check" aria-hidden="true"></i>
             <span>Check Answers</span>
         </button>
     </nav>
@@ -1462,6 +1540,7 @@
         <div class="modal-content">
             <button class="modal-close-btn" onclick="closeResultsModal()">&times;</button>
             <h2>Results</h2>
+            <div id="submit-status" style="display: none; text-align: center; margin-bottom: 15px; padding: 10px; border-radius: 4px; font-weight: bold;"></div>
             <div class="results-summary">
                 <p>Score: <span id="results-score"></span> / 40</p>
                 <p>IELTS Band: <span id="results-band"></span></p>
@@ -1471,6 +1550,8 @@
     </div>
 
     <script>
+        const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycby7tYg_WIbxhkhK8NpoHs7s5GW3svAD56ZswWfimJgR-NMnzbbmTCBXwchyqhCI69pa/exec";
+
         window.testMeta = {
             "totalQuestions": 40,
             "parts": [
@@ -1480,58 +1561,58 @@
                 {"part": 4, "start": 31, "end": 40}
             ],
             "correctAnswers": {
-                "1": ["10","ten"], "2": "weather", "3": "safety", "4": "discount", "5": "dictionary",
-                "6": "certificate", "7": "towel", "8": ["café","cafe"], "9": "videos", "10": "Lockers",
+                "1": "weather", "2": ["10", "ten"], "3": "safety", "4": "discount", "5": "dictionary",
+                "6": "certificate", "7": "towel", "8": ["café", "cafe"], "9": "videos", "10": ["lockers", "Lockers"],
                 "11": "A", "12": "B", "13": "A", "14": "A", "15": "A",
                 "16": "C", "17": "C", "18": "A", "19": "B", "20": "C",
                 "21": ["B", "D"], "22": ["B", "D"], "23": ["C", "E"], "24": ["C", "E"], "25": "G",
                 "26": "B", "27": "F", "28": "H", "29": "A", "30": "E",
-                "31": "fossil", "32": "slow", "33": "demand", "34": "equator", "35": "recycle",
+                "31": ["metal", "metals"], "32": "slow", "33": "demand", "34": "equator", "35": "recycle",
                 "36": "fungus", "37": "weather", "38": "strong", "39": "roots", "40": "soil"
             }
         };
 
         window.testExplanations = {
-            "1": "Giải thích: Transcript: '...usually about eight people but no more than ten...' (Bấm để xem Script)",
-            "2": "Giải thích: Transcript: 'So you learn about things like the weather...' (Bấm để xem Script)",
-            "3": "Giải thích: Transcript: '...understand everything you need to know about safety.' (Bấm để xem Script)",
-            "4": "Giải thích: Transcript: 'There's a discount for members.' (Bấm để xem Script)",
-            "5": "Giải thích: Transcript: '...you also get a really good dictionary explaining all the sailing terminology.' (Bấm để xem Script)",
-            "6": "Giải thích: Transcript: 'And on completion of the course you get a certificate.' (Bấm để xem Script)",
-            "7": "Giải thích: Transcript: '...you need to bring swimming trunks and some old trainers. And a towel?' (Bấm để xem Script)",
-            "8": "Transcript: '...or is there a café at the club?' (Bấm để xem Script)",
-            "9": "Transcript: 'I recommend you watch some videos we use for training.' (Bấm để xem Script)",
-            "10": "Transcript: '...wondering if there are lockers for people to use? Yes, there are plenty...' (Bấm để xem Script)",
-            "11": "Transcript: 'Make sure your transport costs are covered...' (Bấm để xem Script)",
-            "12": "Transcript: '...work with a range of age groups, as well as different ethnicities.' (Bấm để xem Script)",
-            "13": "Transcript: 'It can be stressful... working with directors who are impatient...' (Bấm để xem Script)",
-            "14": "Transcript: 'At first, I found it overwhelming and could hardly speak, I was so in awe.' (Bấm để xem Script)",
-            "15": "Transcript: 'Just the essentials will do for the kinds of tasks you'll be given...' (Bấm để xem Script)",
-            "16": "Transcript: '...remember you'll need to get approval from the makeup designer in charge...' (Bấm để xem Script)",
-            "17": "Transcript: '...get this done without wasting any time...' (Bấm để xem Script)",
-            "18": "Transcript: 'This information needs to be kept in good order...' (Bấm để xem Script)",
-            "19": "Transcript: 'Having a positive attitude and being willing to do whatever is asked of you...' (Bấm để xem Script)",
-            "20": "Transcript: '...you'll need to keep up a swift pace and not spend too long on each person.' (Bấm để xem Script)",
-            "21": "Transcript: '...focused on more long-term issues... clear to me just how wide-ranging the threats to ocean biodiversity are.' (Bấm để xem Script)",
-            "22": "Transcript: '...focused on more long-term issues... clear to me just how wide-ranging the threats to ocean biodiversity are.' (Bấm để xem Script)",
-            "23": "Transcript: '...unusual to have so many experts working together... and from such different backgrounds.' (Bấm để xem Script)",
-            "24": "Transcript: '...unusual to have so many experts working together... and from such different backgrounds.' (Bấm để xem Script)",
-            "25": "Transcript: '...he didn't really provide much information to explain why.' (Bấm để xem Script)",
-            "26": "Transcript: '...I found it was made ten years ago so I gave up.' (Bấm để xem Script)",
-            "27": "Transcript: 'I didn't get anything out of it though. Most of it was stating the obvious.' (Bấm để xem Script)",
-            "28": "Transcript: '...actually I ended up with a much better understanding of the issues.' (Bấm để xem Script)",
-            "29": "Transcript: 'The article on metal toxicity was way above my head...' (Bấm để xem Script)",
-            "30": "Transcript: 'That podcast on floating marine cities was interesting, though it presented a rather one-sided picture...' (Bấm để xem Script)",
-            "31": "Transcript: 'One of these is metal - without that we'd have no machines and no transportation...' (Bấm để xem Script)",
-            "32": "Transcript: 'It can take eight to ten years for a tree to start producing rubber, so cultivating them's a slow process.' (Bấm để xem Script)",
-            "33": "Transcript: '...if they find the demand for that crop is rising or falling.' (Bấm để xem Script)",
-            "34": "Transcript: '...it can't be grown in the northern or southern parts of the globe, only around the equator.' (Bấm để xem Script)",
-            "35": "Transcript: '...although this is also possible with rubber, it's very difficult, so that also reduces the amount we have available.' (Bấm để xem Script)",
-            "36": "Transcript: 'The most dangerous threat is a fungus, which destroyed large numbers of rubber trees...' (Bấm để xem Script)",
-            "37": "Transcript: '...South-East Asia, like other parts of the world, has been repeatedly hit by extreme types of weather...' (Bấm để xem Script)",
-            "38": "Transcript: '...compared with natural rubber, it's not anything like as strong...' (Bấm để xem Script)",
-            "39": "Transcript: 'It's a wild plant with yellow flowers... when it's pulled up and its roots cut open...' (Bấm để xem Script)",
-            "40": "Transcript: 'They'll grow in all sorts of places, and they don't need rich soil.' (Bấm để xem Script)"
+            "1": "Giải thích: Transcript: 'basic theory e.g. understanding the weather and tides.' (Bấm để xem Script)",
+            "2": "Giải thích: Transcript: 'small groups (max 10 people).' (Bấm để xem Script)",
+            "3": "Giải thích: Transcript: 'basic sailing skills including safety information.' (Bấm để xem Script)",
+            "4": "Giải thích: Transcript: 'discount available for club members.' (Bấm để xem Script)",
+            "5": "Giải thích: Transcript: 'all inclusive (plus a useful dictionary).' (Bấm để xem Script)",
+            "6": "Giải thích: Transcript: 'a certificate at the end of the course for all participants.' (Bấm để xem Script)",
+            "7": "Giải thích: Transcript: 'Bring suitable clothing, a towel and toiletries (e.g. shampoo).' (Bấm để xem Script)",
+            "8": "Giải thích: Transcript: 'There is a café at the club.' (Bấm để xem Script)",
+            "9": "Giải thích: Transcript: 'Online training videos are recommended.' (Bấm để xem Script)",
+            "10": "Giải thích: Transcript: 'Lockers are available for course participants.' (Bấm để xem Script)",
+            "11": "Giải thích: Transcript: 'Make sure your transport costs are covered' (Bấm để xem Script)",
+            "12": "Giải thích: Transcript: 'you're likely to get the opportunity to work with a range of age groups, as well as different ethnicities.' (Bấm để xem Script)",
+            "13": "Giải thích: Transcript: 'having to work with directors who are impatient, or unhappy with the makeup artist's work' (Bấm để xem Script)",
+            "14": "Giải thích: Transcript: 'I found it overwhelming and could hardly speak, I was so in awe.' (Bấm để xem Script)",
+            "15": "Giải thích: Transcript: 'Every makeup trainee will need a makeup kit... Just the essentials will do' (Bấm để xem Script)",
+            "16": "Giải thích: Transcript: 'you'll need to get approval from the makeup designer in charge of the department.' (Bấm để xem Script)",
+            "17": "Giải thích: Transcript: 'without wasting any time' (Bấm để xem Script)",
+            "18": "Giải thích: Transcript: 'needs to be kept in good order' (Bấm để xem Script)",
+            "19": "Giải thích: Transcript: 'positive attitude and being willing to do whatever is asked' (Bấm để xem Script)",
+            "20": "Giải thích: Transcript: 'keep up a swift pace' (Bấm để xem Script)",
+            "21": "Giải thích: Transcript: 'focused on more long-term issues... The examples she gave were at a more global level' (Bấm để xem Script)",
+            "22": "Giải thích: Transcript: 'focused on more long-term issues... The examples she gave were at a more global level' (Bấm để xem Script)",
+            "23": "Giải thích: Transcript: 'so many experts working together... from such different backgrounds. VÀ description of improvements in systems used for tracking marine animals and things like robots' (Bấm để xem Script)",
+            "24": "Giải thích: Transcript: 'so many experts working together... from such different backgrounds. VÀ description of improvements in systems used for tracking marine animals and things like robots' (Bấm để xem Script)",
+            "25": "Giải thích: Transcript: 'he didn't really provide much information to explain why.' (Bấm để xem Script)",
+            "26": "Giải thích: Transcript: 'it was showing its age, made ten years ago' (Bấm để xem Script)",
+            "27": "Giải thích: Transcript: 'Most of it was stating the obvious... everybody knows that anyway.' (Bấm để xem Script)",
+            "28": "Giải thích: Transcript: 'ended up with a much better understanding of the issues... a well-written summary of those' (Bấm để xem Script)",
+            "29": "Giải thích: Transcript: 'was way above my head... I just couldn't follow it.' (Bấm để xem Script)",
+            "30": "Giải thích: Transcript: 'it presented a rather one-sided picture' (Bấm để xem Script)",
+            "31": "Giải thích: Transcript: 'One of these is metal - without that we'd have no machines and no transportation.' (Bấm để xem Script)",
+            "32": "Giải thích: Transcript: 'so cultivating them's a slow process.' (Bấm để xem Script)",
+            "33": "Giải thích: Transcript: 'if they find the demand for that crop is rising or falling.' (Bấm để xem Script)",
+            "34": "Giải thích: Transcript: 'only around the equator.' (Bấm để xem Script)",
+            "35": "Giải thích: Transcript: 'it is very difficult to recycle rubber after production.' (Bấm để xem Script)",
+            "36": "Giải thích: Transcript: 'The most dangerous threat is a fungus...' (Bấm để xem Script)",
+            "37": "Giải thích: Transcript: 'repeatedly hit by extreme types of weather' (Bấm để xem Script)",
+            "38": "Giải thích: Transcript: 'it's not anything like as strong' (Bấm để xem Script)",
+            "39": "Giải thích: Transcript: 'roots cut open, they're found to contain rubber.' (Bấm để xem Script)",
+            "40": "Giải thích: Transcript: 'and they don't need rich soil.' (Bấm để xem Script)"
         };
 
         let currentPart = 1;
@@ -1650,25 +1731,35 @@
             }
         });
 
+        // XỬ LÝ SỰ KIỆN NỘP BÀI VÀ GỬI WEBHOOK
         document.getElementById('deliver-button').addEventListener('click', function() {
+            // 1. Lấy thông tin và kiểm tra (Phải làm đầu tiên)
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            if (!studentName || !studentClass) {
+                alert("Vui lòng điền đầy đủ Họ và tên và Lớp trước khi nộp bài!");
+                document.getElementById('studentName').focus();
+                return;
+            }
+
+            // 2. Tính toán điểm số
             let score = 0;
             const answers = window.testMeta.correctAnswers;
             const detailsContainer = document.getElementById('results-details');
             detailsContainer.innerHTML = '';
 
-            // Hiển thị nút bấm Audio Script sau khi bấm Check Answers
             document.getElementById('scriptToggleBtn').classList.remove('hidden');
 
             for (let i = 1; i <= 40; i++) {
                 let userAns = "";
                 const input = document.getElementById('q' + i);
-if (input) {
+                if (input) {
                     userAns = input.value.trim();
                 } else {
                     const radios = document.querySelectorAll(`[name="q${i}"]`);
                     radios.forEach(r => { if (r.checked) userAns = r.value; });
                     
-                    // Tìm nhóm checkbox chứa câu hỏi hiện tại (VD: q21_22 hoặc q23_24)
                     let checkboxGroup = document.querySelectorAll(`[name="q${i}_${i+1}"]`);
                     if (checkboxGroup.length === 0) checkboxGroup = document.querySelectorAll(`[name="q${i-1}_${i}"]`);
                     if (checkboxGroup.length === 0) checkboxGroup = document.querySelectorAll(`[name="q${i}"]`);
@@ -1677,11 +1768,10 @@ if (input) {
                         let checkedVals = [];
                         checkboxGroup.forEach(cb => { if (cb.checked) checkedVals.push(cb.value); });
                         
-                        // Tách mảng đáp án: mỗi câu trong nhóm nhận 1 lựa chọn từ người dùng
                         let groupName = checkboxGroup[0].name;
                         if (groupName.includes('_')) {
                             let parts = groupName.replace('q', '').split('_');
-                            let indexInGroup = parts.indexOf(i.toString()); // 0 cho câu 21/23, 1 cho câu 22/24
+                            let indexInGroup = parts.indexOf(i.toString());
                             userAns = checkedVals[indexInGroup] || "";
                         } else {
                             userAns = checkedVals;
@@ -1694,10 +1784,8 @@ if (input) {
 
                 if (Array.isArray(correct)) {
                     if (Array.isArray(userAns)) {
-                        // Xử lý câu hỏi Checkbox (chọn nhiều đáp án)
                         isCorrect = correct.slice().sort().join() === userAns.slice().sort().join();
                     } else if (typeof userAns === 'string') {
-                        // Xử lý câu hỏi Text Input có nhiều phương án đúng thay thế nhau (VD: "10" hoặc "ten")
                         isCorrect = correct.some(ans => ans.toString().toLowerCase() === userAns.toLowerCase());
                     }
                 } else {
@@ -1732,6 +1820,7 @@ if (input) {
                 detailsContainer.appendChild(row);
             }
 
+            // 3. Quy đổi Band điểm
             document.getElementById('results-score').innerText = score;
             let band = "0";
             if (score >= 39) band = "9.0";
@@ -1750,6 +1839,65 @@ if (input) {
 
             document.getElementById('results-band').innerText = band;
             document.getElementById('results-modal').classList.remove('hidden');
+            
+            isTimerPaused = true;
+
+            // 4. Đóng gói dữ liệu và gửi Webhook
+            const statusDiv = document.getElementById('submit-status');
+            statusDiv.style.display = 'block';
+            statusDiv.style.backgroundColor = '#fff3cd';
+            statusDiv.style.color = '#856404';
+            statusDiv.textContent = '⏳ Đang gửi kết quả về hệ thống...';
+
+            const testName = document.getElementById('launchTestTitle').textContent.trim() || document.title;
+            const timeTakenSeconds = (40 * 60) - totalSeconds;
+            const timeTakenStr = Math.floor(timeTakenSeconds / 60) + " phút " + (timeTakenSeconds % 60) + " giây";
+            
+            // Sửa lỗi Thời gian nộp bài bị trống: Lấy thời gian từ trình duyệt và đẩy vào Gói dữ liệu
+            const now = new Date();
+            const currentTime = now.toLocaleTimeString('vi-VN', { hour12: false }) + ' ' + now.toLocaleDateString('vi-VN');
+
+            // Cập nhật tên các tham số gửi về trùng khớp với file Reading
+            const payload = {
+                "Time": currentTime,
+                "time": currentTime,
+                "submitDate": currentTime,
+                "Name": studentName,
+                "studentName": studentName,
+                "Class": studentClass,
+                "studentClass": studentClass,
+                "Correct answer": score + "/40",
+                "score": score + "/40",
+                "total time": timeTakenStr,
+                "timeTaken": timeTakenStr,
+                "Test name": testName,
+                "testName": testName,
+                "examTitle": testName,
+                "bandScore": band,
+                "band": band
+            };
+
+            if (WEBHOOK_URL && WEBHOOK_URL.includes('script.google.com')) {
+                const formBody = new URLSearchParams(payload).toString();
+
+                fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: formBody
+                }).then(() => {
+                    statusDiv.style.backgroundColor = '#d4edda';
+                    statusDiv.style.color = '#155724';
+                    statusDiv.textContent = '✅ Kết quả đã được ghi nhận và gửi thành công!';
+                }).catch(err => {
+                    console.error("Lỗi gửi dữ liệu webhook: ", err);
+                    statusDiv.style.backgroundColor = '#f8d7da';
+                    statusDiv.style.color = '#721c24';
+                    statusDiv.textContent = '⚠️ Có lỗi xảy ra khi gửi. Vui lòng kiểm tra lại kết nối.';
+                });
+            }
         });
 
         function closeResultsModal() {
@@ -1779,7 +1927,7 @@ if (input) {
         playPauseBtn.addEventListener('click', () => {
             if (audioPlayer.paused) {
                 audioPlayer.play().catch(error => {
-                    alert("Trình duyệt chặn phát file audio trực tiếp. Hãy kiểm tra tệp 'c21-test1.mp3' đã đặt cùng thư mục với file HTML này chưa.");
+                    alert("Trình duyệt chặn phát file audio trực tiếp. Hãy kiểm tra tệp audio đã đặt cùng thư mục với file HTML này chưa.");
                 });
                 playPauseBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
             } else {
@@ -1827,7 +1975,6 @@ if (input) {
             durationTimer.textContent = formatTime(audioPlayer.duration);
         });
 
-        // Tự động chạy đồng hồ đếm ngược
         let totalSeconds = 40 * 60;
         let isTimerPaused = false;
         const timerDisplay = document.querySelector('.timer-display');

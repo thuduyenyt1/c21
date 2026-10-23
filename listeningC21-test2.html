@@ -226,6 +226,36 @@
             padding-bottom: 80px;
         }
 
+        .student-form-container {
+            background-color: #f7f9fc;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e0e7ff;
+            margin: 0 20px 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .student-form-container h3 {
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #1f2b59;
+        }
+        
+        .student-inputs {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .student-input-field {
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+            flex: 1;
+            min-width: 200px;
+        }
+
         .panels-container {
             display: flex;
             flex: 1;
@@ -234,7 +264,7 @@
         }
 
         .questions-panel {
-            padding: 20px 20px 40px;
+            padding: 10px 20px 40px;
             overflow-y: auto;
             flex: 1;
             max-width: 100%;
@@ -524,22 +554,6 @@
             gap: 12px;
             flex-wrap: wrap;
         }
-        .listening-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            margin-bottom: 20px;
-        }
-        .listening-table th, .listening-table td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            vertical-align: middle;
-        }
-        .listening-table th {
-            background-color: #f5f5f5;
-            font-weight: bold;
-            text-align: center;
-        }
         .mcq-question-text {
             margin: 0 0 10px 0;
             color: #111827;
@@ -750,16 +764,6 @@
             margin-left: 8px;
             display: inline-block;
         }
-        .map-svg-container {
-            text-align: center;
-            margin: 20px auto;
-            background: #fdfdfd;
-            border: 2px solid #333;
-            border-radius: 6px;
-            padding: 15px;
-            width: 70%;
-            max-width: 450px;
-        }
         html, body {
             width: 100%;
             height: 100%;
@@ -874,6 +878,19 @@
             font-size: 13px;
             color: #5f6da6;
         }
+        
+        .map-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .map-container img {
+            max-width: 65%;
+            max-height: 400px;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -881,7 +898,7 @@
         <div class="launch-card">
             <div>
                 <p class="launch-eyebrow">IELTS Test Launcher</p>
-                <h1 class="launch-title" id="launchTestTitle">C21 - TEST 2 - IELTS Listening Test</h1>
+                <h1 class="launch-title" id="launchTestTitle">C21 - TEST 2 - IELTS Listening Practice</h1>
                 <p class="launch-meta">Dạng bài: Listening</p>
             </div>
             <div class="launch-guide">
@@ -937,7 +954,6 @@
             <span class="audio-time"><span id="audio-current">0:00</span> / <span id="audio-duration">0:00</span></span>
         </div>
         <div class="audio-meta">
-            <!-- Nút mở Audio Script: ban đầu ẩn, chỉ xuất hiện sau khi bấm Check Answers -->
             <button class="script-toggle-btn hidden" id="scriptToggleBtn" type="button" onclick="toggleScriptPanel()">Audio Script</button>
             <div class="audio-speed">
                 <button id="audio-speed-btn" type="button" aria-haspopup="true" aria-expanded="false">1.0x</button>
@@ -949,11 +965,18 @@
                 </div>
             </div>
         </div>
-        <!-- File audio c21-test2 đặt cùng thư mục -->
-        <audio id="audio-player" src="c21-test2.mp3" preload="metadata"></audio>
+        <audio id="audio-player" src="C21-Test2.mp3" preload="metadata"></audio>
     </div>
 
         <div class="main-container" id="main-container">
+            <div class="student-form-container">
+                <h3>Thông tin học sinh (Bắt buộc khi nộp bài)</h3>
+                <div class="student-inputs">
+                    <input type="text" id="studentName" class="student-input-field" placeholder="Họ và tên học sinh" required>
+                    <input type="text" id="studentClass" class="student-input-field" placeholder="Lớp" required>
+                </div>
+            </div>
+
             <div id="passage-header-container" style="width:100%;">
                 <div id="part-header-1" class="part-header">
                     <p><strong>Part 1</strong></p>
@@ -976,61 +999,62 @@
             <div class="panels-container">
                 <div class="questions-panel" id="questions-panel">
                     
-                    <!-- SECTION 1 (Part 1: Table Completion) -->
+                    <!-- SECTION 1 -->
                     <div id="questions-1" class="question-set">
                         <div class="questions-container">
                             <div class="question" data-q-start="1" data-q-end="10">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 1–10</strong></p>
+                                    <p><strong>Questions 1-10</strong></p>
                                     <p>Complete the table below.</p>
-                                    <p>Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
+                                    <p>Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer</p>
                                     <div class="question-title">One-day classes at Steynford College</div>
                                 </div>
-                                <table class="listening-table">
+                                
+                                <table style="width:100%; border-collapse: collapse; margin-bottom: 20px;">
                                     <thead>
                                         <tr>
-                                            <th>Course</th>
-                                            <th>Date</th>
-                                            <th>Cost</th>
-                                            <th>Notes</th>
+                                            <th style="border: 1px solid #ccc; padding: 10px; background-color: #f1f2ec; text-align: left;">Course</th>
+                                            <th style="border: 1px solid #ccc; padding: 10px; background-color: #f1f2ec; text-align: left;">Date</th>
+                                            <th style="border: 1px solid #ccc; padding: 10px; background-color: #f1f2ec; text-align: left;">Cost</th>
+                                            <th style="border: 1px solid #ccc; padding: 10px; background-color: #f1f2ec; text-align: left;">Notes</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><strong>Vietnamese food</strong></td>
-                                            <td><input type="text" class="answer-input" id="q1" placeholder="1" oninput="trackAnswer(1)"><span id="ans-tag-1"></span></td>
-                                            <td>£59</td>
-                                            <td>It provides information on the use of herbs. There are no places at present.</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold; width: 20%;">Vietnamese food</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px; width: 25%;">1 <input type="text" class="answer-input" id="q1" placeholder="1" oninput="trackAnswer(1)" style="width: 100px;"><span id="ans-tag-1"></span></td>
+                                            <td style="border: 1px solid #ccc; padding: 10px; width: 20%;">£59</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px; width: 35%;">It provides information on the use of herbs.<br>There are no places at present.</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Bread making</strong></td>
-                                            <td>20 March</td>
-                                            <td>£ <input type="text" class="answer-input" id="q2" placeholder="2" oninput="trackAnswer(2)"><span id="ans-tag-2"></span></td>
-                                            <td>There is also an extra charge for ingredients. Participants make white bread, sourdough and <input type="text" class="answer-input" id="q3" placeholder="3" oninput="trackAnswer(3)"><span id="ans-tag-3"></span></td>
+                                            <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold;">Bread making</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">20 March</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">2 £ <input type="text" class="answer-input" id="q2" placeholder="2" oninput="trackAnswer(2)" style="width: 60px;"><span id="ans-tag-2"></span></td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">There is also an extra charge for ingredients.<br>Participants make white bread, sourdough and 3 <input type="text" class="answer-input" id="q3" placeholder="3" oninput="trackAnswer(3)" style="width: 100px;"><span id="ans-tag-3"></span></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Face massage</strong></td>
-                                            <td>23 February</td>
-                                            <td>£35</td>
-                                            <td>The teacher trained in <input type="text" class="answer-input" id="q4" placeholder="4" oninput="trackAnswer(4)"><span id="ans-tag-4"></span>. Bring a <input type="text" class="answer-input" id="q5" placeholder="5" oninput="trackAnswer(5)"><span id="ans-tag-5"></span></td>
+                                            <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold;">Face massage</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">23 February</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">£35</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">The teacher trained in 4 <input type="text" class="answer-input" id="q4" placeholder="4" oninput="trackAnswer(4)" style="width: 100px;"><span id="ans-tag-4"></span><br>Bring a 5 <input type="text" class="answer-input" id="q5" placeholder="5" oninput="trackAnswer(5)" style="width: 100px;"><span id="ans-tag-5"></span></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Candle making</strong></td>
-                                            <td><input type="text" class="answer-input" id="q6" placeholder="6" oninput="trackAnswer(6)"><span id="ans-tag-6"></span></td>
-                                            <td>£52</td>
-                                            <td>Only <input type="text" class="answer-input" id="q7" placeholder="7" oninput="trackAnswer(7)"><span id="ans-tag-7"></span> ingredients are used. The candles can be used as presents.</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold;">Candle making</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">6 <input type="text" class="answer-input" id="q6" placeholder="6" oninput="trackAnswer(6)" style="width: 100px;"><span id="ans-tag-6"></span></td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">£52</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">Only 7 <input type="text" class="answer-input" id="q7" placeholder="7" oninput="trackAnswer(7)" style="width: 100px;"><span id="ans-tag-7"></span> ingredients are used.<br>The candles can be used as presents.</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Silk painting</strong></td>
-                                            <td>18 May</td>
-                                            <td>£ <input type="text" class="answer-input" id="q8" placeholder="8" oninput="trackAnswer(8)"><span id="ans-tag-8"></span></td>
-                                            <td>Bring an apron or old <input type="text" class="answer-input" id="q9" placeholder="9" oninput="trackAnswer(9)"><span id="ans-tag-9"></span></td>
+                                            <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold;">Silk painting</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">18 May</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">8 £ <input type="text" class="answer-input" id="q8" placeholder="8" oninput="trackAnswer(8)" style="width: 60px;"><span id="ans-tag-8"></span></td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">Bring an apron or old 9 <input type="text" class="answer-input" id="q9" placeholder="9" oninput="trackAnswer(9)" style="width: 100px;"><span id="ans-tag-9"></span></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>DIY for beginners</strong></td>
-                                            <td>24 February</td>
-                                            <td>£125</td>
-                                            <td>Learn how to use a drill, saw and <input type="text" class="answer-input" id="q10" placeholder="10" oninput="trackAnswer(10)"><span id="ans-tag-10"></span>, put up a shelf.</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px; font-weight: bold;">DIY for beginners</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">24 February</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">£125</td>
+                                            <td style="border: 1px solid #ccc; padding: 10px;">Learn how to<br>• use a drill, saw and 10 <input type="text" class="answer-input" id="q10" placeholder="10" oninput="trackAnswer(10)" style="width: 100px;"><span id="ans-tag-10"></span><br>• put up a shelf.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1039,8 +1063,8 @@
                                 <div class="explanation-inline" id="exp-3" onclick="highlightEvidence('pizza')"></div>
                                 <div class="explanation-inline" id="exp-4" onclick="highlightEvidence('India')"></div>
                                 <div class="explanation-inline" id="exp-5" onclick="highlightEvidence('mirror')"></div>
-                                <div class="explanation-inline" id="exp-6" onclick="highlightEvidence('6th')"></div>
-                                <div class="explanation-inline" id="exp-7" onclick="highlightEvidence('natural products')"></div>
+                                <div class="explanation-inline" id="exp-6" onclick="highlightEvidence('6th of April')"></div>
+                                <div class="explanation-inline" id="exp-7" onclick="highlightEvidence('natural')"></div>
                                 <div class="explanation-inline" id="exp-8" onclick="highlightEvidence('67.50')"></div>
                                 <div class="explanation-inline" id="exp-9" onclick="highlightEvidence('shirt')"></div>
                                 <div class="explanation-inline" id="exp-10" onclick="highlightEvidence('hammer')"></div>
@@ -1048,157 +1072,89 @@
                         </div>
                     </div>
 
-                    <!-- SECTION 2 (Part 2: Multiple Choice & Map Labelling) -->
+                    <!-- SECTION 2 -->
                     <div id="questions-2" class="question-set hidden">
                         <div class="questions-container">
-                            <div class="question" data-q-start="11" data-q-end="14" id="q11_14-container">
+                            <div class="question" data-q-start="11" data-q-end="12" id="q11_12-container">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 11–14</strong></p>
-                                    <p>Choose <strong>TWO</strong> correct answers, <strong>A-E</strong>.</p>
-                                    <div class="question-title">Marsden Coastal Walk & Melby Heritage Walk</div>
+                                    <p><strong>Questions 11 and 12</strong></p>
+                                    <p>Choose <strong>TWO</strong> letters, A-E.</p>
+                                    <p>Which <strong>TWO</strong> pieces of advice are given about the Marsden Coastal Walk? <span id="ans-tag-11"></span></p>
                                 </div>
-                                <p><strong>Which TWO pieces of advice are given about the Marsden Coastal Walk? (Questions 11–12)</strong><span id="ans-tag-11"></span></p>
                                 <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="A" onchange="trackCheckbox(11)"> A Stop for lunch in an ancient town.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="B" onchange="trackCheckbox(11)"> B Don't miss the ruins of a certain building.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="C" onchange="trackCheckbox(11)"> C Catch a boat to the start of this walk.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="D" onchange="trackCheckbox(11)"> D Be careful of the steep and rocky paths.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="E" onchange="trackCheckbox(11)"> E Don't worry about getting lost.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="A" onchange="trackCheckbox(11)"> A. Stop for lunch in an ancient town.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="B" onchange="trackCheckbox(11)"> B. Don't miss the ruins of a certain building.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="C" onchange="trackCheckbox(11)"> C. Catch a boat to the start of this walk.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="D" onchange="trackCheckbox(11)"> D. Be careful of the steep and rocky paths.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="E" onchange="trackCheckbox(11)"> E. Don't worry about getting lost.</label></div>
                                 </div>
-                                <div class="explanation-inline" id="exp-11" onclick="highlightEvidence('castle built in the 1400s')"></div>
-
-                                <p style="margin-top: 20px;"><strong>Which TWO things are said about the Melby Heritage Walk? (Questions 13–14)</strong><span id="ans-tag-13"></span></p>
-                                <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="A" onchange="trackCheckbox(13)"> A This walk is mostly downhill.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="B" onchange="trackCheckbox(13)"> B The paths can get busy during the day.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="C" onchange="trackCheckbox(13)"> C This is a circular walk.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="D" onchange="trackCheckbox(13)"> D A tower stands on the site of an older structure.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="E" onchange="trackCheckbox(13)"> E There are far-reaching views the whole way.</label></div>
-                                </div>
-                                <div class="explanation-inline" id="exp-13" onclick="highlightEvidence('brings you back down to the starting point')"></div>
+                                <div class="explanation-inline" id="exp-11" onclick="highlightEvidence('you don't even need to take a map with you. VÀ passes a castle built in the 1400s... The castle's now just a pile of stones')"></div>
                             </div>
 
+                            <div class="question" data-q-start="13" data-q-end="14" id="q13_14-container">
+                                <div class="question-prompt">
+                                    <p><strong>Questions 13 and 14</strong></p>
+                                    <p>Choose <strong>TWO</strong> letters, A-E.</p>
+                                    <p>Which <strong>TWO</strong> things are said about the Melby Heritage Walk? <span id="ans-tag-13"></span></p>
+                                </div>
+                                <div class="multi-choice-question">
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="A" onchange="trackCheckbox(13)"> A. This walk is mostly downhill.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="B" onchange="trackCheckbox(13)"> B. The paths can get busy during the day.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="C" onchange="trackCheckbox(13)"> C. This is a circular walk.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="D" onchange="trackCheckbox(13)"> D. A tower stands on the site of an older structure.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="E" onchange="trackCheckbox(13)"> E. There are far-reaching views the whole way.</label></div>
+                                </div>
+                                <div class="explanation-inline" id="exp-13" onclick="highlightEvidence('The route continues along the tops of the hills and brings you back down to the starting point VÀ can climb the tower that's situated where there was once a seventeenth century hunting lodge.')"></div>
+                            </div>
+                            
                             <div class="question" data-q-start="15" data-q-end="20">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 15–20</strong></p>
-                                    <p>Label the map below. Write the correct letter, <strong>A-I</strong>, next to Questions 15–20.</p>
-                                    <div class="question-title">Melby Coal Mine Map</div>
+                                    <p><strong>Questions 15-20</strong></p>
+                                    <p>Label the map below.</p>
+                                    <p>Write the correct letter, <strong>A-I</strong>, next to Questions 15-20.</p>
+                                    <div class="question-title">Melby Coal Mine</div>
                                 </div>
-                                <!-- Sơ đồ Bản đồ SVG chuẩn, thu nhỏ 70% và chỉnh sửa chính xác vị trí C bên cạnh Engine house -->
-                                <div class="map-svg-container">
-                                    <svg viewBox="0 0 700 480" width="100%" height="auto" style="background:#fff; border:1px solid #999;">
-                                        <!-- Compass -->
-                                        <g transform="translate(630, 50)">
-                                            <circle cx="0" cy="0" r="24" fill="#f8fafc" stroke="#333" stroke-width="1.5"/>
-                                            <polygon points="0,-20 -6,0 0,-6" fill="#333"/>
-                                            <polygon points="0,20 -6,0 0,6" fill="#ccc"/>
-                                            <text x="0" y="-26" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">N</text>
-                                            <text x="0" y="32" font-size="12" text-anchor="middle" fill="#333">S</text>
-                                            <text x="-26" y="4" font-size="12" text-anchor="middle" fill="#333">W</text>
-                                            <text x="26" y="4" font-size="12" text-anchor="middle" fill="#333">E</text>
-                                        </g>
-
-                                        <!-- Legend -->
-                                        <g transform="translate(30, 30)" font-size="12" fill="#333">
-                                            <line x1="0" y1="0" x2="35" y2="0" stroke="#333" stroke-width="2"/>
-                                            <text x="42" y="4">Covered walkway</text>
-                                            <line x1="0" y1="20" x2="35" y2="20" stroke="#333" stroke-width="2" stroke-dasharray="4,4"/>
-                                            <text x="42" y="24">Uncovered walkway</text>
-                                        </g>
-
-                                        <!-- Buildings / Areas (A to I) -->
-                                        <!-- A (Left Building) -->
-                                        <rect x="40" y="240" width="70" height="180" fill="#f1f5f9" stroke="#333" stroke-width="2"/>
-                                        <text x="75" y="335" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">A</text>
-
-                                        <!-- B (Top Left Small) -->
-                                        <rect x="60" y="90" width="50" height="50" fill="#f1f5f9" stroke="#333" stroke-width="2"/>
-                                        <text x="85" y="122" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">B</text>
-
-                                        <!-- Engine House & C (Đã tách chính xác cạnh ô C) -->
-                                        <rect x="120" y="160" width="100" height="80" fill="#f1f5f9" stroke="#333" stroke-width="2"/>
-                                        <text x="170" y="205" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Engine house</text>
-                                        
-                                        <rect x="220" y="160" width="60" height="80" fill="#f1f5f9" stroke="#333" stroke-width="2"/>
-                                        <text x="250" y="205" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">C</text>
-
-                                        <!-- D (Top Center L-shaped / Rect) -->
-                                        <rect x="300" y="90" width="60" height="70" fill="#f1f5f9" stroke="#333" stroke-width="2"/>
-                                        <text x="330" y="130" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">D</text>
-
-                                        <!-- E (Middle Complex) -->
-                                        <path d="M 350 240 L 450 240 L 450 300 L 400 300 L 400 330 L 350 330 Z" fill="#f1f5f9" stroke="#333" stroke-width="2"/>
-                                        <text x="395" y="285" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">E</text>
-
-                                        <!-- Main visitor centre & F, G -->
-                                        <rect x="310" y="360" width="80" height="60" fill="#f1f5f9" stroke="#333" stroke-width="2"/>
-                                        <text x="350" y="395" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">F</text>
-
-                                        <rect x="390" y="360" width="60" height="60" fill="#f1f5f9" stroke="#333" stroke-width="2"/>
-                                        <text x="420" y="395" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">G</text>
-
-                                        <rect x="460" y="360" width="80" height="40" fill="#f1f5f9" stroke="#333" stroke-width="2"/>
-                                        <text x="500" y="385" font-size="12" font-weight="bold" text-anchor="middle" fill="#333">Ticket office</text>
-
-                                        <!-- H (Top Right Large) -->
-                                        <rect x="460" y="100" width="160" height="120" fill="#f1f5f9" stroke="#333" stroke-width="2"/>
-                                        <text x="540" y="165" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">H</text>
-
-                                        <!-- I (Right Square) -->
-                                        <rect x="490" y="250" width="60" height="60" fill="#f1f5f9" stroke="#333" stroke-width="2"/>
-                                        <text x="520" y="285" font-size="20" font-weight="bold" text-anchor="middle" fill="#1e293b">I</text>
-
-                                        <!-- Car park (Bottom Right) -->
-                                        <rect x="530" y="360" width="130" height="70" fill="#f1f5f9" stroke="#333" stroke-width="2"/>
-                                        <text x="595" y="400" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Car park</text>
-
-                                        <!-- Covered Walkways (dashed lines) -->
-                                        <line x1="530" y1="395" x2="540" y2="395" stroke="#333" stroke-width="3" stroke-dasharray="6,4"/>
-                                        <line x1="460" y1="380" x2="450" y2="380" stroke="#333" stroke-width="3" stroke-dasharray="6,4"/>
-                                        <line x1="350" y1="360" x2="350" y2="330" stroke="#333" stroke-width="3" stroke-dasharray="6,4"/>
-                                        <path d="M 310 390 L 250 390 L 210 240" fill="none" stroke="#333" stroke-width="3" stroke-dasharray="6,4"/>
-                                        <path d="M 250 390 L 110 330" fill="none" stroke="#333" stroke-width="3" stroke-dasharray="6,4"/>
-                                        <line x1="430" y1="240" x2="430" y2="200" stroke="#333" stroke-width="3" stroke-dasharray="6,4"/>
-                                        <line x1="430" y1="200" x2="460" y2="200" stroke="#333" stroke-width="3" stroke-dasharray="6,4"/>
-                                        <line x1="560" y1="360" x2="560" y2="310" stroke="#333" stroke-width="3" stroke-dasharray="6,4"/>
-                                    </svg>
+                                
+                                <div class="map-container">
+                                    <img src="mapC21.2.png" alt="Melby Coal Mine Map">
                                 </div>
+                                
                                 <div class="matching-form-container">
                                     <div class="matching-form-row">
                                         <label for="q15" class="matching-form-label"><strong>15. Exhibition</strong></label>
                                         <select class="answer-input" id="q15" onchange="trackAnswer(15)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select><span id="ans-tag-15"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-15" onclick="highlightEvidence('Beyond that room is the exhibition')"></div>
+                                    <div class="explanation-inline" id="exp-15" onclick="highlightEvidence('exhibition')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q16" class="matching-form-label"><strong>16. Baths</strong></label>
                                         <select class="answer-input" id="q16" onchange="trackAnswer(16)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select><span id="ans-tag-16"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-16" onclick="highlightEvidence('directly to the north of the engine house')"></div>
+                                    <div class="explanation-inline" id="exp-16" onclick="highlightEvidence('bathhouse')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q17" class="matching-form-label"><strong>17. Tools</strong></label>
                                         <select class="answer-input" id="q17" onchange="trackAnswer(17)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select><span id="ans-tag-17"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-17" onclick="highlightEvidence('small L-shaped building')"></div>
+                                    <div class="explanation-inline" id="exp-17" onclick="highlightEvidence('tools')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q18" class="matching-form-label"><strong>18. Vehicles</strong></label>
                                         <select class="answer-input" id="q18" onchange="trackAnswer(18)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select><span id="ans-tag-18"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-18" onclick="highlightEvidence('southwest corner')"></div>
+                                    <div class="explanation-inline" id="exp-18" onclick="highlightEvidence('vehicle shed')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q19" class="matching-form-label"><strong>19. Ponies</strong></label>
                                         <select class="answer-input" id="q19" onchange="trackAnswer(19)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select><span id="ans-tag-19"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-19" onclick="highlightEvidence('north-eastern boundary')"></div>
-
+                                    <div class="explanation-inline" id="exp-19" onclick="highlightEvidence('ponies')"></div>
+                                    
                                     <div class="matching-form-row">
                                         <label for="q20" class="matching-form-label"><strong>20. Education centre</strong></label>
                                         <select class="answer-input" id="q20" onchange="trackAnswer(20)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select><span id="ans-tag-20"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-20" onclick="highlightEvidence('connected to the ticket office via a short section')"></div>
+                                    <div class="explanation-inline" id="exp-20" onclick="highlightEvidence('education centre')"></div>
                                 </div>
                             </div>
                         </div>
@@ -1207,62 +1163,63 @@
                     <!-- SECTION 3 -->
                     <div id="questions-3" class="question-set hidden">
                         <div class="questions-container">
+                            
                             <div class="question" data-q-start="21" data-q-end="22" id="q21_22-container">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 21–22</strong></p>
-                                    <p>Choose <strong>TWO</strong> correct answers, <strong>A-E</strong>.</p>
+                                    <p><strong>Questions 21 and 22</strong></p>
+                                    <p>Choose <strong>TWO</strong> letters, A-E.</p>
                                     <p>Which <strong>TWO</strong> facts in the sessions on food safety were new information for Nadia and Fergus? <span id="ans-tag-21"></span></p>
                                 </div>
                                 <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="A" onchange="trackCheckbox(21)"> A the amount of plastic in the ocean</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="B" onchange="trackCheckbox(21)"> B the number of diseases caused by contaminated food</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="C" onchange="trackCheckbox(21)"> C the amount of food that is wasted</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="D" onchange="trackCheckbox(21)"> D the number of people who are obese</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="E" onchange="trackCheckbox(21)"> E the result of treating animals with antibiotics</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="A" onchange="trackCheckbox(21)"> A. the amount of plastic in the ocean</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="B" onchange="trackCheckbox(21)"> B. the number of diseases caused by contaminated food</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="C" onchange="trackCheckbox(21)"> C. the amount of food that is wasted</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="D" onchange="trackCheckbox(21)"> D. the number of people who are obese</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="E" onchange="trackCheckbox(21)"> E. the result of treating animals with antibiotics</label></div>
                                 </div>
-                                <div class="explanation-inline" id="exp-21" onclick="highlightEvidence('more than 200 different diseases')"></div>
+                                <div class="explanation-inline" id="exp-21" onclick="highlightEvidence('I hadn't realised that unsafe food causes more than 200 different diseases... NADIA: No, I'd no idea it was that many. VÀ when animals are treated with antibiotics then consumed by humans, the antibiotics get into the food chain. I had no idea about that either.')"></div>
                             </div>
 
                             <div class="question" data-q-start="23" data-q-end="24" id="q23_24-container">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 23–24</strong></p>
-                                    <p>Choose <strong>TWO</strong> correct answers, <strong>A-E</strong>.</p>
+                                    <p><strong>Questions 23 and 24</strong></p>
+                                    <p>Choose <strong>TWO</strong> letters, A-E.</p>
                                     <p>Which <strong>TWO</strong> features of a project aiming to prevent food fraud impressed Fergus? <span id="ans-tag-23"></span></p>
                                 </div>
                                 <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="A" onchange="trackCheckbox(23)"> A the new technology it used</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="B" onchange="trackCheckbox(23)"> B the publicity it received</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="C" onchange="trackCheckbox(23)"> C the use of multiple tests on food items</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="D" onchange="trackCheckbox(23)"> D the variety of dietary requirements included</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="E" onchange="trackCheckbox(23)"> E the way information was made widely accessible</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="A" onchange="trackCheckbox(23)"> A. the new technology it used</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="B" onchange="trackCheckbox(23)"> B. the publicity it received</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="C" onchange="trackCheckbox(23)"> C. the use of multiple tests on food items</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="D" onchange="trackCheckbox(23)"> D. the variety of dietary requirements included</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="E" onchange="trackCheckbox(23)"> E. the way information was made widely accessible</label></div>
                                 </div>
-                                <div class="explanation-inline" id="exp-23" onclick="highlightEvidence('addressed by so many different groups')"></div>
+                                <div class="explanation-inline" id="exp-23" onclick="highlightEvidence('address a problem that's faced by so many different groups - people with special religious rules, as well as vegetarians and vegans. VÀ ensure that these tests were carried out at different stages in the food's journey from the producer to the consumer.')"></div>
                             </div>
-
+                            
                             <div class="question" data-q-start="25" data-q-end="26" id="q25_26-container">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 25–26</strong></p>
-                                    <p>Choose <strong>TWO</strong> correct answers, <strong>A-E</strong>.</p>
+                                    <p><strong>Questions 25 and 26</strong></p>
+                                    <p>Choose <strong>TWO</strong> letters, A-E.</p>
                                     <p>Which <strong>TWO</strong> topics do both students recommend should be included in the course? <span id="ans-tag-25"></span></p>
                                 </div>
                                 <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q25_26" value="A" onchange="trackCheckbox(25)"> A sustainable fishing</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q25_26" value="B" onchange="trackCheckbox(25)"> B targeted nutrition</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q25_26" value="C" onchange="trackCheckbox(25)"> C global differences in consumption</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q25_26" value="D" onchange="trackCheckbox(26)"> D sustainable agriculture</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q25_26" value="E" onchange="trackCheckbox(26)"> E digital technology and food</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q25_26" value="A" onchange="trackCheckbox(25)"> A. sustainable fishing</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q25_26" value="B" onchange="trackCheckbox(25)"> B. targeted nutrition</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q25_26" value="C" onchange="trackCheckbox(25)"> C. global differences in consumption</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q25_26" value="D" onchange="trackCheckbox(25)"> D. sustainable agriculture</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q25_26" value="E" onchange="trackCheckbox(25)"> E. digital technology and food</label></div>
                                 </div>
-                                <div class="explanation-inline" id="exp-25" onclick="highlightEvidence('seafood industry')"></div>
+                                <div class="explanation-inline" id="exp-25" onclick="highlightEvidence('not so much on the seafood industry, where stocks are in danger of being overexploited... NADIA: Yes, that'd be a good topic. VÀ NADIA: What about sessions on the variety of food and eating habits around the world? FERGUS: Yes, I think the whole class would be interested in that.')"></div>
                             </div>
 
                             <div class="question" data-q-start="27" data-q-end="30">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 27–30</strong></p>
+                                    <p><strong>Questions 27-30</strong></p>
                                     <p>Complete the flow-chart below.</p>
-                                    <p>Choose <strong>FOUR</strong> answers from the box and write the correct letter, <strong>A-F</strong>, next to Questions 27–30.</p>
+                                    <p>Choose <strong>FOUR</strong> answers from the box and write the correct letter, <strong>A-F</strong>, next to Questions 27-30.</p>
                                 </div>
                                 <div class="example-box" style="font-size: 15px; margin-bottom: 20px;">
-                                    <ul class="options-list" style="list-style-type: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                    <ul class="options-list" style="list-style-type: none; display: grid; grid-template-columns: 1fr; gap: 8px;">
                                         <li><strong>A</strong> This was challenging but enjoyable.</li>
                                         <li><strong>B</strong> This led to some disagreement.</li>
                                         <li><strong>C</strong> This was easy to decide on.</li>
@@ -1271,30 +1228,37 @@
                                         <li><strong>F</strong> This involved selecting a new ingredient.</li>
                                     </ul>
                                 </div>
+                                <div class="question-title">Student project: developing a new food product</div>
                                 <div class="matching-form-container">
                                     <div class="matching-form-row">
-                                        <label for="q27" class="matching-form-label"><strong>27. Initial aim</strong></label>
+                                        <label for="q27" class="matching-form-label"><strong>Initial aim 27.</strong></label>
                                         <select class="answer-input" id="q27" onchange="trackAnswer(27)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select><span id="ans-tag-27"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-27" onclick="highlightEvidence('made up our minds about that pretty quickly')"></div>
+                                    <div class="explanation-inline" id="exp-27" onclick="highlightEvidence('We made up our minds about that pretty quickly')"></div>
+
+                                    <div style="text-align: center; margin: 10px 0;">↓</div>
 
                                     <div class="matching-form-row">
-                                        <label for="q28" class="matching-form-label"><strong>28. Literature review</strong></label>
+                                        <label for="q28" class="matching-form-label"><strong>Literature review 28.</strong></label>
                                         <select class="answer-input" id="q28" onchange="trackAnswer(28)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select><span id="ans-tag-28"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-28" onclick="highlightEvidence('handout with advice for the project was very useful')"></div>
+                                    <div class="explanation-inline" id="exp-28" onclick="highlightEvidence('the handout with advice for the project was very useful here')"></div>
+
+                                    <div style="text-align: center; margin: 10px 0;">↓</div>
 
                                     <div class="matching-form-row">
-                                        <label for="q29" class="matching-form-label"><strong>29. Product development</strong></label>
+                                        <label for="q29" class="matching-form-label"><strong>Product development 29.</strong></label>
                                         <select class="answer-input" id="q29" onchange="trackAnswer(29)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select><span id="ans-tag-29"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-29" onclick="highlightEvidence('use jackfruit')"></div>
+                                    <div class="explanation-inline" id="exp-29" onclick="highlightEvidence('we finally decided to use jackfruit, even though it wasn't something that either of us had ever tasted before')"></div>
 
+                                    <div style="text-align: center; margin: 10px 0;">↓</div>
+                                    
                                     <div class="matching-form-row">
-                                        <label for="q30" class="matching-form-label"><strong>30. Product production</strong></label>
+                                        <label for="q30" class="matching-form-label"><strong>Product production 30.</strong></label>
                                         <select class="answer-input" id="q30" onchange="trackAnswer(30)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select><span id="ans-tag-30"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-30" onclick="highlightEvidence('turned out fine and we had a lot of fun')"></div>
+                                    <div class="explanation-inline" id="exp-30" onclick="highlightEvidence('was harder than I expected... we just moved on and kept adapting it and in the end it turned out fine and we had a lot of fun.')"></div>
                                 </div>
                             </div>
                         </div>
@@ -1305,53 +1269,57 @@
                         <div class="questions-container">
                             <div class="question" data-q-start="31" data-q-end="40">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 31–40</strong></p>
+                                    <p><strong>Questions 31-40</strong></p>
                                     <p>Complete the notes below.</p>
                                     <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
                                     <div class="question-title">Challenges facing the cruise ship industry</div>
                                 </div>
+                                
                                 <p><strong>Problems with overtourism</strong></p>
-                                <p>• A tourist <input type="text" class="answer-input" id="q31" placeholder="31" oninput="trackAnswer(31)"> is one of the worst problems.<span id="ans-tag-31"></span></p>
+                                <p>• 31 <input type="text" class="answer-input" id="q31" placeholder="31" oninput="trackAnswer(31)"><span id="ans-tag-31"></span> is one of the worst problems.</p>
                                 <div class="explanation-inline" id="exp-31" onclick="highlightEvidence('Pollution')"></div>
-
-                                <p>• <input type="text" class="answer-input" id="q32" placeholder="32" oninput="trackAnswer(32)"> is being introduced in some cities to reduce numbers, e.g. Barcelona.<span id="ans-tag-32"></span></p>
+                                
+                                <p>• A tourist 32 <input type="text" class="answer-input" id="q32" placeholder="32" oninput="trackAnswer(32)"><span id="ans-tag-32"></span> is being introduced in some cities to reduce numbers, e.g. Barcelona.</p>
                                 <div class="explanation-inline" id="exp-32" onclick="highlightEvidence('tax')"></div>
 
-                                <p>• Bruges: action was taken to limit day trips from the nearby port because the city was becoming a 'theme park' (e.g. many shops were only stocking <input type="text" class="answer-input" id="q33" placeholder="33" oninput="trackAnswer(33)"> and souvenirs).<span id="ans-tag-33"></span></p>
+                                <p>• Bruges: action was taken to limit day trips from the nearby port because the city was becoming a 'theme park' (e.g. many shops were only stocking 33 <input type="text" class="answer-input" id="q33" placeholder="33" oninput="trackAnswer(33)"><span id="ans-tag-33"></span> and souvenirs).</p>
                                 <div class="explanation-inline" id="exp-33" onclick="highlightEvidence('chocolate')"></div>
-
-                                <p>• Dubrovnik: limits the number of tourists by managing the <input type="text" class="answer-input" id="q34" placeholder="34" oninput="trackAnswer(34)"> of cruise ship arrivals.<span id="ans-tag-34"></span></p>
+                                
+                                <p>• Dubrovnik: limits the number of tourists by managing the 34 <input type="text" class="answer-input" id="q34" placeholder="34" oninput="trackAnswer(34)"><span id="ans-tag-34"></span> of cruise ship arrivals.</p>
                                 <div class="explanation-inline" id="exp-34" onclick="highlightEvidence('timing')"></div>
 
+                                <br>
                                 <p><strong>Problems of perception</strong></p>
                                 <p>• Cruises are generally associated with the elderly.</p>
-                                <p>• There is an assumption about the <input type="text" class="answer-input" id="q35" placeholder="35" oninput="trackAnswer(35)"> of cruises.<span id="ans-tag-35"></span></p>
+                                <p>• There is an assumption about the 35 <input type="text" class="answer-input" id="q35" placeholder="35" oninput="trackAnswer(35)"><span id="ans-tag-35"></span> of cruises.</p>
                                 <div class="explanation-inline" id="exp-35" onclick="highlightEvidence('cost')"></div>
-
-                                <p>• People think there may be too many <input type="text" class="answer-input" id="q36" placeholder="36" oninput="trackAnswer(36)">.<span id="ans-tag-36"></span></p>
+                                
+                                <p>• People think there may be too many 36 <input type="text" class="answer-input" id="q36" placeholder="36" oninput="trackAnswer(36)"><span id="ans-tag-36"></span></p>
                                 <div class="explanation-inline" id="exp-36" onclick="highlightEvidence('rules')"></div>
 
+                                <br>
                                 <p><strong>Solutions</strong></p>
                                 <p>Cruise lines are attracting younger customers by:</p>
                                 <p>• becoming more sustainable e.g. using hybrid engines.</p>
-                                <p>• having a wide range of activities e.g. boxing, <input type="text" class="answer-input" id="q37" placeholder="37"> and well-being programmes.<span id="ans-tag-37"></span></p>
+                                <p>• having a wide range of activities e.g. boxing, 37 <input type="text" class="answer-input" id="q37" placeholder="37" oninput="trackAnswer(37)"><span id="ans-tag-37"></span> and well-being programmes.</p>
                                 <div class="explanation-inline" id="exp-37" onclick="highlightEvidence('diving')"></div>
-
-                                <p>• offering a diverse selection of food including <input type="text" class="answer-input" id="q38" placeholder="38"> options.<span id="ans-tag-38"></span></p>
+                                
+                                <p>• offering a diverse selection of food including 38 <input type="text" class="answer-input" id="q38" placeholder="38" oninput="trackAnswer(38)"><span id="ans-tag-38"></span> options.</p>
                                 <div class="explanation-inline" id="exp-38" onclick="highlightEvidence('vegan')"></div>
 
-                                <p>• providing reliable <input type="text" class="answer-input" id="q39" placeholder="39" oninput="trackAnswer(39)"><span id="ans-tag-39"></span></p>
+                                <p>• providing reliable 39 <input type="text" class="answer-input" id="q39" placeholder="39" oninput="trackAnswer(39)"><span id="ans-tag-39"></span></p>
                                 <div class="explanation-inline" id="exp-39" onclick="highlightEvidence('wifi')"></div>
 
-                                <p>• improving marketing on social media with high quality <input type="text" class="answer-input" id="q40" placeholder="40" oninput="trackAnswer(40)"><span id="ans-tag-40"></span></p>
+                                <p>• improving marketing on social media with high quality 40 <input type="text" class="answer-input" id="q40" placeholder="40" oninput="trackAnswer(40)"><span id="ans-tag-40"></span></p>
                                 <div class="explanation-inline" id="exp-40" onclick="highlightEvidence('videos')"></div>
+
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- AUDIO SCRIPT PANEL (Mặc định ẩn, chỉ bật khi ấn Check Answers) - Trích xuất ĐẦY ĐỦ NỘI DUNG, KHÔNG TÓM LƯỢC -->
+                <!-- AUDIO SCRIPT PANEL -->
                 <div class="script-panel" id="scriptPanel">
                     <div class="script-header">
                         <h3>Audio Script & Evidence</h3>
@@ -1360,97 +1328,55 @@
                     <div class="script-content" id="scriptContentContainer">
                         <div id="script-1">
                             <p><strong>Section 1:</strong></p>
-                            <p>MAN: Hello, Steynford College external course registration, can I help you?<br>
-                            WOMAN: Yeah, I'm ringing to find out about one-day classes next year. I got a leaflet about them in the post but I lost it, and I understand some of the classes are filling up fast, so I might need to book quite soon if I want to go ahead.<br>
-                            MAN: Sure. Can you remember which one you were considering?<br>
-                            WOMAN: There were a few actually. I remember there was one on how to make Vietnamese food that sounded good. I think that was on the <span id="ev-13th of January">13th of January</span>. It cost about 60 pounds.<br>
-                            MAN: Yes, you're right about the date, but it's 59 pounds actually. It's a very popular class, and among other things the teacher explains how Vietnamese food includes lots of different herbs. I'm afraid that all the places are taken at present, but I can put you on the waiting list if you want?<br>
-                            WOMAN: No, that's OK. I'm quite interested in the bread making class. That's in March sometime, isn't it?<br>
-                            MAN: Yeah, the 20th of March. Would you like to register for that?<br>
-                            WOMAN: I'm not sure. How much is it?<br>
-                            MAN: The actual cost is £<span id="ev-48">48</span> but then there's an extra charge as well as that for the ingredients - I'm not sure how much that is, no more than twenty pounds I think.<br>
-                            WOMAN: So what sorts of things do they make in the class?<br>
-                            MAN: Oh, various types of bread; I think they make white bread and then they make sourdough, that seems to be very fashionable at present, and they learn how to make <span id="ev-pizza">pizza</span>, which is apparently really good.<br>
-                            WOMAN: Well I'd definitely be interested in that, but there were also a few other classes that sounded interesting. I think there was one on face massage? I'd love to learn how to do that.<br>
-                            MAN: Yeah, that's on the 23rd of February and it costs just £35 for the day. The teacher's great, the type of massage done is a traditional technique used in <span id="ev-India">India</span> and she actually did her training there. The massage is meant to relax you and get rid of lines and wrinkles. You practise it on yourself so you have to take a <span id="ev-mirror">mirror</span> to the class, so you can see what you're doing.<br>
-                            WOMAN: OK. And I think there was a class in candle making?<br>
-                            MAN: Yes that's sometime in April, I think. Let me check... yes, it's on the <span id="ev-6th">6th</span>. It was on the 23rd of January but they had to change the date. It's just £52. That's a popular course too. I think one reason why people like it is because the candles are all made out of <span id="ev-natural products">natural products</span>. It's filling up fast but there's still a few places left.<br>
-                            WOMAN: Yes one of my friends did that class. She said the candles make really good presents. In fact she gave me one.<br>
-                            MAN: By the way, have you heard about the class on silk painting? That's being held on the 18th of May. You learn how to create designs on silk fabric and colour them using special dyes. Apparently people can produce beautiful artworks that way, either to put on the wall as a picture or to use for something like a scarf. It's £<span id="ev-67.50">67.50</span>, which is really good value I think there's a similar class I've seen that was £110.<br>
-                            WOMAN: That sounds interesting. Would I need to bring the silk?<br>
-                            MAN: No, the only thing is everyone has to bring something to protect their clothing, like an apron if you've got one, or a <span id="ev-shirt">shirt</span> that you don't use any more, because the dye can really stain your clothes.<br>
-                            WOMAN: Right. Then the last class I was considering was a bit different, that was on DIY for beginners. I'd like to learn how to do household repairs. Are there any places left on that?<br>
-                            MAN: That's on the 24th of February - yes, there are a few places. It's a bit more expensive - it's £125 - but it's a very popular class. You learn how to use an electric drill and a saw.<br>
-                            WOMAN: Yeah, that would be really useful, and I even need to learn how to use a <span id="ev-hammer">hammer</span> because I always end up hitting my fingers.<br>
-                            MAN: Yes, you'll do that too. And when you've learned how to use the basic tools, you do a practical job which is fixing a shelf to a wall.<br>
-                            WOMAN: Great. Just what I need to know. Right, well I'd like to enrol for that and also for...</p>
+                            <p>WOMAN: I remember there was one on how to make Vietnamese food that sounded good. I think that was on the <span id="ev-13th of January">13th of January</span>. (Q1)<br>
+                            MAN: The actual cost is £<span id="ev-48">48</span> but then there's an extra charge as well as that for the ingredients (Q2)<br>
+                            MAN: Oh, various types of bread; I think they make white bread and then they make sourdough... and they learn how to make <span id="ev-pizza">pizza</span>, which is apparently really good. (Q3)<br>
+                            MAN: The teacher's great, the type of massage done is a traditional technique used in <span id="ev-India">India</span> and she actually did her training there. (Q4)<br>
+                            MAN: You practise it on yourself so you have to take a <span id="ev-mirror">mirror</span> to the class, so you can see what you're doing. (Q5)<br>
+                            WOMAN: Yes that's sometime in April, I think. Let me check... yes, it's on the <span id="ev-6th of April">6th</span>. (Q6)<br>
+                            MAN: I think one reason why people like it is because the candles are all made out of <span id="ev-natural">natural</span> products. (Q7)<br>
+                            WOMAN: It's £<span id="ev-67.50">67.50</span>, which is really good value I think there's a similar class I've seen that was £110. (Q8)<br>
+                            WOMAN: No, the only thing is everyone has to bring something to protect their clothing, like an apron if you've got one, or a <span id="ev-shirt">shirt</span> that you don't use any more (Q9)<br>
+                            WOMAN: You learn how to use an electric drill and a saw.<br>
+                            MAN: Yeah, that would be really useful, and I even need to learn how to use a <span id="ev-hammer">hammer</span> because I always end up hitting my fingers. (Q10)</p>
                         </div>
                         <div id="script-2" style="margin-top:20px;">
                             <p><strong>Section 2:</strong></p>
-                            <p>Here is some information about history and nature walks in the region. They can be completed in less than a day and also be combined with a visit to Melby, a former coal mine now open to the public.<br>
-                            The Marsden Coastal Walk is suitable for all the family as there are no strenuous climbs. The route begins at Marsden harbour, where there are hourly ferries to and from the beautiful Hooker Island, a great place for fishing. The walk covers part of the coastal path trail. As there are clear signposts all along the way, you don't even need to take a map with you. At one point, the route goes inland slightly and passes a <span id="ev-castle built in the 1400s">castle built in the 1400s</span> near to a now-vanished market town. The castle's now just a pile of stones but it's a great place to take photos, and fascinating information boards show what it once looked like. If you set off early, you can be back in time for midday.<br>
-                            The Melby Heritage Walk is a great place to take photos, especially of the night sky. At certain times of the year, people come here from far and wide. They climb to the top of the valley and take pictures of the stars. In the daytime, it's completely different. As you hike through the dense woods in the valley bottom, the only things you'll hear are the sound of your own footsteps. At the highest point, you can stop to take in the views, and those with lots of energy can climb the tower that's situated where there was once a seventeenth century hunting lodge. The route continues along the tops of the hills and <span id="ev-brings you back down to the starting point">brings you back down to the starting point</span> - the car park at Melby Coal Mine.<br>
-                            Melby Coal Mine has been open to the public for twenty years and has won awards for its visitor experience. Many of the buildings around the mine are still standing and have been converted into display areas.<br>
-                            Firstly, there's an exhibition showing the history of the mine, with many original black and white photos. To see that, you go from the car park, via a covered walkway to the Main Visitor Centre. Go through the ticket office to an area where there are lockers to leave heavy bags in, and where you can borrow raincoats. <span id="ev-Beyond that room is the exhibition">Beyond that room is the exhibition</span>.<br>
-                            There's a small bathhouse where miners used to wash after their shift underground. You can see that in the building <span id="ev-directly to the north of the engine house">directly to the north of the engine house</span>. The boiler has gone from there now, but there are lines of tin baths on the stone floor.<br>
-                            There's a display of early mining tools from the days before mechanisation. You can find that in a <span id="ev-small L-shaped building">small L-shaped building</span> in the middle of the northern boundary of the site. It's incredible to think how miners were able to use hand implements to cut through rock.<br>
-                            The vehicle shed, where you can find wagons of different sizes, along with some of the hi-tech cutting machines that were in use until the mine closed, is in the <span id="ev-southwest corner">southwest corner</span> of the site, and can be accessed via a covered walkway.<br>
-                            There is a field with ponies, which are always popular with children, on the <span id="ev-north-eastern boundary">north-eastern boundary</span> of the site, not approached via a covered walkway.<br>
-                            The other building to mention is the education centre. This is where school groups go when they visit the mine, but it's also accessible to the public as it contains a library and small gift shop. The centre is <span id="ev-connected to the ticket office via a short section">connected to the ticket office via a short section</span> of covered walkway.</p>
+                            <p>As there are clear signposts all along the way, <span id="ev-you don't even need to take a map with you. VÀ passes a castle built in the 1400s... The castle's now just a pile of stones">you don't even need to take a map with you.</span> At one point, the route goes inland slightly and <span id="ev-you don't even need to take a map with you. VÀ passes a castle built in the 1400s... The castle's now just a pile of stones">passes a castle built in the 1400s... The castle's now just a pile of stones</span> but it's a great place to take photos (Q11/12)<br>
+                            <span id="ev-The route continues along the tops of the hills and brings you back down to the starting point VÀ can climb the tower that's situated where there was once a seventeenth century hunting lodge.">The route continues along the tops of the hills and brings you back down to the starting point</span> - the car park at Melby Coal Mine.<br>
+                            ...and those with lots of energy <span id="ev-The route continues along the tops of the hills and brings you back down to the starting point VÀ can climb the tower that's situated where there was once a seventeenth century hunting lodge.">can climb the tower that's situated where there was once a seventeenth century hunting lodge.</span> (Q13/14)<br>
+                            Go through the ticket office to an area where there are lockers to leave heavy bags in, and where you can borrow raincoats. Beyond that room is the <span id="ev-exhibition">exhibition</span>. (Q15)<br>
+                            There's a small <span id="ev-bathhouse">bathhouse</span> where miners used to wash after their shift underground. You can see that in the building directly to the north of the engine house. (Q16)<br>
+                            There's a display of early mining <span id="ev-tools">tools</span> from the days before mechanisation. You can find that in a small L-shaped building in the middle of the northern boundary of the site. (Q17)<br>
+                            The <span id="ev-vehicle shed">vehicle shed</span>, where you can find wagons of different sizes... is in the southwest corner of the site, and can be accessed via a covered walkway. (Q18)<br>
+                            There is a field with <span id="ev-ponies">ponies</span>, which are always popular with children, on the north-eastern boundary of the site, not approached via a covered walkway. (Q19)<br>
+                            The other building to mention is the <span id="ev-education centre">education centre</span>... The centre is connected to the ticket office via a short section of covered walkway. (Q20)</p>
                         </div>
                         <div id="script-3" style="margin-top:20px;">
                             <p><strong>Section 3:</strong></p>
-                            <p>TUTOR: Thanks for coming along, Nadia and Fergus. So this is a chance for you to give us some feedback about different aspects of your course. What would you like to begin with?<br>
-                            NADIA: I've enjoyed the sessions on food safety. There was some information there that I found really surprising, although some was stuff I knew already, like the rise in rates of obesity.<br>
-                            FERGUS: Yeah, that's been in the news a lot. But I hadn't realised that unsafe food causes <span id="ev-more than 200 different diseases">more than 200 different diseases</span>.<br>
-                            NADIA: No, I'd no idea it was that many. And speaking of diseases, I knew resistance to antibiotics is on the increase, but I didn't know why...<br>
-                            FERGUS: ...that it's partly because when animals are treated with antibiotics then consumed by humans, the antibiotics get into the food chain. I had no idea about that either.<br>
-                            NADIA: Then the sessions provided a lot of information about plastic pollution from food packaging in the ocean, but I think that most of us were already aware of that.<br>
-                            FERGUS: Yeah. But I thought we could have done more on how much food is thrown away unnecessarily through fear of it being out of date, that was only mentioned in passing.<br>
-                            TUTOR: OK, I'll bear that in mind. What did you think about the sessions from visiting lecturers, Fergus?<br>
-                            FERGUS: For me the most interesting one was about that project to prevent companies giving incorrect information to consumers about food.<br>
-                            TUTOR: Ah, food fraud, yes.<br>
-                            FERGUS: I thought it was really good to <span id="ev-addressed by so many different groups">address a problem that's faced by so many different groups</span> - people with special religious rules, as well as vegetarians and vegans.<br>
-                            NADIA: And those with allergies.<br>
-                            FERGUS: Yeah. And another thing, we've had effective ways of analysing DNA for some time now and these can easily be applied to analysing food. But what the researchers succeeded in doing was to ensure that these tests were carried out at different stages in the food's journey from the producer to the consumer. So they knew that the food actually came from the place it was supposed to, and had the ingredients it was meant to.<br>
-                            FERGUS: Exactly. So customers can be confident about what they buy.<br>
-                            NADIA: And the researchers had a good system for publicising their findings too.<br>
-                            FERGUS: Well, I thought there were some problems with that, actually.<br>
-                            TUTOR: OK. And do you have any recommendations for new topics that we could include in the course?<br>
-                            NADIA: Well, I'm interested in how crop yields can be increased without damaging the environment.<br>
-                            FERGUS: But we've already done quite a bit on that - but not so much on the <span id="ev-seafood industry">seafood industry</span>, where stocks are in danger of being overexploited as a food source unless we can find ways of keeping stocks up.<br>
-                            NADIA: Yes, that'd be a good topic. And I'm interested in the idea of a personalised approach to diet, now we have the technology to analyse exactly what individuals need.<br>
-                            FERGUS: That sounds more like a medical topic than food science.<br>
-                            NADIA: OK. What about sessions on the variety of food and eating habits around the world? That's very relevant nowadays.<br>
-                            FERGUS: Yes, I think the whole class would be interested in that.<br>
-                            NADIA: Then there's technological stuff, things like 3D printing of food and smart packaging.<br>
-                            FERGUS: Mmm - maybe too specialist.<br>
-                            TUTOR: Now, I'm particularly interested in your project - the one where you developed a new food product. So talk me through the stages... first you had to decide on your initial aim.<br>
-                            FERGUS: We decided we wanted to create something people could eat on the go rather than in a restaurant.<br>
-                            NADIA: Yeah so we chose falafel, which was originally a Middle Eastern snack.<br>
-                            FERGUS: We <span id="ev-made up our minds about that pretty quickly">made up our minds about that pretty quickly</span>. I know some students found it a lot harder to choose, and wasted a lot of time.<br>
-                            NADIA: Then we had to do the literature review. We hadn't done one of these before so the <span id="ev-handout with advice for the project was very useful">handout with advice for the project was very useful</span> here.<br>
-                            FERGUS: Yes, especially the advice on how to present the information. Then product development, actually deciding what we'd use to make the falafel, and for me the interesting thing about that was that we wanted it to be something a bit different from an ordinary falafel.<br>
-                            NADIA: We really made the right choice when we finally decided to <span id="ev-use jackfruit">use jackfruit</span>, even though it wasn't something that either of us had ever tasted before.<br>
-                            FERGUS: Yeah, like the name tells you, it's a fruit but actually it's really good in savoury dishes. The product production, working out how to make the falafel, was harder than I expected because I'd never made them before.<br>
-                            NADIA: It was mostly trial and error. We started off with the basic recipe and then experimented and when it went wrong...<br>
-                            FERGUS: ...which it did a lot of the time...<br>
-                            NADIA: ...we just moved on and kept adapting it and in the end it <span id="ev-turned out fine and we had a lot of fun">turned out fine and we had a lot of fun</span>.<br>
-                            FERGUS: We did!<br>
-                            TUTOR: Thank you. Well, your project was a very good....</p>
+                            <p>FERGUS: But <span id="ev-I hadn't realised that unsafe food causes more than 200 different diseases... NADIA: No, I'd no idea it was that many. VÀ when animals are treated with antibiotics then consumed by humans, the antibiotics get into the food chain. I had no idea about that either.">I hadn't realised that unsafe food causes more than 200 different diseases. NADIA: No, I'd no idea it was that many.</span><br>
+                            FERGUS: ...that it's partly because <span id="ev-I hadn't realised that unsafe food causes more than 200 different diseases... NADIA: No, I'd no idea it was that many. VÀ when animals are treated with antibiotics then consumed by humans, the antibiotics get into the food chain. I had no idea about that either.">when animals are treated with antibiotics then consumed by humans, the antibiotics get into the food chain. I had no idea about that either.</span> (Q21/22)<br>
+                            FERGUS: I thought it was really good to <span id="ev-address a problem that's faced by so many different groups - people with special religious rules, as well as vegetarians and vegans. VÀ ensure that these tests were carried out at different stages in the food's journey from the producer to the consumer.">address a problem that's faced by so many different groups - people with special religious rules, as well as vegetarians and vegans.</span><br>
+                            FERGUS: But what the researchers succeeded in doing was to <span id="ev-address a problem that's faced by so many different groups - people with special religious rules, as well as vegetarians and vegans. VÀ ensure that these tests were carried out at different stages in the food's journey from the producer to the consumer.">ensure that these tests were carried out at different stages in the food's journey from the producer to the consumer.</span> (Q23/24)<br>
+                            FERGUS: But we've already done quite a bit on that - but <span id="ev-not so much on the seafood industry, where stocks are in danger of being overexploited... NADIA: Yes, that'd be a good topic. VÀ NADIA: What about sessions on the variety of food and eating habits around the world? FERGUS: Yes, I think the whole class would be interested in that.">not so much on the seafood industry, where stocks are in danger of being overexploited</span> as a food source unless we can find ways of keeping stocks up. NADIA: Yes, that'd be a good topic.<br>
+                            NADIA: OK. <span id="ev-not so much on the seafood industry, where stocks are in danger of being overexploited... NADIA: Yes, that'd be a good topic. VÀ NADIA: What about sessions on the variety of food and eating habits around the world? FERGUS: Yes, I think the whole class would be interested in that.">What about sessions on the variety of food and eating habits around the world?</span> That's very relevant nowadays. FERGUS: Yes, I think the whole class would be interested in that. (Q25/26)<br>
+                            NADIA: <span id="ev-We made up our minds about that pretty quickly">We made up our minds about that pretty quickly</span>. I know some students found it a lot harder to choose, and wasted a lot of time. (Q27)<br>
+                            FERGUS: Then we had to do the literature review. We hadn't done one of these before so <span id="ev-the handout with advice for the project was very useful here">the handout with advice for the project was very useful here</span>. (Q28)<br>
+                            NADIA: We really made the right choice when <span id="ev-we finally decided to use jackfruit, even though it wasn't something that either of us had ever tasted before">we finally decided to use jackfruit, even though it wasn't something that either of us had ever tasted before</span>. (Q29)<br>
+                            FERGUS: The product production, working out how to make the falafel, <span id="ev-was harder than I expected... we just moved on and kept adapting it and in the end it turned out fine and we had a lot of fun.">was harder than I expected</span> because I'd never made them before. NADIA: ...<span id="ev-was harder than I expected... we just moved on and kept adapting it and in the end it turned out fine and we had a lot of fun.">we just moved on and kept adapting it and in the end it turned out fine and we had a lot of fun.</span> (Q30)</p>
                         </div>
                         <div id="script-4" style="margin-top:20px;">
                             <p><strong>Section 4:</strong></p>
-                            <p>For my presentation today I'm going to talk about some of the issues facing the cruise ship industry and then some ways these can be addressed. The cruise ship industry has partly been responsible for the effects of overtourism in recent decades. Overtourism occurs in places where excessive numbers of tourists cause significant problems. <span id="ev-Pollution">Pollution</span>, for example, is among the greatest threats to many popular tourist destinations.<br>
-                            Of course, for many places it's a difficult balance to achieve. They want to promote their city or island as a desirable tourist destination, but at the same time, are unable to cope with thousands of cruise ship passengers on a daily basis. The trouble is, excessive tourism is destroying the beauty spots and places of interest that people come to visit. Several cities, such as Barcelona, have responded by imposing a <span id="ev-tax">tax</span> which all visitors to the city from cruise ships have to pay. But as it's only a couple of euros, many green campaigners think it won't deter enough people to make any difference.<br>
-                            Bruges is another city which became impossible to navigate at times because of the huge numbers of cruise passengers arriving on day trips from the port of Zeebrugge. The city was becoming like a 'theme park', with shops only catering for tourists, selling <span id="ev-chocolate">chocolate</span>, which Belgium is famous for, and other souvenirs. The local council took action to limit cruise passengers to a more manageable level.<br>
-                            Dubrovnik had to limit the numbers of cruise ships after it became extremely popular as a cruise ship destination when it featured in a hugely successful TV series. What it does now is control the <span id="ev-timing">timing</span> of all cruise ship entries to the city's port. However, many people feel this measure does not go far enough.<br>
-                            Cruise ships may be unpopular in some of their destinations but they also have an image problem. They've always been perceived as a safe holiday for the elderly, with not much on offer for families or young couples. A recent survey showed that <span id="ev-cost">cost</span> is also a major factor in putting younger groups off going on a cruise. But what they don't realise is that compared to other types of package holidays, cruises can actually be good value, as all activities and drinks are often included. And another perception is that cruises have lots of <span id="ev-rules">rules</span> about what to wear and how to behave. But these days, most cruises are no longer very formal and behind the times.<br>
-                            So what solutions are there for cruise lines to overcome some of these problems? How can they appeal to younger customers? Well one selling point is that cruise ships are becoming more sustainable. New ships are built with hybrid engines with large batteries which means ships do not have to keep their engines running while docked.<br>
-                            Cruise lines are also designing ships specially for those in the age range of 21 to 45. The décor in these feels contemporary and there are a range of activities on board that you wouldn't find on a more traditional cruise. There's even a boxing ring on one ship, and most offer <span id="ev-diving">diving</span> expeditions. But there's also a huge focus on well-being with a variety of sessions of different kinds.<br>
-                            Food is always a very important part of any cruise and cruise ships have had to radically update their menus to suit the tastes of their younger customers. <span id="ev-vegan">Vegan</span> dishes are standard, for example. The restaurants on board have also gone paperless with menus available on screen.<br>
-                            Unlike older generations who went on cruises largely to get away from everything, younger people expect to be able to keep in touch with friends and family. Many people going on longer cruises also spend time working, so companies have to guarantee <span id="ev-wifi">wifi</span> that can be relied upon at all times.<br>
-                            My grandparents used to love looking through cruise brochures, even when they weren't planning on going on a cruise. Until very recently TV ads for cruises always felt dated and aimed at retirees. Cruise lines have been slow to adopt the power of social media but that's all changing. Leading cruise lines now employ top agencies to produce first rate <span id="ev-videos">videos</span> for social media channels.</p>
+                            <p><span id="ev-Pollution">Pollution</span>, for example, is among the greatest threats to many popular tourist destinations. (Q31)<br>
+                            Several cities, such as Barcelona, have responded by imposing a <span id="ev-tax">tax</span> which all visitors to the city from cruise ships have to pay. (Q32)<br>
+                            The city was becoming like a 'theme park', with shops only catering for tourists, selling <span id="ev-chocolate">chocolate</span>, which Belgium is famous for, and other souvenirs. (Q33)<br>
+                            What it does now is control the <span id="ev-timing">timing</span> of all cruise ship entries to the city's port. (Q34)<br>
+                            A recent survey showed that <span id="ev-cost">cost</span> is also a major factor in putting younger groups off going on a cruise. (Q35)<br>
+                            And another perception is that cruises have lots of <span id="ev-rules">rules</span> about what to wear and how to behave. (Q36)<br>
+                            There's even a boxing ring on one ship, and most offer <span id="ev-diving">diving</span> expeditions. (Q37)<br>
+                            <span id="ev-vegan">Vegan</span> dishes are standard, for example. (Q38)<br>
+                            Many people going on longer cruises also spend time working, so companies have to guarantee <span id="ev-wifi">wifi</span> that can be relied upon at all times. (Q39)<br>
+                            Leading cruise lines now employ top agencies to produce first rate <span id="ev-videos">videos</span> for social media channels. (Q40)</p>
                         </div>
                     </div>
                 </div>
@@ -1551,7 +1477,7 @@
             </div>
         </div>
         <button id="deliver-button" aria-label="Review your answers" class="footer__deliverButton___3FM07">
-            <i class="fa fa fa-check" aria-hidden="true"></i>
+            <i class="fa fa-check" aria-hidden="true"></i>
             <span>Check Answers</span>
         </button>
     </nav>
@@ -1566,6 +1492,7 @@
         <div class="modal-content">
             <button class="modal-close-btn" onclick="closeResultsModal()">&times;</button>
             <h2>Results</h2>
+            <div id="submit-status" style="display: none; text-align: center; margin-bottom: 15px; padding: 10px; border-radius: 4px; font-weight: bold;"></div>
             <div class="results-summary">
                 <p>Score: <span id="results-score"></span> / 40</p>
                 <p>IELTS Band: <span id="results-band"></span></p>
@@ -1575,6 +1502,8 @@
     </div>
 
     <script>
+        const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycby7tYg_WIbxhkhK8NpoHs7s5GW3svAD56ZswWfimJgR-NMnzbbmTCBXwchyqhCI69pa/exec";
+
         window.testMeta = {
             "totalQuestions": 40,
             "parts": [
@@ -1584,8 +1513,8 @@
                 {"part": 4, "start": 31, "end": 40}
             ],
             "correctAnswers": {
-                "1": ["13th of January", "January 13", "January 13th", "13 January", "13th January"], "2": ["48", "forty-eight"], "3": "pizza", "4": "India", "5": "mirror",
-                "6": ["6th of April", "6th April", "April 6", "April 6th"], "7": "natural", "8": "67.50", "9": "shirt", "10": "hammer",
+                "1": ["13th January", "13.01", "13.1", "13th of January"], "2": ["48", "forty-eight"], "3": "pizza", "4": "India", "5": "mirror",
+                "6": ["6th April", "06.04", "6.4", "6th of April"], "7": "natural", "8": ["67.50", "sixty-seven fifty"], "9": "shirt", "10": "hammer",
                 "11": ["B", "E"], "12": ["B", "E"], "13": ["C", "D"], "14": ["C", "D"], "15": "F",
                 "16": "B", "17": "D", "18": "A", "19": "H", "20": "E",
                 "21": ["B", "E"], "22": ["B", "E"], "23": ["C", "D"], "24": ["C", "D"], "25": ["A", "C"],
@@ -1596,69 +1525,50 @@
         };
 
         window.testExplanations = {
-            "1": "Transcript: 'I think that was on the 13th of January.' (Bấm để xem Script)",
-            "2": "Transcript: 'The actual cost is £48...' (Bấm để xem Script)",
-            "3": "Transcript: '...and they learn how to make pizza...' (Bấm để xem Script)",
-            "4": "Transcript: 'The teacher trained in India...' (Bấm để xem Script)",
-            "5": "Transcript: '...so you have to take a mirror to the class...' (Bấm để xem Script)",
-            "6": "Transcript: '...yes, it's on the 6th.' (Bấm để xem Script)",
-            "7": "Transcript: '...candles are all made out of natural products.' (Bấm để xem Script)",
-            "8": "Transcript: 'It's £67.50...' (Bấm để xem Script)",
-            "9": "Transcript: '...or a shirt that you don't use any more...' (Bấm để xem Script)",
-            "10": "Transcript: '...and I even need to learn how to use a hammer...' (Bấm để xem Script)",
-            "11": "Transcript: 'Marsden Coastal Walk... passes a castle built in the 1400s...' (Bấm để xem Script)",
-            "12": "Transcript: 'Marsden Coastal Walk... passes a castle built in the 1400s...' (Bấm để xem Script)",
-            "13": "Transcript: 'Melby Heritage Walk... brings you back down to the starting point...' (Bấm để xem Script)",
-            "14": "Transcript: 'Melby Heritage Walk... brings you back down to the starting point...' (Bấm để xem Script)",
-            "15": "Transcript: 'Beyond that room is the exhibition.' (Bấm để xem Script)",
-            "16": "Transcript: '...in the building directly to the north of the engine house.' (Bấm để xem Script)",
-            "17": "Transcript: '...in a small L-shaped building in the middle of the northern boundary.' (Bấm để xem Script)",
-            "18": "Transcript: '...is in the southwest corner of the site...' (Bấm để xem Script)",
-            "19": "Transcript: '...on the north-eastern boundary of the site...' (Bấm để xem Script)",
-            "20": "Transcript: 'The centre is connected to the ticket office via a short section of covered walkway.' (Bấm để xem Script)",
-            "21": "Transcript: '...unsafe food causes more than 200 different diseases...' (Bấm để xem Script)",
-            "22": "Transcript: '...unsafe food causes more than 200 different diseases...' (Bấm để xem Script)",
-            "23": "Transcript: '...addressed by so many different groups...' (Bấm để xem Script)",
-            "24": "Transcript: '...addressed by so many different groups...' (Bấm để xem Script)",
-            "25": "Transcript: '...didn't really provide much information to explain why.' (Bấm để xem Script)",
-            "26": "Transcript: '...made ten years ago so I gave up.' (Bấm để xem Script)",
-            "27": "Transcript: '...stating the obvious.' (Bấm để xem Script)",
-            "28": "Transcript: '...better understanding of the issues.' (Bấm để xem Script)",
-            "29": "Transcript: '...above my head...' (Bấm để xem Script)",
-            "30": "Transcript: '...one-sided picture...' (Bấm để xem Script)",
-            "31": "Transcript: 'Pollution, for example, is among the greatest threats...' (Bấm để xem Script)",
-            "32": "Transcript: '...imposed a tax which all visitors... have to pay.' (Bấm để xem Script)",
-            "33": "Transcript: '...shops only catering for tourists, selling chocolate...' (Bấm để xem Script)",
-            "34": "Transcript: '...control the timing of all cruise ship entries...' (Bấm để xem Script)",
-            "35": "Transcript: '...cost is also a major factor in putting younger groups off...' (Bấm để xem Script)",
-            "36": "Transcript: '...cruises have lots of rules about what to wear and how to behave.' (Bấm để xem Script)",
-            "37": "Transcript: '...most offer diving expeditions.' (Bấm để xem Script)",
-            "38": "Transcript: 'Vegan dishes are standard, for example.' (Bấm để xem Script)",
-            "39": "Transcript: '...guarantee wifi that can be relied upon at all times.' (Bấm để xem Script)",
-            "40": "Transcript: '...produce first rate videos for social media channels.' (Bấm để xem Script)"
+            "1": "Giải thích: Transcript: 'I remember there was one on how to make Vietnamese food that sounded good. I think that was on the 13th of January.' (Bấm để xem Script)",
+            "2": "Giải thích: Transcript: 'The actual cost is £48 but then there's an extra charge as well as that for the ingredients' (Bấm để xem Script)",
+            "3": "Giải thích: Transcript: 'Oh, various types of bread; I think they make white bread and then they make sourdough... and they learn how to make pizza, which is apparently really good.' (Bấm để xem Script)",
+            "4": "Giải thích: Transcript: 'The teacher's great, the type of massage done is a traditional technique used in India and she actually did her training there.' (Bấm để xem Script)",
+            "5": "Giải thích: Transcript: 'You practise it on yourself so you have to take a mirror to the class, so you can see what you're doing.' (Bấm để xem Script)",
+            "6": "Giải thích: Transcript: 'Yes that's sometime in April, I think. Let me check... yes, it's on the 6th.' (Bấm để xem Script)",
+            "7": "Giải thích: Transcript: 'I think one reason why people like it is because the candles are all made out of natural products.' (Bấm để xem Script)",
+            "8": "Giải thích: Transcript: 'It's £67.50, which is really good value I think there's a similar class I've seen that was £110.' (Bấm để xem Script)",
+            "9": "Giải thích: Transcript: 'No, the only thing is everyone has to bring something to protect their clothing, like an apron if you've got one, or a shirt that you don't use any more' (Bấm để xem Script)",
+            "10": "Giải thích: Transcript: 'Yeah, that would be really useful, and I even need to learn how to use a hammer because I always end up hitting my fingers.' (Bấm để xem Script)",
+            "11": "Giải thích: Transcript: 'you don't even need to take a map with you. VÀ passes a castle built in the 1400s... The castle's now just a pile of stones' (Bấm để xem Script)",
+            "12": "Giải thích: Transcript: 'you don't even need to take a map with you. VÀ passes a castle built in the 1400s... The castle's now just a pile of stones' (Bấm để xem Script)",
+            "13": "Giải thích: Transcript: 'The route continues along the tops of the hills and brings you back down to the starting point VÀ can climb the tower that's situated where there was once a seventeenth century hunting lodge.' (Bấm để xem Script)",
+            "14": "Giải thích: Transcript: 'The route continues along the tops of the hills and brings you back down to the starting point VÀ can climb the tower that's situated where there was once a seventeenth century hunting lodge.' (Bấm để xem Script)",
+            "15": "Giải thích: Transcript: 'Beyond that room is the exhibition.' (Bấm để xem Script)",
+            "16": "Giải thích: Transcript: 'There's a small bathhouse where miners used to wash after their shift underground.' (Bấm để xem Script)",
+            "17": "Giải thích: Transcript: 'There's a display of early mining tools from the days before mechanisation.' (Bấm để xem Script)",
+            "18": "Giải thích: Transcript: 'The vehicle shed, where you can find wagons of different sizes...' (Bấm để xem Script)",
+            "19": "Giải thích: Transcript: 'There is a field with ponies, which are always popular with children...' (Bấm để xem Script)",
+            "20": "Giải thích: Transcript: 'The other building to mention is the education centre...' (Bấm để xem Script)",
+            "21": "Giải thích: Transcript: 'I hadn't realised that unsafe food causes more than 200 different diseases. NADIA: No, I'd no idea it was that many. VÀ when animals are treated with antibiotics then consumed by humans, the antibiotics get into the food chain. I had no idea about that either.' (Bấm để xem Script)",
+            "22": "Giải thích: Transcript: 'I hadn't realised that unsafe food causes more than 200 different diseases. NADIA: No, I'd no idea it was that many. VÀ when animals are treated with antibiotics then consumed by humans, the antibiotics get into the food chain. I had no idea about that either.' (Bấm để xem Script)",
+            "23": "Giải thích: Transcript: 'address a problem that's faced by so many different groups - people with special religious rules, as well as vegetarians and vegans. VÀ ensure that these tests were carried out at different stages in the food's journey from the producer to the consumer.' (Bấm để xem Script)",
+            "24": "Giải thích: Transcript: 'address a problem that's faced by so many different groups - people with special religious rules, as well as vegetarians and vegans. VÀ ensure that these tests were carried out at different stages in the food's journey from the producer to the consumer.' (Bấm để xem Script)",
+            "25": "Giải thích: Transcript: 'not so much on the seafood industry, where stocks are in danger of being overexploited... NADIA: Yes, that'd be a good topic. VÀ NADIA: What about sessions on the variety of food and eating habits around the world? FERGUS: Yes, I think the whole class would be interested in that.' (Bấm để xem Script)",
+            "26": "Giải thích: Transcript: 'not so much on the seafood industry, where stocks are in danger of being overexploited... NADIA: Yes, that'd be a good topic. VÀ NADIA: What about sessions on the variety of food and eating habits around the world? FERGUS: Yes, I think the whole class would be interested in that.' (Bấm để xem Script)",
+            "27": "Giải thích: Transcript: 'We made up our minds about that pretty quickly.' (Bấm để xem Script)",
+            "28": "Giải thích: Transcript: 'the handout with advice for the project was very useful here.' (Bấm để xem Script)",
+            "29": "Giải thích: Transcript: 'we finally decided to use jackfruit, even though it wasn't something that either of us had ever tasted before.' (Bấm để xem Script)",
+            "30": "Giải thích: Transcript: 'was harder than I expected... we just moved on and kept adapting it and in the end it turned out fine and we had a lot of fun.' (Bấm để xem Script)",
+            "31": "Giải thích: Transcript: 'Pollution, for example, is among the greatest threats to many popular tourist destinations.' (Bấm để xem Script)",
+            "32": "Giải thích: Transcript: 'Several cities, such as Barcelona, have responded by imposing a tax which all visitors to the city from cruise ships have to pay.' (Bấm để xem Script)",
+            "33": "Giải thích: Transcript: 'The city was becoming like a 'theme park', with shops only catering for tourists, selling chocolate, which Belgium is famous for, and other souvenirs.' (Bấm để xem Script)",
+            "34": "Giải thích: Transcript: 'What it does now is control the timing of all cruise ship entries to the city's port.' (Bấm để xem Script)",
+            "35": "Giải thích: Transcript: 'A recent survey showed that cost is also a major factor in putting younger groups off going on a cruise.' (Bấm để xem Script)",
+            "36": "Giải thích: Transcript: 'And another perception is that cruises have lots of rules about what to wear and how to behave.' (Bấm để xem Script)",
+            "37": "Giải thích: Transcript: 'There's even a boxing ring on one ship, and most offer diving expeditions.' (Bấm để xem Script)",
+            "38": "Giải thích: Transcript: 'Vegan dishes are standard, for example.' (Bấm để xem Script)",
+            "39": "Giải thích: Transcript: 'Many people going on longer cruises also spend time working, so companies have to guarantee wifi that can be relied upon at all times.' (Bấm để xem Script)",
+            "40": "Giải thích: Transcript: 'Leading cruise lines now employ top agencies to produce first rate videos for social media channels.' (Bấm để xem Script)"
         };
 
         let currentPart = 1;
-        let timerInterval = null;
-        let timeLeft = 40 * 60; // 40 minutes
-
-        function startTimer() {
-            const display = document.querySelector('.timer-display');
-            if (!display) return;
-            if (timerInterval) clearInterval(timerInterval);
-            timerInterval = setInterval(() => {
-                if (timeLeft > 0) {
-                    timeLeft--;
-                    const mins = Math.floor(timeLeft / 60);
-                    const secs = timeLeft % 60;
-                    display.textContent = `${mins} minutes ${secs < 10 ? '0' : ''}${secs} seconds remaining`;
-                } else {
-                    clearInterval(timerInterval);
-                    display.textContent = "Time's up!";
-                }
-            }, 1000);
-        }
-
+        
         function switchToPart(partNumber) {
             currentPart = partNumber;
             document.querySelectorAll('.question-set').forEach(el => el.classList.add('hidden'));
@@ -1764,18 +1674,28 @@
         document.getElementById('startNormalBtn').addEventListener('click', function() {
             document.getElementById('launchScreen').style.display = 'none';
             document.getElementById('app').style.display = 'block';
-            startTimer();
         });
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F11') {
                 document.getElementById('launchScreen').style.display = 'none';
                 document.getElementById('app').style.display = 'block';
-                startTimer();
             }
         });
 
+        // XỬ LÝ SỰ KIỆN NỘP BÀI VÀ GỬI WEBHOOK
         document.getElementById('deliver-button').addEventListener('click', function() {
+            // 1. Lấy thông tin và kiểm tra (Phải làm đầu tiên)
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            if (!studentName || !studentClass) {
+                alert("Vui lòng điền đầy đủ Họ và tên và Lớp trước khi nộp bài!");
+                document.getElementById('studentName').focus();
+                return;
+            }
+
+            // 2. Tính toán điểm số
             let score = 0;
             const answers = window.testMeta.correctAnswers;
             const detailsContainer = document.getElementById('results-details');
@@ -1786,13 +1706,12 @@
             for (let i = 1; i <= 40; i++) {
                 let userAns = "";
                 const input = document.getElementById('q' + i);
-if (input) {
+                if (input) {
                     userAns = input.value.trim();
                 } else {
                     const radios = document.querySelectorAll(`[name="q${i}"]`);
                     radios.forEach(r => { if (r.checked) userAns = r.value; });
                     
-                    // Xử lý tách đáp án cho nhóm câu hỏi Checkbox (VD: q11_12, q21_22...)
                     let checkboxGroup = document.querySelectorAll(`[name="q${i}_${i+1}"]`);
                     if (checkboxGroup.length === 0) checkboxGroup = document.querySelectorAll(`[name="q${i-1}_${i}"]`);
                     if (checkboxGroup.length === 0) checkboxGroup = document.querySelectorAll(`[name="q${i}"]`);
@@ -1804,7 +1723,7 @@ if (input) {
                         let groupName = checkboxGroup[0].name;
                         if (groupName.includes('_')) {
                             let parts = groupName.replace('q', '').split('_');
-                            let indexInGroup = parts.indexOf(i.toString()); 
+                            let indexInGroup = parts.indexOf(i.toString());
                             userAns = checkedVals[indexInGroup] || "";
                         } else {
                             userAns = checkedVals;
@@ -1817,17 +1736,15 @@ if (input) {
 
                 if (Array.isArray(correct)) {
                     if (Array.isArray(userAns)) {
-                        // So sánh mảng cho câu hỏi nhiều lựa chọn (bảo vệ mảng gốc bằng slice)
                         isCorrect = correct.slice().sort().join() === userAns.slice().sort().join();
                     } else if (typeof userAns === 'string') {
-                        // Tính điểm nếu chuỗi nhập vào khớp với BẤT KỲ đáp án nào trong mảng (câu điền từ)
                         isCorrect = correct.some(ans => ans.toString().toLowerCase() === userAns.toLowerCase());
                     }
                 } else {
                     if (typeof userAns === 'string' && typeof correct === 'string') {
                         isCorrect = userAns.toLowerCase() === correct.toLowerCase();
                     }
-                }    
+                }
 
                 if (isCorrect) score++;
 
@@ -1855,6 +1772,7 @@ if (input) {
                 detailsContainer.appendChild(row);
             }
 
+            // 3. Quy đổi Band điểm
             document.getElementById('results-score').innerText = score;
             let band = "0";
             if (score >= 39) band = "9.0";
@@ -1866,13 +1784,72 @@ if (input) {
             else if (score >= 23) band = "6.0";
             else if (score >= 19) band = "5.5";
             else if (score >= 15) band = "5.0";
-        else if (score >= 13) band = "4.5";
-        else if (score >= 11) band = "4.0";
-        else if (score >= 9) band = "3.5";
+            else if (score >= 13) band = "4.5";
+            else if (score >= 11) band = "4.0";
+            else if (score >= 9) band = "3.5";
             else band = "3.0 hoặc thấp hơn";
 
             document.getElementById('results-band').innerText = band;
             document.getElementById('results-modal').classList.remove('hidden');
+            
+            isTimerPaused = true;
+
+            // 4. Đóng gói dữ liệu và gửi Webhook
+            const statusDiv = document.getElementById('submit-status');
+            statusDiv.style.display = 'block';
+            statusDiv.style.backgroundColor = '#fff3cd';
+            statusDiv.style.color = '#856404';
+            statusDiv.textContent = '⏳ Đang gửi kết quả về hệ thống...';
+
+            const testName = document.getElementById('launchTestTitle').textContent.trim() || document.title;
+            const timeTakenSeconds = (40 * 60) - totalSeconds;
+            const timeTakenStr = Math.floor(timeTakenSeconds / 60) + " phút " + (timeTakenSeconds % 60) + " giây";
+            
+            // Sửa lỗi Thời gian nộp bài bị trống: Lấy thời gian từ trình duyệt và đẩy vào Gói dữ liệu
+            const now = new Date();
+            const currentTime = now.toLocaleTimeString('vi-VN', { hour12: false }) + ' ' + now.toLocaleDateString('vi-VN');
+
+            // Cập nhật tên các tham số gửi về trùng khớp với file Reading
+            const payload = {
+                "Time": currentTime,
+                "time": currentTime,
+                "submitDate": currentTime,
+                "Name": studentName,
+                "studentName": studentName,
+                "Class": studentClass,
+                "studentClass": studentClass,
+                "Correct answer": score + "/40",
+                "score": score + "/40",
+                "total time": timeTakenStr,
+                "timeTaken": timeTakenStr,
+                "Test name": testName,
+                "testName": testName,
+                "examTitle": testName,
+                "bandScore": band,
+                "band": band
+            };
+
+            if (WEBHOOK_URL && WEBHOOK_URL.includes('script.google.com')) {
+                const formBody = new URLSearchParams(payload).toString();
+
+                fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: formBody
+                }).then(() => {
+                    statusDiv.style.backgroundColor = '#d4edda';
+                    statusDiv.style.color = '#155724';
+                    statusDiv.textContent = '✅ Kết quả đã được ghi nhận và gửi thành công!';
+                }).catch(err => {
+                    console.error("Lỗi gửi dữ liệu webhook: ", err);
+                    statusDiv.style.backgroundColor = '#f8d7da';
+                    statusDiv.style.color = '#721c24';
+                    statusDiv.textContent = '⚠️ Có lỗi xảy ra khi gửi. Vui lòng kiểm tra lại kết nối.';
+                });
+            }
         });
 
         function closeResultsModal() {
@@ -1902,7 +1879,7 @@ if (input) {
         playPauseBtn.addEventListener('click', () => {
             if (audioPlayer.paused) {
                 audioPlayer.play().catch(error => {
-                    alert("Trình duyệt chặn phát file audio trực tiếp. Hãy kiểm tra tệp 'c21-test2.mp3' đã đặt cùng thư mục với file HTML này chưa.");
+                    alert("Trình duyệt chặn phát file audio trực tiếp. Hãy kiểm tra tệp audio đã đặt cùng thư mục với file HTML này chưa.");
                 });
                 playPauseBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
             } else {
@@ -1948,6 +1925,29 @@ if (input) {
 
         audioPlayer.addEventListener('loadedmetadata', () => {
             durationTimer.textContent = formatTime(audioPlayer.duration);
+        });
+
+        let totalSeconds = 40 * 60;
+        let isTimerPaused = false;
+        const timerDisplay = document.querySelector('.timer-display');
+        
+        function updateTimer() {
+            if (!isTimerPaused && totalSeconds > 0) {
+                totalSeconds--;
+                const mins = Math.floor(totalSeconds / 60);
+                const secs = totalSeconds % 60;
+                timerDisplay.textContent = `${mins} minutes ${secs < 10 ? '0' : ''}${secs} remaining`;
+            }
+        }
+        setInterval(updateTimer, 1000);
+
+        document.getElementById('timer-toggle-btn').addEventListener('click', () => {
+            isTimerPaused = !isTimerPaused;
+        });
+
+        document.getElementById('timer-reset-btn').addEventListener('click', () => {
+            totalSeconds = 40 * 60;
+            isTimerPaused = false;
         });
     </script>
 </body>

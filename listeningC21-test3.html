@@ -226,6 +226,36 @@
             padding-bottom: 80px;
         }
 
+        .student-form-container {
+            background-color: #f7f9fc;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e0e7ff;
+            margin: 0 20px 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .student-form-container h3 {
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #1f2b59;
+        }
+        
+        .student-inputs {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .student-input-field {
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 15px;
+            flex: 1;
+            min-width: 200px;
+        }
+
         .panels-container {
             display: flex;
             flex: 1;
@@ -234,7 +264,7 @@
         }
 
         .questions-panel {
-            padding: 20px 20px 40px;
+            padding: 10px 20px 40px;
             overflow-y: auto;
             flex: 1;
             max-width: 100%;
@@ -855,7 +885,7 @@
         <div class="launch-card">
             <div>
                 <p class="launch-eyebrow">IELTS Test Launcher</p>
-                <h1 class="launch-title" id="launchTestTitle">C21 - TEST 3 - IELTS Listening Test</h1>
+                <h1 class="launch-title" id="launchTestTitle">C21 - TEST 3 - IELTS Listening Practice</h1>
                 <p class="launch-meta">Dạng bài: Listening</p>
             </div>
             <div class="launch-guide">
@@ -877,7 +907,7 @@
     <div id="app">
     <div class="header">
         <div class="timer-container">
-            <span class="timer-display" id="timer-display">40:00</span>
+            <span class="timer-display">40 minutes remaining</span>
             <div class="timer-controls">
                 <button id="timer-toggle-btn" title="Pause/Resume Timer">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 5v14l11-7L8 5z"/></svg>
@@ -911,7 +941,6 @@
             <span class="audio-time"><span id="audio-current">0:00</span> / <span id="audio-duration">0:00</span></span>
         </div>
         <div class="audio-meta">
-            <!-- Nút mở Audio Script: ban đầu ẩn, chỉ xuất hiện sau khi bấm Check Answers -->
             <button class="script-toggle-btn hidden" id="scriptToggleBtn" type="button" onclick="toggleScriptPanel()">Audio Script</button>
             <div class="audio-speed">
                 <button id="audio-speed-btn" type="button" aria-haspopup="true" aria-expanded="false">1.0x</button>
@@ -923,11 +952,18 @@
                 </div>
             </div>
         </div>
-        <!-- File audio Cambridge 21 - Test 3 đặt cùng thư mục -->
-        <audio id="audio-player" src="Cambridge 21 - Test 3.mp3" preload="metadata"></audio>
+        <audio id="audio-player" src="C21-Test3.mp3" preload="metadata"></audio>
     </div>
 
         <div class="main-container" id="main-container">
+            <div class="student-form-container">
+                <h3>Thông tin học sinh (Bắt buộc khi nộp bài)</h3>
+                <div class="student-inputs">
+                    <input type="text" id="studentName" class="student-input-field" placeholder="Họ và tên học sinh" required>
+                    <input type="text" id="studentClass" class="student-input-field" placeholder="Lớp" required>
+                </div>
+            </div>
+
             <div id="passage-header-container" style="width:100%;">
                 <div id="part-header-1" class="part-header">
                     <p><strong>Part 1</strong></p>
@@ -955,40 +991,41 @@
                         <div class="questions-container">
                             <div class="question" data-q-start="1" data-q-end="10">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 1–10</strong></p>
+                                    <p><strong>Questions 1-10</strong></p>
                                     <p>Complete the notes below.</p>
-                                    <p>Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
+                                    <p>Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer</p>
                                     <div class="question-title">Ferry to Shetland Islands</div>
                                 </div>
-                                <p>Name of ferry company: <input type="text" class="answer-input" id="q1" placeholder="1" oninput="trackAnswer(1)"> Ferries <span id="ans-tag-1"></span></p>
+                                
+                                <p>Name of ferry company: 1 <input type="text" class="answer-input" id="q1" placeholder="1" oninput="trackAnswer(1)" style="width: 150px;"><span id="ans-tag-1"></span> Ferries</p>
                                 <div class="explanation-inline" id="exp-1" onclick="highlightEvidence('Northern')"></div>
-
-                                <p>Ferries depart seven times per <input type="text" class="answer-input" id="q2" placeholder="2" oninput="trackAnswer(2)"> in summer <span id="ans-tag-2"></span></p>
+                                
+                                <p>Ferries depart seven times per 2 <input type="text" class="answer-input" id="q2" placeholder="2" oninput="trackAnswer(2)" style="width: 100px;"><span id="ans-tag-2"></span> in summer</p>
                                 <div class="explanation-inline" id="exp-2" onclick="highlightEvidence('week')"></div>
-
-                                <p>Cost for four people with car: a little less than £ <input type="text" class="answer-input" id="q3" placeholder="3" oninput="trackAnswer(3)"> <span id="ans-tag-3"></span></p>
+                                
+                                <p>Cost for four people with car: a little less than 3 £ <input type="text" class="answer-input" id="q3" placeholder="3" oninput="trackAnswer(3)" style="width: 80px;"><span id="ans-tag-3"></span></p>
                                 <div class="explanation-inline" id="exp-3" onclick="highlightEvidence('250')"></div>
-
-                                <p>Cancellation policy: receive a <input type="text" class="answer-input" id="q4" placeholder="4" oninput="trackAnswer(4)"> (if cancelled a month in advance) <span id="ans-tag-4"></span></p>
+                                
+                                <p>Cancellation policy: receive a 4 <input type="text" class="answer-input" id="q4" placeholder="4" oninput="trackAnswer(4)" style="width: 150px;"><span id="ans-tag-4"></span> (if cancelled a month in advance)</p>
                                 <div class="explanation-inline" id="exp-4" onclick="highlightEvidence('voucher')"></div>
-
-                                <p><strong>Advice</strong></p>
-                                <p>• Cabins: book one with a <input type="text" class="answer-input" id="q5" placeholder="5" oninput="trackAnswer(5)">; luxury cabins have a TV <span id="ans-tag-5"></span></p>
+                                
+                                <p><br><strong>Advice:</strong></p>
+                                <p>• Cabins: book one with a 5 <input type="text" class="answer-input" id="q5" placeholder="5" oninput="trackAnswer(5)" style="width: 120px;"><span id="ans-tag-5"></span>; luxury cabins have a TV</p>
                                 <div class="explanation-inline" id="exp-5" onclick="highlightEvidence('window')"></div>
-
-                                <p>• Bring snacks and <input type="text" class="answer-input" id="q6" placeholder="6" oninput="trackAnswer(6)"> for the children <span id="ans-tag-6"></span></p>
+                                
+                                <p>• Bring snacks and 6 <input type="text" class="answer-input" id="q6" placeholder="6" oninput="trackAnswer(6)" style="width: 120px;"><span id="ans-tag-6"></span> for the children</p>
                                 <div class="explanation-inline" id="exp-6" onclick="highlightEvidence('books')"></div>
-
-                                <p>• A <input type="text" class="answer-input" id="q7" placeholder="7" oninput="trackAnswer(7)"> is required for the dog kennels <span id="ans-tag-7"></span></p>
+                                
+                                <p>• A 7 <input type="text" class="answer-input" id="q7" placeholder="7" oninput="trackAnswer(7)" style="width: 120px;"><span id="ans-tag-7"></span> is required for the dog kennels</p>
                                 <div class="explanation-inline" id="exp-7" onclick="highlightEvidence('blanket')"></div>
-
-                                <p>• Try to see <input type="text" class="answer-input" id="q8" placeholder="8" oninput="trackAnswer(8)"> in the morning <span id="ans-tag-8"></span></p>
+                                
+                                <p>• Try to see 8 <input type="text" class="answer-input" id="q8" placeholder="8" oninput="trackAnswer(8)" style="width: 150px;"><span id="ans-tag-8"></span> in the morning</p>
                                 <div class="explanation-inline" id="exp-8" onclick="highlightEvidence('dolphins')"></div>
-
-                                <p>• If time, visit <input type="text" class="answer-input" id="q9" placeholder="9" oninput="trackAnswer(9)"> Castle <span id="ans-tag-9"></span></p>
+                                
+                                <p>• If time, visit 9 <input type="text" class="answer-input" id="q9" placeholder="9" oninput="trackAnswer(9)" style="width: 120px;"><span id="ans-tag-9"></span> Castle</p>
                                 <div class="explanation-inline" id="exp-9" onclick="highlightEvidence('Drum')"></div>
-
-                                <p>• The <input type="text" class="answer-input" id="q10" placeholder="10" oninput="trackAnswer(10)"> restaurant in a nearby village is recommended <span id="ans-tag-10"></span></p>
+                                
+                                <p>• The 10 <input type="text" class="answer-input" id="q10" placeholder="10" oninput="trackAnswer(10)" style="width: 120px;"><span id="ans-tag-10"></span> restaurant in a nearby village is recommended</p>
                                 <div class="explanation-inline" id="exp-10" onclick="highlightEvidence('Italian')"></div>
                             </div>
                         </div>
@@ -1000,70 +1037,70 @@
                             <div class="question" data-q-start="11" data-q-end="12" id="q11_12-container">
                                 <div class="question-prompt">
                                     <p><strong>Questions 11 and 12</strong></p>
-                                    <p>Choose <strong>TWO</strong> letters, <strong>A-E</strong>.</p>
+                                    <p>Choose <strong>TWO</strong> letters, A-E.</p>
                                     <p>Which <strong>TWO</strong> explanations for the popularity of street food are given? <span id="ans-tag-11"></span></p>
                                 </div>
                                 <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="A" onchange="trackCheckbox(11)"> A low price</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="B" onchange="trackCheckbox(11)"> B locally sourced</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="C" onchange="trackCheckbox(11)"> C convenience</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="D" onchange="trackCheckbox(11)"> D freshly made</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="E" onchange="trackCheckbox(11)"> E unusual food</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="A" onchange="trackCheckbox(11)"> A. low price</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="B" onchange="trackCheckbox(11)"> B. locally sourced</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="C" onchange="trackCheckbox(11)"> C. convenience</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="D" onchange="trackCheckbox(11)"> D. freshly made</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q11_12" value="E" onchange="trackCheckbox(11)"> E. unusual food</label></div>
                                 </div>
-                                <div class="explanation-inline" id="exp-11" onclick="highlightEvidence('reaction against fast food')"></div>
+                                <div class="explanation-inline" id="exp-11" onclick="highlightEvidence('trying something they can\'t get anywhere else... also the same everywhere')"></div>
                             </div>
 
                             <div class="question" data-q-start="13" data-q-end="14" id="q13_14-container">
                                 <div class="question-prompt">
                                     <p><strong>Questions 13 and 14</strong></p>
-                                    <p>Choose <strong>TWO</strong> letters, <strong>A-E</strong>.</p>
+                                    <p>Choose <strong>TWO</strong> letters, A-E.</p>
                                     <p>Which <strong>TWO</strong> places are recommended for new street food businesses? <span id="ans-tag-13"></span></p>
                                 </div>
                                 <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="A" onchange="trackCheckbox(13)"> A music festivals</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="B" onchange="trackCheckbox(13)"> B food markets</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="C" onchange="trackCheckbox(13)"> C weddings</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="D" onchange="trackCheckbox(13)"> D parties</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="E" onchange="trackCheckbox(13)"> E parks</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="A" onchange="trackCheckbox(13)"> A. music festivals</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="B" onchange="trackCheckbox(13)"> B. food markets</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="C" onchange="trackCheckbox(13)"> C. weddings</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="D" onchange="trackCheckbox(13)"> D. parties</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q13_14" value="E" onchange="trackCheckbox(13)"> E. parks</label></div>
                                 </div>
-                                <div class="explanation-inline" id="exp-13" onclick="highlightEvidence('Food markets')"></div>
+                                <div class="explanation-inline" id="exp-13" onclick="highlightEvidence('Food markets, on the other hand, are great because... And if you can get a spot in your local park - fantastic.')"></div>
                             </div>
-
+                            
                             <div class="question" data-q-start="15" data-q-end="16">
                                 <div class="question-prompt">
                                     <p><strong>Questions 15 and 16</strong></p>
                                     <p>Choose the correct letter, <strong>A, B or C</strong>.</p>
                                 </div>
-
+                                
                                 <div class="multi-choice-question" data-q-start="15" data-q-end="15" id="q15-container">
                                     <div class="multi-choice-options">
                                         <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="15">15</span><span class="mcq-question-title">What does the speaker say about getting equipment for a street food business?</span><span id="ans-tag-15"></span></p>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q15" value="A" onchange="trackAnswer(15)"> A High quality equipment is a good investment.</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q15" value="B" onchange="trackAnswer(15)"> B It's best to buy second-hand equipment.</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q15" value="C" onchange="trackAnswer(15)"> C Renting equipment can be cheap.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q15" value="A" onchange="trackAnswer(15)"> A. High quality equipment is a good investment.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q15" value="B" onchange="trackAnswer(15)"> B. It's best to buy second-hand equipment.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q15" value="C" onchange="trackAnswer(15)"> C. Renting equipment can be cheap.</label></div>
                                     </div>
-                                    <div class="explanation-inline" id="exp-15" onclick="highlightEvidence('second hand')"></div>
+                                    <div class="explanation-inline" id="exp-15" onclick="highlightEvidence('I\'d try to get things like hobs and fridges second hand if you can.')"></div>
                                 </div>
-
+                                
                                 <div class="multi-choice-question" data-q-start="16" data-q-end="16" id="q16-container">
                                     <div class="multi-choice-options">
                                         <p class="mcq-question-text"><span class="mcq-question-number question-number-box" data-q-number="16">16</span><span class="mcq-question-title">What advice is given about creating a product for a street food business?</span><span id="ans-tag-16"></span></p>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q16" value="A" onchange="trackAnswer(16)"> A Provide information about the ingredients.</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q16" value="B" onchange="trackAnswer(16)"> B It is important to have an original product.</label></div>
-                                        <div class="multi-choice-option"><label><input type="radio" name="q16" value="C" onchange="trackAnswer(16)"> C The presentation is an important factor.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q16" value="A" onchange="trackAnswer(16)"> A. Provide information about the ingredients.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q16" value="B" onchange="trackAnswer(16)"> B. It is important to have an original product.</label></div>
+                                        <div class="multi-choice-option"><label><input type="radio" name="q16" value="C" onchange="trackAnswer(16)"> C. The presentation is an important factor.</label></div>
                                     </div>
-                                    <div class="explanation-inline" id="exp-16" onclick="highlightEvidence('look attractive')"></div>
+                                    <div class="explanation-inline" id="exp-16" onclick="highlightEvidence('It\'s got to be easy to eat and look attractive or customers won\'t come back.')"></div>
                                 </div>
                             </div>
-
+                            
                             <div class="question" data-q-start="17" data-q-end="20">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 17–20</strong></p>
+                                    <p><strong>Questions 17-20</strong></p>
                                     <p>What problem did the owners of each of the following street food businesses experience?</p>
-                                    <p>Choose <strong>FOUR</strong> answers from the box and write the correct letter, <strong>A-F</strong>, next to Questions 17–20.</p>
+                                    <p>Choose <strong>FOUR</strong> answers from the box and write the correct letter, <strong>A-F</strong>, next to Questions 17-20.</p>
                                 </div>
                                 <div class="example-box" style="font-size: 15px; margin-bottom: 20px;">
-                                    <ul class="options-list" style="list-style-type: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                    <ul class="options-list" style="list-style-type: none; display: grid; gap: 8px;">
                                         <li><strong>A</strong> Some ingredients were too expensive.</li>
                                         <li><strong>B</strong> The meals took a long time to prepare.</li>
                                         <li><strong>C</strong> They had no money for marketing.</li>
@@ -1072,30 +1109,31 @@
                                         <li><strong>F</strong> They worked very long hours.</li>
                                     </ul>
                                 </div>
+                                <div class="question-title">Street food businesses:</div>
                                 <div class="matching-form-container">
                                     <div class="matching-form-row">
                                         <label for="q17" class="matching-form-label"><strong>17. Thai Basil</strong></label>
                                         <select class="answer-input" id="q17" onchange="trackAnswer(17)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select><span id="ans-tag-17"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-17" onclick="highlightEvidence('working til midnight')"></div>
+                                    <div class="explanation-inline" id="exp-17" onclick="highlightEvidence('working til midnight in the restaurant all week and then took their food truck to markets on their days off')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q18" class="matching-form-label"><strong>18. Basque</strong></label>
                                         <select class="answer-input" id="q18" onchange="trackAnswer(18)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select><span id="ans-tag-18"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-18" onclick="highlightEvidence('price of fish')"></div>
+                                    <div class="explanation-inline" id="exp-18" onclick="highlightEvidence('the price of fish - essential for some of their dishes - was so high')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q19" class="matching-form-label"><strong>19. Lou's kitchen</strong></label>
                                         <select class="answer-input" id="q19" onchange="trackAnswer(19)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select><span id="ans-tag-19"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-19" onclick="highlightEvidence('long queue for more than 15 minutes')"></div>
-
+                                    <div class="explanation-inline" id="exp-19" onclick="highlightEvidence('standing in a long queue for more than 15 minutes and many of them lost patience')"></div>
+                                    
                                     <div class="matching-form-row">
                                         <label for="q20" class="matching-form-label"><strong>20. Chip Chop</strong></label>
                                         <select class="answer-input" id="q20" onchange="trackAnswer(20)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select><span id="ans-tag-20"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-20" onclick="highlightEvidence('special licence')"></div>
+                                    <div class="explanation-inline" id="exp-20" onclick="highlightEvidence('they\'d need a special licence - which individual businesses don\'t need at markets or festivals')"></div>
                                 </div>
                             </div>
                         </div>
@@ -1104,46 +1142,47 @@
                     <!-- SECTION 3 -->
                     <div id="questions-3" class="question-set hidden">
                         <div class="questions-container">
+                            
                             <div class="question" data-q-start="21" data-q-end="22" id="q21_22-container">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 21–22</strong></p>
-                                    <p>Choose <strong>TWO</strong> letters, <strong>A-E</strong>.</p>
+                                    <p><strong>Questions 21 and 22</strong></p>
+                                    <p>Choose <strong>TWO</strong> letters, A-E.</p>
                                     <p>Which <strong>TWO</strong> points do the speakers make about the terms 'ethical' and 'sustainable' fashion? <span id="ans-tag-21"></span></p>
                                 </div>
                                 <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="A" onchange="trackCheckbox(21)"> A Their definitions keep changing.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="B" onchange="trackCheckbox(21)"> B People think they mean the same thing.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="C" onchange="trackCheckbox(21)"> C The term 'eco-friendly' is preferable.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="D" onchange="trackCheckbox(21)"> D They are often used imprecisely.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="E" onchange="trackCheckbox(21)"> E Companies should avoid using them on clothing labels.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="A" onchange="trackCheckbox(21)"> A. Their definitions keep changing.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="B" onchange="trackCheckbox(21)"> B. People think they mean the same thing.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="C" onchange="trackCheckbox(21)"> C. The term 'eco-friendly' is preferable.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="D" onchange="trackCheckbox(21)"> D. They are often used imprecisely.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q21_22" value="E" onchange="trackCheckbox(21)"> E. Companies should avoid using them on clothing labels.</label></div>
                                 </div>
-                                <div class="explanation-inline" id="exp-21" onclick="highlightEvidence('use these terms interchangeably')"></div>
+                                <div class="explanation-inline" id="exp-21" onclick="highlightEvidence('most people use these terms interchangeably... They\'re often deliberately vague, I think, and don\'t provide enough information')"></div>
                             </div>
 
                             <div class="question" data-q-start="23" data-q-end="24" id="q23_24-container">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 23–24</strong></p>
-                                    <p>Choose <strong>TWO</strong> letters, <strong>A-E</strong>.</p>
+                                    <p><strong>Questions 23 and 24</strong></p>
+                                    <p>Choose <strong>TWO</strong> letters, A-E.</p>
                                     <p>Which <strong>TWO</strong> claims about wool production do the speakers disagree with? <span id="ans-tag-23"></span></p>
                                 </div>
                                 <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="A" onchange="trackCheckbox(23)"> A Sheep are generally well-treated.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="B" onchange="trackCheckbox(23)"> B Wool is easy to recycle.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="C" onchange="trackCheckbox(23)"> C Wool is a long-lasting fabric.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="D" onchange="trackCheckbox(23)"> D Wool production involves few chemicals.</label></div>
-                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="E" onchange="trackCheckbox(23)"> E Sheep do less environmental damage than other livestock.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="A" onchange="trackCheckbox(23)"> A. Sheep are generally well-treated.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="B" onchange="trackCheckbox(23)"> B. Wool is easy to recycle.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="C" onchange="trackCheckbox(23)"> C. Wool is a long-lasting fabric.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="D" onchange="trackCheckbox(23)"> D. Wool production involves few chemicals.</label></div>
+                                    <div class="multi-choice-option"><label><input type="checkbox" name="q23_24" value="E" onchange="trackCheckbox(23)"> E. Sheep do less environmental damage than other livestock.</label></div>
                                 </div>
-                                <div class="explanation-inline" id="exp-23" onclick="highlightEvidence('fungicides and insecticides')"></div>
+                                <div class="explanation-inline" id="exp-23" onclick="highlightEvidence('wasn\'t convinced by the argument that wool production is sustainable because it doesn\'t use many chemicals... couldn\'t find any evidence for the claim about sheep farming being better for the environment than cattle farming')"></div>
                             </div>
-
-                            <div class="question" data-q-start="25" data-q-end="30">
+                            
+                            <div class="question" data-q-start="25" data-q-end="30" id="q25_30-container">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 25–30</strong></p>
+                                    <p><strong>Questions 25-30</strong></p>
                                     <p>What comment do the speakers make about each of the following semi-synthetic fabrics?</p>
-                                    <p>Choose <strong>SIX</strong> answers from the box and write the correct letter, <strong>A-H</strong>, next to Questions 25–30.</p>
+                                    <p>Choose <strong>SIX</strong> answers from the box and write the correct letter, <strong>A-H</strong>, next to Questions 25-30.</p>
                                 </div>
                                 <div class="example-box" style="font-size: 15px; margin-bottom: 20px;">
-                                    <ul class="options-list" style="list-style-type: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                    <ul class="options-list" style="list-style-type: none; display: grid; grid-template-columns: 1fr; gap: 8px;">
                                         <li><strong>A</strong> The production process is fuel efficient.</li>
                                         <li><strong>B</strong> It is the least sustainable of alternative fabrics.</li>
                                         <li><strong>C</strong> Production costs are high.</li>
@@ -1154,42 +1193,43 @@
                                         <li><strong>H</strong> This is from a wholly sustainable source.</li>
                                     </ul>
                                 </div>
+                                <div class="question-title">Semi-synthetic fabrics:</div>
                                 <div class="matching-form-container">
                                     <div class="matching-form-row">
                                         <label for="q25" class="matching-form-label"><strong>25. Lyocell</strong></label>
                                         <select class="answer-input" id="q25" onchange="trackAnswer(25)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select><span id="ans-tag-25"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-25" onclick="highlightEvidence('Over 99% of dissolving agents')"></div>
+                                    <div class="explanation-inline" id="exp-25" onclick="highlightEvidence('Over 99% of dissolving agents used in the manufacturing process are used again')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q26" class="matching-form-label"><strong>26. Cupro</strong></label>
                                         <select class="answer-input" id="q26" onchange="trackAnswer(26)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select><span id="ans-tag-26"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-26" onclick="highlightEvidence('reports of pollution')"></div>
+                                    <div class="explanation-inline" id="exp-26" onclick="highlightEvidence('It doesn\'t compare favourably with all the other sustainable fabrics we\'ve looked at, no')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q27" class="matching-form-label"><strong>27. Bamboo</strong></label>
                                         <select class="answer-input" id="q27" onchange="trackAnswer(27)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select><span id="ans-tag-27"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-27" onclick="highlightEvidence('chemically quite intensive')"></div>
+                                    <div class="explanation-inline" id="exp-27" onclick="highlightEvidence('only organic bamboo that\'s truly sustainable')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q28" class="matching-form-label"><strong>28. EcoVero</strong></label>
                                         <select class="answer-input" id="q28" onchange="trackAnswer(28)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select><span id="ans-tag-28"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-28" onclick="highlightEvidence('50 percent fewer emissions')"></div>
+                                    <div class="explanation-inline" id="exp-28" onclick="highlightEvidence('takes up half as much energy as conventional fabrics')"></div>
 
                                     <div class="matching-form-row">
                                         <label for="q29" class="matching-form-label"><strong>29. Cork</strong></label>
                                         <select class="answer-input" id="q29" onchange="trackAnswer(29)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select><span id="ans-tag-29"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-29" onclick="highlightEvidence('fundamentally sustainable')"></div>
-
+                                    <div class="explanation-inline" id="exp-29" onclick="highlightEvidence('it\'s the only fabric that\'s fundamentally sustainable')"></div>
+                                    
                                     <div class="matching-form-row">
                                         <label for="q30" class="matching-form-label"><strong>30. Hemp</strong></label>
                                         <select class="answer-input" id="q30" onchange="trackAnswer(30)"><option value=""></option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select><span id="ans-tag-30"></span>
                                     </div>
-                                    <div class="explanation-inline" id="exp-30" onclick="highlightEvidence('protect the wearer from the sun')"></div>
+                                    <div class="explanation-inline" id="exp-30" onclick="highlightEvidence('protect the wearer from the sun and it\'s also antibacterial')"></div>
                                 </div>
                             </div>
                         </div>
@@ -1200,55 +1240,64 @@
                         <div class="questions-container">
                             <div class="question" data-q-start="31" data-q-end="40">
                                 <div class="question-prompt">
-                                    <p><strong>Questions 31–40</strong></p>
+                                    <p><strong>Questions 31-40</strong></p>
                                     <p>Complete the notes below.</p>
                                     <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
                                     <div class="question-title">Invasive species</div>
                                 </div>
+                                
                                 <p>Definition: an animal or plant that causes harm to an environment after being introduced by humans</p>
                                 <p>An invasive species can be a problem when it:</p>
                                 <p>• eats native species.</p>
-                                <p>• introduces a new <input type="text" class="answer-input" id="q31" placeholder="31" oninput="trackAnswer(31)"><span id="ans-tag-31"></span></p>
-                                <div class="explanation-inline" id="exp-31" onclick="highlightEvidence('disease')"></div>
-
+                                <p>• introduces a new 31 <input type="text" class="answer-input" id="q31" placeholder="31" oninput="trackAnswer(31)"><span id="ans-tag-31"></span></p>
+                                <div class="explanation-inline" id="exp-31" onclick="highlightEvidence('bring a disease with them')"></div>
+                                
                                 <p>• takes food from native species.</p>
-                                <p>• threatens an entire <input type="text" class="answer-input" id="q32" placeholder="32" oninput="trackAnswer(32)"><span id="ans-tag-32"></span></p>
-                                <div class="explanation-inline" id="exp-32" onclick="highlightEvidence('ecosystem')"></div>
+                                <p>• threatens an entire 32 <input type="text" class="answer-input" id="q32" placeholder="32" oninput="trackAnswer(32)"><span id="ans-tag-32"></span></p>
+                                <div class="explanation-inline" id="exp-32" onclick="highlightEvidence('putting its survival at risk')"></div>
 
-                                <p><strong>How invasive species spread</strong></p>
-                                <p>• accidentally e.g. via people returning from their <input type="text" class="answer-input" id="q33" placeholder="33" oninput="trackAnswer(33)"><span id="ans-tag-33"></span></p>
-                                <div class="explanation-inline" id="exp-33" onclick="highlightEvidence('holiday')"></div>
+                                <br>
+                                <p><strong>How invasive species spread:</strong></p>
+                                <p>• accidentally e.g. via people returning from their 33 <input type="text" class="answer-input" id="q33" placeholder="33" oninput="trackAnswer(33)"><span id="ans-tag-33"></span> or on cargo ships</p>
+                                <div class="explanation-inline" id="exp-33" onclick="highlightEvidence('returning from their holidays')"></div>
+                                
+                                <p>• intentionally e.g. for pest control, or as 34 <input type="text" class="answer-input" id="q34" placeholder="34" oninput="trackAnswer(34)"><span id="ans-tag-34"></span></p>
+                                <div class="explanation-inline" id="exp-34" onclick="highlightEvidence('or to be pets')"></div>
 
-                                <p>• or on cargo ships</p>
-                                <p>• intentionally e.g. for pest control, or as <input type="text" class="answer-input" id="q34" placeholder="34" oninput="trackAnswer(34)"><span id="ans-tag-34"></span></p>
-                                <div class="explanation-inline" id="exp-34" onclick="highlightEvidence('pets')"></div>
+                                <br>
+                                <p><strong>Examples of invasive species:</strong></p>
+                                <p>• Rhinella marina (toads):</p>
+                                <p>- were introduced to Australia from Hawaii in 1935 to eat a type of insect that was damaging the 35 <input type="text" class="answer-input" id="q35" placeholder="35" oninput="trackAnswer(35)"><span id="ans-tag-35"></span> plantations.</p>
+                                <div class="explanation-inline" id="exp-35" onclick="highlightEvidence('destroying crops of sugar')"></div>
 
-                                <p><strong>Examples of invasive species</strong></p>
-                                <p>• <em>Rhinella marina</em> (toads) were introduced to Australia from Hawaii in 1935 to eat a type of insect that was damaging the <input type="text" class="answer-input" id="q35" placeholder="35" oninput="trackAnswer(35)"> plantations.<span id="ans-tag-35"></span></p>
-                                <div class="explanation-inline" id="exp-35" onclick="highlightEvidence('sugar')"></div>
+                                <p>- failed to solve the problem and became widespread in the north of Australia.</p>
+                                <p>- are poisonous for any species that eats them and reduce the food available for native frogs.</p>
+                                
+                                <p>• Japanese knotweed plants were popular among 19th-century gardeners in the UK.</p>
+                                <p>• Rhododendron plants prevent 36 <input type="text" class="answer-input" id="q36" placeholder="36" oninput="trackAnswer(36)"><span id="ans-tag-36"></span> from reaching native plants.</p>
+                                <div class="explanation-inline" id="exp-36" onclick="highlightEvidence('block out so much light')"></div>
+                                
+                                <p>• Grey squirrels from N. America reduce sources of food for the UK's native red squirrels and spread a 37 <input type="text" class="answer-input" id="q37" placeholder="37" oninput="trackAnswer(37)"><span id="ans-tag-37"></span> that kills red squirrels.</p>
+                                <div class="explanation-inline" id="exp-37" onclick="highlightEvidence('carry a type of virus that is deadly')"></div>
 
-                                <p>• Rhododendron plants prevent <input type="text" class="answer-input" id="q36" placeholder="36" oninput="trackAnswer(36)"> from reaching native plants.<span id="ans-tag-36"></span></p>
-                                <div class="explanation-inline" id="exp-36" onclick="highlightEvidence('light')"></div>
+                                <br>
+                                <p><strong>Tackling invasive species:</strong></p>
+                                <p>• Monitoring helps us to understand the 38 <input type="text" class="answer-input" id="q38" placeholder="38" oninput="trackAnswer(38)"><span id="ans-tag-38"></span> of invasive species and the impact they have, and makes it easier to track them.</p>
+                                <div class="explanation-inline" id="exp-38" onclick="highlightEvidence('learning about the behaviour')"></div>
+                                
+                                <p>• Setting up a national 39 <input type="text" class="answer-input" id="q39" placeholder="39" oninput="trackAnswer(39)"><span id="ans-tag-39"></span></p>
+                                <div class="explanation-inline" id="exp-39" onclick="highlightEvidence('create a database')"></div>
+                                
+                                <p>• Asking the public to 40 <input type="text" class="answer-input" id="q40" placeholder="40" oninput="trackAnswer(40)"><span id="ans-tag-40"></span> and report them helps with monitoring.</p>
+                                <div class="explanation-inline" id="exp-40" onclick="highlightEvidence('photograph harmful species')"></div>
 
-                                <p>• Grey squirrels from N. America reduce sources of food for the UK's native red squirrels and spread a <input type="text" class="answer-input" id="q37" placeholder="37" oninput="trackAnswer(37)"> that kills red squirrels.<span id="ans-tag-37"></span></p>
-                                <div class="explanation-inline" id="exp-37" onclick="highlightEvidence('virus')"></div>
-
-                                <p><strong>Tackling invasive species</strong></p>
-                                <p>• Monitoring helps us to understand the <input type="text" class="answer-input" id="q38" placeholder="38" oninput="trackAnswer(38)"> of invasive species and the impact they have.<span id="ans-tag-38"></span></p>
-                                <div class="explanation-inline" id="exp-38" onclick="highlightEvidence('behaviour')"></div>
-
-                                <p>• Setting up a national <input type="text" class="answer-input" id="q39" placeholder="39" oninput="trackAnswer(39)"> makes it easier to track them.<span id="ans-tag-39"></span></p>
-                                <div class="explanation-inline" id="exp-39" onclick="highlightEvidence('database')"></div>
-
-                                <p>• Asking the public to <input type="text" class="answer-input" id="q40" placeholder="40" oninput="trackAnswer(40)"> and report them helps with monitoring.<span id="ans-tag-40"></span></p>
-                                <div class="explanation-inline" id="exp-40" onclick="highlightEvidence('photograph')"></div>
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- AUDIO SCRIPT PANEL (Mặc định ẩn, chỉ bật khi ấn Check Answers) -->
+                <!-- AUDIO SCRIPT PANEL -->
                 <div class="script-panel" id="scriptPanel">
                     <div class="script-header">
                         <h3>Audio Script & Evidence</h3>
@@ -1256,103 +1305,56 @@
                     </div>
                     <div class="script-content" id="scriptContentContainer">
                         <div id="script-1">
-                            <p><strong>Part 1:</strong></p>
-                            <p>TAMMY: You know when you went to the Shetland Islands last year, Paul? Did you go by ferry or did you fly?<br>
-                            PAUL: We went by ferry, Tammy. I prefer driving to flying - the journey feels like part of the holiday.<br>
-                            TAMMY: Mmm. Which ferry company did you use?<br>
-                            PAUL: There's only one - it's called <span id="ev-Northern">Northern</span> Ferries. The ferries all leave from Aberdeen.<br>
-                            TAMMY: How frequent are they?<br>
-                            PAUL: The service is pretty limited - there's only one ferry leaving every evening in summer anyway, <span id="ev-week">seven days a week</span> - I'm not sure about the winter months. They may only run on four or five days then.<br>
-                            TAMMY: OK. So it's an overnight trip. I quite like that idea. Leaving at night and waking up as you arrive on the island. Can you remember how much you paid for your tickets?<br>
-                            PAUL: They were really cheap and four people and a car worked out at just under £<span id="ev-250">250</span>.<br>
-                            TAMMY: Really? I was expecting it to be more like £400 during the peak season.<br>
-                            PAUL: So was I. It's great value. It's a good idea to book in advance because I think they get booked up quite quickly - especially during the school holidays.<br>
-                            TAMMY: Yes, I suppose so. I'm just not 100% sure of our plans yet. What if I had to cancel?<br>
-                            PAUL: That could be a problem. I don't think it's their policy to give refunds - just a <span id="ev-voucher">voucher</span> which you can use at a later date. But you have to cancel a month in advance to get that.<br>
-                            TAMMY: Right. Well we need to make up our minds quickly then.<br>
-                            PAUL: You'd want to book a cabin too. We booked too late to get a cabin with a <span id="ev-window">window</span>. They're more expensive but much nicer than the inner cabins. You don't have to book a cabin at all but I think it's worth paying for. They also have luxury cabins, which are only for two people and have a TV - but I wouldn't bother with those.<br>
-                            TAMMY: No, I agree.<br>
-                            PAUL: The only other thing I can think of is to make sure you bring snacks for the kids. The selection on board is quite limited and not that healthy either.<br>
-                            TAMMY: Mmm. What about wifi on board? Is that any good?<br>
-                            PAUL: Not really. So it's best to bring some <span id="ev-books">books</span> for them.<br>
-                            TAMMY: OK. We may need to bring the dog if I can't get anyone to look after him.<br>
-                            PAUL: We brought ours and it was fine. The kennels on board are OK - they're quite big-you just need to provide a <span id="ev-blanket">blanket</span>.<br>
-                            TAMMY: Uhuh. Sounds good.<br>
-                            PAUL: It was all very easy really - and it was quite an adventure for the kids. They loved being on the sea at night and in the morning keeping a lookout for <span id="ev-dolphins">dolphins</span> - we saw loads.<br>
-                            TAMMY: Oh, the kids would love that!<br>
-                            PAUL: One other thing. We arrived in Aberdeen hours before the ferry was due to leave so we decided to go somewhere else rather than hang around at the port for so long.<br>
+                            <p><strong>Section 1:</strong></p>
+                            <p>TAMMY: Which ferry company did you use?<br>
+                            PAUL: There's only one - <span id="ev-Northern">it's called Northern Ferries.</span> (Q1)<br>
+                            PAUL: The service is pretty limited - there's only one ferry leaving every evening in summer anyway, <span id="ev-week">seven days a week</span> (Q2)<br>
+                            PAUL: They were really cheap and four people and a car <span id="ev-250">worked out at just under £250.</span> (Q3)<br>
+                            PAUL: I don't think it's their policy to give refunds - <span id="ev-voucher">just a voucher which you can use at a later date.</span> (Q4)<br>
+                            PAUL: You'd want to book a cabin too. We booked too late <span id="ev-window">to get a cabin with a window.</span> (Q5)<br>
+                            PAUL: Not really. <span id="ev-books">So it's best to bring some books for them.</span> (Q6)<br>
+                            PAUL: The kennels on board are OK - they're quite big- <span id="ev-blanket">you just need to provide a blanket.</span> (Q7)<br>
+                            PAUL: They loved being on the sea at night and in the morning <span id="ev-dolphins">keeping a lookout for dolphins</span> - we saw loads. (Q8)<br>
                             TAMMY: Where did you go?<br>
-                            PAUL: <span id="ev-Drum">Drum</span> Castle.<br>
-                            TAMMY: I've never heard of it. Is that spelt like the instrument?<br>
-                            PAUL: Yeah. It's really worth visiting. It's got an impressive tower and beautiful gardens and ancient woodland.<br>
-                            TAMMY: Sounds lovely. Does it have a restaurant?<br>
-                            PAUL: It's only got a coffee shop - no restaurant. We looked up restaurants in the area and found an <span id="ev-Italian">Italian</span> one in a village nearby. I can check the name of it for you if you're interested.</p>
+                            PAUL: <span id="ev-Drum">Drum Castle.</span> (Q9)<br>
+                            PAUL: We looked up restaurants in the area and <span id="ev-Italian">found an Italian one in a village nearby.</span> (Q10)</p>
                         </div>
                         <div id="script-2" style="margin-top:20px;">
-                            <p><strong>Part 2:</strong></p>
-                            <p>MAN: Good evening everyone. My name's Jon and I run Veg Out, a street food business selling vegan food. Since 2012 I've been travelling all around the country cooking vegan food in my converted van and selling it at all kinds of outdoor events. I'm here to give you some advice based on my experience.<br>
-                            The good news is that there's never been a better time to start your own street food business. Street food continues to grow in popularity. I think there are a couple of reasons for this. The first is that street food is a <span id="ev-reaction against fast food">reaction against fast food</span>. Street food ranges from high quality burgers to vegan curries and everything in between. But while fast food is cheap and easy to find, it's not particularly good for you. It's also the same everywhere. What you get with street food on the other hand is something different. People like the idea of trying something they can't get anywhere else. They also like seeing food prepared in front of them and which hasn't come straight out of a freezer.<br>
-                            You need to think about the best place to sell your street food. People always think music festivals are an obvious place to start but the cost of renting a space can be huge. And there's always a lot of competition. <span id="ev-Food markets">Food markets</span>, on the other hand, are great because customers are always really interested in food and give great feedback. And if you can get a spot in your <span id="ev-local park">local park</span> - fantastic. Usually very relaxed but with lots of customers passing by. Once you get established you'll start getting asked to do parties - which can be really challenging but lots of fun. Having street food at weddings has become quite fashionable too - but you need to really know what you're doing as everything needs to be perfect.<br>
-                            Setting up a street food business costs a lot less than opening a restaurant or café but you'll have to buy some basic equipment. I'd try to get things like hobs and fridges <span id="ev-second hand">second hand</span> if you can. You can replace them with better quality stuff if your business takes off. Renting is another option but you'll end up spending more money rather than saving it.<br>
-                            You've probably got a good idea about the food you're planning to sell. I expect you've done some research to find out if anyone else is selling a similar product. And you'll have thought about any possible allergies to nuts or eggs etc. But there's one thing people don't always think about and that's how you're going to serve it. On a plate? In a bag? Will you provide a fork? Will it all be easily recyclable or reusable? It's got to be easy to eat and <span id="ev-look attractive">look attractive</span> or customers won't come back.<br>
-                            Once you get started, you should be prepared for things to go wrong. Every business faces problems and here are a few examples from street food businesses that I know.<br>
-                            My friends who run Thai Basil started by juggling their street food business with their day jobs in a restaurant. Their work-life balance was non-existent as they were <span id="ev-working til midnight">working til midnight</span> in the restaurant all week and then took their food truck to markets on their days off.<br>
-                            The owners of Basque found it was hard to make a profit because the <span id="ev-price of fish">price of fish</span> - essential for some of their dishes - was so high. And it was hard to charge customers a lot more for those dishes. So they had to stop focussing on fish dishes and include more vegetarian food.<br>
-                            The owners of Lou's kitchen were making salads to order from their van and some of their dishes were quite complicated. At one of their first events they ended up with people standing in a <span id="ev-long queue for more than 15 minutes">long queue for more than 15 minutes</span> and many of them lost patience. So make sure whatever you offer can be served quickly and efficiently.<br>
-                            The owners of Chip Chop had found a perfect venue near a beach where there weren't any other street food trucks. But what they hadn't realised was that they'd need a <span id="ev-special licence">special licence</span>, which individual businesses don't need at markets or festivals. It was a complicated process and in the end they gave up.</p>
+                            <p><strong>Section 2:</strong></p>
+                            <p>The first is that street food is a reaction against fast food... <span id="ev-trying something they can't get anywhere else... also the same everywhere">What you get with street food on the other hand is something different. People like the idea of trying something they can't get anywhere else.</span> (Q11/12) ... <span id="ev-trying something they can't get anywhere else... also the same everywhere">fast food is cheap and easy to find, it's not particularly good for you. It's also the same everywhere.</span><br>
+                            <span id="ev-Food markets, on the other hand, are great because... And if you can get a spot in your local park - fantastic.">Food markets, on the other hand, are great because customers are always really interested in food and give great feedback. And if you can get a spot in your local park - fantastic.</span> (Q13/14)<br>
+                            Setting up a street food business costs a lot less than opening a restaurant or café but you'll have to buy some basic equipment. <span id="ev-I'd try to get things like hobs and fridges second hand if you can.">I'd try to get things like hobs and fridges second hand if you can.</span> (Q15)<br>
+                            But there's one thing people don't always think about and that's how you're going to serve it. On a plate? In a bag? Will you provide a fork? Will it all be easily recyclable or reusable? <span id="ev-It's got to be easy to eat and look attractive or customers won't come back.">It's got to be easy to eat and look attractive or customers won't come back.</span> (Q16)<br>
+                            My friends who run Thai Basil started by juggling their street food business with their day jobs in a restaurant. Their work-life balance was non-existent as they were <span id="ev-working til midnight in the restaurant all week and then took their food truck to markets on their days off">working til midnight in the restaurant all week and then took their food truck to markets on their days off</span>. (Q17)<br>
+                            The owners of Basque found it was hard to make a profit because <span id="ev-the price of fish - essential for some of their dishes - was so high">the price of fish - essential for some of their dishes - was so high</span>. (Q18)<br>
+                            The owners of Lou's kitchen were making salads to order from their van and some of their dishes were quite complicated. At one of their first events they ended up with people <span id="ev-standing in a long queue for more than 15 minutes and many of them lost patience">standing in a long queue for more than 15 minutes and many of them lost patience</span>. (Q19)<br>
+                            The owners of Chip Chop had found a perfect venue near a beach where there weren't any other street food trucks. But what they hadn't realised was that <span id="ev-they'd need a special licence - which individual businesses don't need at markets or festivals">they'd need a special licence - which individual businesses don't need at markets or festivals</span>. (Q20)</p>
                         </div>
                         <div id="script-3" style="margin-top:20px;">
-                            <p><strong>Part 3:</strong></p>
-                            <p>MADDY: Shall we go through our research for our sustainable fashion project?<br>
-                            RYAN: Good idea. I think I've done enough reading now.<br>
-                            MADDY: Me too. I've learnt such a lot about what sustainability actually means.<br>
-                            RYAN: Mmm, same for me with ethical fashion. I didn't really appreciate the difference between that and sustainable fashion before doing this research.<br>
-                            MADDY: I know - most people <span id="ev-use these terms interchangeably">use these terms interchangeably</span> - but in fact the difference is quite distinct when you think about it. Sustainable relates to the environment and ethical relates more to the way workers or animals are treated.<br>
-                            RYAN: I totally understand why people get confused, though. There are so many other terms used - like 'eco-friendly', which is actually quite meaningless.<br>
-                            MADDY: And the way companies use these terms when describing their products doesn't help. They're often deliberately vague, I think, and don't provide enough information about how their products are made.<br>
-                            RYAN: Yes.<br>
-                            MADDY: It was interesting to read about the debates surrounding wool production and how ethical and sustainable that is. It's generally considered to be sustainable because it's a natural product.<br>
-                            RYAN: And it also lasts a long time and can be recycled. All very positive. But I wasn't convinced by the argument that wool production is sustainable because it doesn't use many chemicals - what about all the <span id="ev-fungicides and insecticides">fungicides and insecticides</span> used in sheep farming?<br>
-                            MADDY: Good point. And I couldn't find any evidence for the claim about sheep farming being better for the environment than cattle farming.<br>
-                            RYAN: No-they're both really bad. I read different reports about how unethical it is to even shear sheep. Some people say it's cruel but as long as the sheep are kept in good condition I can't see anything wrong with it.<br>
-                            MADDY: Me neither.<br>
-                            RYAN: Shall we talk about some of the semi-synthetic new fabrics now?<br>
-                            MADDY: OK, let's do that.<br>
-                            RYAN: Let's start with Lyocell, I've been reading about that.<br>
-                            MADDY: Yeah, that's the one produced from the pulp of eucalyptus trees, isn't it?<br>
-                            RYAN: Yes, and what happens with that is really impressive. <span id="ev-Over 99% of dissolving agents">Over 99% of dissolving agents</span> used in the manufacturing process are used again.<br>
-                            MADDY: Yeah. Now, there are a few semi-synthetic fabrics that I'd never heard of. Like Cupro, for example.<br>
-                            RYAN: Made from byproducts of the cotton industry to create a kind of vegan silk.<br>
-                            MADDY: But I'm not sure how sustainable this really is as there are so many <span id="ev-reports of pollution">reports of pollution</span> caused by the manufacturing process.<br>
-                            RYAN: Mmm. It doesn't compare favourably with all the other sustainable fabrics we've looked at, no.<br>
-                            MADDY: Bamboo is one fabric we're all familiar with. But I didn't know that it was only organic bamboo that's truly sustainable.<br>
-                            RYAN: Me neither. Apparently, the manufacturing process for a significant proportion of bamboo is <span id="ev-chemically quite intensive">chemically quite intensive</span> - which obviously can be quite damaging.<br>
-                            MADDY: EcoVero is an example of a semi-synthetic fabric which is becoming really popular.<br>
-                            RYAN: Probably because manufacturing causes <span id="ev-50 percent fewer emissions">50 percent fewer emissions</span> and takes up half as much energy as conventional fabrics. That saves production costs as well as being better for the environment.<br>
-                            MADDY: That's true. I think demand for cork will continue to grow. It works really well in vegan shoes and bags.<br>
-                            RYAN: Mmm and it's the only fabric that's <span id="ev-fundamentally sustainable">fundamentally sustainable</span> - the cork trees it comes from are renewable and the product itself is both recyclable and biodegradable which is unique.<br>
-                            MADDY: And the harvesting process is actually good for the trees. There are no downsides to using this source at all.<br>
-                            RYAN: Hemp is another really good sustainable fabric from a natural source.<br>
-                            MADDY: Yes. Did you know that clothes made from hemp <span id="ev-protect the wearer from the sun">protect the wearer from the sun</span> and it's also antibacterial?<br>
-                            RYAN: No, I didn't. But I did read that it's quite hard to grow, so perhaps that's why it's not as common as you'd think.<br>
-                            MADDY: I'm sure that'll change.</p>
+                            <p><strong>Section 3:</strong></p>
+                            <p>MADDY: I know - <span id="ev-most people use these terms interchangeably... They're often deliberately vague, I think, and don't provide enough information">most people use these terms interchangeably</span> - but in fact the difference is quite distinct when you think about it. Sustainable relates to the environment and ethical relates more to the way workers or animals are treated.<br>
+                            ...And the way companies use these terms when describing their products doesn't help. <span id="ev-most people use these terms interchangeably... They're often deliberately vague, I think, and don't provide enough information">They're often deliberately vague, I think, and don't provide enough information</span> about how their products are made. (Q21/22)<br>
+                            RYAN: And it also lasts a long time and can be recycled. All very positive. But I <span id="ev-wasn't convinced by the argument that wool production is sustainable because it doesn't use many chemicals... couldn't find any evidence for the claim about sheep farming being better for the environment than cattle farming">wasn't convinced by the argument that wool production is sustainable because it doesn't use many chemicals</span> - what about all the fungicides and insecticides used in sheep farming?<br>
+                            MADDY: Good point. And I <span id="ev-wasn't convinced by the argument that wool production is sustainable because it doesn't use many chemicals... couldn't find any evidence for the claim about sheep farming being better for the environment than cattle farming">couldn't find any evidence for the claim about sheep farming being better for the environment than cattle farming</span>. (Q23/24)<br>
+                            RYAN: Let's start with Lyocell... <span id="ev-Over 99% of dissolving agents used in the manufacturing process are used again">Over 99% of dissolving agents used in the manufacturing process are used again</span>. (Q25)<br>
+                            RYAN: Mmm. <span id="ev-It doesn't compare favourably with all the other sustainable fabrics we've looked at, no">It doesn't compare favourably with all the other sustainable fabrics we've looked at, no</span>. (Q26)<br>
+                            MADDY: Bamboo is one fabric we're all familiar with. But I didn't know that it was <span id="ev-only organic bamboo that's truly sustainable">only organic bamboo that's truly sustainable</span>. (Q27)<br>
+                            RYAN: Probably because manufacturing causes 50 percent fewer emissions and <span id="ev-takes up half as much energy as conventional fabrics">takes up half as much energy as conventional fabrics</span>. (Q28)<br>
+                            RYAN: Mmm and <span id="ev-it's the only fabric that's fundamentally sustainable">it's the only fabric that's fundamentally sustainable</span> - the cork trees it comes from are renewable and the product itself is both recyclable and biodegradable which is unique. (Q29)<br>
+                            MADDY: Yes. Did you know that clothes made from hemp <span id="ev-protect the wearer from the sun and it's also antibacterial">protect the wearer from the sun and it's also antibacterial</span>? (Q30)</p>
                         </div>
                         <div id="script-4" style="margin-top:20px;">
-                            <p><strong>Part 4:</strong></p>
-                            <p>Today I'm going to talk about invasive species. Let me start by saying what an invasive species is and what it's not. Invasive species are any animal or plant that is introduced into an environment by humans, and which is then harmful to that environment. It's important to be clear that not all introduced species are invasive. Many introduced - or non-native - species thrive in new areas without posing any threat.<br>
-                            In some cases, invasive species have changed the natural world beyond recognition, so let's look at the different ways they can be problematic. First of all, invasive species may eat native species, or sometimes they may bring a <span id="ev-disease">disease</span> with them, which native species have never faced before and therefore have no defences against. Often the invasive species breed very quickly - which further adds to the problem of native species losing their sources of food.<br>
-                            Species invasions are one of the biggest causes of damage in an <span id="ev-ecosystem">ecosystem</span>, actually putting its survival at risk.<br>
-                            So, how do invasive species spread? Without a doubt, the biggest cause is human activity. This could be intentional, or it could be accidental, such as when people who've been on <span id="ev-holiday">holiday</span> in another country come back with, say, the seeds of plants on their clothes or shoes.<br>
-                            Plants and animals, especially insects, arrive in or on the cargo of ships, and then escape into their new 'home'. But sometimes humans deliberately move animals and plants around the world, for example to use them to control pests on farms, or to be <span id="ev-pets">pets</span>.<br>
-                            This can go very wrong if those animals and plants move into wild settings and start breeding or begin growing in ways that weren't predicted.<br>
-                            Let's now look at an example of an invasive species here in Australia: <em>Rhinella marina</em> is a species of toad that was deliberately introduced from Hawaii in 1935 as a form of biological control. It was hoped that the toads would eat the grey-backed beetles responsible for destroying crops of <span id="ev-sugar">sugar</span> on many of the plantations.<br>
-                            At first, just a handful of toads were released by scientists into Queensland, but this number soon grew as other states followed suit. Within two years, 62,000 young toads had been released into the wild. The toads did nothing to protect the plantations, but they did reproduce rapidly and could soon be found all over the northern half of the country. The toads are poisonous at every stage of their life cycle, and anything that eats them will die.<br>
-                            My second example regarding invasive species is the United Kingdom. Actually, there are more than three-thousand invasive species there, including some that are extremely common. Some invasive plants, such as Japanese knotweed, have had a devastating impact on parts of the UK. Gardeners in the nineteenth century considered it a beautiful ornamental plant - which it is, when it's kept under control - but it soon spread into the countryside and remains a problem even to this day as it's so hard to eradicate. Another invasive plant is rhododendrons, which can be found in UK parks and woodlands. Their introduction dates back to 1763, but they're now seen as harmful because they block out so much <span id="ev-light">light</span> that native wild flowers can't grow beneath them.<br>
-                            And then there are grey squirrels, which are one invasive species almost everyone in the UK will have come across. They were brought to the UK from North America and introduced to private estates around the 1870s but are now found everywhere, from forests to city squares. Grey squirrels have outcompeted the smaller, native red squirrels. They both eat the same food, and the grey squirrels carry a type of <span id="ev-virus">virus</span> that is deadly to the red squirrels. Red squirrel populations have collapsed, and there are only a handful of sites left in the UK where they're found.<br>
-                            An important question for ecologists worldwide is, what can we do to tackle the problem of invasive species?<br>
-                            The first step in controlling invasive species is learning about the <span id="ev-behaviour">behaviour</span> of new species coming into the country. Monitoring is an important part of this, so that we can know if the new species begins to have a negative impact in its new environment.<br>
-                            One effective way to keep track of invasive species is to create a <span id="ev-database">database</span> for the whole country. That way, all relevant authorities and agencies can share important information and take whatever action's needed.<br>
-                            But the public also have a vital role to play in this process. They should be encouraged to <span id="ev-photograph">photograph</span> harmful species - because this helps with identification - and then to report when and where these were observed. But it's important to tell people not to destroy or even touch what they've found.</p>
+                            <p><strong>Section 4:</strong></p>
+                            <p>First of all, invasive species may eat native species, or sometimes they may <span id="ev-bring a disease with them">bring a disease with them</span>, which native species have never faced before and therefore have no defences against. (Q31)<br>
+                            Species invasions are one of the biggest causes of damage in an ecosystem, actually <span id="ev-putting its survival at risk">putting its survival at risk</span>. (Q32)<br>
+                            This could be intentional, or it could be accidental, such as when <span id="ev-returning from their holidays">people who've been on holiday in another country</span> come back with, say, the seeds of plants on their clothes or shoes. (Q33)<br>
+                            But sometimes humans deliberately move animals and plants around the world, for example to use them to control pests on farms, <span id="ev-or to be pets">or to be pets</span>. (Q34)<br>
+                            It was hoped that the toads would eat the grey-backed beetles responsible for <span id="ev-destroying crops of sugar">destroying crops of sugar</span> on many of the plantations. (Q35)<br>
+                            Another invasive plant is rhododendrons, which can be found in UK parks and woodlands... they're now seen as harmful because they <span id="ev-block out so much light">block out so much light</span> that native wild flowers can't grow beneath them. (Q36)<br>
+                            They both eat the same food, and the grey squirrels <span id="ev-carry a type of virus that is deadly">carry a type of virus that is deadly</span> to the red squirrels. (Q37)<br>
+                            The first step in controlling invasive species is <span id="ev-learning about the behaviour">learning about the behaviour</span> of new species coming into the country. (Q38)<br>
+                            One effective way to keep track of invasive species is to <span id="ev-create a database">create a database</span> for the whole country. (Q39)<br>
+                            They should be encouraged to <span id="ev-photograph harmful species">photograph harmful species</span> - because this helps with identification - and then to report when and where these were observed. (Q40)</p>
                         </div>
                     </div>
                 </div>
@@ -1453,7 +1455,7 @@
             </div>
         </div>
         <button id="deliver-button" aria-label="Review your answers" class="footer__deliverButton___3FM07">
-            <i class="fa fa fa-check" aria-hidden="true"></i>
+            <i class="fa fa-check" aria-hidden="true"></i>
             <span>Check Answers</span>
         </button>
     </nav>
@@ -1468,6 +1470,7 @@
         <div class="modal-content">
             <button class="modal-close-btn" onclick="closeResultsModal()">&times;</button>
             <h2>Results</h2>
+            <div id="submit-status" style="display: none; text-align: center; margin-bottom: 15px; padding: 10px; border-radius: 4px; font-weight: bold;"></div>
             <div class="results-summary">
                 <p>Score: <span id="results-score"></span> / 40</p>
                 <p>IELTS Band: <span id="results-band"></span></p>
@@ -1477,6 +1480,8 @@
     </div>
 
     <script>
+        const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycby7tYg_WIbxhkhK8NpoHs7s5GW3svAD56ZswWfimJgR-NMnzbbmTCBXwchyqhCI69pa/exec";
+
         window.testMeta = {
             "totalQuestions": 40,
             "parts": [
@@ -1486,58 +1491,58 @@
                 {"part": 4, "start": 31, "end": 40}
             ],
             "correctAnswers": {
-                "1": "Northern", "2": "week", "3": "250", "4": "voucher", "5": "window",
+                "1": "Northern", "2": "week", "3": ["250", "two hundred and fifty"], "4": "voucher", "5": "window",
                 "6": "books", "7": "blanket", "8": "dolphins", "9": "Drum", "10": "Italian",
                 "11": ["C", "E"], "12": ["C", "E"], "13": ["B", "E"], "14": ["B", "E"], "15": "B",
                 "16": "C", "17": "F", "18": "A", "19": "B", "20": "D",
                 "21": ["B", "D"], "22": ["B", "D"], "23": ["D", "E"], "24": ["D", "E"], "25": "G",
                 "26": "B", "27": "F", "28": "A", "29": "H", "30": "D",
-                "31": "disease", "32": "ecosystem", "33": "holiday", "34": "pets", "35": "sugar",
+                "31": "disease", "32": "ecosystem", "33": ["holiday", "holidays"], "34": "pets", "35": "sugar",
                 "36": "light", "37": "virus", "38": ["behaviour", "behavior"], "39": "database", "40": "photograph"
             }
         };
 
         window.testExplanations = {
-            "1": "Transcript: 'There's only one - it's called Northern Ferries.'[cite: 7]",
-            "2": "Transcript: '...seven days a week...'[cite: 7]",
-            "3": "Transcript: '...four people and a car worked out at just under £250.'[cite: 7]",
-            "4": "Transcript: '...just a voucher which you can use at a later date.'[cite: 7]",
-            "5": "Transcript: '...get a cabin with a window.'[cite: 7]",
-            "6": "Transcript: '...bring some books for them.'[cite: 7]",
-            "7": "Transcript: '...you just need to provide a blanket.'[cite: 7]",
-            "8": "Transcript: '...keeping a lookout for dolphins...'[cite: 7]",
-            "9": "Transcript: 'Drum Castle.'[cite: 7]",
-            "10": "Transcript: '...found an Italian one in a village nearby.'[cite: 7]",
-            "11": "Transcript: 'People like the idea of trying something they can't get anywhere else (unusual food). They also like seeing food prepared in front of them (freshly made).'[cite: 7]",
-            "12": "Transcript: 'People like the idea of trying something they can't get anywhere else (unusual food). They also like seeing food prepared in front of them (freshly made).'[cite: 7]",
-            "13": "Transcript: 'Food markets... spot in your local park - fantastic.'[cite: 7]",
-            "14": "Transcript: 'Food markets... spot in your local park - fantastic.'[cite: 7]",
-            "15": "Transcript: 'I'd try to get things like hobs and fridges second hand if you can.'[cite: 7]",
-            "16": "Transcript: 'It's got to be easy to eat and look attractive...'[cite: 7]",
-            "17": "Transcript: '...working til midnight in the restaurant all week...'[cite: 7]",
-            "18": "Transcript: '...the price of fish - essential for some of their dishes - was so high.'[cite: 7]",
-            "19": "Transcript: '...standing in a long queue for more than 15 minutes...'[cite: 7]",
-            "20": "Transcript: '...they'd need a special licence...'[cite: 7]",
-            "21": "Transcript: '...most people use these terms interchangeably... Sustainable relates to the environment and ethical relates more to the way workers or animals are treated.'[cite: 7]",
-            "22": "Transcript: '...most people use these terms interchangeably... Sustainable relates to the environment and ethical relates more to the way workers or animals are treated.'[cite: 7]",
-            "23": "Transcript: '...what about all the fungicides and insecticides used in sheep farming?... sheep farming being better for the environment than cattle farming.'[cite: 7]",
-            "24": "Transcript: '...what about all the fungicides and insecticides used in sheep farming?... sheep farming being better for the environment than cattle farming.'[cite: 7]",
-            "25": "Transcript: 'Over 99% of dissolving agents used in the manufacturing process are used again.'[cite: 7]",
-            "26": "Transcript: '...reports of pollution caused by the manufacturing process.'[cite: 7]",
-            "27": "Transcript: '...the manufacturing process for a significant proportion of bamboo is chemically quite intensive...'[cite: 7]",
-            "28": "Transcript: '...manufacturing causes 50 percent fewer emissions and takes up half as much energy as conventional fabrics.'[cite: 7]",
-            "29": "Transcript: '...it's the only fabric that's fundamentally sustainable...'[cite: 7]",
-            "30": "Transcript: '...clothes made from hemp protect the wearer from the sun and it's also antibacterial?'[cite: 7]",
-            "31": "Transcript: '...introduces a new disease...'[cite: 7]",
-            "32": "Transcript: '...threatens an entire ecosystem'[cite: 7]",
-            "33": "Transcript: '...via people returning from their holiday...'[cite: 7]",
-            "34": "Transcript: '...or as pets.'[cite: 7]",
-            "35": "Transcript: '...damaging the sugar plantations.'[cite: 7]",
-            "36": "Transcript: '...block out so much light that native wild flowers can't grow...'[cite: 7]",
-            "37": "Transcript: '...carry a type of virus that is deadly to the red squirrels.'[cite: 7]",
-            "38": "Transcript: '...learning about the behaviour of new species...'[cite: 7]",
-            "39": "Transcript: '...create a database for the whole country.'[cite: 7]",
-            "40": "Transcript: '...encouraged to photograph harmful species...'[cite: 7]"
+            "1": "Giải thích: Transcript: 'it's called Northern Ferries.'",
+            "2": "Giải thích: Transcript: 'seven days a week'",
+            "3": "Giải thích: Transcript: 'worked out at just under £250.'",
+            "4": "Giải thích: Transcript: 'just a voucher which you can use at a later date.'",
+            "5": "Giải thích: Transcript: 'to get a cabin with a window.'",
+            "6": "Giải thích: Transcript: 'So it's best to bring some books for them.'",
+            "7": "Giải thích: Transcript: 'you just need to provide a blanket.'",
+            "8": "Giải thích: Transcript: 'keeping a lookout for dolphins'",
+            "9": "Giải thích: Transcript: 'Drum Castle.'",
+            "10": "Giải thích: Transcript: 'found an Italian one in a village nearby.'",
+            "11": "Giải thích: Transcript: 'What you get with street food on the other hand is something different. People like the idea of trying something they can't get anywhere else.'",
+            "12": "Giải thích: Transcript: 'What you get with street food on the other hand is something different. People like the idea of trying something they can't get anywhere else.'",
+            "13": "Giải thích: Transcript: 'Food markets, on the other hand, are great because... And if you can get a spot in your local park - fantastic.'",
+            "14": "Giải thích: Transcript: 'Food markets, on the other hand, are great because... And if you can get a spot in your local park - fantastic.'",
+            "15": "Giải thích: Transcript: 'I'd try to get things like hobs and fridges second hand if you can.'",
+            "16": "Giải thích: Transcript: 'It's got to be easy to eat and look attractive or customers won't come back.'",
+            "17": "Giải thích: Transcript: 'working til midnight in the restaurant all week and then took their food truck to markets on their days off'",
+            "18": "Giải thích: Transcript: 'the price of fish - essential for some of their dishes - was so high'",
+            "19": "Giải thích: Transcript: 'standing in a long queue for more than 15 minutes and many of them lost patience'",
+            "20": "Giải thích: Transcript: 'they'd need a special licence - which individual businesses don't need at markets or festivals'",
+            "21": "Giải thích: Transcript: 'most people use these terms interchangeably... They're often deliberately vague, I think, and don't provide enough information'",
+            "22": "Giải thích: Transcript: 'most people use these terms interchangeably... They're often deliberately vague, I think, and don't provide enough information'",
+            "23": "Giải thích: Transcript: 'wasn't convinced by the argument that wool production is sustainable because it doesn't use many chemicals... couldn't find any evidence for the claim about sheep farming being better for the environment than cattle farming'",
+            "24": "Giải thích: Transcript: 'wasn't convinced by the argument that wool production is sustainable because it doesn't use many chemicals... couldn't find any evidence for the claim about sheep farming being better for the environment than cattle farming'",
+            "25": "Giải thích: Transcript: 'Over 99% of dissolving agents used in the manufacturing process are used again'",
+            "26": "Giải thích: Transcript: 'It doesn't compare favourably with all the other sustainable fabrics we've looked at, no'",
+            "27": "Giải thích: Transcript: 'only organic bamboo that's truly sustainable'",
+            "28": "Giải thích: Transcript: 'takes up half as much energy as conventional fabrics'",
+            "29": "Giải thích: Transcript: 'it's the only fabric that's fundamentally sustainable'",
+            "30": "Giải thích: Transcript: 'protect the wearer from the sun and it's also antibacterial'",
+            "31": "Giải thích: Transcript: 'bring a disease with them'",
+            "32": "Giải thích: Transcript: 'putting its survival at risk'",
+            "33": "Giải thích: Transcript: 'people who've been on holiday in another country'",
+            "34": "Giải thích: Transcript: 'or to be pets'",
+            "35": "Giải thích: Transcript: 'destroying crops of sugar'",
+            "36": "Giải thích: Transcript: 'block out so much light'",
+            "37": "Giải thích: Transcript: 'carry a type of virus that is deadly'",
+            "38": "Giải thích: Transcript: 'learning about the behaviour'",
+            "39": "Giải thích: Transcript: 'create a database'",
+            "40": "Giải thích: Transcript: 'photograph harmful species'"
         };
 
         let currentPart = 1;
@@ -1644,50 +1649,31 @@
             }
         }
 
-        let totalSeconds = 40 * 60;
-        let timerInterval = null;
-        let isTimerPaused = false;
-
-        function startTimer() {
-            const timerDisplay = document.getElementById('timer-display');
-            if (timerInterval) clearInterval(timerInterval);
-            timerInterval = setInterval(() => {
-                if (!isTimerPaused && totalSeconds > 0) {
-                    totalSeconds--;
-                    let mins = Math.floor(totalSeconds / 60);
-                    let secs = totalSeconds % 60;
-                    timerDisplay.textContent = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
-                } else if (totalSeconds <= 0) {
-                    clearInterval(timerInterval);
-                }
-            }, 1000);
-        }
-
-        document.getElementById('timer-toggle-btn').addEventListener('click', () => {
-            isTimerPaused = !isTimerPaused;
-        });
-
-        document.getElementById('timer-reset-btn').addEventListener('click', () => {
-            totalSeconds = 40 * 60;
-            isTimerPaused = false;
-            document.getElementById('timer-display').textContent = "40:00";
-        });
-
         document.getElementById('startNormalBtn').addEventListener('click', function() {
             document.getElementById('launchScreen').style.display = 'none';
             document.getElementById('app').style.display = 'block';
-            startTimer();
         });
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F11') {
                 document.getElementById('launchScreen').style.display = 'none';
                 document.getElementById('app').style.display = 'block';
-                startTimer();
             }
         });
 
+        // XỬ LÝ SỰ KIỆN NỘP BÀI VÀ GỬI WEBHOOK
         document.getElementById('deliver-button').addEventListener('click', function() {
+            // 1. Lấy thông tin và kiểm tra (Phải làm đầu tiên)
+            const studentName = document.getElementById('studentName').value.trim();
+            const studentClass = document.getElementById('studentClass').value.trim();
+            
+            if (!studentName || !studentClass) {
+                alert("Vui lòng điền đầy đủ Họ và tên và Lớp trước khi nộp bài!");
+                document.getElementById('studentName').focus();
+                return;
+            }
+
+            // 2. Tính toán điểm số
             let score = 0;
             const answers = window.testMeta.correctAnswers;
             const detailsContainer = document.getElementById('results-details');
@@ -1704,7 +1690,6 @@
                     const radios = document.querySelectorAll(`[name="q${i}"]`);
                     radios.forEach(r => { if (r.checked) userAns = r.value; });
                     
-                    // Xử lý tách đáp án cho nhóm câu hỏi Checkbox (VD: q11_12, q21_22...)
                     let checkboxGroup = document.querySelectorAll(`[name="q${i}_${i+1}"]`);
                     if (checkboxGroup.length === 0) checkboxGroup = document.querySelectorAll(`[name="q${i-1}_${i}"]`);
                     if (checkboxGroup.length === 0) checkboxGroup = document.querySelectorAll(`[name="q${i}"]`);
@@ -1716,7 +1701,7 @@
                         let groupName = checkboxGroup[0].name;
                         if (groupName.includes('_')) {
                             let parts = groupName.replace('q', '').split('_');
-                            let indexInGroup = parts.indexOf(i.toString()); 
+                            let indexInGroup = parts.indexOf(i.toString());
                             userAns = checkedVals[indexInGroup] || "";
                         } else {
                             userAns = checkedVals;
@@ -1729,10 +1714,8 @@
 
                 if (Array.isArray(correct)) {
                     if (Array.isArray(userAns)) {
-                        // So sánh mảng cho câu hỏi nhiều lựa chọn (bảo vệ mảng gốc bằng slice)
                         isCorrect = correct.slice().sort().join() === userAns.slice().sort().join();
                     } else if (typeof userAns === 'string') {
-                        // Tính điểm nếu chuỗi nhập vào khớp với BẤT KỲ đáp án nào trong mảng (câu điền từ)
                         isCorrect = correct.some(ans => ans.toString().toLowerCase() === userAns.toLowerCase());
                     }
                 } else {
@@ -1767,6 +1750,7 @@
                 detailsContainer.appendChild(row);
             }
 
+            // 3. Quy đổi Band điểm
             document.getElementById('results-score').innerText = score;
             let band = "0";
             if (score >= 39) band = "9.0";
@@ -1778,12 +1762,72 @@
             else if (score >= 23) band = "6.0";
             else if (score >= 19) band = "5.5";
             else if (score >= 15) band = "5.0";
-		else if (score >= 12) band = "4.5";
-            else if (score >= 10) band = "4.0";
-		else if (score >= 8) band = "3.5";
+            else if (score >= 13) band = "4.5";
+            else if (score >= 11) band = "4.0";
+            else if (score >= 9) band = "3.5";
+            else band = "3.0 hoặc thấp hơn";
 
             document.getElementById('results-band').innerText = band;
             document.getElementById('results-modal').classList.remove('hidden');
+            
+            isTimerPaused = true;
+
+            // 4. Đóng gói dữ liệu và gửi Webhook
+            const statusDiv = document.getElementById('submit-status');
+            statusDiv.style.display = 'block';
+            statusDiv.style.backgroundColor = '#fff3cd';
+            statusDiv.style.color = '#856404';
+            statusDiv.textContent = '⏳ Đang gửi kết quả về hệ thống...';
+
+            const testName = document.getElementById('launchTestTitle').textContent.trim() || document.title;
+            const timeTakenSeconds = (40 * 60) - totalSeconds;
+            const timeTakenStr = Math.floor(timeTakenSeconds / 60) + " phút " + (timeTakenSeconds % 60) + " giây";
+            
+            // Sửa lỗi Thời gian nộp bài bị trống: Lấy thời gian từ trình duyệt và đẩy vào Gói dữ liệu
+            const now = new Date();
+            const currentTime = now.toLocaleTimeString('vi-VN', { hour12: false }) + ' ' + now.toLocaleDateString('vi-VN');
+
+            // Cập nhật tên các tham số gửi về trùng khớp với file Reading
+            const payload = {
+                "Time": currentTime,
+                "time": currentTime,
+                "submitDate": currentTime,
+                "Name": studentName,
+                "studentName": studentName,
+                "Class": studentClass,
+                "studentClass": studentClass,
+                "Correct answer": score + "/40",
+                "score": score + "/40",
+                "total time": timeTakenStr,
+                "timeTaken": timeTakenStr,
+                "Test name": testName,
+                "testName": testName,
+                "examTitle": testName,
+                "bandScore": band,
+                "band": band
+            };
+
+            if (WEBHOOK_URL && WEBHOOK_URL.includes('script.google.com')) {
+                const formBody = new URLSearchParams(payload).toString();
+
+                fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: formBody
+                }).then(() => {
+                    statusDiv.style.backgroundColor = '#d4edda';
+                    statusDiv.style.color = '#155724';
+                    statusDiv.textContent = '✅ Kết quả đã được ghi nhận và gửi thành công!';
+                }).catch(err => {
+                    console.error("Lỗi gửi dữ liệu webhook: ", err);
+                    statusDiv.style.backgroundColor = '#f8d7da';
+                    statusDiv.style.color = '#721c24';
+                    statusDiv.textContent = '⚠️ Có lỗi xảy ra khi gửi. Vui lòng kiểm tra lại kết nối.';
+                });
+            }
         });
 
         function closeResultsModal() {
@@ -1813,7 +1857,7 @@
         playPauseBtn.addEventListener('click', () => {
             if (audioPlayer.paused) {
                 audioPlayer.play().catch(error => {
-                    alert("Trình duyệt chặn phát file audio trực tiếp. Hãy kiểm tra tệp 'Cambridge 21 - Test 3.mp3' đã đặt cùng thư mục với file HTML này chưa.");
+                    alert("Trình duyệt chặn phát file audio trực tiếp. Hãy kiểm tra tệp audio đã đặt cùng thư mục với file HTML này chưa.");
                 });
                 playPauseBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
             } else {
@@ -1859,6 +1903,29 @@
 
         audioPlayer.addEventListener('loadedmetadata', () => {
             durationTimer.textContent = formatTime(audioPlayer.duration);
+        });
+
+        let totalSeconds = 40 * 60;
+        let isTimerPaused = false;
+        const timerDisplay = document.querySelector('.timer-display');
+        
+        function updateTimer() {
+            if (!isTimerPaused && totalSeconds > 0) {
+                totalSeconds--;
+                const mins = Math.floor(totalSeconds / 60);
+                const secs = totalSeconds % 60;
+                timerDisplay.textContent = `${mins} minutes ${secs < 10 ? '0' : ''}${secs} remaining`;
+            }
+        }
+        setInterval(updateTimer, 1000);
+
+        document.getElementById('timer-toggle-btn').addEventListener('click', () => {
+            isTimerPaused = !isTimerPaused;
+        });
+
+        document.getElementById('timer-reset-btn').addEventListener('click', () => {
+            totalSeconds = 40 * 60;
+            isTimerPaused = false;
         });
     </script>
 </body>
